@@ -1,15 +1,19 @@
 package gui;
 
+import gui.scene.MenuScene;
+import gui.scene.PickMapScene;
+import gui.scene.PickTowerScreen;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class SceneController {
 	
 	private static String scene = "menu";
 	
-	private static MenuScene menuScene = new MenuScene();
-	private static PickMapScene pickMapScene = new PickMapScene();
-	private static PickTowerScreen pickTowerScene = new PickTowerScreen();
+	private static MenuScene menuScene = new MenuScene(new VBox());
+	private static PickMapScene pickMapScene = new PickMapScene(new VBox());
+	private static PickTowerScreen pickTowerScene = new PickTowerScreen(new VBox());
 	
 	private static Stage stage;
 
@@ -23,13 +27,13 @@ public class SceneController {
 	
 	public static Scene getScene() {
 		if (scene.equals("menu")) {
-			return menuScene.scene;
+			return menuScene;
 		}else if(scene.equals("pickMap")){
-			return pickMapScene.scene;
+			return pickMapScene;
 		}else if(scene.equals("pickTower")) {
-			return pickTowerScene.scene;
+			return pickTowerScene;
 		}else {
-			return menuScene.scene;
+			return menuScene;
 		}
 	}
 	

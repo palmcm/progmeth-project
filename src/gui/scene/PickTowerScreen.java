@@ -1,5 +1,7 @@
-package gui;
+package gui.scene;
 
+import config.GameConfig;
+import gui.SceneController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -7,12 +9,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class PickTowerScreen {
+public class PickTowerScreen extends Scene{
 	Scene scene;
 	
-	public PickTowerScreen() {
-		VBox root = new VBox(100);
+	public PickTowerScreen(VBox root) {
+		super(root,GameConfig.SCREEN_WIDTH,GameConfig.SCREEN_HEIGHT);
 		root.setAlignment(Pos.CENTER);
+		root.setSpacing(100);
 		
 		Text gameName = new Text("Pick Tower");
 		gameName.setFont(new Font(100));
@@ -25,7 +28,6 @@ public class PickTowerScreen {
 		
 		root.getChildren().addAll(gameName,back);
 		
-		scene = new Scene(root,1440,790);
 	}
 	
 	public Scene getScene() {

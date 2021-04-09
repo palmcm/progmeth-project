@@ -1,5 +1,7 @@
-package gui;
+package gui.scene;
 
+import config.GameConfig;
+import gui.SceneController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -7,13 +9,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class MenuScene {
+public class MenuScene extends Scene {
 	
-	Scene scene;
-	
-	public MenuScene() {
-		VBox root = new VBox(100);
+	public MenuScene(VBox root) {
+		super(root,GameConfig.SCREEN_WIDTH,GameConfig.SCREEN_HEIGHT);
+//		VBox root = new VBox(100);
 		root.setAlignment(Pos.CENTER);
+		root.setSpacing(50);
 		
 		Text gameName = new Text("Game Name");
 		gameName.setFont(new Font(100));
@@ -28,13 +30,12 @@ public class MenuScene {
 			SceneController.setScene("pickMap");
 		});
 		
-		root.getChildren().addAll(gameName,single,duel);
+		Button setting = new Button("Setting");
+		setting.setPrefSize(500, 100);
 		
-		scene = new Scene(root,1440,790);
+		root.getChildren().addAll(gameName,single,duel,setting);
 		
-	}
-	
-	public Scene getScene() {
-		return scene;
+//		scene = new Scene(root,1440,790);
+		
 	}
 }
