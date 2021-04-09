@@ -23,7 +23,7 @@ public class MapCell extends VBox{
 		Image img = new Image(ClassLoader.getSystemResource("img1.png").toString());
 		ImageView mapIcon = new ImageView(img);
 		double scale = img.getHeight()/150;
-		System.out.println(scale);
+//		System.out.println(scale);
 		mapIcon.setFitHeight(img.getHeight()/scale);
 		mapIcon.setFitWidth(img.getWidth()/scale);
 		this.setAlignment(Pos.CENTER);
