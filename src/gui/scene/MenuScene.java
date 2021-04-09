@@ -21,17 +21,17 @@ public class MenuScene extends Scene {
 		gameName.setFont(new Font(100));
 		
 		Button single = new Button("Single player");
-		single.setPrefSize(500, 100);
+		single.setPrefSize(250, 100);
 		
 		Button duel = new Button("Two players");
-		duel.setPrefSize(500, 100);
+		duel.setPrefSize(250, 100);
 		
 		duel.setOnMouseClicked(e -> {
 			SceneController.setScene("pickMap");
 		});
 		
 		Button setting = new Button("Setting");
-		setting.setPrefSize(500, 100);
+		setting.setPrefSize(250, 100);
 		
 		root.getChildren().addAll(gameName,single,duel,setting);
 		

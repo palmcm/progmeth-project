@@ -10,7 +10,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class PickTowerScreen extends Scene{
-	Scene scene;
 	
 	public PickTowerScreen(VBox root) {
 		super(root,GameConfig.SCREEN_WIDTH,GameConfig.SCREEN_HEIGHT);
@@ -28,9 +27,5 @@ public class PickTowerScreen extends Scene{
 		
 		root.getChildren().addAll(gameName,back);
 		
-	}
-	
-	public Scene getScene() {
-		return scene;
 	}
 }
