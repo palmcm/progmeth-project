@@ -43,17 +43,16 @@ public class SampleTower extends Tower implements Attacker{
 		});
 		
 		this.setTowerRange(new String[] {
-				"6",
-				"8",
-				"8",
-				"8"
+				"6 Tiles, Single Lane",
+				"8 Tiles, Single Lane",
+				"8 Tiles, Single Lane",
+				"8 Tiles, Single Lane"
 		});		
 		
 	}
 
 	@Override
 	public void attack() throws InvalidPlayerException {
-		// TODO Auto-generated method stub
 		switch(this.getUpgradeLevel()) {
 		case 0:
 			GenericAttack.simpleProjectile(this.getLoc(), 1, 6, this.getOwner());
