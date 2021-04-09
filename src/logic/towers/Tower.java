@@ -1,5 +1,6 @@
 package logic.towers;
 
+import exception.InvalidPlayerException;
 import logic.misc.Coordinate;
 
 public abstract class Tower {
@@ -44,6 +45,22 @@ public abstract class Tower {
 	public boolean isActive()
 	{
 		return this.currentHealth > 0;
+	}
+	
+	public void damage(int dmg)
+	{
+		this.currentHealth -= dmg;
+		if(this.currentHealth < 0)
+		{
+			this.currentHealth = 0;
+		}
+	}
+	
+	public boolean attackable(int player) throws InvalidPlayerException
+	{
+		if(player==3)
+			return true;
+		else return player!=this.getOwner();
 	}
 	
 	public Coordinate getLoc()
