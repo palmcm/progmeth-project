@@ -45,9 +45,7 @@ public class GenericAttack {
 			}
 		}
 	}
-		
-
-		
+			
 	public static void piercingProjectile(Coordinate start, int damage, int range, int pierce, int player) throws InvalidPlayerException
 	{
 		GameInstance gameInstance = GameManager.getGameInstance();

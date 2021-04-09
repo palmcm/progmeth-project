@@ -1,7 +1,9 @@
 package logic.towers;
 
+import exception.InvalidPlayerException;
+
 public interface Attacker {
 	
-	public void attack();
+	public void attack() throws InvalidPlayerException;
 	
 }

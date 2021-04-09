@@ -93,6 +93,18 @@ public class Board {
 		return this.tiles[loc.getX()][loc.getY()];
 	}
 	
+	public boolean checkTile(int x,int y)
+	{
+		if(x < 0 || y < 0 || x >= this.lanes || y >= this.getBorder() )
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	
 	
 	
 	
