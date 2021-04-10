@@ -16,17 +16,10 @@ public class TowerCell extends VBox{
 	private BaseTower tower;
 	
 	public TowerCell() {
-		ImageView towerIcon = new ImageView();
-		Image img = new Image(ClassLoader.getSystemResource("tower1.png").toString());
-		towerIcon.setImage(img);
-		double scale = img.getHeight()/100;
-//		System.out.println(scale);
-		towerIcon.setFitHeight(img.getHeight()/scale);
-		towerIcon.setFitWidth(img.getWidth()/scale);
+		this.setMinSize(100, 100);
 		
 		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-		this.getChildren().add(towerIcon);
 	}
 	
 	public TowerCell(BaseTower tower) {

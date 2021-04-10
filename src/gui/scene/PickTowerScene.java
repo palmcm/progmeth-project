@@ -20,7 +20,7 @@ public class PickTowerScene extends Scene{
 		root.setSpacing(50);
 		
 		Text gameName = new Text("Pick Tower");
-		gameName.setFont(new Font(100));
+		gameName.setFont(new Font(80));
 		
 		TowerPane towerPane = new TowerPane();
 		

@@ -28,7 +28,7 @@ public class TowerDesBox extends VBox{
 		this.setMaxWidth(GameConfig.SCREEN_WIDTH/4);
 		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-		this.setMinSize(600,200);
+		this.setMinSize(600,250);
 //		this.setPrefHeight(180);
 	}
 	

@@ -11,10 +11,12 @@ public class TowerPane extends GridPane {
 	public TowerPane() {
 		int i=0;
 		for (BaseTower tower:Towers.getTowers()) {
-			this.add(new TowerCell(tower), i%4, i/4);
+			this.add(new TowerCell(tower), i%5, i/5);
 			i++;
 		}
-		this.add(new TowerCell(), 3, 1);
+		for (;i<10;i++) {
+			this.add(new TowerCell(), i%5, i/5);
+		}
 		this.setWidth(GameConfig.SCREEN_WIDTH / 2);
 		this.setAlignment(Pos.CENTER);
 	}
