@@ -20,6 +20,10 @@ public class GameManager {
 	private static int currentPlayer;
 	private static int maxDeckSize;
 	
+	public static void initialize() {
+		StartNewGame();
+	}
+	
 	private static int flipPlayer(int player)
 	{
 		if(player == 1)

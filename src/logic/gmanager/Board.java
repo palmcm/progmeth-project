@@ -13,7 +13,7 @@ public class Board {
 	{
 		this.border = 11;
 		this.lanes = 5;
-		this.tiles = new Tile[5][12];
+		initTiles(5,10);
 		
 		
 		this.setBorderColumns();
@@ -49,7 +49,7 @@ public class Board {
 	{
 		this.border = y+1;
 		this.lanes = x;
-		this.tiles = new Tile[x][y+2];
+		initTiles(x,y);
 		
 		int i;
 		
@@ -63,6 +63,15 @@ public class Board {
 		}
 		
 		
+	}
+	
+	private void initTiles(int lane, int col) {
+		this.tiles = new Tile[lane][col+2];
+		for(int i=0;i<lane;i++) {
+			for(int j=0;j<col+2;j++) {
+				this.tiles[i][j] = new Tile();
+			}
+		}
 	}
 	
 	public void setBorderColumns()
@@ -124,6 +133,10 @@ public class Board {
 
 	public int getLanes() {
 		return lanes;
+	}
+
+	public Tile[][] getTiles() {
+		return tiles;
 	}
 	
 	

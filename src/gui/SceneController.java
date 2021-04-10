@@ -1,5 +1,6 @@
 package gui;
 
+import gui.scene.GameScene;
 import gui.scene.MenuScene;
 import gui.scene.PickMapScene;
 import gui.scene.PickTowerScene;
@@ -9,11 +10,12 @@ import javafx.stage.Stage;
 
 public class SceneController {
 	
-	private static String scene = "menu";
+	private static String scene = "game";
 	
 	private static MenuScene menuScene = new MenuScene(new VBox());
 	private static PickMapScene pickMapScene = new PickMapScene(new VBox());
 	private static PickTowerScene pickTowerScene = new PickTowerScene(new VBox());
+	private static GameScene gameScene = new GameScene(new VBox());
 	
 	private static Stage stage;
 
@@ -24,6 +26,8 @@ public class SceneController {
 			return pickMapScene;
 		}else if(scene.equals("pickTower")) {
 			return pickTowerScene;
+		}else if(scene.equals("game")) {
+			return gameScene;
 		}else {
 			return menuScene;
 		}

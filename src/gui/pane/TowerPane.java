@@ -17,6 +17,8 @@ public class TowerPane extends GridPane {
 		for (;i<10;i++) {
 			this.add(new TowerCell(), i%5, i/5);
 		}
+		this.setHgap(1);
+		this.setVgap(1);
 		this.setWidth(GameConfig.SCREEN_WIDTH / 2);
 		this.setAlignment(Pos.CENTER);
 	}
