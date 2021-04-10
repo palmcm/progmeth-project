@@ -1,6 +1,11 @@
 package logic.gmanager;
 
+import java.util.ArrayList;
+
 import exception.InvalidPlayerException;
+import logic.actions.AttackAction;
+import logic.actions.AttackPhaseAction;
+import logic.misc.Coordinate;
 
 public class GameInstance {
 	
@@ -15,6 +20,9 @@ public class GameInstance {
 	
 	private Player player1,player2;
 	
+	private ArrayList<AttackPhaseAction> attackOrder;
+	private ArrayList<AttackPhaseAction> persistentEffects;
+	
 	public GameInstance()
 	{
 		this.board = new Board();
@@ -28,6 +36,48 @@ public class GameInstance {
 		this.player2 = new Player(2);
 	}
 	
+	// ---------------- ATTACK ORDER ---------------------
+	
+	public void clearAttackOrder()
+	{
+		attackOrder.clear();
+		int i,j;
+		for(i=0;i<this.getBoard().getLanes();i++)
+		{
+			for(j=0;j<=this.getBoard().getBorder();j++)
+			{
+				this.getBoard().getTile(new Coordinate(i,j)).setMarkAttacked(false);
+			}
+		}
+		
+	}
+	
+	public void addAttackOrder(AttackPhaseAction attack)
+	{
+		attackOrder.add(attack);
+		if(attack instanceof AttackAction)
+		{
+			this.getBoard().getTile(((AttackAction) attack).getTrigger()).setMarkAttacked(true);			
+		}
+	}
+	
+	public void removeAttackOrder(AttackPhaseAction attack)
+	{
+		attackOrder.remove(attack);
+		if(attack instanceof AttackAction)
+		{
+			this.getBoard().getTile(((AttackAction) attack).getTrigger()).setMarkAttacked(false);			
+		}
+	}
+	
+	public ArrayList<AttackPhaseAction> getAttackOrder() {
+		return this.attackOrder;
+	}
+	
+	
+	
+	// ---------------- ATTACK ORDER ---------------------
+
 	public int getStartingMoney()
 	{
 		return this.startingMoney;

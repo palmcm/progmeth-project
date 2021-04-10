@@ -129,6 +129,21 @@ public class Player {
 		return deck;
 	}
 	
+	public boolean hasTowerInDeck(BaseTower tower)
+	{
+		boolean found = false;
+		for(BaseTower i:this.getDeck())
+		{
+			if(i.getClass().equals(tower.getClass()))
+			{
+				found = true;
+				break;
+			}
+		}
+		
+		return found;
+	}
+	
 	
 	
 }

@@ -4,8 +4,14 @@ import exception.InvalidPlayerException;
 import logic.attacks.GenericAttack;
 import logic.misc.Coordinate;
 import logic.towers.AimableTower;
+import logic.towers.BaseTower;
 
 public class SampleAimable extends AimableTower{
+	
+	public BaseTower getNewInstance(Coordinate loc)
+	{
+		return new SampleAimable(loc,true);
+	}
 	
 	public SampleAimable(Coordinate loc,boolean isInstance)
 	{

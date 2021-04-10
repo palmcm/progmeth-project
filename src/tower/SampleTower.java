@@ -4,8 +4,14 @@ import exception.InvalidPlayerException;
 import logic.attacks.GenericAttack;
 import logic.misc.Coordinate;
 import logic.towers.AttackableTower;
+import logic.towers.BaseTower;
 
 public class SampleTower extends AttackableTower{
+	
+	public BaseTower getNewInstance(Coordinate loc)
+	{
+		return new SampleTower(loc,true);
+	}
 	
 	public SampleTower(Coordinate loc,boolean isInstance)
 	{

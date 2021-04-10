@@ -8,6 +8,11 @@ import logic.towers.BaseTower;
 
 public class SampleProduction extends BaseTower implements Passive{
 	
+	public BaseTower getNewInstance(Coordinate loc)
+	{
+		return new SampleProduction(loc,true);
+	}
+	
 
 	
 	public SampleProduction(Coordinate loc,boolean isInstance)

@@ -111,6 +111,12 @@ public class Board {
 			return true;
 		}
 	}
+
+	public int getLanes() {
+		return lanes;
+	}
+	
+	
 	
 	
 	

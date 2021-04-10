@@ -8,6 +8,7 @@ public class Tile {
 	
 	private BaseTower tower;
 	private Coordinate loc;
+	private boolean markAttacked;
 	
 	private int tileOwner; 
 	// 0 - can't be built on, 1 - owned by player 1, same for 2. 3 is placeable by both
@@ -17,6 +18,7 @@ public class Tile {
 		this.tower = null;
 		this.tileOwner = 0;
 		this.loc = null;
+		this.markAttacked = false;
 	}
 	
 	public boolean canPlace(int player)
@@ -63,6 +65,15 @@ public class Tile {
 	public void setLoc(Coordinate loc) {
 		this.loc = loc;
 	}
+
+	public boolean isMarkAttacked() {
+		return markAttacked;
+	}
+
+	public void setMarkAttacked(boolean markAttacked) {
+		this.markAttacked = markAttacked;
+	}
+	
 	
 	
 	

@@ -41,7 +41,7 @@ public abstract class BaseTower {
 	
 	// ** Abstract Methods **
 	
-	
+	public abstract BaseTower getNewInstance(Coordinate loc);
 	
 	// ** Methods **
 	
@@ -278,6 +278,12 @@ public abstract class BaseTower {
 	public void setCurrentUpgradeDescription(String currentUpgradeDescription) {
 		this.currentUpgradeDescription = currentUpgradeDescription;
 	}
+
+	public void setInstance(boolean isInstance) {
+		this.isInstance = isInstance;
+	}
+	
+	
 	
 	
 	
