@@ -1,5 +1,8 @@
 package logic.gmanager;
 
+import logic.towers.BaseTower;
+import tower.SampleTower;
+
 public class GameManager {
 	
 	private static GameInstance gameInstance;

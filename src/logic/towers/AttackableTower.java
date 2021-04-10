@@ -35,10 +35,9 @@ public abstract class AttackableTower extends BaseTower{
 		this.setCurrentRange(this.getTowerRange(level));
 	}
 	
-	public String getToolTipString()
+	protected String getInstanceToolTipString()
 	{
-		return this.getCurrentName()+"\n"+
-				"-----------------------------"+
+		return 	"-----------------------------"+
 				this.getCurrentDescription()+"\n"+
 				"-----------------------------"+
 				"Tower Info:\n"+
@@ -47,6 +46,16 @@ public abstract class AttackableTower extends BaseTower{
 				"Health: "+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
 				"-----------------------------"+
 				this.getNextUpgradeInfo();
+	}
+	
+	protected String getBuyToolTip()
+	{
+		return  "-----------------------------"+
+				this.getTowerUpgradeDescription(0)+"\n"+
+				"-----------------------------"+
+				"Attack Damage: "+this.getCurrentDamage()+"\n"+
+				"Attack Range: "+this.getCurrentRange()+"\n"+
+				"Health: "+this.getMaxHealth()+"\n";
 	}
 	
 	// -------------- COOLDOWN --------------------

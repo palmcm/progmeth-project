@@ -7,8 +7,10 @@ import logic.towers.AimableTower;
 
 public class SampleAimable extends AimableTower{
 	
-	public SampleAimable(Coordinate loc)
+	public SampleAimable(Coordinate loc,boolean isInstance)
 	{
+		this.setIsInstance(isInstance);
+		
 		this.setCost(15);
 		
 		this.setMaxHealth(15);
@@ -66,7 +68,7 @@ public class SampleAimable extends AimableTower{
 		});		
 		
 	}
-
+	
 	// ------------- ATTACKING --------------------
 	
 	public void attack() throws InvalidPlayerException {

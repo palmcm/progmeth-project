@@ -10,8 +10,10 @@ public class SampleProduction extends BaseTower implements Passive{
 	
 
 	
-	public SampleProduction(Coordinate loc)
+	public SampleProduction(Coordinate loc,boolean isInstance)
 	{
+		this.setIsInstance(isInstance);
+		
 		this.setCost(20);
 		
 		this.setMaxHealth(10);

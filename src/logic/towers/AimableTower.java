@@ -25,10 +25,9 @@ public abstract class AimableTower extends AttackableTower {
 		return false;
 	}
 	
-	public String getToolTipString()
+	protected String getInstanceToolTipString()
 	{
-		return this.getCurrentName()+"\n"+
-				"-----------------------------"+
+		return "-----------------------------"+
 				this.getCurrentDescription()+"\n"+
 				"-----------------------------"+
 				"Tower Info:\n"+
@@ -38,6 +37,18 @@ public abstract class AimableTower extends AttackableTower {
 				"Health: "+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
 				"-----------------------------"+
 				this.getNextUpgradeInfo();
+	}
+
+	
+	protected String getBuyToolTip()
+	{
+		return  "-----------------------------"+
+				this.getTowerUpgradeDescription(0)+"\n"+
+				"-----------------------------"+
+				"Attack Damage: "+this.getCurrentDamage()+"\n"+
+				"Attack Vertical Range: "+this.getCurrentvRange()+"\n"+
+				"Attack Horizontal Range: "+this.getCurrenthRange()+"\n"+
+				"Health: "+this.getMaxHealth()+"\n";
 	}
 
 	public int gethRange(int level) {

@@ -9,6 +9,8 @@ public abstract class BaseTower {
 	
 	// Health Related
 	
+	private boolean isInstance;
+	
 	private int currentHealth;
 	private int maxHealth;
 	private int maxUpgradeLevel;
@@ -72,6 +74,14 @@ public abstract class BaseTower {
 	
 	public String getToolTipString()
 	{
+		if(this.isInstance)
+			return this.getInstanceToolTipString();
+		else
+			return this.getBuyToolTip();
+	}
+	
+	protected String getInstanceToolTipString()
+	{
 		return this.getCurrentName()+"\n"+
 				"-----------------------------"+
 				this.getCurrentDescription()+"\n"+
@@ -80,6 +90,14 @@ public abstract class BaseTower {
 				"Health: "+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
 				"-----------------------------"+
 				this.getNextUpgradeInfo();
+	}
+	
+	protected String getBuyToolTip()
+	{
+		return 	"-----------------------------"+
+				this.getTowerUpgradeDescription(0)+"\n"+
+				"-----------------------------"+
+				"Health: "+this.getMaxHealth()+"\n";
 	}
 	
 	public String getNextUpgradeInfo()
@@ -92,6 +110,11 @@ public abstract class BaseTower {
 				this.getCurrentUpgradeDescription()+"\n"+
 				"Cost: "+this.getCurrentUpgradeCost()+"\n"+
 				"Upgrading will heal "+this.getCurrentUpgradeHealth()+" Health";
+	}
+	
+	protected void setIsInstance(boolean isInstance)
+	{
+		this.isInstance = isInstance;
 	}
 	
 	public boolean isActive()

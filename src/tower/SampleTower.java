@@ -7,8 +7,10 @@ import logic.towers.AttackableTower;
 
 public class SampleTower extends AttackableTower{
 	
-	public SampleTower(Coordinate loc)
+	public SampleTower(Coordinate loc,boolean isInstance)
 	{
+		this.setIsInstance(isInstance);
+		
 		this.setCost(10);
 		
 		this.setMaxHealth(5);
