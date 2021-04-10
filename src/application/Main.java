@@ -3,7 +3,6 @@ package application;
 import gui.SceneController;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import logic.towers.Towers;
 import javafx.scene.Scene;
 
 
@@ -23,7 +22,6 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		Towers.test();
 		launch(args);
 	}
 }

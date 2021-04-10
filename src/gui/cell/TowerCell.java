@@ -10,8 +10,10 @@ import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import logic.towers.BaseTower;
 
 public class TowerCell extends VBox{
+	private BaseTower tower;
 	
 	public TowerCell() {
 		ImageView towerIcon = new ImageView();
@@ -25,8 +27,23 @@ public class TowerCell extends VBox{
 		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		this.getChildren().add(towerIcon);
+	}
+	
+	public TowerCell(BaseTower tower) {
+		this.tower = tower;
+		ImageView towerIcon = new ImageView();
+		Image img = new Image(ClassLoader.getSystemResource("tower1.png").toString());
+		towerIcon.setImage(img);
+		double scale = img.getHeight()/100;
+//		System.out.println(scale);
+		towerIcon.setFitHeight(img.getHeight()/scale);
+		towerIcon.setFitWidth(img.getWidth()/scale);
+		
+		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
+				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		this.getChildren().add(towerIcon);
 		this.setOnMouseEntered(e -> {
-			SceneController.getPickTowerScene().getDesBox().setTowerData("Glue Gunner","Attack Range: 5\nDef: 3");
+			SceneController.getPickTowerScene().getDesBox().setTowerData(tower);
 		});
 		
 		this.setOnMouseExited(e -> {
