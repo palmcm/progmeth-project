@@ -45,7 +45,7 @@ public class Tile {
 		this.tower = tower;
 	}
 	
-	public void removeTower(BaseTower tower)
+	public void removeTower()
 	{
 		this.tower = null;
 	}

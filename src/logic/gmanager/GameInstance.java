@@ -6,6 +6,7 @@ import exception.InvalidPlayerException;
 import logic.actions.AttackAction;
 import logic.actions.AttackPhaseAction;
 import logic.misc.Coordinate;
+import logic.towers.BaseTower;
 
 public class GameInstance {
 	
@@ -22,6 +23,7 @@ public class GameInstance {
 	
 	private ArrayList<AttackPhaseAction> attackOrder;
 	private ArrayList<AttackPhaseAction> persistentEffects;
+	private ArrayList<BaseTower> allTowers;
 	
 	public GameInstance()
 	{
@@ -34,13 +36,23 @@ public class GameInstance {
 		
 		this.player1 = new Player(1);
 		this.player2 = new Player(2);
+		
+		GameManager.setStartingPlayer(1);
+		GameManager.setCurrentPlayer(1);
+		
+		GameManager.setTurnPhase(TurnPhase.BUILD);
+		
+		this.attackOrder = new ArrayList<AttackPhaseAction>();
+		this.persistentEffects = new ArrayList<AttackPhaseAction>();
+		this.allTowers = new ArrayList<BaseTower>();
+		
 	}
 	
 	// ---------------- ATTACK ORDER ---------------------
 	
 	public void clearAttackOrder()
 	{
-		attackOrder.clear();
+		this.attackOrder.clear();
 		int i,j;
 		for(i=0;i<this.getBoard().getLanes();i++)
 		{
@@ -48,6 +60,11 @@ public class GameInstance {
 			{
 				this.getBoard().getTile(new Coordinate(i,j)).setMarkAttacked(false);
 			}
+		}
+		for(AttackPhaseAction a:this.persistentEffects)
+		{
+			this.attackOrder.add(a);
+			this.persistentEffects.remove(a);
 		}
 		
 	}
@@ -120,7 +137,6 @@ public class GameInstance {
 	public int getMaxHealth() {
 		return MaxHealth;
 	}
-	
 	
 	
 	

@@ -1,6 +1,7 @@
 package logic.towers;
 
 import exception.InvalidPlayerException;
+import logic.gmanager.GameManager;
 import logic.misc.Coordinate;
 import utils.CommonStrings;
 
@@ -49,6 +50,7 @@ public abstract class BaseTower {
 	{
 		this.setUpgradeLevel(0);
 		this.setCurrentName(this.getTowerName(0));
+		this.setOwner(GameManager.getCurrentPlayer());
 		
 	}
 	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import exception.InvalidPlayerException;
 import logic.towers.BaseTower;
+import utils.CommonStrings;
 
 public class Player {
 	
@@ -86,6 +87,35 @@ public class Player {
 		this.deck.remove(idx);
 	}
 	
+	public String getIncomeToolTip()
+	{
+		if(this.getIncomeLevel() >= GameManager.getGameInstance().getMaxIncomeLevel())
+		{
+			return "Player "+this.getPlayerId()+"'s Income: "+this.getIncome()+"\n"+
+					CommonStrings.SeparatorLine+"Income cannot be upgraded further!";
+		}
+		else
+		{
+			return "Player "+this.getPlayerId()+"'s Income: "+this.getIncome()+"\n"+
+					CommonStrings.SeparatorLine+"Next level: "+GameManager.getGameInstance().getIncome(this.getIncomeLevel()+1)
+					+"\n"+"Upgrade cost: "+GameManager.getGameInstance().getIncomeUpgradeCost(this.getIncomeLevel()+1);
+		}
+	}
+	
+	public boolean upgradeIncome()
+	{
+		if(this.getIncomeLevel() >= GameManager.getGameInstance().getMaxIncomeLevel())
+		{
+			return false;
+		}
+		if(this.getMoney() < GameManager.getGameInstance().getIncomeUpgradeCost(this.getIncomeLevel()))
+		{
+			return false;
+		}
+		this.spendMoney(GameManager.getGameInstance().getIncomeUpgradeCost(this.getIncomeLevel()));
+		this.setIncomeLevel(this.getIncomeLevel()+1);
+		return true;
+	}
 	
 	// GENERATED GETTER & SETTER
 	
@@ -95,6 +125,8 @@ public class Player {
 
 	public void setIncomeLevel(int incomeLevel) {
 		this.incomeLevel = incomeLevel;
+		if(this.incomeLevel > GameManager.getGameInstance().getMaxIncomeLevel())
+			this.incomeLevel = GameManager.getGameInstance().getMaxIncomeLevel();
 	}
 
 	public int getMoney() {

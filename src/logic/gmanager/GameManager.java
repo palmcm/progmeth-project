@@ -5,7 +5,9 @@ import logic.actions.AttackAction;
 import logic.actions.AttackPhaseAction;
 import logic.misc.Coordinate;
 import logic.towers.AimableTower;
+import logic.towers.AttackableTower;
 import logic.towers.BaseTower;
+import logic.towers.Passive;
 
 public class GameManager {
 	
@@ -14,6 +16,55 @@ public class GameManager {
 	private static ButtonMode buttonMode;
 	private static TurnPhase turnPhase;
 	private static BaseTower selectedTower;
+	private static int startingPlayer;
+	private static int currentPlayer;
+	
+	private static int flipPlayer(int player)
+	{
+		if(player == 1)
+			return 2;
+		return 1;
+	}
+	
+	public static void flipStartingPlayer()
+	{
+		GameManager.setStartingPlayer(GameManager.flipPlayer(GameManager.startingPlayer));
+	}
+	
+	public static void flipCurrentPlayer()
+	{
+		GameManager.setCurrentPlayer(GameManager.flipPlayer(GameManager.currentPlayer));
+	}
+	
+	
+	public static TurnPhase getTurnPhase() {
+		return turnPhase;
+	}
+
+	public static void setTurnPhase(TurnPhase turnPhase) {
+		GameManager.turnPhase = turnPhase;
+	}
+
+	public static void setCurrentPlayer(int currentPlayer) {
+		GameManager.currentPlayer = currentPlayer;
+	}
+
+	public static void setButtonMode(ButtonMode buttonMode) {
+		GameManager.buttonMode = buttonMode;
+	}
+
+	public static int getStartingPlayer() {
+		return startingPlayer;
+	}
+
+	public static void setStartingPlayer(int startingPlayer) {
+		GameManager.startingPlayer = startingPlayer;
+	}
+
+	public static int getCurrentPlayer()
+	{
+		return GameManager.currentPlayer;
+	}
 	
 	private static Coordinate selectedTile;
 	
@@ -43,24 +94,6 @@ public class GameManager {
 		
 	}
 	
-	// ---------------------- TURN PROCESSOR : CLICKING ANY TILES -----------------------
-
-	
-	public static boolean selectTile(Coordinate loc,int player)
-	{
-		if(GameManager.turnPhase == TurnPhase.ATTACK)
-		{
-			return GameManager.selectAttackPhaseTile(loc, player);
-		}
-		else if(GameManager.turnPhase == TurnPhase.BUILD)
-		{
-			return GameManager.buildTower(selectedTower, loc, player);
-		}
-		
-		
-		return false;
-	}
-	
 	
 	// ---------------------- TURN PROCESSOR : ATTACK -----------------------------------
 	
@@ -72,7 +105,7 @@ public class GameManager {
 		}
 	}
 	
-	private static boolean selectAttackPhaseTile(Coordinate loc, int player)
+	public static boolean selectAttackPhaseTile(Coordinate loc, int player)
 	{
 		if(GameManager.getButtonMode() == ButtonMode.AIM)
 		{
@@ -103,6 +136,8 @@ public class GameManager {
 		if(selectedTile.getTower() == null)
 			return false;
 		if(selectedTile.getTower().getOwner() != player)
+			return false;
+		if(!((AttackableTower) selectedTile.getTower()).canAttack())
 			return false;
 		if(selectedTile.isMarkAttacked())
 			unqueueAttack(loc,player);
@@ -158,7 +193,7 @@ public class GameManager {
 		else return false;
 	}
 	
-	public static boolean buildTower(BaseTower tower, Coordinate loc, int player)
+	private static boolean buildTower(BaseTower tower, Coordinate loc, int player)
 	{
 		try {
 			int cost = tower.getCost();
@@ -241,7 +276,48 @@ public class GameManager {
 		GameManager.selectedTower = selectedTower;
 	}
 	
+	// ----------------------- Aftermath phase ------------------------------
 	
+	public static void processAftermath() {
+		Board board = GameManager.getGameInstance().getBoard();
+		BaseTower b;
+		int i,j;
+		for(i=0;i<board.getLanes();i++)
+		{
+			for(j=0;j<=board.getBorder();j++)
+			{
+				b = board.getTile(new Coordinate(i,j)).getTower();
+				if(b != null)
+				{
+					if(b.getCurrentHealth() <= 0)
+					{
+						board.getTile(b.getLoc()).removeTower();
+					}
+					else if(b instanceof Passive)
+					{
+						try {
+							((Passive) b).doPassive();
+							
+						} catch (InvalidPlayerException e) {
+							e.printStackTrace();
+						}
+					}
+					else if(b instanceof AttackableTower)
+					{
+						((AttackableTower) b).doCooldown();
+					}
+				}
+			}
+		}
+		
+		try {
+			GameManager.getGameInstance().getPlayer(1).applyIncome();
+			GameManager.getGameInstance().getPlayer(2).applyIncome();
+		} catch (InvalidPlayerException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 }
