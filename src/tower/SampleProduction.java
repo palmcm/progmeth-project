@@ -13,7 +13,6 @@ public class SampleProduction extends BaseTower implements Passive{
 	public SampleProduction(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);
-		this.initialize();
 		
 		this.setCost(20);
 		
@@ -47,7 +46,9 @@ public class SampleProduction extends BaseTower implements Passive{
 				"Increases income by 2 per turn.",
 				"Increases income by 4 per turn.",
 				"Increases income by 10 per turn."
-		});		
+		});
+		
+		this.initialize();
 		
 	}
 

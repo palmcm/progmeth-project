@@ -48,6 +48,8 @@ public abstract class BaseTower {
 	protected void initialize()
 	{
 		this.setUpgradeLevel(0);
+		this.setCurrentName(this.getTowerName(0));
+		
 	}
 	
 	public boolean upgrade()

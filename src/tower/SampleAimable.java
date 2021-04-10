@@ -10,7 +10,6 @@ public class SampleAimable extends AimableTower{
 	public SampleAimable(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);
-		this.initialize();
 		
 		this.setCost(15);
 		
@@ -66,7 +65,9 @@ public class SampleAimable extends AimableTower{
 				"Increases attack damage by 3.",
 				"Attacks damages adjacent tiles.",
 				"Significantly increases tower's reach."
-		});		
+		});
+		
+		this.initialize();
 		
 	}
 	

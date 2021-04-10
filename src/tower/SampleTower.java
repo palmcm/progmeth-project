@@ -10,7 +10,6 @@ public class SampleTower extends AttackableTower{
 	public SampleTower(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);
-		this.initialize();
 		
 		this.setCost(10);
 		
@@ -61,7 +60,9 @@ public class SampleTower extends AttackableTower{
 				"Increases projectile range by 2 tiles",
 				"Deals +1 damage per projectile",
 				"Fires twice per attack."
-		});		
+		});
+		
+		this.initialize();
 		
 	}
 

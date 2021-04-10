@@ -24,6 +24,15 @@ public abstract class AttackableTower extends BaseTower{
 	private String[] towerDamage;
 	private String currentRange;
 	private String currentDamage;
+	
+	protected void initialize()
+	{
+		this.setUpgradeLevel(0);
+		this.setCurrentName(this.getTowerName(0));
+		this.setCurrentDamage(this.getTowerDamage(0));
+		this.setCurrentRange(this.getTowerRange(0));
+		
+	}
 
 	
 	public void updateInfo()
