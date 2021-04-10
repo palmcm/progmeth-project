@@ -13,6 +13,7 @@ public class SampleProduction extends BaseTower implements Passive{
 	public SampleProduction(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);
+		this.initialize();
 		
 		this.setCost(20);
 		

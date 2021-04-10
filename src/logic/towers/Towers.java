@@ -17,4 +17,11 @@ public class Towers {
 	{
 		return Towers.TowerList;
 	}
+	
+	public static void test()
+	{
+		System.out.println(Towers.getTowers()[0].getCurrentName());  // <------- NAME
+		
+		System.out.println(Towers.getTowers()[0].getToolTipString()); // <--------- TOOLTIP DESC
+	}
 }

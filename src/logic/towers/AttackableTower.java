@@ -1,6 +1,7 @@
 package logic.towers;
 
 import exception.InvalidPlayerException;
+import utils.CommonStrings;
 
 public abstract class AttackableTower extends BaseTower{
 	
@@ -37,22 +38,22 @@ public abstract class AttackableTower extends BaseTower{
 	
 	protected String getInstanceToolTipString()
 	{
-		return 	"-----------------------------"+
+		return 	CommonStrings.SeparatorLine+
 				this.getCurrentDescription()+"\n"+
-				"-----------------------------"+
+				CommonStrings.SeparatorLine+
 				"Tower Info:\n"+
 				"Attack Damage: "+this.getCurrentDamage()+"\n"+
 				"Attack Range: "+this.getCurrentRange()+"\n"+
 				"Health: "+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
-				"-----------------------------"+
+				CommonStrings.SeparatorLine+
 				this.getNextUpgradeInfo();
 	}
 	
 	protected String getBuyToolTip()
 	{
-		return  "-----------------------------"+
+		return  CommonStrings.SeparatorLine+
 				this.getTowerUpgradeDescription(0)+"\n"+
-				"-----------------------------"+
+				CommonStrings.SeparatorLine+
 				"Attack Damage: "+this.getCurrentDamage()+"\n"+
 				"Attack Range: "+this.getCurrentRange()+"\n"+
 				"Health: "+this.getMaxHealth()+"\n";

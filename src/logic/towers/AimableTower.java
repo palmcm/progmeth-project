@@ -1,6 +1,7 @@
 package logic.towers;
 
 import logic.misc.Coordinate;
+import utils.CommonStrings;
 
 public abstract class AimableTower extends AttackableTower {
 	
@@ -12,6 +13,10 @@ public abstract class AimableTower extends AttackableTower {
 	}
 
 	public boolean setTarget(Coordinate target) {
+		if(target == null)
+			return false;
+		
+		
 		Coordinate currentLoc = this.getLoc();
 		int vdiff = Math.abs(target.getX()-currentLoc.getX());
 		int hdiff = Math.abs(target.getY()-currentLoc.getY());
@@ -27,24 +32,24 @@ public abstract class AimableTower extends AttackableTower {
 	
 	protected String getInstanceToolTipString()
 	{
-		return "-----------------------------"+
+		return CommonStrings.SeparatorLine+
 				this.getCurrentDescription()+"\n"+
-				"-----------------------------"+
+				CommonStrings.SeparatorLine+
 				"Tower Info:\n"+
 				"Attack Damage: "+this.getCurrentDamage()+"\n"+
 				"Attack Vertical Range: "+this.getCurrentvRange()+"\n"+
 				"Attack Horizontal Range: "+this.getCurrenthRange()+"\n"+
 				"Health: "+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
-				"-----------------------------"+
+				CommonStrings.SeparatorLine+
 				this.getNextUpgradeInfo();
 	}
 
 	
 	protected String getBuyToolTip()
 	{
-		return  "-----------------------------"+
+		return  CommonStrings.SeparatorLine+
 				this.getTowerUpgradeDescription(0)+"\n"+
-				"-----------------------------"+
+				CommonStrings.SeparatorLine+
 				"Attack Damage: "+this.getCurrentDamage()+"\n"+
 				"Attack Vertical Range: "+this.getCurrentvRange()+"\n"+
 				"Attack Horizontal Range: "+this.getCurrenthRange()+"\n"+

@@ -2,6 +2,7 @@ package logic.towers;
 
 import exception.InvalidPlayerException;
 import logic.misc.Coordinate;
+import utils.CommonStrings;
 
 public abstract class BaseTower {
 	
@@ -44,6 +45,11 @@ public abstract class BaseTower {
 	
 	// ** Methods **
 	
+	protected void initialize()
+	{
+		this.setUpgradeLevel(0);
+	}
+	
 	public boolean upgrade()
 	{
 		if(this.getUpgradeLevel() < this.getMaxUpgradeLevel())
@@ -83,20 +89,20 @@ public abstract class BaseTower {
 	protected String getInstanceToolTipString()
 	{
 		return this.getCurrentName()+"\n"+
-				"-----------------------------"+
+				CommonStrings.SeparatorLine+
 				this.getCurrentDescription()+"\n"+
-				"-----------------------------"+
+				CommonStrings.SeparatorLine+
 				"Tower Info:\n"+
 				"Health: "+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
-				"-----------------------------"+
+				CommonStrings.SeparatorLine+
 				this.getNextUpgradeInfo();
 	}
 	
 	protected String getBuyToolTip()
 	{
-		return 	"-----------------------------"+
+		return 	CommonStrings.SeparatorLine+
 				this.getTowerUpgradeDescription(0)+"\n"+
-				"-----------------------------"+
+				CommonStrings.SeparatorLine+
 				"Health: "+this.getMaxHealth()+"\n";
 	}
 	

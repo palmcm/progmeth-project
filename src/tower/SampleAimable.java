@@ -10,6 +10,7 @@ public class SampleAimable extends AimableTower{
 	public SampleAimable(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);
+		this.initialize();
 		
 		this.setCost(15);
 		

@@ -10,6 +10,7 @@ public class SampleTower extends AttackableTower{
 	public SampleTower(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);
+		this.initialize();
 		
 		this.setCost(10);
 		
