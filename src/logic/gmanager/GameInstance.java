@@ -22,6 +22,7 @@ public class GameInstance {
 		this.income = new int[]{10,15,20,25,30,35};
 		this.incomeUpgradeCost = new int[]{0,50,100,150,200,250};
 		this.startingMoney = 50;
+		this.MaxHealth = 100;
 		
 		this.player1 = new Player(1);
 		this.player2 = new Player(2);

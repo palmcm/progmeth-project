@@ -3,7 +3,7 @@ package logic.gmanager;
 import java.util.ArrayList;
 
 import exception.InvalidPlayerException;
-import logic.towers.Tower;
+import logic.towers.BaseTower;
 
 public class Player {
 	
@@ -13,7 +13,7 @@ public class Player {
 	private int maxHealth;
 
 	private int health;
-	private ArrayList<Tower> deck;
+	private ArrayList<BaseTower> deck;
 	
 	private int playerId;
 	
@@ -51,6 +51,16 @@ public class Player {
 		else return 1;
 	}
 	
+	public void gainMoney(int money)
+	{
+		this.setMoney(this.getMoney()+money);
+	}
+	
+	public void spendMoney(int money)
+	{
+		this.setMoney(this.getMoney()-money);
+	}
+	
 	public int getPlayerId()
 	{
 		return this.playerId;
@@ -66,7 +76,7 @@ public class Player {
 		this.setMoney(this.getMoney()+this.getIncome());
 	}
 	
-	public void addTowerToDeck(Tower tower)
+	public void addTowerToDeck(BaseTower tower)
 	{
 		this.deck.add(tower);
 	}
@@ -93,6 +103,8 @@ public class Player {
 
 	public void setMoney(int money) {
 		this.money = money;
+		if(this.money < 0)
+			this.money = 0;
 	}
 
 	public int getMaxHealth() {
@@ -113,7 +125,7 @@ public class Player {
 			this.health = 0;
 	}
 
-	public ArrayList<Tower> getDeck() {
+	public ArrayList<BaseTower> getDeck() {
 		return deck;
 	}
 	

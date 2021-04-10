@@ -1,11 +1,11 @@
 package logic.gmanager;
 
 import exception.InvalidPlayerException;
-import logic.towers.Tower;
+import logic.towers.BaseTower;
 
 public class Tile {
 	
-	private Tower tower;
+	private BaseTower tower;
 	
 	private int tileOwner; 
 	// 0 - can't be built on, 1 - owned by player 1, same for 2. 3 is placeable by both
@@ -30,17 +30,17 @@ public class Tile {
 		return this.getTower().attackable(player);
 	}
 	
-	public Tower getTower()
+	public BaseTower getTower()
 	{
 		return this.tower;
 	}
 	
-	public void setTower(Tower tower)
+	public void setTower(BaseTower tower)
 	{
 		this.tower = tower;
 	}
 	
-	public void removeTower(Tower tower)
+	public void removeTower(BaseTower tower)
 	{
 		this.tower = null;
 	}

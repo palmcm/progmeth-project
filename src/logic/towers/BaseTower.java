@@ -3,7 +3,7 @@ package logic.towers;
 import exception.InvalidPlayerException;
 import logic.misc.Coordinate;
 
-public abstract class Tower {
+public abstract class BaseTower {
 	
 	// ** Fields **
 	
@@ -30,22 +30,15 @@ public abstract class Tower {
 	
 	private String[] towerName;
 	private String[] towerDescription;
-	private String[] towerRange;
-	private String[] towerDamage;
+	private String[] towerUpgradeDescription;
 	
 	private String currentName;
 	private String currentDescription;
-	private String currentRange;
-	private String currentDamage;
+	private String currentUpgradeDescription;
 	
 	// ** Abstract Methods **
 	
-	//public abstract boolean onUpgrade();
-	//public abstract void onSell();
 	
-	//public abstract String getUpgradeDetails();
-	
-	//public abstract void destroy();
 	
 	// ** Methods **
 	
@@ -74,7 +67,6 @@ public abstract class Tower {
 		int level = this.getUpgradeLevel();
 		this.setCurrentDescription(this.getTowerDescription(level));
 		this.setCurrentName(this.getTowerName(level));
-		this.setCurrentDamage(this.getTowerDamage(level));
 		this.setCurrentDescription(this.getTowerDescription(level));
 	}
 	
@@ -203,35 +195,24 @@ public abstract class Tower {
 	public void setUpgradeCost(int[] upgradeCost) {
 		this.upgradeCost = upgradeCost;
 	}
+
+	public String getTowerUpgradeDescription(int level) {
+		return towerUpgradeDescription[level];
+	}
+
+	public void setTowerUpgradeDescription(String[] towerUpgradeDescription) {
+		this.towerUpgradeDescription = towerUpgradeDescription;
+	}
+
+	public String getCurrentUpgradeDescription() {
+		return currentUpgradeDescription;
+	}
+
+	public void setCurrentUpgradeDescription(String currentUpgradeDescription) {
+		this.currentUpgradeDescription = currentUpgradeDescription;
+	}
 	
-	public String getTowerRange(int level) {
-		return towerRange[level];
-	}
-	public void setTowerRange(String[] towerRange) {
-		this.towerRange = towerRange;
-	}
-	public String getTowerDamage(int level) {
-		return towerDamage[level];
-	}
-	public void setTowerDamage(String[] towerDamage) {
-		this.towerDamage = towerDamage;
-	}
-
-	public String getCurrentRange() {
-		return currentRange;
-	}
-
-	public void setCurrentRange(String currentRange) {
-		this.currentRange = currentRange;
-	}
-
-	public String getCurrentDamage() {
-		return currentDamage;
-	}
-
-	public void setCurrentDamage(String currentDamage) {
-		this.currentDamage = currentDamage;
-	}
+	
 	
 	
 	

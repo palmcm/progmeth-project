@@ -2,7 +2,7 @@ package logic.towers;
 
 import exception.InvalidPlayerException;
 
-public abstract class AttackableTower extends Tower{
+public abstract class AttackableTower extends BaseTower{
 	
 	public abstract void attack() throws InvalidPlayerException;
 	
@@ -11,9 +11,28 @@ public abstract class AttackableTower extends Tower{
 		if(canAttack())
 			try {
 				attack();
+				this.setCooldown(this.getCooldown());
 			} catch (InvalidPlayerException e) {
 				e.printStackTrace();
 			}
+	}
+	
+	// -------------- UPGRADE ---------------------
+	
+	private String[] towerRange;
+	private String[] towerDamage;
+	private String currentRange;
+	private String currentDamage;
+
+	
+	public void updateInfo()
+	{
+		int level = this.getUpgradeLevel();
+		this.setCurrentDescription(this.getTowerDescription(level));
+		this.setCurrentName(this.getTowerName(level));
+		this.setCurrentDamage(this.getTowerDamage(level));
+		this.setCurrentDescription(this.getTowerDescription(level));
+		this.setCurrentRange(this.getTowerRange(level));
 	}
 	
 	// -------------- COOLDOWN --------------------
@@ -23,6 +42,11 @@ public abstract class AttackableTower extends Tower{
 	public void setCooldown(int cooldown) {
 		
 		this.cooldown = cooldown;
+	}
+	
+	public int getCooldown()
+	{
+		return this.cooldown;
 	}
 
 	public void doCooldown() {
@@ -36,5 +60,36 @@ public abstract class AttackableTower extends Tower{
 	public boolean canAttack() {
 		return this.cooldown <= 0;
 	}
+	
+	// ------------------- GETTER/SETTER -----------------
 
+	public String getTowerRange(int level) {
+		return towerRange[level];
+	}
+	public void setTowerRange(String[] towerRange) {
+		this.towerRange = towerRange;
+	}
+	public String getTowerDamage(int level) {
+		return towerDamage[level];
+	}
+	public void setTowerDamage(String[] towerDamage) {
+		this.towerDamage = towerDamage;
+	}
+	
+	public String getCurrentRange() {
+		return currentRange;
+	}
+	
+	public void setCurrentRange(String currentRange) {
+		this.currentRange = currentRange;
+	}
+	
+	public String getCurrentDamage() {
+		return currentDamage;
+	}
+	
+	public void setCurrentDamage(String currentDamage) {
+		this.currentDamage = currentDamage;
+	
+	}
 }
