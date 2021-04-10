@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import exception.InvalidPlayerException;
 import logic.actions.AttackAction;
 import logic.actions.AttackPhaseAction;
+import logic.menu.DeckSelector;
 import logic.misc.Coordinate;
 import logic.towers.BaseTower;
 
@@ -45,6 +46,8 @@ public class GameInstance {
 		this.attackOrder = new ArrayList<AttackPhaseAction>();
 		this.persistentEffects = new ArrayList<AttackPhaseAction>();
 		this.allTowers = new ArrayList<BaseTower>();
+		
+		DeckSelector.setFlipSelector(true);
 		
 	}
 	

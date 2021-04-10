@@ -18,6 +18,7 @@ public class GameManager {
 	private static BaseTower selectedTower;
 	private static int startingPlayer;
 	private static int currentPlayer;
+	private static int maxDeckSize;
 	
 	private static int flipPlayer(int player)
 	{
@@ -26,6 +27,17 @@ public class GameManager {
 		return 1;
 	}
 	
+	
+	public static int getMaxDeckSize() {
+		return maxDeckSize;
+	}
+
+
+	public static void setMaxDeckSize(int maxDeckSize) {
+		GameManager.maxDeckSize = maxDeckSize;
+	}
+
+
 	public static void flipStartingPlayer()
 	{
 		GameManager.setStartingPlayer(GameManager.flipPlayer(GameManager.startingPlayer));

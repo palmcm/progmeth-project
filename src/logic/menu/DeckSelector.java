@@ -9,20 +9,50 @@ import logic.towers.BaseTower;
 
 public class DeckSelector {
 	
-	public static BaseTower addCardToPlayer(BaseTower tower, int player)
+	private static boolean flipSelector = true;
+	
+	// ---------------- WHEN CLICKING A TOWER ---------------------
+	
+	public static void clickSelectCard(BaseTower tower)
+	{
+		if(addCardToPlayer(tower,GameManager.getCurrentPlayer()))
+		{
+			if(DeckSelector.flipSelector == true)
+			{
+				GameManager.flipCurrentPlayer();				
+			}
+			else
+			{
+				DeckSelector.flipSelector = !DeckSelector.flipSelector;
+			}
+		}
+	}
+	
+	// ---------------- WHEN CLICKING START GAME ------------------
+	
+	public static void clickBeginGame()
+	{
+		
+	}
+	
+	// ------------------------------------------------------------
+	
+	public static boolean addCardToPlayer(BaseTower tower, int player)
 	{
 		try {
 			
 			Player currentPlayer = GameManager.getGameInstance().getPlayer(player);
 			if(currentPlayer.hasTowerInDeck(tower))
-				return null;
+				return false;
+			if(currentPlayer.getDeck().size() >= GameManager.getMaxDeckSize())
+				return false;
 			currentPlayer.addTowerToDeck(tower);
-			return tower;
+			return true;
 			
 			
 		} catch (InvalidPlayerException e) {
 			e.printStackTrace();
-			return null;
+			return false;
 		}
 		
 	}
@@ -44,5 +74,9 @@ public class DeckSelector {
 			return null;
 		}
 		
+	}
+
+	public static void setFlipSelector(boolean flipSelector) {
+		DeckSelector.flipSelector = flipSelector;
 	}
 }
