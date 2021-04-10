@@ -23,8 +23,8 @@ public class Player {
 	public Player(int id)
 	{
 		this.incomeLevel = 0;
-		this.money = GameManager.getGameInstance().getStartingMoney();
-		this.maxHealth = GameManager.getGameInstance().getMaxHealth();
+		this.money = GameSettings.getStartingMoney();
+		this.maxHealth = GameSettings.getMaxHealth();
 		this.health = this.maxHealth;
 		
 		this.playerId = id;

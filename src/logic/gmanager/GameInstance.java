@@ -16,15 +16,10 @@ public class GameInstance {
 	private int maxIncomeLevel;
 	private int income[];
 	private int incomeUpgradeCost[];
-	private int deckSize;
-	private int MaxHealth;
-	private int startingMoney;
-	
 	private Player player1,player2;
 	
 	private ArrayList<AttackPhaseAction> attackOrder;
 	private ArrayList<AttackPhaseAction> persistentEffects;
-	private ArrayList<BaseTower> allTowers;
 	
 	public GameInstance()
 	{
@@ -32,8 +27,6 @@ public class GameInstance {
 		this.maxIncomeLevel = 5;
 		this.income = new int[]{10,15,20,25,30,35};
 		this.incomeUpgradeCost = new int[]{0,50,100,150,200,250};
-		this.startingMoney = 50;
-		this.MaxHealth = 100;
 		
 		this.player1 = new Player(1);
 		this.player2 = new Player(2);
@@ -45,7 +38,6 @@ public class GameInstance {
 		
 		this.attackOrder = new ArrayList<AttackPhaseAction>();
 		this.persistentEffects = new ArrayList<AttackPhaseAction>();
-		this.allTowers = new ArrayList<BaseTower>();
 		
 		DeckSelector.setFlipSelector(true);
 		
@@ -97,11 +89,6 @@ public class GameInstance {
 	
 	
 	// ---------------- ATTACK ORDER ---------------------
-
-	public int getStartingMoney()
-	{
-		return this.startingMoney;
-	}
 	
 	public Board getBoard()
 	{
@@ -132,15 +119,6 @@ public class GameInstance {
 	public int getMaxIncomeLevel() {
 		return maxIncomeLevel;
 	}
-
-	public int getDeckSize() {
-		return deckSize;
-	}
-
-	public int getMaxHealth() {
-		return MaxHealth;
-	}
-	
 	
 	
 }

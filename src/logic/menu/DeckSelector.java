@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import exception.InvalidPlayerException;
 import logic.gmanager.GameManager;
+import logic.gmanager.GameSettings;
 import logic.gmanager.Player;
 import logic.towers.BaseTower;
 
@@ -15,6 +16,16 @@ public class DeckSelector {
 	
 	public static void clickSelectCard(BaseTower tower)
 	{
+		try {
+			if(GameManager.getGameInstance().getPlayer(1).getDeck().size() == GameSettings.getDeckSize()
+				&& GameManager.getGameInstance().getPlayer(2).getDeck().size() == GameSettings.getDeckSize())
+			{
+				return;
+			}
+		} catch (InvalidPlayerException e) {
+			e.printStackTrace();
+			return;
+		}
 		if(addCardToPlayer(tower,GameManager.getCurrentPlayer()))
 		{
 			if(DeckSelector.flipSelector == true)
