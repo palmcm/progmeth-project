@@ -51,7 +51,8 @@ public class SampleTower extends Tower implements Attacker{
 		
 	}
 
-	@Override
+	// ------------- ATTACKING --------------------
+	
 	public void attack() throws InvalidPlayerException {
 		switch(this.getUpgradeLevel()) {
 		case 0:
@@ -66,13 +67,32 @@ public class SampleTower extends Tower implements Attacker{
 		case 3:
 			GenericAttack.simpleProjectile(this.getLoc(), 2, 8, this.getOwner());
 			GenericAttack.simpleProjectile(this.getLoc(), 2, 8, this.getOwner());
-			break;
-			
+			break;		
 			
 		}
-			
-		
-		
 	}
+	
+	// -------------- COOLDOWN --------------------
+	
+	private int cooldown;
+
+	public void setCooldown(int cooldown) {
+		
+		this.cooldown = cooldown;
+	}
+
+	public void doCooldown() {
+		this.cooldown -= 1;
+		if(this.cooldown<0)
+		{
+			this.cooldown = 0;
+		}
+	}
+
+	public boolean canAttack() {
+		return this.cooldown <= 0;
+	}
+	
+	
 
 }
