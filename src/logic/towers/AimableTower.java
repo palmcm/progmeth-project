@@ -61,7 +61,9 @@ public abstract class AimableTower extends AttackableTower {
 				"Attack Damage: "+this.getCurrentDamage()+"\n"+
 				"Attack Vertical Range: "+this.getCurrentvRange()+"\n"+
 				"Attack Horizontal Range: "+this.getCurrenthRange()+"\n"+
-				"Health: "+this.getMaxHealth()+"\n";
+				"Health: "+this.getMaxHealth()+"\n"+
+				CommonStrings.SeparatorLine+
+				"Cost: "+this.getCost()+"\n";
 	}
 
 	public int gethRange(int level) {

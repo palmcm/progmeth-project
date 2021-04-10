@@ -20,8 +20,12 @@ public class Towers {
 	
 	public static void test()
 	{
-		System.out.println(Towers.getTowers()[0].getCurrentName());  // <------- NAME
-		
-		System.out.println(Towers.getTowers()[0].getToolTipString()); // <--------- TOOLTIP DESC
+		int i;
+		for(i=0;i<Towers.getTowers().length;i++) {
+
+			System.out.println(Towers.getTowers()[i].getCurrentName());  // <------- NAME
+			
+			System.out.println(Towers.getTowers()[i].getToolTipString()); // <--------- TOOLTIP DESC
+		}
 	}
 }

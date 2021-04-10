@@ -42,8 +42,8 @@ public class SampleAimable extends AimableTower{
 		this.setTowerDescription(new String[] {
 				"Attacks a selected tile. Takes a turn to recharge.",
 				"Attacks a selected tile. Takes a turn to recharge.",
-				"Creates an explosion at the selected tile, damaging adjacent tiles. Takes a turn to recharge.",
-				"Creates an explosion at the selected tile, damaging adjacent tiles. Takes a turn to recharge.",
+				"Creates an explosion at the selected tile, \ndamaging adjacent tiles. Takes a turn to recharge.",
+				"Creates an explosion at the selected tile, \ndamaging adjacent tiles. Takes a turn to recharge.",
 		});
 		
 		this.setTowerDamage(new String[] {
@@ -61,7 +61,7 @@ public class SampleAimable extends AimableTower{
 		});	
 		
 		this.setTowerUpgradeDescription(new String[] {
-				"Tower which can attack any targeted tower within its range, dealing 4 damage. Takes a turn to recharge.",
+				"Tower which can attack any targeted tower within its range, \ndealing 4 damage. Takes a turn to recharge.",
 				"Increases attack damage by 3.",
 				"Attacks damages adjacent tiles.",
 				"Significantly increases tower's reach."

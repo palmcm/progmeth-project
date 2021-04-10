@@ -105,7 +105,9 @@ public abstract class BaseTower {
 		return 	CommonStrings.SeparatorLine+
 				this.getTowerUpgradeDescription(0)+"\n"+
 				CommonStrings.SeparatorLine+
-				"Health: "+this.getMaxHealth()+"\n";
+				"Health: "+this.getMaxHealth()+"\n"+
+				CommonStrings.SeparatorLine+
+				"Cost: "+this.getCost()+"\n";
 	}
 	
 	public String getNextUpgradeInfo()

@@ -18,9 +18,10 @@ public class TowerDesBox extends VBox{
 	private Text towerDes;
 	
 	public TowerDesBox() {
-		towerName = new Text("Tower name");
+		towerName = new Text();
 		towerName.setFont(new Font(20));
-		towerDes = new Text("Attack Range:\nDef:");
+		towerDes = new Text();
+		this.setTowerDefault();
 		towerDes.setFont(new Font(16));
 		this.setPadding(new Insets(5));
 		this.getChildren().addAll(towerName,towerDes);
@@ -42,8 +43,8 @@ public class TowerDesBox extends VBox{
 	}
 	
 	public void setTowerDefault() {
-		this.towerName.setText("Tower name");
-		this.towerDes.setText("Attack Range:\nDef:");
+		this.towerName.setText("Tower Info");
+		this.towerDes.setText("Hover over a tower to view its information.");
 	}
 	
 }
