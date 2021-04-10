@@ -21,6 +21,8 @@ public class SampleTower extends AttackableTower{
 		this.setCooldown(1);
 		this.setCurrentCooldown(1);
 		
+		this.setLoc(loc);
+		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		
 		this.setTowerName(new String[] {

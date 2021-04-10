@@ -35,6 +35,20 @@ public abstract class AttackableTower extends BaseTower{
 		this.setCurrentRange(this.getTowerRange(level));
 	}
 	
+	public String getToolTipString()
+	{
+		return this.getCurrentName()+"\n"+
+				"-----------------------------"+
+				this.getCurrentDescription()+"\n"+
+				"-----------------------------"+
+				"Tower Info:\n"+
+				"Attack Damage: "+this.getCurrentDamage()+"\n"+
+				"Attack Range: "+this.getCurrentRange()+"\n"+
+				"Health: "+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
+				"-----------------------------"+
+				this.getNextUpgradeInfo();
+	}
+	
 	// -------------- COOLDOWN --------------------
 	
 	private int cooldown;

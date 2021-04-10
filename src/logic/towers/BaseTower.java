@@ -70,6 +70,30 @@ public abstract class BaseTower {
 		this.setCurrentDescription(this.getTowerDescription(level));
 	}
 	
+	public String getToolTipString()
+	{
+		return this.getCurrentName()+"\n"+
+				"-----------------------------"+
+				this.getCurrentDescription()+"\n"+
+				"-----------------------------"+
+				"Tower Info:\n"+
+				"Health: "+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
+				"-----------------------------"+
+				this.getNextUpgradeInfo();
+	}
+	
+	public String getNextUpgradeInfo()
+	{
+		if(this.getUpgradeLevel() == this.getMaxUpgradeLevel())
+		{
+			return "This tower cannot be upgraded any further.";
+		}
+		return 	"Upgrade Info:\n"+
+				this.getCurrentUpgradeDescription()+"\n"+
+				"Cost: "+this.getCurrentUpgradeCost()+"\n"+
+				"Upgrading will heal "+this.getCurrentUpgradeHealth()+" Health";
+	}
+	
 	public boolean isActive()
 	{
 		return this.currentHealth > 0;
@@ -119,6 +143,10 @@ public abstract class BaseTower {
 	
 	public int getUpgradeHealth(int level) {
 		return upgradeHealth[level];
+	}
+	
+	public int getCurrentUpgradeHealth() {
+		return this.getUpgradeHealth(this.getUpgradeLevel());
 	}
 	
 	public void setUpgradeHealth(int[] upgradeHealth) {
@@ -189,9 +217,15 @@ public abstract class BaseTower {
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
-	public int[] getUpgradeCost() {
-		return upgradeCost;
+	public int getUpgradeCost(int level) {
+		return upgradeCost[level];
 	}
+	
+	public int getCurrentUpgradeCost()
+	{
+		return this.upgradeCost[this.getUpgradeLevel()];
+	}
+	
 	public void setUpgradeCost(int[] upgradeCost) {
 		this.upgradeCost = upgradeCost;
 	}

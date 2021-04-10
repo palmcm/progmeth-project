@@ -87,9 +87,40 @@ public class GenericAttack {
 					attackCompleted=true;
 				}
 			}
-		}
-				
+		}				
 		
 	}
 	
+	public static void tileDamage(Coordinate target, int damage, int player) throws InvalidPlayerException
+	{
+
+		GameInstance gameInstance = GameManager.getGameInstance();
+		
+		if(gameInstance.getBoard().getTile(target).attackable(player))
+		{
+			gameInstance.getBoard().getTile(target).getTower().damage(damage);
+			
+		}
+	}
+
+	
+	public static void targetSquareExplosion(Coordinate target, int damage, int player,int radius) throws InvalidPlayerException
+	{
+
+		GameInstance gameInstance = GameManager.getGameInstance();
+		int x = target.getX();
+		int y = target.getY();
+		int i,j;
+
+		for(i=x-radius;i<=x+radius;i++)
+		{
+			for(j=y-radius;j<=y+radius;j++)
+			{
+				if(gameInstance.getBoard().checkTile(i, j))
+				{
+					GenericAttack.tileDamage(new Coordinate(i,j), damage, player);
+				}
+			}
+		}
+	}
 }

@@ -21,6 +21,8 @@ public class SampleProduction extends BaseTower implements Passive{
 		this.setMaxUpgradeLevel(3);
 		this.setUpgradeCost(new int[]{10,50,150});
 		
+		this.setLoc(loc);
+		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		
 		this.setTowerName(new String[] {

@@ -16,7 +16,14 @@ public class Board {
 		this.tiles = new Tile[5][12];
 		this.setBorderColumns();
 		
-		int i;
+		int i,j;
+		for(i=0;i<lanes;i++)
+		{
+			for(j=0;j<=border;j++)
+			{
+				this.tiles[i][j].setLoc(new Coordinate(i,j));
+			}
+		}
 		
 		for(i=1;i<=5;i++)
 		{
