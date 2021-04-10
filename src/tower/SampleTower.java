@@ -3,10 +3,9 @@ package tower;
 import exception.InvalidPlayerException;
 import logic.attacks.GenericAttack;
 import logic.misc.Coordinate;
-import logic.towers.Attacker;
-import logic.towers.Tower;
+import logic.towers.AttackableTower;
 
-public class SampleTower extends Tower implements Attacker{
+public class SampleTower extends AttackableTower{
 	
 	public SampleTower(Coordinate loc)
 	{
@@ -70,27 +69,6 @@ public class SampleTower extends Tower implements Attacker{
 			break;		
 			
 		}
-	}
-	
-	// -------------- COOLDOWN --------------------
-	
-	private int cooldown;
-
-	public void setCooldown(int cooldown) {
-		
-		this.cooldown = cooldown;
-	}
-
-	public void doCooldown() {
-		this.cooldown -= 1;
-		if(this.cooldown<0)
-		{
-			this.cooldown = 0;
-		}
-	}
-
-	public boolean canAttack() {
-		return this.cooldown <= 0;
 	}
 	
 	
