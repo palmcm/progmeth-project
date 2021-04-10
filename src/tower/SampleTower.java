@@ -19,6 +19,7 @@ public class SampleTower extends AttackableTower{
 		this.setUpgradeCost(new int[]{5,10,30});
 		
 		this.setCooldown(1);
+		this.setCurrentCooldown(1);
 		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		

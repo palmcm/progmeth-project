@@ -38,6 +38,7 @@ public abstract class AttackableTower extends BaseTower{
 	// -------------- COOLDOWN --------------------
 	
 	private int cooldown;
+	private int currentCooldown;
 
 	public void setCooldown(int cooldown) {
 		
@@ -48,17 +49,26 @@ public abstract class AttackableTower extends BaseTower{
 	{
 		return this.cooldown;
 	}
+	
+
+	public int getCurrentCooldown() {
+		return currentCooldown;
+	}
+
+	public void setCurrentCooldown(int currentCooldown) {
+		this.currentCooldown = currentCooldown;
+	}
 
 	public void doCooldown() {
-		this.cooldown -= 1;
-		if(this.cooldown<0)
+		this.currentCooldown -= 1;
+		if(this.currentCooldown<0)
 		{
-			this.cooldown = 0;
+			this.currentCooldown = 0;
 		}
 	}
 
 	public boolean canAttack() {
-		return this.cooldown <= 0;
+		return this.currentCooldown <= 0;
 	}
 	
 	// ------------------- GETTER/SETTER -----------------
