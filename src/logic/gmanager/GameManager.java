@@ -82,6 +82,15 @@ public class GameManager {
 		return GameManager.currentPlayer;
 	}
 	
+	public static String getCurrentPlayerIncomeToolTip()
+	{
+		try {
+			return GameManager.getGameInstance().getPlayer(currentPlayer).getIncomeToolTip();
+		} catch (InvalidPlayerException e) {
+			return null;
+		}
+	}
+	
 	private static Coordinate selectedTile;
 	
 	public static ButtonMode getButtonMode()
