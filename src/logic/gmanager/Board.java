@@ -39,7 +39,7 @@ public class Board {
 		{
 			this.setOwnerColumn(1, i);
 		}		
-		for(i=6;i<=10;i++)
+		for(i=7;i<=11;i++)
 		{
 			this.setOwnerColumn(2, i);
 		}
@@ -57,7 +57,7 @@ public class Board {
 		{
 			this.setOwnerColumn(1, i);
 		}		
-		for(i=y/2+1;i<=y;i++)
+		for(i=y/2+2;i<=y+1;i++)
 		{
 			this.setOwnerColumn(2, i);
 		}

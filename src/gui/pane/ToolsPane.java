@@ -1,27 +1,49 @@
 package gui.pane;
 
+import java.util.ArrayList;
+
 import config.GameConfig;
+import gui.cell.ToolsCell;
 import javafx.geometry.Pos;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import logic.gmanager.GameButtons;
+import logic.gmanager.GameManager;
 
 public class ToolsPane extends VBox {
+	ArrayList<ToolsCell> toolsList = new ArrayList<ToolsCell>();
 	public ToolsPane() {
-		ImageView upgradeIcon = new ImageView(new Image(ClassLoader.getSystemResource("tower1.png").toString()));
-		upgradeIcon.setFitWidth(80);
-		upgradeIcon.setFitHeight(80);
+		ToolsCell upgradeIncomeIcon = new ToolsCell();
 		
-		ImageView sellIcon = new ImageView(new Image(ClassLoader.getSystemResource("tower1.png").toString()));
-		sellIcon.setFitWidth(80);
-		sellIcon.setFitHeight(80);
+		upgradeIncomeIcon.setDes("Upgrade Income", GameManager.getCurrentPlayerIncomeToolTip());
+		ToolsCell upgradeIcon  = new ToolsCell();
+		upgradeIcon.setDes("Upgrade Tower", "Upgrade tower to next level");
+		ToolsCell sellIcon = new ToolsCell();
+		sellIcon.setDes("Sell Tower", "Sell tower for money");
 		
-		ImageView cancelIcon = new ImageView(new Image(ClassLoader.getSystemResource("tower1.png").toString()));
-		cancelIcon.setFitWidth(80);
-		cancelIcon.setFitHeight(80);
-		this.getChildren().addAll(upgradeIcon,sellIcon,cancelIcon);
+		toolsList.add(upgradeIcon);
+		toolsList.add(sellIcon);
+		
+		upgradeIncomeIcon.setOnMouseClicked(e -> {
+			GameButtons.upgradeIncome();
+			upgradeIncomeIcon.setDes("Upgrade Income", GameManager.getCurrentPlayerIncomeToolTip());
+			upgradeIncomeIcon.showDes();
+		});
+		
+		upgradeIcon.setOnMouseClicked(e -> {
+			GameButtons.upgradeMode();
+		});
+		
+		sellIcon.setOnMouseClicked(e -> {
+			GameButtons.destroyMode();
+		});
+		
+		this.getChildren().addAll(upgradeIncomeIcon,upgradeIcon,sellIcon);
 		this.setMinWidth(GameConfig.SCREEN_WIDTH/5-10);
 		this.setAlignment(Pos.CENTER);
 		this.setSpacing(5);
+	}
+	
+	public ArrayList<ToolsCell> getToolsList() {
+		return toolsList;
 	}
 }

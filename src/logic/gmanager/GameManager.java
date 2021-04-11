@@ -19,6 +19,7 @@ public class GameManager {
 	private static int startingPlayer;
 	private static int currentPlayer;
 	private static int maxDeckSize;
+	private static Coordinate selectedTile;
 	
 	public static void initialize() {
 		StartNewGame();
@@ -81,7 +82,7 @@ public class GameManager {
 	{
 		return GameManager.currentPlayer;
 	}
-	
+
 	public static String getCurrentPlayerIncomeToolTip()
 	{
 		try {
@@ -90,8 +91,6 @@ public class GameManager {
 			return null;
 		}
 	}
-	
-	private static Coordinate selectedTile;
 	
 	public static ButtonMode getButtonMode()
 	{

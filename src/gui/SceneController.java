@@ -59,6 +59,10 @@ public class SceneController {
 		return pickTowerScene;
 	}
 
+	public static GameScene getGameScene() {
+		return gameScene;
+	}
+
 	public static Stage getStage() {
 		return stage;
 	}

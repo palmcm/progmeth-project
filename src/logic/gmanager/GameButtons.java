@@ -71,6 +71,17 @@ public class GameButtons {
 		}
 	}
 	
+	// --------------------- UPGRADE MODE --------------------------------
+	public static boolean upgradeMode()
+	{
+		if(GameManager.getTurnPhase()!=TurnPhase.BUILD)
+		{
+			return false;
+		}
+		GameManager.setButtonMode(ButtonMode.UPGRADE);
+		return true;	
+	}
+	
 	// ---------------------- DESTROY MODE -------------------------------
 	
 	public static boolean destroyMode()

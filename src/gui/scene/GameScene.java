@@ -2,6 +2,8 @@
 package gui.scene;
 
 import config.GameConfig;
+import gui.cell.ToolsCell;
+import gui.cell.TowerGameCell;
 import gui.pane.DescriptionPane;
 import gui.pane.PlayerPane;
 import gui.pane.TilesPane;
@@ -19,12 +21,16 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import logic.gmanager.GameManager;
 
 public class GameScene extends Scene {
 	private PlayerPane player1Status;
 	private PlayerPane player2Status;
 	private TurnPane turnStatus;
 	private TilesPane tilesPane;
+	private DescriptionPane descriptionPane;
+	private TowerGamePane towergamePane;
+	private ToolsPane toolsPane;
 	
 	public GameScene(VBox root) {
 		super(root,GameConfig.SCREEN_WIDTH,GameConfig.SCREEN_HEIGHT);
@@ -43,9 +49,23 @@ public class GameScene extends Scene {
 		VBox.setMargin(boardArea, new Insets(20, 0, 20, 0));
 		
 		HBox towerTab = new HBox();
-		TowerGamePane towergamePane = new TowerGamePane();
-		ToolsPane toolsPane = new ToolsPane();
-		DescriptionPane descriptionPane = new DescriptionPane();
+		towergamePane = new TowerGamePane();
+		
+		for(TowerGameCell tower:towergamePane.getTowerList()) {
+			tower.setOnMouseClicked(e -> {
+				selectedTower(tower);
+			});
+		}
+		
+		toolsPane = new ToolsPane();
+		
+		for(ToolsCell tool:toolsPane.getToolsList()) {
+			tool.setOnMouseClicked(e -> {
+				selectedTool(tool);
+			});
+		}
+		
+		descriptionPane = new DescriptionPane();
 		towerTab.setPadding(new Insets(5));
 		towerTab.getChildren().addAll(towergamePane,toolsPane,descriptionPane);
 		
@@ -55,4 +75,29 @@ public class GameScene extends Scene {
 //		        BackgroundPosition.DEFAULT,
 //		        new BackgroundSize(1.0, 1.0, true, true, false, false))));
 		}
+
+	public DescriptionPane getDescriptionPane() {
+		return descriptionPane;
+	}
+	
+	
+	public void selectedTower(TowerGameCell selectedTower) {
+		unhighlightOption();
+		selectedTower.highlight();
+	}
+	
+	public void selectedTool(ToolsCell selectedTool) {
+		unhighlightOption();
+		selectedTool.highlight();
+	}
+	
+	public void unhighlightOption() {
+		for(TowerGameCell tower:towergamePane.getTowerList()) {
+			tower.unhighlight();
+		}
+		for(ToolsCell tool:toolsPane.getToolsList()) {
+			tool.unhighlight();
+		}
+	}
+	
 }

@@ -12,11 +12,13 @@ import javafx.scene.text.Text;
 
 public class PlayerPane extends VBox {
 	
+	final private double BASE_WIDTH = GameConfig.SCREEN_WIDTH/2.5;
 	private Rectangle hpTab;
 	private Text hpText;
 	private Text moneyText;
 	private Text incomeText;
 	private Text upgradeText;
+	
 	
 	public PlayerPane(int player) {
 		
@@ -25,7 +27,7 @@ public class PlayerPane extends VBox {
 		Insets inset = new Insets(GameConfig.SCREEN_WIDTH/100);
 		
 		HBox hpBar = new HBox();
-		hpTab = new Rectangle(GameConfig.SCREEN_WIDTH/2.5, 50.0, Color.LIMEGREEN);
+		hpTab = new Rectangle(BASE_WIDTH, 50.0, Color.LIMEGREEN);
 		hpBar.getChildren().add(hpTab);
 		
 		HBox playerBox = new HBox();
@@ -39,9 +41,11 @@ public class PlayerPane extends VBox {
 		hpBox.setPadding(inset);
 		
 		if (player == 1) {
+			hpBar.setAlignment(Pos.CENTER_RIGHT);
 			playerBox.setAlignment(Pos.CENTER_LEFT);
 			hpBox.setAlignment(Pos.CENTER_RIGHT);
 		}else {
+			hpBar.setAlignment(Pos.CENTER_LEFT);
 			playerBox.setAlignment(Pos.CENTER_RIGHT);
 			hpBox.setAlignment(Pos.CENTER_LEFT);
 		}
@@ -76,6 +80,11 @@ public class PlayerPane extends VBox {
 		infoPane.getChildren().addAll(moneyBox, incomeBox, upgradeBox);
 		
 		this.getChildren().addAll(hpPane, infoPane);
+		this.setMinWidth(BASE_WIDTH);
+	}
+	
+	public void setHpBar(double hpPercent) {
+		hpTab.setWidth(BASE_WIDTH*hpPercent);
 	}
 	
 	

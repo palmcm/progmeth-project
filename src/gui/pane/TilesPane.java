@@ -16,8 +16,8 @@ public class TilesPane extends GridPane{
 		cols = board.getBorder()+1;
 		Tile tiles[][] = board.getTiles();
 		for (int i=0;i<lanes;i++) {
-			for (int j=0;j<cols;j++) {
-				this.add(new TileCell(), j, i);
+			for (int j=1;j<cols;j++) {
+				this.add(new TileCell(tiles[i][j]), j, i);
 			}
 		}
 	}
