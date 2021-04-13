@@ -3,6 +3,7 @@ package gui.pane;
 import java.util.ArrayList;
 
 import config.GameConfig;
+import gui.SceneController;
 import gui.cell.ToolsCell;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
@@ -21,9 +22,12 @@ public class ToolsPane extends VBox {
 		sellIcon.setDes("Sell Tower", "Sell tower for money");
 		
 		upgradeIncomeIcon.setOnMouseClicked(e -> {
-			GameButtons.upgradeIncome();
-			upgradeIncomeIcon.setDes("Upgrade Income", GameManager.getCurrentPlayerIncomeToolTip());
-			upgradeIncomeIcon.showDes();
+			if (GameButtons.upgradeIncome()) {
+				upgradeIncomeIcon.setDes("Upgrade Income", GameManager.getCurrentPlayerIncomeToolTip());
+				upgradeIncomeIcon.showDes();
+				SceneController.getGameScene().updateMoney();
+			}
+			
 		});
 		
 		upgradeIcon.setTool("upgrade");

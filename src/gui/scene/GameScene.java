@@ -103,4 +103,14 @@ public class GameScene extends Scene {
 		}
 	}
 	
+	public void updateHp() {
+		player1Status.updateHp();
+		player2Status.updateHp();
+	}
+	
+	public void updateMoney() {
+		player1Status.updateMoney();
+		player2Status.updateMoney();
+	}
+	
 }

@@ -10,9 +10,9 @@ import logic.towers.BaseTower;
 import logic.towers.Passive;
 
 public class GameManager {
-	
+
 	private static GameInstance gameInstance;
-	
+
 	private static ButtonMode buttonMode;
 	private static TurnPhase turnPhase;
 	private static BaseTower selectedTower;
@@ -20,40 +20,33 @@ public class GameManager {
 	private static int currentPlayer;
 	private static int maxDeckSize;
 	private static Coordinate selectedTile;
-	
+
 	public static void initialize() {
 		StartNewGame();
 	}
-	
-	private static int flipPlayer(int player)
-	{
-		if(player == 1)
+
+	private static int flipPlayer(int player) {
+		if (player == 1)
 			return 2;
 		return 1;
 	}
-	
-	
+
 	public static int getMaxDeckSize() {
 		return maxDeckSize;
 	}
-
 
 	public static void setMaxDeckSize(int maxDeckSize) {
 		GameManager.maxDeckSize = maxDeckSize;
 	}
 
-
-	public static void flipStartingPlayer()
-	{
+	public static void flipStartingPlayer() {
 		GameManager.setStartingPlayer(GameManager.flipPlayer(GameManager.startingPlayer));
 	}
-	
-	public static void flipCurrentPlayer()
-	{
+
+	public static void flipCurrentPlayer() {
 		GameManager.setCurrentPlayer(GameManager.flipPlayer(GameManager.currentPlayer));
 	}
-	
-	
+
 	public static TurnPhase getTurnPhase() {
 		return turnPhase;
 	}
@@ -78,217 +71,160 @@ public class GameManager {
 		GameManager.startingPlayer = startingPlayer;
 	}
 
-	public static int getCurrentPlayer()
-	{
+	public static int getCurrentPlayer() {
 		return GameManager.currentPlayer;
 	}
 
-	public static String getCurrentPlayerIncomeToolTip()
-	{
-		try {
-			return GameManager.getGameInstance().getPlayer(currentPlayer).getIncomeToolTip();
-		} catch (InvalidPlayerException e) {
-			return null;
-		}
+	public static String getCurrentPlayerIncomeToolTip() {
+		return GameManager.getGameInstance().getPlayer(currentPlayer).getIncomeToolTip();
 	}
-	
-	public static ButtonMode getButtonMode()
-	{
+
+	public static ButtonMode getButtonMode() {
 		return GameManager.buttonMode;
 	}
-	
-	public static GameInstance getGameInstance()
-	{
+
+	public static GameInstance getGameInstance() {
 		return GameManager.gameInstance;
 	}
-	
-	public static void setGameInstance(GameInstance gameInstance)
-	{
+
+	public static void setGameInstance(GameInstance gameInstance) {
 		GameManager.gameInstance = gameInstance;
 	}
-	
-	public static void StartNewGame()
-	{
+
+	public static void StartNewGame() {
 		GameManager.setGameInstance(new GameInstance());
 	}
-	
-	public static void victory(int player)
-	{
+
+	public static void victory(int player) {
 		// TBD: Game victory handler
-		
+
 	}
-	
-	
-	// ---------------------- TURN PROCESSOR : ATTACK -----------------------------------
-	
-	public static void processAttackPhase()
-	{
-		for(AttackPhaseAction i:GameManager.getGameInstance().getAttackOrder())
-		{
+
+	// ---------------------- TURN PROCESSOR : ATTACK
+	// -----------------------------------
+
+	public static void processAttackPhase() {
+		for (AttackPhaseAction i : GameManager.getGameInstance().getAttackOrder()) {
 			i.processAction();
 		}
 	}
-	
-	public static boolean selectAttackPhaseTile(Coordinate loc, int player)
-	{
-		if(GameManager.getButtonMode() == ButtonMode.AIM)
-		{
-			if(GameManager.targetAimable(loc, player))
-			{
+
+	public static boolean selectAttackPhaseTile(Coordinate loc, int player) {
+		if (GameManager.getButtonMode() == ButtonMode.AIM) {
+			if (GameManager.targetAimable(loc, player)) {
 				GameManager.buttonMode = ButtonMode.SELECT;
 				GameManager.queueAttack(GameManager.selectedTile, player);
 				return true;
-			}
-			else
-			{
+			} else {
 				GameManager.buttonMode = ButtonMode.SELECT;
 				return false;
-				
+
 			}
-		}
-		else if(GameManager.getButtonMode() == ButtonMode.SELECT)
-		{
+		} else if (GameManager.getButtonMode() == ButtonMode.SELECT) {
 			return GameManager.selectAttackingTile(loc, player);
-		}
-		else return false;
-			
+		} else
+			return false;
+
 	}
-	
-	private static boolean selectAttackingTile(Coordinate loc, int player)
-	{
+
+	private static boolean selectAttackingTile(Coordinate loc, int player) {
 		Tile selectedTile = GameManager.getGameInstance().getBoard().getTile(loc);
-		if(selectedTile.getTower() == null)
+		if (selectedTile.getTower() == null)
 			return false;
-		if(selectedTile.getTower().getOwner() != player)
+		if (selectedTile.getTower().getOwner() != player)
 			return false;
-		if(!((AttackableTower) selectedTile.getTower()).canAttack())
+		if (!((AttackableTower) selectedTile.getTower()).canAttack())
 			return false;
-		if(selectedTile.isMarkAttacked())
-			unqueueAttack(loc,player);
+		if (selectedTile.isMarkAttacked())
+			unqueueAttack(loc, player);
 		else
-			queueAttack(loc,player);
+			queueAttack(loc, player);
 		return true;
 	}
-	
-	private static void queueAttack(Coordinate loc,int player)
-	{
+
+	private static void queueAttack(Coordinate loc, int player) {
 		Tile selectedTile = GameManager.getGameInstance().getBoard().getTile(loc);
-		if(selectedTile.getTower() instanceof AimableTower)
-		{
-			GameManager.selectAimable(loc,player);
+		if (selectedTile.getTower() instanceof AimableTower) {
+			GameManager.selectAimable(loc, player);
 			return;
 		}
 		GameManager.getGameInstance().addAttackOrder(new AttackAction(loc));
 	}
-	
-	private static void unqueueAttack(Coordinate loc,int player)
-	{
+
+	private static void unqueueAttack(Coordinate loc, int player) {
 		GameManager.getGameInstance().removeAttackOrder(new AttackAction(loc));
 	}
-	
-	private static void selectAimable(Coordinate loc, int player)
-	{
+
+	private static void selectAimable(Coordinate loc, int player) {
 		GameManager.buttonMode = ButtonMode.AIM;
 		GameManager.selectedTile = loc;
 	}
-	
-	private static boolean targetAimable(Coordinate loc,int player)
-	{
-		return ((AimableTower) GameManager.getGameInstance().getBoard().getTile(GameManager.selectedTile).getTower()).setTarget(loc);
+
+	private static boolean targetAimable(Coordinate loc, int player) {
+		return ((AimableTower) GameManager.getGameInstance().getBoard().getTile(GameManager.selectedTile).getTower())
+				.setTarget(loc);
 	}
-	
-	
-	// ---------------------- TURN PROCESSOR : BUILDING AND UPGRADING -----------------------------------
-	
-	public static boolean selectBuildPhaseTile(Coordinate loc,int player)
-	{
-		if(GameManager.buttonMode == ButtonMode.BUILD)
-		{
+
+	// ---------------------- TURN PROCESSOR : BUILDING AND UPGRADING
+	// -----------------------------------
+
+	public static boolean selectBuildPhaseTile(Coordinate loc, int player) {
+		if (GameManager.buttonMode == ButtonMode.BUILD) {
 			return GameManager.buildTower(GameManager.selectedTower, loc, player);
-		}
-		else if(GameManager.buttonMode == ButtonMode.UPGRADE)
-		{
+		} else if (GameManager.buttonMode == ButtonMode.UPGRADE) {
 			return GameManager.upgradeTower(loc, player);
-		}
-		else if(GameManager.buttonMode == ButtonMode.DESTROY)
-		{
+		} else if (GameManager.buttonMode == ButtonMode.DESTROY) {
 			return GameManager.removeTower(loc, player);
-		}
-		else return false;
+		} else
+			return false;
 	}
-	
-	private static boolean buildTower(BaseTower tower, Coordinate loc, int player)
-	{
-		try {
-			int cost = tower.getCost();
-			Player currentPlayer = GameManager.getGameInstance().getPlayer(player);
-			if(currentPlayer.getMoney() < tower.getCost())
-			{
-				return false;
-			}
-			if(GameManager.getGameInstance().getBoard().getTile(loc).getTower() != null)
-			{
-				return false;
-			}
-			else
-			{
-				currentPlayer.spendMoney(cost);
-				BaseTower newTower = tower.getNewInstance(loc);
-				newTower.setOwner(player);
-				GameManager.getGameInstance().getBoard().getTile(loc).setTower(newTower);
-				return true;
-				
-			}
-		} catch (InvalidPlayerException e) {
-			e.printStackTrace();
+
+	private static boolean buildTower(BaseTower tower, Coordinate loc, int player) {
+		int cost = tower.getCost();
+		Player currentPlayer = GameManager.getGameInstance().getPlayer(player);
+		if (currentPlayer.getMoney() < tower.getCost()) {
 			return false;
 		}
-	}
-	
-	public static boolean upgradeTower(Coordinate loc,int player)
-	{
-		try {
-			BaseTower selectedTower = GameManager.getGameInstance().getBoard().getTile(loc).getTower();
-			Player currentPlayer = GameManager.getGameInstance().getPlayer(player);
-			if(selectedTower == null)
-			{
-				return false;
-			}     
-			if(selectedTower.getOwner()!=player)
-			{
-				return false;
-			}
-			if(selectedTower.getUpgradeLevel() >= selectedTower.getMaxUpgradeLevel())
-			{
-				return false;
-				
-			}
-			int cost = selectedTower.getCurrentUpgradeCost();
-			if(cost <= currentPlayer.getMoney())
-			{
-				currentPlayer.spendMoney(cost);
-				selectedTower.upgrade();
-				return true;
-			}
+		if (GameManager.getGameInstance().getBoard().getTile(loc).getTower() != null) {
 			return false;
-			
-			
-			
-		} catch (InvalidPlayerException e) {
-			e.printStackTrace();
-			return false;
+		} else {
+			currentPlayer.spendMoney(cost);
+			BaseTower newTower = tower.getNewInstance(loc);
+			newTower.setOwner(player);
+			GameManager.getGameInstance().getBoard().getTile(loc).setTower(newTower);
+			return true;
+
 		}
 	}
-	
-	public static boolean removeTower(Coordinate loc,int player)
-	{	
+
+	public static boolean upgradeTower(Coordinate loc, int player) {
 		BaseTower selectedTower = GameManager.getGameInstance().getBoard().getTile(loc).getTower();
-		if(selectedTower.getOwner() != player)
-		{
+		Player currentPlayer = GameManager.getGameInstance().getPlayer(player);
+		if (selectedTower == null) {
 			return false;
 		}
-		else
-		{
+		if (selectedTower.getOwner() != player) {
+			return false;
+		}
+		if (selectedTower.getUpgradeLevel() >= selectedTower.getMaxUpgradeLevel()) {
+			return false;
+
+		}
+		int cost = selectedTower.getCurrentUpgradeCost();
+		if (cost <= currentPlayer.getMoney()) {
+			currentPlayer.spendMoney(cost);
+			selectedTower.upgrade();
+			return true;
+		}
+		return false;
+
+	}
+
+	public static boolean removeTower(Coordinate loc, int player) {
+		BaseTower selectedTower = GameManager.getGameInstance().getBoard().getTile(loc).getTower();
+		if (selectedTower.getOwner() != player) {
+			return false;
+		} else {
 			GameManager.getGameInstance().getBoard().getTile(loc).setTower(null);
 			return true;
 		}
@@ -301,49 +237,36 @@ public class GameManager {
 	public static void setSelectedTower(BaseTower selectedTower) {
 		GameManager.selectedTower = selectedTower;
 	}
-	
+
 	// ----------------------- Aftermath phase ------------------------------
-	
+
 	public static void processAftermath() {
 		Board board = GameManager.getGameInstance().getBoard();
 		BaseTower b;
-		int i,j;
-		for(i=0;i<board.getLanes();i++)
-		{
-			for(j=0;j<=board.getBorder();j++)
-			{
-				b = board.getTile(new Coordinate(i,j)).getTower();
-				if(b != null)
-				{
-					if(b.getCurrentHealth() <= 0)
-					{
+		int i, j;
+		for (i = 0; i < board.getLanes(); i++) {
+			for (j = 0; j <= board.getBorder(); j++) {
+				b = board.getTile(new Coordinate(i, j)).getTower();
+				if (b != null) {
+					if (b.getCurrentHealth() <= 0) {
 						board.getTile(b.getLoc()).removeTower();
-					}
-					else if(b instanceof Passive)
-					{
+					} else if (b instanceof Passive) {
 						try {
 							((Passive) b).doPassive();
-							
+
 						} catch (InvalidPlayerException e) {
 							e.printStackTrace();
 						}
-					}
-					else if(b instanceof AttackableTower)
-					{
+					} else if (b instanceof AttackableTower) {
 						((AttackableTower) b).doCooldown();
 					}
 				}
 			}
 		}
-		
-		try {
-			GameManager.getGameInstance().getPlayer(1).applyIncome();
-			GameManager.getGameInstance().getPlayer(2).applyIncome();
-		} catch (InvalidPlayerException e) {
-			e.printStackTrace();
-		}
-		
+
+		GameManager.getGameInstance().getPlayer(1).applyIncome();
+		GameManager.getGameInstance().getPlayer(2).applyIncome();
+
 	}
-	
-	
+
 }

@@ -9,6 +9,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import logic.gmanager.GameInstance;
+import logic.gmanager.GameManager;
+import logic.gmanager.Player;
 
 public class PlayerPane extends VBox {
 	
@@ -18,9 +21,11 @@ public class PlayerPane extends VBox {
 	private Text moneyText;
 	private Text incomeText;
 	private Text upgradeText;
+	private Player player;
 	
 	
 	public PlayerPane(int player) {
+		this.player = GameManager.getGameInstance().getPlayer(player);
 		
 		StackPane hpPane = new StackPane();
 		
@@ -31,12 +36,13 @@ public class PlayerPane extends VBox {
 		hpBar.getChildren().add(hpTab);
 		
 		HBox playerBox = new HBox();
-		Text playerText = new Text("Player 1");
+		Text playerText = new Text("Player " + player);
 		playerBox.getChildren().add(playerText);
 		playerBox.setPadding(inset);
 
 		HBox hpBox = new HBox();
-		hpText = new Text("100/100");
+		hpText = new Text();
+		updateHp();
 		hpBox.getChildren().add(hpText);
 		hpBox.setPadding(inset);
 		
@@ -54,7 +60,8 @@ public class PlayerPane extends VBox {
 		
 		StackPane infoPane = new StackPane();
 		HBox moneyBox = new HBox();
-		moneyText = new Text("100$");
+		moneyText = new Text();
+		updateMoney();
 		moneyBox.getChildren().add(moneyText);
 		moneyBox.setPadding(inset);
 		
@@ -87,5 +94,19 @@ public class PlayerPane extends VBox {
 		hpTab.setWidth(BASE_WIDTH*hpPercent);
 	}
 	
+	public void updateHp() {
+		int fullHp = player.getMaxHealth();
+		int nowHp = player.getHealth();
+		setHpBar((double)nowHp/fullHp);
+		hpText.setText(nowHp+"/"+fullHp);
+	}
 	
+	public void updateIncome() {
+		
+	}
+	
+	public void updateMoney() {
+		int money = player.getMoney();
+		moneyText.setText(money+"$");
+	}
 }

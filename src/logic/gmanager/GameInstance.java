@@ -102,14 +102,14 @@ public class GameInstance {
 	
 	public int getIncomeUpgradeCost(int level)
 	{
-		return incomeUpgradeCost[level];
+		return incomeUpgradeCost[level + 1];
 	}
 	
-	public Player getPlayer(int player) throws InvalidPlayerException
+	public Player getPlayer(int player)
 	{
 		if(player < 1  || player > 2)
 		{
-			throw new InvalidPlayerException(player);
+			return null;
 		}
 		else if(player==1)
 			return this.player1;
