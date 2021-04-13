@@ -36,6 +36,8 @@ public class SampleAimable extends AimableTower{
 		
 		this.setLoc(loc);
 		
+		this.setUrl("towers/pyromancer.png");
+		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		
 		this.setTowerName(new String[] {

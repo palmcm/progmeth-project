@@ -234,6 +234,7 @@ public class GameManager {
 			{
 				currentPlayer.spendMoney(cost);
 				BaseTower newTower = tower.getNewInstance(loc);
+				newTower.setOwner(player);
 				GameManager.getGameInstance().getBoard().getTile(loc).setTower(newTower);
 				return true;
 				
@@ -247,10 +248,12 @@ public class GameManager {
 	public static boolean upgradeTower(Coordinate loc,int player)
 	{
 		try {
-			
 			BaseTower selectedTower = GameManager.getGameInstance().getBoard().getTile(loc).getTower();
 			Player currentPlayer = GameManager.getGameInstance().getPlayer(player);
-			
+			if(selectedTower == null)
+			{
+				return false;
+			}     
 			if(selectedTower.getOwner()!=player)
 			{
 				return false;
@@ -260,9 +263,8 @@ public class GameManager {
 				return false;
 				
 			}
-
 			int cost = selectedTower.getCurrentUpgradeCost();
-			if(cost > currentPlayer.getMoney())
+			if(cost <= currentPlayer.getMoney())
 			{
 				currentPlayer.spendMoney(cost);
 				selectedTower.upgrade();
@@ -279,7 +281,7 @@ public class GameManager {
 	}
 	
 	public static boolean removeTower(Coordinate loc,int player)
-	{
+	{	
 		BaseTower selectedTower = GameManager.getGameInstance().getBoard().getTile(loc).getTower();
 		if(selectedTower.getOwner() != player)
 		{

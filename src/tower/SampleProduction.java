@@ -30,6 +30,8 @@ public class SampleProduction extends BaseTower implements Passive{
 		
 		this.setLoc(loc);
 		
+		this.setUrl("towers/scholar.png");
+		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		
 		this.setTowerName(new String[] {

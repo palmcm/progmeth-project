@@ -11,6 +11,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import logic.towers.BaseTower;
+import utils.ImageUtil;
 
 public class TowerCell extends VBox{
 	private BaseTower tower;
@@ -25,12 +26,10 @@ public class TowerCell extends VBox{
 	public TowerCell(BaseTower tower) {
 		this.tower = tower;
 		ImageView towerIcon = new ImageView();
-		Image img = new Image(ClassLoader.getSystemResource("towers/pyromancer.png").toString());
+		Image img = ImageUtil.ImageLoader(tower.getUrl(), 100);
 		towerIcon.setImage(img);
-		double scale = img.getHeight()/100;
-//		System.out.println(scale);
-		towerIcon.setFitHeight(img.getHeight()/scale);
-		towerIcon.setFitWidth(img.getWidth()/scale);
+		towerIcon.setFitHeight(100);
+		towerIcon.setFitWidth(100);
 		
 		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));

@@ -31,6 +31,8 @@ public class SampleTower extends AttackableTower{
 		
 		this.setLoc(loc);
 		
+		this.setUrl("towers/apprentice.png");
+		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		
 		this.setTowerName(new String[] {

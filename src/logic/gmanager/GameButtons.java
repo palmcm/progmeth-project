@@ -104,6 +104,7 @@ public class GameButtons {
 		}
 		else
 		{
+			GameManager.setButtonMode(ButtonMode.BUILD);
 			GameManager.setSelectedTower(tower);
 		}
 		

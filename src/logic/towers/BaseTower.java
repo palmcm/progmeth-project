@@ -40,6 +40,10 @@ public abstract class BaseTower {
 	private String currentDescription;
 	private String currentUpgradeDescription;
 	
+	// Image Url
+	
+	private String url;
+	
 	// ** Abstract Methods **
 	
 	public abstract BaseTower getNewInstance(Coordinate loc);
@@ -283,6 +287,14 @@ public abstract class BaseTower {
 
 	public void setInstance(boolean isInstance) {
 		this.isInstance = isInstance;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
 	

@@ -15,7 +15,8 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import logic.gmanager.GameManager;
+import logic.towers.BaseTower;
+import logic.towers.Towers;
 
 public class TowerGamePane extends VBox{
 	
@@ -23,8 +24,13 @@ public class TowerGamePane extends VBox{
 	
 	public TowerGamePane() {
 		TilePane towerDeckBox = new TilePane();
-		for (int i=0;i<5;i++) {
-			TowerGameCell cell = new TowerGameCell();
+//		for (int i=0;i<5;i++) {
+//			TowerGameCell cell = new TowerGameCell();
+//			towerList.add(cell);
+//			towerDeckBox.getChildren().add(cell);
+//		}
+		for (BaseTower tower:Towers.getTowers()) {
+			TowerGameCell cell = new TowerGameCell(tower);
 			towerList.add(cell);
 			towerDeckBox.getChildren().add(cell);
 		}

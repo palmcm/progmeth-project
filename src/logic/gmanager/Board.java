@@ -70,6 +70,7 @@ public class Board {
 		for(int i=0;i<lane;i++) {
 			for(int j=0;j<col+2;j++) {
 				this.tiles[i][j] = new Tile();
+				this.tiles[i][j].setLoc(new Coordinate(i,j));
 			}
 		}
 	}

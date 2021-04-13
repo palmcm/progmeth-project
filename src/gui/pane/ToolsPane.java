@@ -20,22 +20,18 @@ public class ToolsPane extends VBox {
 		ToolsCell sellIcon = new ToolsCell();
 		sellIcon.setDes("Sell Tower", "Sell tower for money");
 		
-		toolsList.add(upgradeIcon);
-		toolsList.add(sellIcon);
-		
 		upgradeIncomeIcon.setOnMouseClicked(e -> {
 			GameButtons.upgradeIncome();
 			upgradeIncomeIcon.setDes("Upgrade Income", GameManager.getCurrentPlayerIncomeToolTip());
 			upgradeIncomeIcon.showDes();
 		});
 		
-		upgradeIcon.setOnMouseClicked(e -> {
-			GameButtons.upgradeMode();
-		});
+		upgradeIcon.setTool("upgrade");
 		
-		sellIcon.setOnMouseClicked(e -> {
-			GameButtons.destroyMode();
-		});
+		sellIcon.setTool("sell");
+		
+		toolsList.add(upgradeIcon);
+		toolsList.add(sellIcon);
 		
 		this.getChildren().addAll(upgradeIncomeIcon,upgradeIcon,sellIcon);
 		this.setMinWidth(GameConfig.SCREEN_WIDTH/5-10);

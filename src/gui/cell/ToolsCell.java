@@ -9,14 +9,17 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import logic.gmanager.GameButtons;
 
 public class ToolsCell extends StackPane{
 	
 	private String toolName;
 	private String toolDescription;
+	private ImageView icon;
+	private String tool;
 	
 	public ToolsCell() {
-		ImageView icon = new ImageView(new Image(ClassLoader.getSystemResource("towers/apprentice.png").toString()));
+		icon = new ImageView();
 		icon.setFitWidth(70);
 		icon.setFitHeight(70);
 		this.getChildren().add(icon);
@@ -45,5 +48,21 @@ public class ToolsCell extends StackPane{
 	
 	public void showDes() {
 		SceneController.getGameScene().getDescriptionPane().setDes(toolName, toolDescription);
+	}
+	
+	public void setIcon(Image img) {
+		this.icon.setImage(img);
+	}
+	
+	public void selectHandle() {
+		if (tool == "upgrade") {
+			GameButtons.upgradeMode();
+		}else if(tool == "sell"){
+			GameButtons.destroyMode();
+		}
+	}
+	
+	public void setTool(String tool) {
+		this.tool = tool;
 	}
 }

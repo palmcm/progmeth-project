@@ -21,6 +21,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import logic.gmanager.GameButtons;
 import logic.gmanager.GameManager;
 
 public class GameScene extends Scene {
@@ -83,11 +84,13 @@ public class GameScene extends Scene {
 	
 	public void selectedTower(TowerGameCell selectedTower) {
 		unhighlightOption();
+		GameButtons.selectTower(selectedTower.getTower());
 		selectedTower.highlight();
 	}
 	
 	public void selectedTool(ToolsCell selectedTool) {
 		unhighlightOption();
+		selectedTool.selectHandle();
 		selectedTool.highlight();
 	}
 	
