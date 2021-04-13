@@ -16,7 +16,7 @@ public class ToolsCell extends StackPane{
 	private String toolDescription;
 	
 	public ToolsCell() {
-		ImageView icon = new ImageView(new Image(ClassLoader.getSystemResource("tower1.png").toString()));
+		ImageView icon = new ImageView(new Image(ClassLoader.getSystemResource("towers/apprentice.png").toString()));
 		icon.setFitWidth(70);
 		icon.setFitHeight(70);
 		this.getChildren().add(icon);

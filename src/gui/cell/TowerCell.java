@@ -25,7 +25,7 @@ public class TowerCell extends VBox{
 	public TowerCell(BaseTower tower) {
 		this.tower = tower;
 		ImageView towerIcon = new ImageView();
-		Image img = new Image(ClassLoader.getSystemResource("tower1.png").toString());
+		Image img = new Image(ClassLoader.getSystemResource("towers/pyromancer.png").toString());
 		towerIcon.setImage(img);
 		double scale = img.getHeight()/100;
 //		System.out.println(scale);

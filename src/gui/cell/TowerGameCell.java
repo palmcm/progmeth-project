@@ -19,7 +19,7 @@ public class TowerGameCell extends VBox {
 	public TowerGameCell() {
 //		this.tower = tower;
 		ImageView towerIcon = new ImageView();
-		Image img = new Image(ClassLoader.getSystemResource("tower1.png").toString());
+		Image img = new Image(ClassLoader.getSystemResource("towers/terraraiser.png").toString());
 		towerIcon.setImage(img);
 		double scale = img.getHeight()/80;
 		towerIcon.setFitHeight(img.getHeight()/scale);
