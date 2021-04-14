@@ -43,7 +43,6 @@ public abstract class AimableTower extends AttackableTower {
 		return CommonStrings.SeparatorLine+
 				this.getCurrentDescription()+"\n"+
 				CommonStrings.SeparatorLine+
-				"Tower Info:\n"+
 				"Attack Damage: "+this.getCurrentDamage()+"\n"+
 				"Attack Vertical Range: "+this.getCurrentvRange()+"\n"+
 				"Attack Horizontal Range: "+this.getCurrenthRange()+"\n"+

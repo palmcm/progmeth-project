@@ -27,6 +27,7 @@ public class TilesPane extends GridPane{
 				tile.setOnMouseClicked(e -> {
 					if (GameButtons.selectTile(tile.getTile().getLoc())) {
 						tile.update();
+						tile.showDes();
 					}
 				});
 

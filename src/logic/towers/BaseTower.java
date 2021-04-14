@@ -62,12 +62,12 @@ public abstract class BaseTower {
 	{
 		if(this.getUpgradeLevel() < this.getMaxUpgradeLevel())
 		{
+			this.setMaxHealth(this.maxHealth+this.getCurrentUpgradeHealth());
+			this.heal(this.getCurrentUpgradeHealth());
+			
 			this.setUpgradeLevel(this.getUpgradeLevel()+1);
 			this.updateInfo();
 			
-			int newLevel = this.getUpgradeLevel();
-			this.setMaxHealth(this.maxHealth+this.getUpgradeHealth(newLevel));
-			this.heal(this.getUpgradeHealth(newLevel));
 			
 			return true;
 			
@@ -100,7 +100,6 @@ public abstract class BaseTower {
 				CommonStrings.SeparatorLine+
 				this.getCurrentDescription()+"\n"+
 				CommonStrings.SeparatorLine+
-				"Tower Info:\n"+
 				"Health: "+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
 				CommonStrings.SeparatorLine+
 				this.getNextUpgradeInfo();
@@ -122,7 +121,7 @@ public abstract class BaseTower {
 		{
 			return "This tower cannot be upgraded any further.";
 		}
-		return 	"Upgrade Info:\n"+
+		return 	"Upgrade:\n"+
 				this.getCurrentUpgradeDescription()+"\n"+
 				"Cost: "+this.getCurrentUpgradeCost()+"\n"+
 				"Upgrading will heal "+this.getCurrentUpgradeHealth()+" Health";

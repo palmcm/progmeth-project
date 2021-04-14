@@ -51,7 +51,6 @@ public abstract class AttackableTower extends BaseTower{
 		return 	CommonStrings.SeparatorLine+
 				this.getCurrentDescription()+"\n"+
 				CommonStrings.SeparatorLine+
-				"Tower Info:\n"+
 				"Attack Damage: "+this.getCurrentDamage()+"\n"+
 				"Attack Range: "+this.getCurrentRange()+"\n"+
 				"Health: "+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
