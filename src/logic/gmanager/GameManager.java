@@ -1,6 +1,7 @@
 package logic.gmanager;
 
 import exception.InvalidPlayerException;
+import gui.SceneController;
 import logic.actions.AttackAction;
 import logic.actions.AttackPhaseAction;
 import logic.misc.Coordinate;
@@ -196,6 +197,7 @@ public class GameManager {
 			BaseTower newTower = tower.getNewInstance(loc);
 			newTower.setOwner(player);
 			GameManager.getGameInstance().getBoard().getTile(loc).setTower(newTower);
+			SceneController.getGameScene().updateMoney();
 			return true;
 
 		}
