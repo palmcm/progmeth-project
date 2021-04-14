@@ -185,6 +185,10 @@ public class GameManager {
 		if (currentPlayer.getMoney() < tower.getCost()) {
 			return false;
 		}
+		if(GameManager.getGameInstance().getBoard().getTile(loc).getTileOwner() != currentPlayer.getPlayerId())
+		{
+			return false;
+		}
 		if (GameManager.getGameInstance().getBoard().getTile(loc).getTower() != null) {
 			return false;
 		} else {
