@@ -46,7 +46,7 @@ public abstract class AttackableTower extends BaseTower{
 		this.setCurrentRange(this.getTowerRange(level));
 	}
 	
-	protected String getInstanceToolTipString()
+	public String getInstanceToolTipString()
 	{
 		return 	CommonStrings.SeparatorLine+
 				this.getCurrentDescription()+"\n"+
@@ -59,7 +59,7 @@ public abstract class AttackableTower extends BaseTower{
 				this.getNextUpgradeInfo();
 	}
 	
-	protected String getBuyToolTip()
+	public String getBuyToolTip()
 	{
 		return  CommonStrings.SeparatorLine+
 				this.getTowerUpgradeDescription(0)+"\n"+

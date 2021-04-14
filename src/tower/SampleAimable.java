@@ -31,7 +31,7 @@ public class SampleAimable extends AimableTower{
 		
 		this.setTarget(null);
 		
-		this.sethRange(new int[] {5,5,5,7});
+		this.sethRange(new int[] {7,7,7,9});
 		this.setvRange(new int[] {1,1,1,2});
 		
 		this.setLoc(loc);
@@ -41,10 +41,10 @@ public class SampleAimable extends AimableTower{
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		
 		this.setTowerName(new String[] {
-				"Sample Missile",
-				"Sample Missile II",
-				"Sample Missile III",
-				"Sample Missile IV"
+				"Pyromancer",
+				"Pyromancer II",
+				"Pyromancer III",
+				"Pyromancer IV"
 		});
 		
 		this.setTowerDescription(new String[] {
@@ -62,10 +62,10 @@ public class SampleAimable extends AimableTower{
 		});
 		
 		this.setTowerRange(new String[] {
-				"5 Tiles, Reaches adjacent lanes",
-				"5 Tiles, Reaches adjacent lanes",
-				"5 Tiles, Reaches adjacent lanes",
-				"7 Tiles, Reaches 2 lanes above and below.",
+				"7 Tiles, Reaches adjacent lanes",
+				"7 Tiles, Reaches adjacent lanes",
+				"7 Tiles, Reaches adjacent lanes",
+				"9 Tiles, Reaches 2 lanes above and below.",
 		});	
 		
 		this.setTowerUpgradeDescription(new String[] {

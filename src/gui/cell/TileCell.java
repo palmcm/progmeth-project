@@ -1,6 +1,7 @@
 package gui.cell;
 
 import config.GameConfig;
+import gui.SceneController;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
@@ -47,5 +48,24 @@ public class TileCell extends StackPane{
 	
 	public void setAttackSeq(int seq) {
 		attackSeq.setText(seq+"");
+	}
+	
+	public void showDes() {
+		if(this.getTile().getTower() == null)
+		{
+			SceneController.getGameScene().getDescriptionPane().setDesDefault();
+			return;
+		}
+		SceneController.getGameScene().getDescriptionPane().setDes(this.getTileTowerName(), this.getTileTowerDesc());
+	}
+	
+	private String getTileTowerName()
+	{
+		return this.getTile().getTower().getCurrentName();
+	}
+	
+	private String getTileTowerDesc()
+	{
+		return this.getTile().getTower().getInstanceToolTipString();
 	}
 }

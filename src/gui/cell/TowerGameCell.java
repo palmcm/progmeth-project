@@ -1,5 +1,6 @@
 package gui.cell;
 
+import gui.SceneController;
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -36,6 +37,18 @@ public class TowerGameCell extends VBox {
 		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		this.getChildren().add(towerIcon);
+
+		this.setOnMouseEntered(e -> {
+			SceneController.getPickTowerScene().getDesBox().setTowerData(tower);
+			SceneController.getGameScene().getDescriptionPane().setDes(
+					this.tower.getCurrentName(),
+					this.tower.getBuyToolTip()
+					);
+		});
+		
+		this.setOnMouseExited(e -> {
+			SceneController.getPickTowerScene().getDesBox().setTowerDefault();
+		});
 	}
 	
 	public void highlight() {

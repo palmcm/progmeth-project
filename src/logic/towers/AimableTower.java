@@ -38,7 +38,7 @@ public abstract class AimableTower extends AttackableTower {
 		return false;
 	}
 	
-	protected String getInstanceToolTipString()
+	public String getInstanceToolTipString()
 	{
 		return CommonStrings.SeparatorLine+
 				this.getCurrentDescription()+"\n"+
@@ -53,7 +53,7 @@ public abstract class AimableTower extends AttackableTower {
 	}
 
 	
-	protected String getBuyToolTip()
+	public String getBuyToolTip()
 	{
 		return  CommonStrings.SeparatorLine+
 				this.getTowerUpgradeDescription(0)+"\n"+

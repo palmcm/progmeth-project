@@ -1,5 +1,6 @@
 package gui.pane;
 
+import gui.SceneController;
 import gui.cell.TileCell;
 import javafx.scene.layout.GridPane;
 import logic.gmanager.Board;
@@ -27,6 +28,15 @@ public class TilesPane extends GridPane{
 					if (GameButtons.selectTile(tile.getTile().getLoc())) {
 						tile.update();
 					}
+				});
+
+				tile.setOnMouseEntered(e -> {
+					//System.out.println("HOVERING");
+					tile.showDes();
+				});
+				
+				tile.setOnMouseExited(e -> {
+					SceneController.getGameScene().getDescriptionPane().setDesDefault();
 				});
 			}
 		}

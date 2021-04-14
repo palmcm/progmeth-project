@@ -66,7 +66,7 @@ public abstract class BaseTower {
 			this.updateInfo();
 			
 			int newLevel = this.getUpgradeLevel();
-			this.setMaxHealth(this.getUpgradeHealth(newLevel));
+			this.setMaxHealth(this.maxHealth+this.getUpgradeHealth(newLevel));
 			this.heal(this.getUpgradeHealth(newLevel));
 			
 			return true;
@@ -94,7 +94,7 @@ public abstract class BaseTower {
 			return this.getBuyToolTip();
 	}
 	
-	protected String getInstanceToolTipString()
+	public String getInstanceToolTipString()
 	{
 		return this.getCurrentName()+"\n"+
 				CommonStrings.SeparatorLine+
@@ -106,7 +106,7 @@ public abstract class BaseTower {
 				this.getNextUpgradeInfo();
 	}
 	
-	protected String getBuyToolTip()
+	public String getBuyToolTip()
 	{
 		return 	CommonStrings.SeparatorLine+
 				this.getTowerUpgradeDescription(0)+"\n"+
@@ -234,7 +234,7 @@ public abstract class BaseTower {
 	}
 	
 	public String getCurrentDescription() {
-		return currentDescription;
+		return this.getTowerDescription(this.getUpgradeLevel());
 	}
 	
 	public void setCurrentDescription(String currentDescription) {
@@ -270,7 +270,7 @@ public abstract class BaseTower {
 	}
 
 	public String getTowerUpgradeDescription(int level) {
-		return towerUpgradeDescription[level];
+		return towerUpgradeDescription[level+1];
 	}
 
 	public void setTowerUpgradeDescription(String[] towerUpgradeDescription) {
@@ -278,7 +278,7 @@ public abstract class BaseTower {
 	}
 
 	public String getCurrentUpgradeDescription() {
-		return currentUpgradeDescription;
+		return this.getTowerUpgradeDescription(this.getUpgradeLevel());
 	}
 
 	public void setCurrentUpgradeDescription(String currentUpgradeDescription) {

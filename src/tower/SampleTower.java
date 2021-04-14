@@ -35,24 +35,24 @@ public class SampleTower extends AttackableTower{
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		
 		this.setTowerName(new String[] {
-				"Sample Tower",
-				"Sample Tower II",
-				"Sample Tower III",
-				"Sample Tower IV"
+				"Apprentice",
+				"Apprentice II",
+				"Apprentice III",
+				"Apprentice IV"
 		});
 		
 		this.setTowerDescription(new String[] {
 				"Fires a single projectile.",
 				"Fires a single projectile.",
 				"Fires a single projectile.",
-				"Fires two projectiles in succession."
+				"Fires a single projectile which pierces an enemy."
 		});
 		
 		this.setTowerDamage(new String[] {
-				"1",
-				"1",
 				"2",
-				"2"
+				"2",
+				"3",
+				"3"
 		});
 		
 		this.setTowerRange(new String[] {
@@ -66,7 +66,7 @@ public class SampleTower extends AttackableTower{
 				"Basic tower which fires a single projectile which deals 2 damage",
 				"Increases projectile range by 2 tiles",
 				"Deals +1 damage per projectile",
-				"Fires twice per attack."
+				"Attack pierces one enemy."
 		});
 		
 		this.initialize();
@@ -87,10 +87,8 @@ public class SampleTower extends AttackableTower{
 			GenericAttack.simpleProjectile(this.getLoc(), 3, 8, this.getOwner());
 			break;
 		case 3:
-			GenericAttack.simpleProjectile(this.getLoc(), 3, 8, this.getOwner());
-			GenericAttack.simpleProjectile(this.getLoc(), 3, 8, this.getOwner());
-			break;		
-			
+			GenericAttack.piercingProjectile(this.getLoc(), 3, 8, 2, this.getOwner());
+			break;
 		}
 	}
 	

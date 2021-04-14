@@ -23,7 +23,7 @@ public class DescriptionPane extends VBox{
 		nameText.setFont(new Font(20));
 		desText = new Text();
 		this.setDesDefault();
-		desText.setFont(new Font(16));
+		desText.setFont(new Font(13));
 		
 		this.getChildren().addAll(nameText, desText);
 		this.setAlignment(Pos.TOP_LEFT);
