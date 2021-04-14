@@ -93,8 +93,15 @@ public class GenericAttack {
 	
 	public static void tileDamage(Coordinate target, int damage, int player) throws InvalidPlayerException
 	{
-
 		GameInstance gameInstance = GameManager.getGameInstance();
+		int opponent = gameInstance.getPlayer(player).getOppositePlayerId();
+		int endBorder = gameInstance.getBoard().getPlayerBorder(opponent);
+		
+		if(target.getY() == endBorder)
+		{
+			gameInstance.getPlayer(opponent).damage(damage);
+			return;
+		}
 		
 		if(gameInstance.getBoard().getTile(target).attackable(player))
 		{
@@ -102,15 +109,40 @@ public class GenericAttack {
 			
 		}
 	}
+	
+	public static boolean splashTileDamage(Coordinate target, int damage, int player, boolean canHitPlayer) throws InvalidPlayerException
+	{
+		GameInstance gameInstance = GameManager.getGameInstance();
+		int opponent = gameInstance.getPlayer(player).getOppositePlayerId();
+		int endBorder = gameInstance.getBoard().getPlayerBorder(opponent);
+		
+		if(target.getY() == endBorder)
+		{
+			if(canHitPlayer)
+			{
+				gameInstance.getPlayer(opponent).damage(damage);				
+			}
+			return false;
+		}
+		else
+		{
+			GenericAttack.tileDamage(target, damage, player);
+			return canHitPlayer;
+		}
+		
+		
+		
+	}
 
 	
 	public static void targetSquareExplosion(Coordinate target, int damage, int player,int radius) throws InvalidPlayerException
 	{
-
+		
 		GameInstance gameInstance = GameManager.getGameInstance();
 		int x = target.getX();
 		int y = target.getY();
 		int i,j;
+		boolean canHitPlayer = true;
 
 		for(i=x-radius;i<=x+radius;i++)
 		{
@@ -118,9 +150,10 @@ public class GenericAttack {
 			{
 				if(gameInstance.getBoard().checkTile(i, j))
 				{
-					GenericAttack.tileDamage(new Coordinate(i,j), damage, player);
+					canHitPlayer = GenericAttack.splashTileDamage(new Coordinate(i,j), damage, player,canHitPlayer);
 				}
 			}
 		}
+		
 	}
 }
