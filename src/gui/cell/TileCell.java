@@ -18,13 +18,14 @@ public class TileCell extends StackPane{
 	private Tile tile;
 	private ImageView towerImg;
 	private int SIZE = GameConfig.SCREEN_WIDTH / 18;;
+	private Text attackSeq;
 	public TileCell(Tile tile) {
 		this.tile = tile;
 		towerImg = new ImageView();
 		towerImg.setFitWidth(SIZE);
 		towerImg.setFitHeight(SIZE);
-		Text test = new Text(tile.getTileOwner()+"");
-		this.getChildren().addAll(towerImg,test);
+		attackSeq = new Text(tile.getTileOwner()+"");
+		this.getChildren().addAll(towerImg,attackSeq);
 		this.setPrefSize(SIZE, SIZE);
 		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
@@ -42,5 +43,9 @@ public class TileCell extends StackPane{
 			towerImg.setImage(null);
 		}
 		
+	}
+	
+	public void setAttackSeq(int seq) {
+		attackSeq.setText(seq+"");
 	}
 }

@@ -1,5 +1,7 @@
 package logic.gmanager;
 
+import java.util.ArrayList;
+
 import exception.InvalidPlayerException;
 import gui.SceneController;
 import logic.actions.AttackAction;
@@ -145,7 +147,16 @@ public class GameManager {
 			unqueueAttack(loc, player);
 		else
 			queueAttack(loc, player);
+		updateAttackSeqTile();
 		return true;
+	}
+	
+	private static void updateAttackSeqTile() {
+		ArrayList<AttackPhaseAction> attackOrders = GameManager.getGameInstance().getAttackOrder();
+		for (int i=1;i<=attackOrders.size();i++) {
+			AttackAction attackOrder = (AttackAction)attackOrders.get(i);
+			SceneController.getGameScene().getTilesPane().getTileCell(attackOrder.getTrigger()).setAttackSeq(i);
+		}
 	}
 
 	private static void queueAttack(Coordinate loc, int player) {

@@ -117,6 +117,8 @@ public class GameScene extends Scene {
 		return turnStatus;
 	}
 	
-	
+	public TilesPane getTilesPane() {
+		return tilesPane;
+	}
 	
 }
