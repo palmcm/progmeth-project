@@ -3,6 +3,7 @@ package logic.gmanager;
 import java.util.ArrayList;
 
 import exception.InvalidPlayerException;
+import gui.SceneController;
 import logic.towers.BaseTower;
 import utils.CommonStrings;
 
@@ -55,11 +56,13 @@ public class Player {
 	public void gainMoney(int money)
 	{
 		this.setMoney(this.getMoney()+money);
+		SceneController.getGameScene().updateMoney();
 	}
 	
 	public void spendMoney(int money)
 	{
 		this.setMoney(this.getMoney()-money);
+		SceneController.getGameScene().updateMoney();
 	}
 	
 	public int getPlayerId()
@@ -115,6 +118,8 @@ public class Player {
 		this.money = money;
 		if(this.money < 0)
 			this.money = 0;
+
+		SceneController.getGameScene().updateMoney();
 	}
 
 	public int getMaxHealth() {

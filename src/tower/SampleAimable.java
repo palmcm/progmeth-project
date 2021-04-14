@@ -27,7 +27,7 @@ public class SampleAimable extends AimableTower{
 		this.setUpgradeCost(new int[]{10,20,25});
 		
 		this.setCooldown(2);
-		this.setCurrentCooldown(1);
+		//this.setCurrentCooldown(1);
 		
 		this.setTarget(null);
 		

@@ -102,7 +102,8 @@ public class PlayerPane extends VBox {
 	}
 	
 	public void updateIncome() {
-		
+		int income = player.getIncome();
+		incomeText.setText(income+"$/turn");
 	}
 	
 	public void updateMoney() {

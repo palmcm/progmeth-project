@@ -1,6 +1,7 @@
 package logic.gmanager;
 
 import exception.InvalidPlayerException;
+import gui.SceneController;
 import logic.misc.Coordinate;
 import logic.towers.BaseTower;
 
@@ -48,6 +49,7 @@ public class Tile {
 	public void removeTower()
 	{
 		this.tower = null;
+		SceneController.getGameScene().getTilesPane().getTileCell(this.loc).update();
 	}
 
 	public int getTileOwner() {
@@ -67,7 +69,7 @@ public class Tile {
 	}
 
 	public boolean isMarkAttacked() {
-		return markAttacked;
+		return this.markAttacked;
 	}
 
 	public void setMarkAttacked(boolean markAttacked) {

@@ -8,6 +8,9 @@ public class GameButtons {
 	// --------------------- BOARD INTERACTION ------------------------
 
 	public static boolean selectTile(Coordinate loc) {
+
+		//System.out.println(loc.getX()+","+loc.getY());
+		
 		int player = GameManager.getCurrentPlayer();
 		if (GameManager.getTurnPhase() == TurnPhase.ATTACK) {
 			return GameManager.selectAttackPhaseTile(loc, player);
@@ -32,9 +35,20 @@ public class GameButtons {
 				GameManager.processAttackPhase();
 			} else if (GameManager.getTurnPhase() == TurnPhase.AFTERMATH) {
 				GameManager.processAftermath();
+				GameManager.flipCurrentPlayer();
+				GameManager.setStartingPlayer(GameManager.getCurrentPlayer());
+				GameManager.setTurnPhase(TurnPhase.BUILD);
 			}
 
 		}	
+		
+		if (GameManager.getTurnPhase() == TurnPhase.BUILD) {
+			GameManager.setButtonMode(ButtonMode.BUILD);
+		} else if (GameManager.getTurnPhase() == TurnPhase.ATTACK) {
+			GameManager.setButtonMode(ButtonMode.SELECT);
+		} else if (GameManager.getTurnPhase() == TurnPhase.AFTERMATH) {
+			GameManager.setButtonMode(ButtonMode.NONE);
+		}
 
 		GameManager.setGamePhaseInfo();
 

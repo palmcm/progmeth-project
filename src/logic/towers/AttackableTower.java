@@ -31,6 +31,7 @@ public abstract class AttackableTower extends BaseTower{
 		this.setCurrentName(this.getTowerName(0));
 		this.setCurrentDamage(this.getTowerDamage(0));
 		this.setCurrentRange(this.getTowerRange(0));
+		this.setCurrentCooldown(0);
 		
 	}
 

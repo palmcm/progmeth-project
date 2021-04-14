@@ -9,6 +9,8 @@ public class GenericAttack {
 	
 	public static void simpleProjectile(Coordinate start, int damage, int range, int player) throws InvalidPlayerException
 	{
+		//System.out.println("simpleProjectile!");
+		start = new Coordinate(start.getX(),start.getY());
 		GameInstance gameInstance = GameManager.getGameInstance();
 		int opponent = gameInstance.getPlayer(player).getOppositePlayerId();
 		int endBorder = gameInstance.getBoard().getPlayerBorder(opponent);
@@ -29,15 +31,20 @@ public class GenericAttack {
 			{
 				gameInstance.getBoard().getTile(start).getTower().damage(damage);
 				attackCompleted = true;
+				break;
 			}
 			else
 			{
 				range -= 1;
 				if(range<1)
+				{
 					attackCompleted=true;
+					break;
+				}
+				//System.out.println(start.getX()+","+start.getY());
 				
 				start.setY(start.getY()+direction);
-				if(start.getY() == endBorder || !attackCompleted)
+				if(start.getY() == endBorder && !attackCompleted)
 				{
 					gameInstance.getPlayer(opponent).damage(damage);
 					attackCompleted=true;
@@ -48,6 +55,7 @@ public class GenericAttack {
 			
 	public static void piercingProjectile(Coordinate start, int damage, int range, int pierce, int player) throws InvalidPlayerException
 	{
+		start = new Coordinate(start.getX(),start.getY());
 		GameInstance gameInstance = GameManager.getGameInstance();
 		int opponent = gameInstance.getPlayer(player).getOppositePlayerId();
 		int endBorder = gameInstance.getBoard().getPlayerBorder(opponent);
@@ -81,7 +89,7 @@ public class GenericAttack {
 					attackCompleted=true;
 				
 				start.setY(start.getY()+direction);
-				if(start.getY() == endBorder || !attackCompleted)
+				if(start.getY() == endBorder && !attackCompleted)
 				{
 					gameInstance.getPlayer(opponent).damage(damage);
 					attackCompleted=true;
@@ -93,6 +101,7 @@ public class GenericAttack {
 	
 	public static void tileDamage(Coordinate target, int damage, int player) throws InvalidPlayerException
 	{
+		target = new Coordinate(target.getX(),target.getY());
 		GameInstance gameInstance = GameManager.getGameInstance();
 		int opponent = gameInstance.getPlayer(player).getOppositePlayerId();
 		int endBorder = gameInstance.getBoard().getPlayerBorder(opponent);
@@ -112,6 +121,7 @@ public class GenericAttack {
 	
 	public static boolean splashTileDamage(Coordinate target, int damage, int player, boolean canHitPlayer) throws InvalidPlayerException
 	{
+		target = new Coordinate(target.getX(),target.getY());
 		GameInstance gameInstance = GameManager.getGameInstance();
 		int opponent = gameInstance.getPlayer(player).getOppositePlayerId();
 		int endBorder = gameInstance.getBoard().getPlayerBorder(opponent);
@@ -137,7 +147,7 @@ public class GenericAttack {
 	
 	public static void targetSquareExplosion(Coordinate target, int damage, int player,int radius) throws InvalidPlayerException
 	{
-		
+		target = new Coordinate(target.getX(),target.getY());		
 		GameInstance gameInstance = GameManager.getGameInstance();
 		int x = target.getX();
 		int y = target.getY();

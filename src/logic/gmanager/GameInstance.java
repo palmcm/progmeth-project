@@ -52,6 +52,7 @@ public class GameInstance {
 	
 	public void clearAttackOrder()
 	{
+		System.out.println("Clearing previous attack orders...");
 		this.attackOrder.clear();
 		int i,j;
 		for(i=0;i<this.getBoard().getLanes();i++)
@@ -61,6 +62,7 @@ public class GameInstance {
 				this.getBoard().getTile(new Coordinate(i,j)).setMarkAttacked(false);
 			}
 		}
+		
 		for(AttackPhaseAction a:this.persistentEffects)
 		{
 			this.attackOrder.add(a);
@@ -80,10 +82,31 @@ public class GameInstance {
 	
 	public void removeAttackOrder(AttackPhaseAction attack)
 	{
-		attackOrder.remove(attack);
-		if(attack instanceof AttackAction)
+		if(attack instanceof AttackPhaseAction)
 		{
-			this.getBoard().getTile(((AttackAction) attack).getTrigger()).setMarkAttacked(false);			
+			int removedIndex = -1;
+			for(int i=0;i<attackOrder.size();i++)
+			{
+				if(attackOrder.get(i) instanceof AttackAction)
+				{
+					AttackAction j = (AttackAction) attackOrder.get(i);
+					AttackAction k = (AttackAction) attack;
+					if(j.getTrigger().getX() == k.getTrigger().getX() && j.getTrigger().getY() == k.getTrigger().getY())
+					{
+						removedIndex = i;
+					}
+				}
+			}
+			//attackOrder.remove(attack);
+			if(removedIndex != -1)
+			{
+				attackOrder.remove(removedIndex);
+			}
+			if(attack instanceof AttackAction)
+			{
+				this.getBoard().getTile(((AttackAction) attack).getTrigger()).setMarkAttacked(false);			
+			}
+			
 		}
 	}
 	

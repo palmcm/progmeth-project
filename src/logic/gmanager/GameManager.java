@@ -115,13 +115,17 @@ public class GameManager {
 		for (AttackPhaseAction i : GameManager.getGameInstance().getAttackOrder()) {
 			i.processAction();
 		}
+		SceneController.getGameScene().updateHp();
 	}
 
 	public static boolean selectAttackPhaseTile(Coordinate loc, int player) {
+		//System.out.println(loc.getX()+","+loc.getY());
 		if (GameManager.getButtonMode() == ButtonMode.AIM) {
+			System.out.println(loc.getX()+" "+loc.getY());
 			if (GameManager.targetAimable(loc, player)) {
 				GameManager.buttonMode = ButtonMode.SELECT;
 				GameManager.queueAttack(GameManager.selectedTile, player);
+				updateAttackSeqTile();
 				return true;
 			} else {
 				GameManager.buttonMode = ButtonMode.SELECT;
@@ -137,6 +141,11 @@ public class GameManager {
 
 	private static boolean selectAttackingTile(Coordinate loc, int player) {
 		Tile selectedTile = GameManager.getGameInstance().getBoard().getTile(loc);
+
+		if (selectedTile.getTower() instanceof AimableTower) {
+			GameManager.selectAimable(loc, player);
+			return true;
+		}
 		if (selectedTile.getTower() == null)
 			return false;
 		if (selectedTile.getTower().getOwner() != player)
@@ -144,27 +153,31 @@ public class GameManager {
 		if (!((AttackableTower) selectedTile.getTower()).canAttack())
 			return false;
 		if (selectedTile.isMarkAttacked())
+		{
 			unqueueAttack(loc, player);
+			return false;
+			
+		}
+		
 		else
+		{
 			queueAttack(loc, player);
+		}
 		updateAttackSeqTile();
 		return true;
 	}
 	
 	private static void updateAttackSeqTile() {
 		ArrayList<AttackPhaseAction> attackOrders = GameManager.getGameInstance().getAttackOrder();
-		for (int i=1;i<=attackOrders.size();i++) {
+		for (int i=0;i<attackOrders.size();i++) {
 			AttackAction attackOrder = (AttackAction)attackOrders.get(i);
-			SceneController.getGameScene().getTilesPane().getTileCell(attackOrder.getTrigger()).setAttackSeq(i);
+			SceneController.getGameScene().getTilesPane().getTileCell(attackOrder.getTrigger()).setAttackSeq(i+1);
 		}
 	}
 
 	private static void queueAttack(Coordinate loc, int player) {
 		Tile selectedTile = GameManager.getGameInstance().getBoard().getTile(loc);
-		if (selectedTile.getTower() instanceof AimableTower) {
-			GameManager.selectAimable(loc, player);
-			return;
-		}
+		GameManager.getGameInstance().getBoard().getTile(loc).setMarkAttacked(true);
 		GameManager.getGameInstance().addAttackOrder(new AttackAction(loc));
 	}
 
@@ -175,9 +188,12 @@ public class GameManager {
 	private static void selectAimable(Coordinate loc, int player) {
 		GameManager.buttonMode = ButtonMode.AIM;
 		GameManager.selectedTile = loc;
+		System.out.println("Aiming a tower");
 	}
 
 	private static boolean targetAimable(Coordinate loc, int player) {
+
+		System.out.println("Targeting a tower");
 		return ((AimableTower) GameManager.getGameInstance().getBoard().getTile(GameManager.selectedTile).getTower())
 				.setTarget(loc);
 	}
@@ -213,7 +229,6 @@ public class GameManager {
 			BaseTower newTower = tower.getNewInstance(loc);
 			newTower.setOwner(player);
 			GameManager.getGameInstance().getBoard().getTile(loc).setTower(newTower);
-			SceneController.getGameScene().updateMoney();
 			return true;
 
 		}
@@ -285,6 +300,8 @@ public class GameManager {
 				}
 			}
 		}
+		
+		GameManager.getGameInstance().clearAttackOrder();
 
 		GameManager.getGameInstance().getPlayer(1).applyIncome();
 		GameManager.getGameInstance().getPlayer(2).applyIncome();
