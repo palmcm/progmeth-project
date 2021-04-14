@@ -152,6 +152,8 @@ public class GameManager {
 			return false;
 		if (!((AttackableTower) selectedTile.getTower()).canAttack())
 			return false;
+		if(!(selectedTile.getTower() instanceof AttackableTower))
+			return false;
 		if (selectedTile.isMarkAttacked())
 		{
 			unqueueAttack(loc, player);
