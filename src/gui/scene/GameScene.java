@@ -112,5 +112,11 @@ public class GameScene extends Scene {
 		player1Status.updateMoney();
 		player2Status.updateMoney();
 	}
+
+	public TurnPane getTurnStatus() {
+		return turnStatus;
+	}
+	
+	
 	
 }

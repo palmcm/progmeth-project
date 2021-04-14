@@ -21,6 +21,10 @@ public class GameManager {
 	private static int currentPlayer;
 	private static int maxDeckSize;
 	private static Coordinate selectedTile;
+	
+	private static String turnPhaseString;
+	private static String currentPlayerString;
+	private static String currentTurnString;
 
 	public static void initialize() {
 		StartNewGame();
@@ -94,6 +98,7 @@ public class GameManager {
 
 	public static void StartNewGame() {
 		GameManager.setGameInstance(new GameInstance());
+		GameManager.setGamePhaseInfo();
 	}
 
 	public static void victory(int player) {
@@ -274,5 +279,57 @@ public class GameManager {
 		GameManager.getGameInstance().getPlayer(2).applyIncome();
 
 	}
+	
+
+	
+	// ---------------- GAME PHASE UPDATER ---------------------------
+	
+	public static void setGamePhaseInfo()
+	{
+		// turn phase
+		switch(GameManager.getTurnPhase())
+		{
+		case AFTERMATH:
+			GameManager.turnPhaseString = "Attacking Phase";
+			break;
+		case ATTACK:
+			GameManager.turnPhaseString = "Strategy Phase";
+			break;
+		case BUILD:
+			GameManager.turnPhaseString = "Management Phase";
+			break;
+		default:
+			break;
+		}
+		
+
+		switch(GameManager.getCurrentPlayer())
+		{
+		case 1:
+			GameManager.currentPlayerString = "Player 1's turn";
+			break;
+		case 2:
+			GameManager.currentPlayerString = "Player 2's turn";
+			break;
+		}
+		
+		SceneController.getGameScene().getTurnStatus().updateTurnPane();
+		
+		
+	}
+
+	public static String getTurnPhaseString() {
+		return turnPhaseString;
+	}
+
+	public static String getCurrentPlayerString() {
+		return currentPlayerString;
+	}
+
+	public static String getCurrentTurnString() {
+		return currentTurnString;
+	}
+	
+	
 
 }

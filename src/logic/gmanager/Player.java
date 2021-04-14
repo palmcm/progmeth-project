@@ -8,7 +8,7 @@ import utils.CommonStrings;
 
 public class Player {
 	
-	private int incomeLevel;
+	private int income;
 	private int money;
 	
 	private int maxHealth;
@@ -22,7 +22,7 @@ public class Player {
 	
 	public Player(int id)
 	{
-		this.incomeLevel = 0;
+		this.income = GameSettings.getStartingIncome();
 		this.money = GameSettings.getStartingMoney();
 		this.maxHealth = GameSettings.getMaxHealth();
 		this.health = this.maxHealth;
@@ -69,7 +69,7 @@ public class Player {
 	
 	public int getIncome()
 	{
-		return GameManager.getGameInstance().getIncome(this.getIncomeLevel());
+		return this.income;
 	}
 	
 	public void applyIncome()
@@ -89,45 +89,23 @@ public class Player {
 	
 	public String getIncomeToolTip()
 	{
-		if(this.getIncomeLevel() >= GameManager.getGameInstance().getMaxIncomeLevel())
-		{
-			return "Player "+this.getPlayerId()+"'s Income: "+this.getIncome()+"\n"+
-					CommonStrings.SeparatorLine+"Income cannot be upgraded further!";
-		}
-		else
-		{
-			return "Player "+this.getPlayerId()+"'s Income: "+this.getIncome()+"\n"+
-					CommonStrings.SeparatorLine+"Next level: "+GameManager.getGameInstance().getIncome(this.getIncomeLevel()+1)
-					+"\n"+"Upgrade cost: "+GameManager.getGameInstance().getIncomeUpgradeCost(this.getIncomeLevel()+1);
-		}
+		return "Player "+this.getPlayerId()+"'s Income: "+this.getIncome()+"\n"+
+				CommonStrings.SeparatorLine+"Next level: +"+GameSettings.getIncome()+
+				"\n"+"Upgrade cost: "+GameSettings.getIncomeUpgradeCost();
 	}
 	
 	public boolean upgradeIncome()
 	{
-		if(this.getIncomeLevel() >= GameManager.getGameInstance().getMaxIncomeLevel())
+		if(this.getMoney() < GameSettings.getIncomeUpgradeCost())
 		{
 			return false;
 		}
-		if(this.getMoney() < GameManager.getGameInstance().getIncomeUpgradeCost(this.getIncomeLevel()))
-		{
-			return false;
-		}
-		this.spendMoney(GameManager.getGameInstance().getIncomeUpgradeCost(this.getIncomeLevel()));
-		this.setIncomeLevel(this.getIncomeLevel()+1);
+		this.spendMoney(GameSettings.getIncomeUpgradeCost());
+		this.setIncome(this.getIncome()+GameSettings.getIncome());
 		return true;
 	}
 	
 	// GENERATED GETTER & SETTER
-	
-	public int getIncomeLevel() {
-		return incomeLevel;
-	}
-
-	public void setIncomeLevel(int incomeLevel) {
-		this.incomeLevel = incomeLevel;
-		if(this.incomeLevel > GameManager.getGameInstance().getMaxIncomeLevel())
-			this.incomeLevel = GameManager.getGameInstance().getMaxIncomeLevel();
-	}
 
 	public int getMoney() {
 		return money;
@@ -175,6 +153,13 @@ public class Player {
 		
 		return found;
 	}
+
+
+	public void setIncome(int income) {
+		this.income = income;
+	}
+	
+	
 	
 	
 	

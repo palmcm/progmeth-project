@@ -32,4 +32,15 @@ public class TurnPane extends VBox {
 			GameButtons.proceedGamePhase();
 		});
 	}
+	
+	public void updateTurnPane()
+	{
+		this.phaseText.setText(GameManager.getTurnPhaseString());
+		this.playerTurn.setText(GameManager.getCurrentPlayerString());
+		this.turnNumber.setText(GameManager.getCurrentTurnString());
+		
+		
+		
+		
+	}
 }

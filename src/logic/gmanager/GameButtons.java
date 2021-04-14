@@ -1,6 +1,5 @@
 package logic.gmanager;
 
-import exception.InvalidPlayerException;
 import logic.misc.Coordinate;
 import logic.towers.BaseTower;
 
@@ -35,7 +34,9 @@ public class GameButtons {
 				GameManager.processAftermath();
 			}
 
-		}
+		}	
+
+		GameManager.setGamePhaseInfo();
 
 	}
 

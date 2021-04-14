@@ -5,6 +5,9 @@ public class GameSettings {
 	private static int deckSize;
 	private static int MaxHealth = 100;
 	private static int startingMoney = 50;
+	private static int income = 5;
+	private static int incomeUpgradeCost = 25;
+	private static int startingIncome = 20;
 	private static Board board = new Board();
 	
 	// ------------- GETTER AND SETTERS -----------------
@@ -33,6 +36,26 @@ public class GameSettings {
 	public static void setBoard(Board board) {
 		GameSettings.board = board;
 	}
+	public static int getIncome() {
+		return income;
+	}
+	public static void setIncome(int income) {
+		GameSettings.income = income;
+	}
+	public static int getIncomeUpgradeCost() {
+		return incomeUpgradeCost;
+	}
+	public static void setIncomeUpgradeCost(int incomeUpgradeCost) {
+		GameSettings.incomeUpgradeCost = incomeUpgradeCost;
+	}
+	public static int getStartingIncome() {
+		return startingIncome;
+	}
+	public static void setStartingIncome(int startingIncome) {
+		GameSettings.startingIncome = startingIncome;
+	}
+	
+	
 	
 	
 	

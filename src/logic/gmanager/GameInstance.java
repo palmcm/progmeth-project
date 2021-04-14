@@ -13,20 +13,24 @@ public class GameInstance {
 	
 	private Board board;
 	
-	private int maxIncomeLevel;
-	private int income[];
-	private int incomeUpgradeCost[];
+	//private int maxIncomeLevel;
+	//private int income;
+	//private int incomeUpgradeCost;
+	//private int startingIncome;
 	private Player player1,player2;
 	
 	private ArrayList<AttackPhaseAction> attackOrder;
 	private ArrayList<AttackPhaseAction> persistentEffects;
 	
+	private int turnNumber;
+	
 	public GameInstance()
 	{
 		this.board = new Board();
-		this.maxIncomeLevel = 5;
-		this.income = new int[]{10,15,20,25,30,35};
-		this.incomeUpgradeCost = new int[]{0,50,100,150,200,250};
+		//this.maxIncomeLevel = 5;
+		//this.income = 5;
+		//this.incomeUpgradeCost = 25;
+		this.turnNumber = 1;
 		
 		this.player1 = new Player(1);
 		this.player2 = new Player(2);
@@ -40,6 +44,7 @@ public class GameInstance {
 		this.persistentEffects = new ArrayList<AttackPhaseAction>();
 		
 		DeckSelector.setFlipSelector(true);
+		
 		
 	}
 	
@@ -95,16 +100,6 @@ public class GameInstance {
 		return this.board;
 	}
 	
-	public int getIncome(int level)
-	{
-		return income[level];
-	}
-	
-	public int getIncomeUpgradeCost(int level)
-	{
-		return incomeUpgradeCost[level + 1];
-	}
-	
 	public Player getPlayer(int player)
 	{
 		if(player < 1  || player > 2)
@@ -115,10 +110,18 @@ public class GameInstance {
 			return this.player1;
 		return this.player2;
 	}
-
-	public int getMaxIncomeLevel() {
-		return maxIncomeLevel;
+	
+	//  ---------------- turn number --------------------
+	
+	public void incrementTurnNumber()
+	{
+		this.turnNumber++;
 	}
+
+	public int getTurnNumber() {
+		return turnNumber;
+	}
+	
 	
 	
 }
