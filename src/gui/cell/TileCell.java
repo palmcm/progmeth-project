@@ -2,6 +2,7 @@ package gui.cell;
 
 import config.GameConfig;
 import gui.SceneController;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
@@ -10,6 +11,7 @@ import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.gmanager.Tile;
 import logic.towers.BaseTower;
@@ -67,5 +69,10 @@ public class TileCell extends StackPane{
 	private String getTileTowerDesc()
 	{
 		return this.getTile().getTower().getInstanceToolTipString();
+	}
+	
+	public void showUpgradeToolTip()
+	{
+		SceneController.getGameScene().getTilesPane().getTooltip().setText(this.getTile().getTower().getNextUpgradeInfo());
 	}
 }

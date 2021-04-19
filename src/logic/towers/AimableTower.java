@@ -46,9 +46,7 @@ public abstract class AimableTower extends AttackableTower {
 				CommonStrings.stats_health+this.getCurrentHealth()+"/"+this.getMaxHealth()+"  \t"+
 				CommonStrings.stats_damage+this.getCurrentDamage()+"\n"+
 				CommonStrings.stats_vrange+this.getCurrentvRange()+"    \t"+
-				CommonStrings.stats_range+this.getCurrenthRange()+"\n"+
-				CommonStrings.SeparatorLine+
-				this.getNextUpgradeInfo();
+				CommonStrings.stats_range+this.getCurrenthRange();
 	}
 
 	

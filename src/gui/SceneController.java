@@ -5,6 +5,7 @@ import gui.scene.MenuScene;
 import gui.scene.PickMapScene;
 import gui.scene.PickTowerScene;
 import javafx.scene.Scene;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 

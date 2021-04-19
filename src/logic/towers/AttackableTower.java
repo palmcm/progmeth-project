@@ -51,9 +51,7 @@ public abstract class AttackableTower extends BaseTower{
 				CommonStrings.SeparatorLine+
 				CommonStrings.stats_health+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
 				CommonStrings.stats_damage+this.getCurrentDamage()+"\n"+
-				CommonStrings.stats_range+this.getCurrentRange()+"\n"+
-				CommonStrings.SeparatorLine+
-				this.getNextUpgradeInfo();
+				CommonStrings.stats_range+this.getCurrentRange();
 	}
 	
 	public String getBuyToolTip()

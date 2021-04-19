@@ -95,9 +95,7 @@ public abstract class BaseTower {
 		return CommonStrings.SeparatorLine+
 				this.getCurrentDescription()+"\n"+
 				CommonStrings.SeparatorLine+
-				CommonStrings.stats_health+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
-				CommonStrings.SeparatorLine+
-				this.getNextUpgradeInfo();
+				CommonStrings.stats_health+this.getCurrentHealth()+"/"+this.getMaxHealth();
 	}
 	
 	public String getBuyToolTip()
