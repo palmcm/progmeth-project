@@ -23,7 +23,7 @@ public class ShockWeaver extends AttackableTower{
 		this.setUpgradeHealth(new int[]{10,15,20});
 		this.setCurrentHealth(this.getMaxHealth());
 		
-		this.setMaxUpgradeLevel(50);
+		this.setMaxUpgradeLevel(3);
 		this.setUpgradeCost(new int[]{30,50,70});
 		
 		this.setCooldown(5);
