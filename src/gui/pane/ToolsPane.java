@@ -10,18 +10,19 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import logic.gmanager.GameButtons;
 import logic.gmanager.GameManager;
+import utils.ImageUtil;
 
 public class ToolsPane extends VBox {
 	ArrayList<ToolsCell> toolsList = new ArrayList<ToolsCell>();
 	public ToolsPane() {
 		ToolsCell upgradeIncomeIcon = new ToolsCell();
-		upgradeIncomeIcon.setIcon(new Image("/buttons/upgrade_income.png"));
+		upgradeIncomeIcon.setIcon(ImageUtil.ImageLoader("buttons/upgrade_income.png", 100));
 		upgradeIncomeIcon.setDes("Increase Research", GameManager.getCurrentPlayerIncomeToolTip());
 		ToolsCell upgradeIcon  = new ToolsCell();
-		upgradeIcon.setIcon(new Image("/buttons/upgrade_unit.png"));
+		upgradeIcon.setIcon(ImageUtil.ImageLoader("buttons/upgrade_unit.png", 100));
 		upgradeIcon.setDes("Upgrade Unit", "Upgrade unit to the next level");
 		ToolsCell sellIcon = new ToolsCell();
-		sellIcon.setIcon(new Image("/buttons/remove_unit.png"));
+		sellIcon.setIcon(ImageUtil.ImageLoader("buttons/remove_unit.png", 100));
 		sellIcon.setDes("Retire Unit", "Remove unit from the board");
 		
 		upgradeIncomeIcon.setOnMouseClicked(e -> {
