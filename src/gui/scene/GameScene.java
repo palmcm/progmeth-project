@@ -23,6 +23,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import logic.gmanager.GameButtons;
 import logic.gmanager.GameManager;
+import logic.gmanager.TurnPhase;
 
 public class GameScene extends Scene {
 	private PlayerPane player1Status;
@@ -62,6 +63,8 @@ public class GameScene extends Scene {
 		
 		for(ToolsCell tool:toolsPane.getToolsList()) {
 			tool.setOnMouseClicked(e -> {
+				if(GameManager.getTurnPhase() != TurnPhase.BUILD)
+					return;
 				selectedTool(tool);
 			});
 		}

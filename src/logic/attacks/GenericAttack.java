@@ -11,7 +11,7 @@ public class GenericAttack {
 	public static void simpleProjectile(Coordinate start, int damage, int range, int player) throws InvalidPlayerException
 	{
 		//System.out.println("simpleProjectile!");
-		start = new Coordinate(start.getX(),start.getY());
+		start = new Coordinate(start.getX(),start.getY()+1);
 		GameInstance gameInstance = GameManager.getGameInstance();
 		int opponent = gameInstance.getPlayer(player).getOppositePlayerId();
 		int endBorder = gameInstance.getBoard().getPlayerBorder(opponent);
@@ -56,7 +56,7 @@ public class GenericAttack {
 			
 	public static void piercingProjectile(Coordinate start, int damage, int range, int pierce, int player) throws InvalidPlayerException
 	{
-		start = new Coordinate(start.getX(),start.getY());
+		start = new Coordinate(start.getX(),start.getY()+1);
 		GameInstance gameInstance = GameManager.getGameInstance();
 		int opponent = gameInstance.getPlayer(player).getOppositePlayerId();
 		int endBorder = gameInstance.getBoard().getPlayerBorder(opponent);

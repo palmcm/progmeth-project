@@ -56,6 +56,7 @@ public abstract class BaseTower {
 		this.setUpgradeLevel(0);
 		this.setCurrentName(this.getTowerName(0));
 		this.setOwner(GameManager.getCurrentPlayer());
+		this.unfroze();
 		
 	}
 	
@@ -308,9 +309,14 @@ public abstract class BaseTower {
 	
 	public boolean isFrozen()
 	{
-		return this.frozenDuration <= 0;
+		return this.frozenDuration > 0;
 	}
 	
+	public void unfroze()
+	{
+		this.frozen = 0;
+		this.frozenDuration = 0;
+	}
 	
 	
 	

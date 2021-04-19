@@ -10,6 +10,8 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import logic.gmanager.GameButtons;
+import logic.gmanager.GameManager;
+import logic.gmanager.TurnPhase;
 
 public class ToolsCell extends StackPane{
 	

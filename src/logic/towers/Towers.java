@@ -2,6 +2,7 @@ package logic.towers;
 
 import tower.Pyromancer;
 import tower.Scholar;
+import tower.TerraRaiser;
 import tower.Apprentice;
 import tower.Cryomaster;
 
@@ -12,7 +13,8 @@ public class Towers {
 			new Apprentice(null,false),
 			new Scholar(null,false),
 			new Pyromancer(null,false),
-			new Cryomaster(null,false)
+			new Cryomaster(null,false),
+			new TerraRaiser(null,false)
 	};
 	
 	public static BaseTower[] getTowers()
