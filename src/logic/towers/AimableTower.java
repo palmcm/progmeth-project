@@ -24,7 +24,7 @@ public abstract class AimableTower extends AttackableTower {
 		this.setUpgradeLevel(0);
 		this.setCurrentName(this.getTowerName(0));
 		this.setCurrentDamage(this.getTowerDamage(0));
-		this.setCurrentCooldown(1);
+		this.setCurrentCooldown(0);
 		this.unfroze();
 	}
 
