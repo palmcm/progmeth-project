@@ -26,7 +26,7 @@ public class Scholar extends BaseTower implements Passive{
 		this.setCurrentHealth(this.getMaxHealth());
 		
 		this.setMaxUpgradeLevel(3);
-		this.setUpgradeCost(new int[]{15,20,40});
+		this.setUpgradeCost(new int[]{15,20,35});
 		
 		this.setLoc(loc);
 		
