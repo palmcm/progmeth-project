@@ -11,6 +11,13 @@ public abstract class AimableTower extends AttackableTower {
 	public Coordinate getTarget() {
 		return target;
 	}
+
+	
+	public void updateInfo()
+	{
+		int level = this.getUpgradeLevel();
+		this.setCurrentName(this.getTowerName(level));
+	}
 	
 	protected void initialize()
 	{

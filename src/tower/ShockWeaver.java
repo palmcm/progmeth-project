@@ -20,11 +20,11 @@ public class ShockWeaver extends AttackableTower{
 		this.setCost(40);
 		
 		this.setMaxHealth(25);
-		this.setUpgradeHealth(new int[]{10,15,20});
+		this.setUpgradeHealth(new int[]{5,10,10});
 		this.setCurrentHealth(this.getMaxHealth());
 		
 		this.setMaxUpgradeLevel(3);
-		this.setUpgradeCost(new int[]{30,50,70});
+		this.setUpgradeCost(new int[]{20,30,60});
 		
 		this.setCooldown(5);
 		
@@ -49,9 +49,9 @@ public class ShockWeaver extends AttackableTower{
 		});
 		
 		this.setTowerDamage(new String[] {
-				"35",
-				"70",
-				"70",
+				"30",
+				"50",
+				"50",
 				"999"
 		});
 		
@@ -63,8 +63,8 @@ public class ShockWeaver extends AttackableTower{
 		});	
 		
 		this.setTowerUpgradeDescription(new String[] {
-				"Powerful magician which casts a powerful electric shock.\nTakes 4 turns to recharge.",
-				"Increases damage by 35.",
+				"Unleashes a powerful electric shock.\nTakes 4 turns to recharge.",
+				"Increases damage by 20.",
 				"Greatly increases the reach of the shock.",
 				"The shock will obilterate anything it touches."
 		});
@@ -78,13 +78,13 @@ public class ShockWeaver extends AttackableTower{
 	public void attack() throws InvalidPlayerException {
 		switch(this.getUpgradeLevel()) {
 		case 0:
-			GenericAttack.simpleProjectile(this.getLoc(), 35, 7, this.getOwner());
+			GenericAttack.simpleProjectile(this.getLoc(), 30, 7, this.getOwner());
 			break;
 		case 1:
-			GenericAttack.simpleProjectile(this.getLoc(), 70, 7, this.getOwner());
+			GenericAttack.simpleProjectile(this.getLoc(), 50, 7, this.getOwner());
 			break;
 		case 2:
-			GenericAttack.simpleProjectile(this.getLoc(), 70, 11, this.getOwner());
+			GenericAttack.simpleProjectile(this.getLoc(), 50, 11, this.getOwner());
 			break;
 		case 3:
 			GenericAttack.simpleProjectile(this.getLoc(), 999, 11, this.getOwner());
