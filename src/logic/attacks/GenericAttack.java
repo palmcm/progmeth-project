@@ -179,5 +179,25 @@ public class GenericAttack {
 			return;
 		else targetTile.getTower().freeze(duration);
 	}
+
+	
+	public static void heal(Coordinate target, int amount, int player) throws InvalidPlayerException
+	{
+		target = new Coordinate(target.getX(),target.getY());
+		GameInstance gameInstance = GameManager.getGameInstance();
+		int endBorder = gameInstance.getBoard().getPlayerBorder(player);
+		
+		if(target.getY() == endBorder)
+		{
+			gameInstance.getPlayer(player).heal(amount);
+			return;
+		}
+		
+		if(gameInstance.getBoard().getTile(target).getTower().getOwner() == player)
+		{
+			gameInstance.getBoard().getTile(target).getTower().heal(amount);
+			
+		}
+	}
 	
 }

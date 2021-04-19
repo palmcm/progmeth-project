@@ -138,6 +138,8 @@ public class Player {
 		this.health = health;
 		if(this.getHealth() < 0)
 			this.health = 0;
+		if(this.getHealth() > this.getMaxHealth())
+			this.health = this.getMaxHealth();
 	}
 
 	public ArrayList<BaseTower> getDeck() {
@@ -162,6 +164,11 @@ public class Player {
 
 	public void setIncome(int income) {
 		this.income = income;
+	}
+	
+	public void heal(int amount)
+	{
+		this.setHealth(this.health+amount);
 	}
 	
 	
