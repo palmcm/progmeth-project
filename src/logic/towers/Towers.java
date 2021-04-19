@@ -5,6 +5,7 @@ import tower.Scholar;
 import tower.TerraRaiser;
 import tower.Apprentice;
 import tower.Cryomaster;
+import tower.Dryad;
 
 public class Towers {
 
@@ -14,7 +15,8 @@ public class Towers {
 			new Scholar(null,false),
 			new Pyromancer(null,false),
 			new Cryomaster(null,false),
-			new TerraRaiser(null,false)
+			new TerraRaiser(null,false),
+			new Dryad(null,false)
 	};
 	
 	public static BaseTower[] getTowers()
