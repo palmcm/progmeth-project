@@ -7,6 +7,7 @@ import tower.TerraRaiser;
 import tower.Apprentice;
 import tower.Cryomaster;
 import tower.Dryad;
+import tower.Illuminant;
 
 public class Towers {
 
@@ -17,6 +18,7 @@ public class Towers {
 			new Cryomaster(null,false),
 			new Pyromancer(null,false),
 			new Dryad(null,false),
+			new Illuminant(null,false),
 			new Scholar(null,false),
 			new ShockWeaver(null,false)
 	};

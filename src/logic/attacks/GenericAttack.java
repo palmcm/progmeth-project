@@ -81,6 +81,7 @@ public class GenericAttack {
 				pierce -=1;
 				if(pierce<1)
 					attackCompleted=true;
+				start.setY(start.getY()+direction);				
 				
 			}
 			else

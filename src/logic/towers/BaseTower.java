@@ -146,6 +146,8 @@ public abstract class BaseTower {
 	
 	public boolean attackable(int player) throws InvalidPlayerException
 	{
+		if(this.currentHealth <=0)
+			return false;
 		if(player==3)
 			return true;
 		else return player!=this.getOwner();

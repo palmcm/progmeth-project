@@ -63,10 +63,10 @@ public class Illuminant extends AttackableTower{
 		});	
 		
 		this.setTowerUpgradeDescription(new String[] {
-				"Casts a beam of light which goes through an enemy,\n damaging it and another unit behind.",
+				"Casts a beam of light which goes through an enemy,\ndamaging it and another unit behind.",
 				"Beam penetrates an extra enemy and reaches further.",
 				"The beam deals +2 more damage.",
-				"Increases the range of the beam, making it deal +2 damage\n and penetrates 2 more enemy units."
+				"Increases the range of the beam, making it deal +2 damage\nand penetrates 2 more enemy units."
 		});
 		
 		this.initialize();
