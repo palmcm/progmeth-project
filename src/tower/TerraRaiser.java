@@ -19,7 +19,7 @@ public class TerraRaiser extends BaseTower{
 		this.setCost(10);
 		
 		this.setMaxHealth(15);
-		this.setUpgradeHealth(new int[]{5,10,15});
+		this.setUpgradeHealth(new int[]{5,10,20});
 		this.setCurrentHealth(this.getMaxHealth());
 		
 		this.setMaxUpgradeLevel(3);
