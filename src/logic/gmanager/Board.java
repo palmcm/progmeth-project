@@ -11,7 +11,7 @@ public class Board {
 	
 	public Board()
 	{
-		this.border = 11;
+		this.border = 12;
 		this.lanes = 5;
 		initTiles(5,10);
 		
