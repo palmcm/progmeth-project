@@ -57,7 +57,7 @@ public class GameInstance {
 		int i,j;
 		for(i=0;i<this.getBoard().getLanes();i++)
 		{
-			for(j=0;j<=this.getBoard().getBorder();j++)
+			for(j=0;j<this.getBoard().getBorder();j++)
 			{
 				this.getBoard().getTile(new Coordinate(i,j)).setMarkAttacked(false);
 			}

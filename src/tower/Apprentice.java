@@ -63,7 +63,7 @@ public class Apprentice extends AttackableTower{
 		});	
 		
 		this.setTowerUpgradeDescription(new String[] {
-				"Basic tower which fires a single projectile which deals 2 damage",
+				"Casts a simple magical bolt.",
 				"Increases projectile range by 2 tiles",
 				"Deals +1 damage per projectile",
 				"Attack pierces one enemy."

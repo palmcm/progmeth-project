@@ -17,7 +17,7 @@ public class TilesPane extends GridPane{
 	private int lanes;
 	private int cols;
 	private Board board;
-	private TileCell tilesCell[][] = new TileCell[5][12];
+	private TileCell tilesCell[][] = new TileCell[5][13];
 	private Tooltip tooltip;
 	
 	public Tooltip getTooltip()
@@ -28,12 +28,12 @@ public class TilesPane extends GridPane{
 	public TilesPane() {
 		board = GameManager.getGameInstance().getBoard();
 		lanes = board.getLanes();
-		cols = board.getBorder()+1;
+		cols = board.getBorder();
 		Tile tiles[][] = board.getTiles();
 		tooltip = new Tooltip();
 		tooltip.setFont(new Font(15));
 		for (int i=0;i<lanes;i++) {
-			for (int j=1;j<cols;j++) {
+			for (int j=0;j<cols;j++) {
 				TileCell tile = new TileCell(tiles[i][j]);
 				tilesCell[i][j] = tile;
 				this.add(tile, j, i);

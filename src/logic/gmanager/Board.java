@@ -11,29 +11,14 @@ public class Board {
 	
 	public Board()
 	{
-		this.border = 12;
+		this.border = 13;
 		this.lanes = 5;
-		initTiles(5,10);
+		initTiles(5,11);
 		
 		
 		this.setBorderColumns();
 		
 		int i,j;
-		for(i=0;i<lanes;i++)
-		{
-			for(j=0;j<=border;j++)
-			{
-				this.tiles[i][j] = new Tile();
-			}
-		}
-		
-		for(i=0;i<lanes;i++)
-		{
-			for(j=0;j<=border;j++)
-			{
-				this.tiles[i][j].setLoc(new Coordinate(i,j));
-			}
-		}
 		
 		for(i=1;i<=5;i++)
 		{
@@ -81,7 +66,7 @@ public class Board {
 		for(i=0;i<this.lanes;i++)
 		{
 			this.tiles[i][0].setTileOwner(0);
-			this.tiles[i][this.getBorder()].setTileOwner(0);
+			this.tiles[i][this.getBorder()-1].setTileOwner(0);
 		}
 		
 	}

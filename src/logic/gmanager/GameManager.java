@@ -292,7 +292,7 @@ public class GameManager {
 		BaseTower b;
 		int i, j;
 		for (i = 0; i < board.getLanes(); i++) {
-			for (j = 0; j <= board.getBorder(); j++) {
+			for (j = 0; j < board.getBorder(); j++) {
 				b = board.getTile(new Coordinate(i, j)).getTower();
 				if (b != null) {
 					if (b.getCurrentHealth() <= 0) {

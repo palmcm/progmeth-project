@@ -36,19 +36,19 @@ public class GenericAttack {
 			}
 			else
 			{
-				range -= 1;
-				if(range<1)
-				{
-					attackCompleted=true;
-					break;
-				}
-				//System.out.println(start.getX()+","+start.getY());
 				
 				start.setY(start.getY()+direction);
 				if(start.getY() == endBorder && !attackCompleted)
 				{
 					gameInstance.getPlayer(opponent).damage(damage);
 					attackCompleted=true;
+				}
+				
+				range -= 1;
+				if(range<1)
+				{
+					attackCompleted=true;
+					break;
 				}
 			}
 		}
@@ -85,9 +85,6 @@ public class GenericAttack {
 			}
 			else
 			{
-				range -= 1;
-				if(range<1)
-					attackCompleted=true;
 				
 				start.setY(start.getY()+direction);
 				if(start.getY() == endBorder && !attackCompleted)
@@ -95,6 +92,10 @@ public class GenericAttack {
 					gameInstance.getPlayer(opponent).damage(damage);
 					attackCompleted=true;
 				}
+				
+				range -= 1;
+				if(range<1)
+					attackCompleted=true;
 			}
 		}				
 		
