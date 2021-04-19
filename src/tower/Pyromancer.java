@@ -61,13 +61,6 @@ public class Pyromancer extends AimableTower{
 				"7"
 		});
 		
-		this.setTowerRange(new String[] {
-				"7 Tiles, Reaches adjacent lanes",
-				"7 Tiles, Reaches adjacent lanes",
-				"9 Tiles, Reaches 2 lanes above and below.",
-				"9 Tiles, Reaches 2 lanes above and below.",
-		});	
-		
 		this.setTowerUpgradeDescription(new String[] {
 				"Tower which can attack any targeted tower within its range, \ndealing 4 damage. Takes a turn to recharge.",
 				"Increases attack damage by 3.",

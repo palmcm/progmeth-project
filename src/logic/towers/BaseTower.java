@@ -162,9 +162,7 @@ public abstract class BaseTower {
 	
 	public void setCurrentHealth(int currentHealth) {
 		this.currentHealth = currentHealth;
-		if(this.currentHealth < 0)
-			this.currentHealth = 0;
-		else if(this.currentHealth > this.getMaxHealth())
+		if(this.currentHealth > this.getMaxHealth())
 			this.currentHealth = this.getMaxHealth();
 	}
 	

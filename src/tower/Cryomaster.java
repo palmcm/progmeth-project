@@ -56,17 +56,10 @@ public class Cryomaster extends AimableTower{
 		
 		this.setTowerDamage(new String[] {
 				"1",
-				"10",
+				"1",
 				"10",
 				"10"
 		});
-		
-		this.setTowerRange(new String[] {
-				"8 Tiles, Reaches adjacent lanes",
-				"8 Tiles, Reaches 2 lanes above and below.",
-				"8 Tiles, Reaches 2 lanes above and below.",
-				"8 Tiles, Reaches 2 lanes above and below.",
-		});	
 		
 		this.setTowerUpgradeDescription(new String[] {
 				"Can freeze a target, dealing light damage and disabling\n it in the next turn. Takes 2 turns to recharge.",
