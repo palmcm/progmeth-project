@@ -101,6 +101,12 @@ public class GameManager {
 	public static void StartNewGame() {
 		GameManager.setGameInstance(new GameInstance());
 		GameManager.setGamePhaseInfo();
+		
+		SceneController.getGameScene().getPlayerPane(1).updateIncome();
+		SceneController.getGameScene().getPlayerPane(2).updateIncome();
+
+		SceneController.getGameScene().getPlayerPane(1).updateMoney();
+		SceneController.getGameScene().getPlayerPane(2).updateMoney();
 	}
 
 	public static void victory(int player) {

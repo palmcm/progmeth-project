@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import logic.gmanager.GameInstance;
 import logic.gmanager.GameManager;
 import logic.gmanager.Player;
+import utils.CommonStrings;
 
 public class PlayerPane extends VBox {
 	
@@ -71,7 +72,7 @@ public class PlayerPane extends VBox {
 		incomeBox.setPadding(inset);
 		
 		HBox upgradeBox = new HBox();
-		upgradeText = new Text("*****");
+		upgradeText = new Text("");
 		upgradeBox.getChildren().add(upgradeText);
 		upgradeBox.setPadding(inset);
 		upgradeBox.setAlignment(Pos.CENTER);
@@ -103,11 +104,11 @@ public class PlayerPane extends VBox {
 	
 	public void updateIncome() {
 		int income = player.getIncome();
-		incomeText.setText(income+"$/turn");
+		incomeText.setText("+"+income+CommonStrings.currency_symbol);
 	}
 	
 	public void updateMoney() {
 		int money = player.getMoney();
-		moneyText.setText(money+"$");
+		moneyText.setText(money+CommonStrings.currency_symbol);
 	}
 }

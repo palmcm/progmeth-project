@@ -16,19 +16,21 @@ public class ToolsPane extends VBox {
 	public ToolsPane() {
 		ToolsCell upgradeIncomeIcon = new ToolsCell();
 		upgradeIncomeIcon.setIcon(new Image("/buttons/upgrade_income.png"));
-		upgradeIncomeIcon.setDes("Upgrade Income", GameManager.getCurrentPlayerIncomeToolTip());
+		upgradeIncomeIcon.setDes("Increase Research", GameManager.getCurrentPlayerIncomeToolTip());
 		ToolsCell upgradeIcon  = new ToolsCell();
 		upgradeIcon.setIcon(new Image("/buttons/upgrade_unit.png"));
-		upgradeIcon.setDes("Upgrade Tower", "Upgrade tower to next level");
+		upgradeIcon.setDes("Upgrade Unit", "Upgrade unit to the next level");
 		ToolsCell sellIcon = new ToolsCell();
 		sellIcon.setIcon(new Image("/buttons/remove_unit.png"));
-		sellIcon.setDes("Sell Tower", "Sell tower for money");
+		sellIcon.setDes("Retire Unit", "Remove unit from the board");
 		
 		upgradeIncomeIcon.setOnMouseClicked(e -> {
 			if (GameButtons.upgradeIncome()) {
 				upgradeIncomeIcon.setDes("Upgrade Income", GameManager.getCurrentPlayerIncomeToolTip());
 				upgradeIncomeIcon.showDes();
 				SceneController.getGameScene().updateMoney();
+
+				SceneController.getGameScene().getPlayerPane(GameManager.getCurrentPlayer()).updateIncome();
 			}
 			
 		});

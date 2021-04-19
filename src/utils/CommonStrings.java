@@ -9,4 +9,6 @@ public class CommonStrings {
 	public static String stats_health = "❤ ";
 	public static String stats_range = "➟ ";
 	public static String stats_vrange = "⭥ ";
+	
+	public static String currency_symbol = "♦";
 }

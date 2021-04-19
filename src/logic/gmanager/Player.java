@@ -92,9 +92,9 @@ public class Player {
 	
 	public String getIncomeToolTip()
 	{
-		return "Player "+this.getPlayerId()+"'s Income: "+this.getIncome()+"\n"+
-				CommonStrings.SeparatorLine+"Next level: +"+GameSettings.getIncome()+
-				"\n"+"Upgrade cost: "+GameSettings.getIncomeUpgradeCost();
+		return CommonStrings.SeparatorLine+"Current Research: "+this.getIncome()+CommonStrings.currency_symbol+"\n"+
+				CommonStrings.SeparatorLine+"Increase: +"+GameSettings.getIncome()+CommonStrings.currency_symbol+
+				"\n"+"Increase cost: "+GameSettings.getIncomeUpgradeCost()+CommonStrings.currency_symbol;
 	}
 	
 	public boolean upgradeIncome()

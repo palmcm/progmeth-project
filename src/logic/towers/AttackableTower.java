@@ -12,7 +12,7 @@ public abstract class AttackableTower extends BaseTower{
 		if(canAttack())
 			try {
 				attack();
-				this.setCooldown(this.getCooldown());
+				this.setCurrentCooldown(this.getCooldown());
 			} catch (InvalidPlayerException e) {
 				e.printStackTrace();
 			}
@@ -65,7 +65,7 @@ public abstract class AttackableTower extends BaseTower{
 				CommonStrings.stats_damage+this.getCurrentDamage()+"\n"+
 				CommonStrings.stats_range+this.getCurrentRange()+"\n"+
 				CommonStrings.SeparatorLine+
-				"Cost: "+this.getCost()+"\n";
+				"Cost: "+this.getCost()+CommonStrings.currency_symbol+"\n";
 	}
 	
 	// -------------- COOLDOWN --------------------
@@ -74,7 +74,6 @@ public abstract class AttackableTower extends BaseTower{
 	private int currentCooldown;
 
 	public void setCooldown(int cooldown) {
-		
 		this.cooldown = cooldown;
 	}
 	

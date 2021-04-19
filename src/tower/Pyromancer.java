@@ -6,14 +6,14 @@ import logic.misc.Coordinate;
 import logic.towers.AimableTower;
 import logic.towers.BaseTower;
 
-public class SampleAimable extends AimableTower{
+public class Pyromancer extends AimableTower{
 	
 	public BaseTower getNewInstance(Coordinate loc)
 	{
-		return new SampleAimable(loc,true);
+		return new Pyromancer(loc,true);
 	}
 	
-	public SampleAimable(Coordinate loc,boolean isInstance)
+	public Pyromancer(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);
 		

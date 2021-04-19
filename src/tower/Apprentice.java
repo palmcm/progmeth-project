@@ -6,14 +6,14 @@ import logic.misc.Coordinate;
 import logic.towers.AttackableTower;
 import logic.towers.BaseTower;
 
-public class SampleTower extends AttackableTower{
+public class Apprentice extends AttackableTower{
 	
 	public BaseTower getNewInstance(Coordinate loc)
 	{
-		return new SampleTower(loc,true);
+		return new Apprentice(loc,true);
 	}
 	
-	public SampleTower(Coordinate loc,boolean isInstance)
+	public Apprentice(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);
 		

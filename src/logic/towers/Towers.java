@@ -1,16 +1,16 @@
 package logic.towers;
 
-import tower.SampleAimable;
-import tower.SampleProduction;
-import tower.SampleTower;
+import tower.Pyromancer;
+import tower.Scholar;
+import tower.Apprentice;
 
 public class Towers {
 
 	
 	private static BaseTower TowerList[] = {
-			new SampleTower(null,false),
-			new SampleProduction(null,false),
-			new SampleAimable(null,false)
+			new Apprentice(null,false),
+			new Scholar(null,false),
+			new Pyromancer(null,false)
 	};
 	
 	public static BaseTower[] getTowers()

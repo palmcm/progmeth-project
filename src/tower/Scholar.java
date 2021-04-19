@@ -6,16 +6,16 @@ import logic.misc.Coordinate;
 import logic.towers.Passive;
 import logic.towers.BaseTower;
 
-public class SampleProduction extends BaseTower implements Passive{
+public class Scholar extends BaseTower implements Passive{
 	
 	public BaseTower getNewInstance(Coordinate loc)
 	{
-		return new SampleProduction(loc,true);
+		return new Scholar(loc,true);
 	}
 	
 
 	
-	public SampleProduction(Coordinate loc,boolean isInstance)
+	public Scholar(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);
 		
@@ -42,17 +42,17 @@ public class SampleProduction extends BaseTower implements Passive{
 		});
 		
 		this.setTowerDescription(new String[] {
-				"Produce 6 gold at the end of turn.",
-				"Produce 10 gold at the end of turn.",
-				"Produce 15 gold at the end of turn.",
-				"Produce 25 gold at the end of turn.",
+				"Researches 6 intellect at the end of turn.",
+				"Researches 10 intellect at the end of turn.",
+				"Researches 15 intellect at the end of turn.",
+				"Researches 25 intellect at the end of turn.",
 		});
 		
 		this.setTowerUpgradeDescription(new String[] {
-				"Produces extra 6 gold at the end of each turn.",
-				"Increases income by 4 per turn.",
-				"Increases income by 5 per turn.",
-				"Increases income by 10 per turn."
+				"Researches extra 6 intellect at the end of each turn.",
+				"Increases research by 4 per turn.",
+				"Increases research by 5 per turn.",
+				"Increases research by 10 per turn."
 		});
 		
 		this.initialize();

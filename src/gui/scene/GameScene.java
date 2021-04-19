@@ -121,4 +121,10 @@ public class GameScene extends Scene {
 		return tilesPane;
 	}
 	
+	public PlayerPane getPlayerPane(int player)
+	{
+		if(player==1)
+			return this.player1Status;
+		return this.player2Status;
+	}
 }

@@ -23,11 +23,11 @@ public class TurnPane extends VBox {
 		this.setMinWidth(GameConfig.SCREEN_WIDTH/5-10);
 		this.setAlignment(Pos.CENTER);
 		this.setSpacing(5);
-		this.setOnMouseClicked(e -> {
+		/*this.setOnMouseClicked(e -> {
 			int health = GameManager.getGameInstance().getPlayer(2).getHealth();
 			GameManager.getGameInstance().getPlayer(2).setHealth(health-1);
 			SceneController.getGameScene().updateHp();
-		});
+		});*/
 		endTurn.setOnMouseClicked(e -> {
 			GameButtons.proceedGamePhase();
 		});

@@ -17,7 +17,7 @@ public abstract class AimableTower extends AttackableTower {
 		this.setUpgradeLevel(0);
 		this.setCurrentName(this.getTowerName(0));
 		this.setCurrentDamage(this.getTowerDamage(0));
-		this.setCooldown(0);
+		this.setCurrentCooldown(0);
 	}
 
 	public boolean setTarget(Coordinate target) {
@@ -62,7 +62,7 @@ public abstract class AimableTower extends AttackableTower {
 				CommonStrings.stats_vrange+this.getCurrentvRange()+"    \t"+
 				CommonStrings.stats_range+this.getCurrenthRange()+"\n"+
 				CommonStrings.SeparatorLine+
-				"Cost: "+this.getCost()+"\n";
+				"Cost: "+this.getCost()+CommonStrings.currency_symbol+"\n";
 	}
 
 	public int gethRange(int level) {
