@@ -43,10 +43,10 @@ public abstract class AimableTower extends AttackableTower {
 		return CommonStrings.SeparatorLine+
 				this.getCurrentDescription()+"\n"+
 				CommonStrings.SeparatorLine+
-				"Attack Damage: "+this.getCurrentDamage()+"\n"+
-				"Attack Vertical Range: "+this.getCurrentvRange()+"\n"+
-				"Attack Horizontal Range: "+this.getCurrenthRange()+"\n"+
-				"Health: "+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
+				CommonStrings.stats_health+this.getCurrentHealth()+"/"+this.getMaxHealth()+"  \t"+
+				CommonStrings.stats_damage+this.getCurrentDamage()+"\n"+
+				CommonStrings.stats_vrange+this.getCurrentvRange()+"    \t"+
+				CommonStrings.stats_range+this.getCurrenthRange()+"\n"+
 				CommonStrings.SeparatorLine+
 				this.getNextUpgradeInfo();
 	}
@@ -55,12 +55,12 @@ public abstract class AimableTower extends AttackableTower {
 	public String getBuyToolTip()
 	{
 		return  CommonStrings.SeparatorLine+
-				this.getTowerUpgradeDescription(0)+"\n"+
+				this.getTowerUpgradeDescription(-1)+"\n"+
 				CommonStrings.SeparatorLine+
-				"Attack Damage: "+this.getCurrentDamage()+"\n"+
-				"Attack Vertical Range: "+this.getCurrentvRange()+"\n"+
-				"Attack Horizontal Range: "+this.getCurrenthRange()+"\n"+
-				"Health: "+this.getMaxHealth()+"\n"+
+				CommonStrings.stats_health+this.getMaxHealth()+"  \t"+
+				CommonStrings.stats_damage+this.getCurrentDamage()+"\n"+
+				CommonStrings.stats_vrange+this.getCurrentvRange()+"    \t"+
+				CommonStrings.stats_range+this.getCurrenthRange()+"\n"+
 				CommonStrings.SeparatorLine+
 				"Cost: "+this.getCost()+"\n";
 	}

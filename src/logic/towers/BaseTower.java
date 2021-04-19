@@ -37,8 +37,6 @@ public abstract class BaseTower {
 	private String[] towerUpgradeDescription;
 	
 	private String currentName;
-	private String currentDescription;
-	private String currentUpgradeDescription;
 	
 	// Image Url
 	
@@ -81,9 +79,7 @@ public abstract class BaseTower {
 	public void updateInfo()
 	{
 		int level = this.getUpgradeLevel();
-		this.setCurrentDescription(this.getTowerDescription(level));
 		this.setCurrentName(this.getTowerName(level));
-		this.setCurrentDescription(this.getTowerDescription(level));
 	}
 	
 	public String getToolTipString()
@@ -96,11 +92,10 @@ public abstract class BaseTower {
 	
 	public String getInstanceToolTipString()
 	{
-		return this.getCurrentName()+"\n"+
-				CommonStrings.SeparatorLine+
+		return CommonStrings.SeparatorLine+
 				this.getCurrentDescription()+"\n"+
 				CommonStrings.SeparatorLine+
-				"Health: "+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
+				CommonStrings.stats_health+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
 				CommonStrings.SeparatorLine+
 				this.getNextUpgradeInfo();
 	}
@@ -108,9 +103,9 @@ public abstract class BaseTower {
 	public String getBuyToolTip()
 	{
 		return 	CommonStrings.SeparatorLine+
-				this.getTowerUpgradeDescription(0)+"\n"+
+				this.getTowerUpgradeDescription(-1)+"\n"+
 				CommonStrings.SeparatorLine+
-				"Health: "+this.getMaxHealth()+"\n"+
+				CommonStrings.stats_health+this.getMaxHealth()+"\n"+
 				CommonStrings.SeparatorLine+
 				"Cost: "+this.getCost()+"\n";
 	}
@@ -236,10 +231,6 @@ public abstract class BaseTower {
 		return this.getTowerDescription(this.getUpgradeLevel());
 	}
 	
-	public void setCurrentDescription(String currentDescription) {
-		this.currentDescription = currentDescription;
-	}
-	
 	public void setLoc(Coordinate loc) {
 		this.loc = loc;
 	}
@@ -278,10 +269,6 @@ public abstract class BaseTower {
 
 	public String getCurrentUpgradeDescription() {
 		return this.getTowerUpgradeDescription(this.getUpgradeLevel());
-	}
-
-	public void setCurrentUpgradeDescription(String currentUpgradeDescription) {
-		this.currentUpgradeDescription = currentUpgradeDescription;
 	}
 
 	public void setInstance(boolean isInstance) {

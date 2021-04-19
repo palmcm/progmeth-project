@@ -56,10 +56,10 @@ public class SampleTower extends AttackableTower{
 		});
 		
 		this.setTowerRange(new String[] {
-				"6 Tiles, Single Lane",
-				"8 Tiles, Single Lane",
-				"8 Tiles, Single Lane",
-				"8 Tiles, Single Lane"
+				"6",
+				"8",
+				"8",
+				"8"
 		});	
 		
 		this.setTowerUpgradeDescription(new String[] {

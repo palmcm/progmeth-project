@@ -39,10 +39,8 @@ public abstract class AttackableTower extends BaseTower{
 	public void updateInfo()
 	{
 		int level = this.getUpgradeLevel();
-		this.setCurrentDescription(this.getTowerDescription(level));
 		this.setCurrentName(this.getTowerName(level));
 		this.setCurrentDamage(this.getTowerDamage(level));
-		this.setCurrentDescription(this.getTowerDescription(level));
 		this.setCurrentRange(this.getTowerRange(level));
 	}
 	
@@ -51,9 +49,9 @@ public abstract class AttackableTower extends BaseTower{
 		return 	CommonStrings.SeparatorLine+
 				this.getCurrentDescription()+"\n"+
 				CommonStrings.SeparatorLine+
-				"Attack Damage: "+this.getCurrentDamage()+"\n"+
-				"Attack Range: "+this.getCurrentRange()+"\n"+
-				"Health: "+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
+				CommonStrings.stats_health+this.getCurrentHealth()+"/"+this.getMaxHealth()+"\n"+
+				CommonStrings.stats_damage+this.getCurrentDamage()+"\n"+
+				CommonStrings.stats_range+this.getCurrentRange()+"\n"+
 				CommonStrings.SeparatorLine+
 				this.getNextUpgradeInfo();
 	}
@@ -61,11 +59,11 @@ public abstract class AttackableTower extends BaseTower{
 	public String getBuyToolTip()
 	{
 		return  CommonStrings.SeparatorLine+
-				this.getTowerUpgradeDescription(0)+"\n"+
+				this.getTowerUpgradeDescription(-1)+"\n"+
 				CommonStrings.SeparatorLine+
-				"Attack Damage: "+this.getCurrentDamage()+"\n"+
-				"Attack Range: "+this.getCurrentRange()+"\n"+
-				"Health: "+this.getMaxHealth()+"\n"+
+				CommonStrings.stats_health+this.getMaxHealth()+"\n"+
+				CommonStrings.stats_damage+this.getCurrentDamage()+"\n"+
+				CommonStrings.stats_range+this.getCurrentRange()+"\n"+
 				CommonStrings.SeparatorLine+
 				"Cost: "+this.getCost()+"\n";
 	}

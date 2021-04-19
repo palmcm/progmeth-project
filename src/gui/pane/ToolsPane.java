@@ -6,6 +6,7 @@ import config.GameConfig;
 import gui.SceneController;
 import gui.cell.ToolsCell;
 import javafx.geometry.Pos;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import logic.gmanager.GameButtons;
 import logic.gmanager.GameManager;
@@ -14,11 +15,13 @@ public class ToolsPane extends VBox {
 	ArrayList<ToolsCell> toolsList = new ArrayList<ToolsCell>();
 	public ToolsPane() {
 		ToolsCell upgradeIncomeIcon = new ToolsCell();
-		
+		upgradeIncomeIcon.setIcon(new Image("/buttons/upgrade_income.png"));
 		upgradeIncomeIcon.setDes("Upgrade Income", GameManager.getCurrentPlayerIncomeToolTip());
 		ToolsCell upgradeIcon  = new ToolsCell();
+		upgradeIcon.setIcon(new Image("/buttons/upgrade_unit.png"));
 		upgradeIcon.setDes("Upgrade Tower", "Upgrade tower to next level");
 		ToolsCell sellIcon = new ToolsCell();
+		sellIcon.setIcon(new Image("/buttons/remove_unit.png"));
 		sellIcon.setDes("Sell Tower", "Sell tower for money");
 		
 		upgradeIncomeIcon.setOnMouseClicked(e -> {
