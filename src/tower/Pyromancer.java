@@ -17,22 +17,22 @@ public class Pyromancer extends AimableTower{
 	{
 		this.setIsInstance(isInstance);
 		
-		this.setCost(15);
+		this.setCost(20);
 		
 		this.setMaxHealth(15);
 		this.setUpgradeHealth(new int[]{5,10,15});
 		this.setCurrentHealth(this.getMaxHealth());
 		
 		this.setMaxUpgradeLevel(3);
-		this.setUpgradeCost(new int[]{10,20,25});
+		this.setUpgradeCost(new int[]{15,30,50});
 		
 		this.setCooldown(2);
 		//this.setCurrentCooldown(1);
 		
 		this.setTarget(null);
 		
-		this.sethRange(new int[] {7,7,7,9});
-		this.setvRange(new int[] {1,1,1,2});
+		this.sethRange(new int[] {7,7,9,9});
+		this.setvRange(new int[] {1,1,2,2});
 		
 		this.setLoc(loc);
 		
@@ -50,7 +50,7 @@ public class Pyromancer extends AimableTower{
 		this.setTowerDescription(new String[] {
 				"Attacks a selected tile. Takes a turn to recharge.",
 				"Attacks a selected tile. Takes a turn to recharge.",
-				"Creates an explosion at the selected tile, \ndamaging adjacent tiles. Takes a turn to recharge.",
+				"Attacks a selected tile. Takes a turn to recharge.",
 				"Creates an explosion at the selected tile, \ndamaging adjacent tiles. Takes a turn to recharge.",
 		});
 		
@@ -64,15 +64,15 @@ public class Pyromancer extends AimableTower{
 		this.setTowerRange(new String[] {
 				"7 Tiles, Reaches adjacent lanes",
 				"7 Tiles, Reaches adjacent lanes",
-				"7 Tiles, Reaches adjacent lanes",
+				"9 Tiles, Reaches 2 lanes above and below.",
 				"9 Tiles, Reaches 2 lanes above and below.",
 		});	
 		
 		this.setTowerUpgradeDescription(new String[] {
 				"Tower which can attack any targeted tower within its range, \ndealing 4 damage. Takes a turn to recharge.",
 				"Increases attack damage by 3.",
-				"Attacks damages adjacent tiles.",
-				"Significantly increases tower's reach."
+				"Significantly increases tower's reach.",
+				"Attacks damages adjacent tiles."
 		});
 		
 		this.initialize();
@@ -90,7 +90,7 @@ public class Pyromancer extends AimableTower{
 			GenericAttack.tileDamage(this.getTarget(), 7, this.getOwner());
 			break;
 		case 2:
-			GenericAttack.targetSquareExplosion(this.getTarget(), 7, this.getOwner(),1);
+			GenericAttack.tileDamage(this.getTarget(), 7, this.getOwner());
 			break;
 		case 3:
 			GenericAttack.targetSquareExplosion(this.getTarget(), 7, this.getOwner(),1);

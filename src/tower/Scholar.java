@@ -60,6 +60,8 @@ public class Scholar extends BaseTower implements Passive{
 	}
 
 	public void doPassive() throws InvalidPlayerException {
+		if(this.isFrozen())
+			return;
 		switch(this.getUpgradeLevel()) {
 		case 0:
 			GameManager.getGameInstance().getPlayer(this.getOwner()).gainMoney(6);

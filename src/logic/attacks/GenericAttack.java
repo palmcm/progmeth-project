@@ -3,6 +3,7 @@ package logic.attacks;
 import exception.InvalidPlayerException;
 import logic.gmanager.GameInstance;
 import logic.gmanager.GameManager;
+import logic.gmanager.Tile;
 import logic.misc.Coordinate;
 
 public class GenericAttack {
@@ -168,4 +169,15 @@ public class GenericAttack {
 		
 		
 	}
+	
+	public static void freeze(Coordinate target,int duration, int player)
+	{
+		Tile targetTile = GameManager.getGameInstance().getBoard().getTile(target);
+		if(targetTile.getTower() == null)
+			return;
+		else if(targetTile.getTower().getOwner() == player)
+			return;
+		else targetTile.getTower().freeze(duration);
+	}
+	
 }

@@ -184,13 +184,15 @@ public class GameManager {
 	}
 
 	private static void queueAttack(Coordinate loc, int player) {
-		Tile selectedTile = GameManager.getGameInstance().getBoard().getTile(loc);
+		//Tile selectedTile = GameManager.getGameInstance().getBoard().getTile(loc);
 		GameManager.getGameInstance().getBoard().getTile(loc).setMarkAttacked(true);
 		GameManager.getGameInstance().addAttackOrder(new AttackAction(loc));
+		updateAttackSeqTile();
 	}
 
 	private static void unqueueAttack(Coordinate loc, int player) {
 		GameManager.getGameInstance().removeAttackOrder(new AttackAction(loc));
+		updateAttackSeqTile();
 	}
 
 	private static void selectAimable(Coordinate loc, int player) {
@@ -305,6 +307,8 @@ public class GameManager {
 					} else if (b instanceof AttackableTower) {
 						((AttackableTower) b).doCooldown();
 					}
+					b.defrost();
+					b.applyFreeze();
 				}
 			}
 		}

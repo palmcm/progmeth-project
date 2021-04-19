@@ -37,6 +37,9 @@ public abstract class BaseTower {
 	private String[] towerUpgradeDescription;
 	
 	private String currentName;
+
+	private int frozen;
+	private int frozenDuration;
 	
 	// Image Url
 	
@@ -279,6 +282,33 @@ public abstract class BaseTower {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+	public void freeze(int duration)
+	{
+		this.frozen = duration;
+	}
+	
+	public void defrost()
+	{
+		if(this.frozen > 0)
+		{
+			this.frozen -= 1;
+		}
+	}
+	
+	public void applyFreeze()
+	{
+		if(this.frozen > this.frozenDuration)
+		{
+			this.frozenDuration = this.frozen;
+		}
+		this.frozen = 0;
+	}
+	
+	public boolean isFrozen()
+	{
+		return this.frozenDuration <= 0;
 	}
 	
 	
