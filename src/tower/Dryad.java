@@ -20,7 +20,7 @@ public class Dryad extends AimableTower{
 		this.setCost(20);
 		
 		this.setMaxHealth(10);
-		this.setUpgradeHealth(new int[]{5,5,10});
+		this.setUpgradeHealth(new int[]{2,4,4});
 		this.setCurrentHealth(this.getMaxHealth());
 		
 		this.setMaxUpgradeLevel(3);
