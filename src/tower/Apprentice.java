@@ -62,6 +62,13 @@ public class Apprentice extends AttackableTower{
 				"8"
 		});	
 		
+		this.setTowerRangeInt(new int[] {
+				6,
+				8,
+				8,
+				8
+		});	
+		
 		this.setTowerUpgradeDescription(new String[] {
 				"Casts a simple magical bolt.",
 				"Increases projectile range by 2 tiles",

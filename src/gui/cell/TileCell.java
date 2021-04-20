@@ -1,5 +1,6 @@
 package gui.cell;
 
+
 import config.GameConfig;
 import gui.SceneController;
 import javafx.scene.control.Tooltip;
@@ -11,6 +12,7 @@ import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.gmanager.Tile;
@@ -24,13 +26,18 @@ public class TileCell extends StackPane{
 	private ImageView towerImg;
 	private int SIZE = GameConfig.SCREEN_WIDTH / 18;;
 	private Text attackSeq;
+	private Rectangle highlightBackground;
+	
 	public TileCell(Tile tile) {
 		this.tile = tile;
 		towerImg = new ImageView();
 		towerImg.setFitWidth(SIZE);
 		towerImg.setFitHeight(SIZE);
+		highlightBackground = new Rectangle(SIZE,SIZE);
+		highlightBackground.setFill(Color.WHITE);
+		
 		attackSeq = new Text(tile.getTileOwner()+"");
-		this.getChildren().addAll(towerImg,attackSeq);
+		this.getChildren().addAll(highlightBackground,towerImg,attackSeq);
 		this.setPrefSize(SIZE, SIZE);
 		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
@@ -107,5 +114,16 @@ public class TileCell extends StackPane{
 			return "This unit can cast a targeted spell!\nSelect the unit then select a tile to queue the spell.";
 		}
 		return "This unit can cast a spell! Click to queue the spell.";
+	}
+	
+	public void doHighlight()
+	{
+		this.highlightBackground.setFill(Color.GREEN);
+		
+	}
+	
+	public void unHighlight()
+	{
+		this.highlightBackground.setFill(Color.WHITE);
 	}
 }

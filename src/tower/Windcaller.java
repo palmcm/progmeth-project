@@ -62,6 +62,13 @@ public class Windcaller extends AttackableTower{
 				"8"
 		});	
 		
+		this.setTowerRangeInt(new int[] {
+				5,
+				6,
+				8,
+				8
+		});	
+		
 		this.setTowerUpgradeDescription(new String[] {
 				"Summons many wind currents which deals damage multiple times.",
 				"Summons an extra wind current and slightly increases reach.",

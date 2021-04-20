@@ -1,6 +1,8 @@
 package gui.pane;
 
 import exception.SelectInvalidTileException;
+import java.util.ArrayList;
+
 import gui.SceneController;
 import gui.cell.TileCell;
 import javafx.scene.control.Tooltip;
@@ -13,6 +15,7 @@ import logic.gmanager.GameButtons;
 import logic.gmanager.GameManager;
 import logic.gmanager.Tile;
 import logic.misc.Coordinate;
+import logic.towers.AttackableTower;
 
 public class TilesPane extends GridPane{
 	private int lanes;
@@ -61,6 +64,9 @@ public class TilesPane extends GridPane{
 				tile.setOnMouseExited(e -> {
 					SceneController.getGameScene().getDescriptionPane().setDesDefault();
 					tooltip.hide();
+					
+					this.unhighlightAll();
+					
 				});
 			}
 		}
@@ -84,10 +90,44 @@ public class TilesPane extends GridPane{
 		else if(GameManager.getButtonMode() == ButtonMode.SELECT)
 		{
 			if(tile.getTile().getTower().getOwner() != GameManager.getCurrentPlayer())
-				return;
-			tooltip.setText(tile.getTileAttackStatus());
-			tooltip.show(this, e.getScreenX()+10, e.getScreenY()+10);
+			{
+				
+			}
+			else
+			{
+				tooltip.setText(tile.getTileAttackStatus());
+				tooltip.show(this, e.getScreenX()+10, e.getScreenY()+10);				
+			}
 			
+			this.unhighlightAll();
+			this.highlightCells(  ((AttackableTower) tile.getTile().getTower()).getReachableTiles()  );
+			
+		}
+	}
+	
+	private void unhighlightAll()
+	{
+		int i = this.lanes;
+		int j = this.cols;
+		
+		for(i=0;i<this.lanes;i++)
+		{
+			for(j=0;j<this.cols;j++)
+			{
+				this.getTileCell(new Coordinate(i,j)).unHighlight();
+			}
+		}
+	}
+	
+	private void highlightCells(ArrayList<Coordinate> cells)
+	{
+		for(Coordinate i:cells)
+		{
+			if(GameManager.getGameInstance().getBoard().checkTile(i.getX(), i.getY()))
+			{
+				System.out.println(">> "+i.getX() + " " + i.getY());
+				this.getTileCell(i).doHighlight();
+			}
 		}
 	}
 }

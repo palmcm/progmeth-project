@@ -1,5 +1,7 @@
 package logic.towers;
 
+import java.util.ArrayList;
+
 import logic.misc.Coordinate;
 import utils.CommonStrings;
 
@@ -23,9 +25,33 @@ public abstract class AimableTower extends AttackableTower {
 	{
 		this.setUpgradeLevel(0);
 		this.setCurrentName(this.getTowerName(0));
-		this.setCurrentDamage(this.getTowerDamage(0));
 		this.setCurrentCooldown(1);
 		this.unfroze();
+	}
+	
+	public ArrayList<Coordinate> getReachableTiles()
+	{
+		ArrayList<Coordinate> r = new ArrayList<Coordinate>();
+		int x = this.getLoc().getX();
+		int y = this.getLoc().getY();
+		int dir;
+		if(this.getOwner() == 1)
+		{
+			dir = 1;
+		}
+		else
+		{
+			dir = -1;
+		}
+		for(int i = -this.getCurrentvRange();i<=this.getCurrentvRange();i++)
+		{
+			for(int j = -this.getCurrenthRange(); j<= this.getCurrenthRange();j++)
+			{
+				r.add(new Coordinate(x+i,y+(j*dir)));
+				
+			}
+		}
+		return r;
 	}
 
 	public boolean setTarget(Coordinate target) {

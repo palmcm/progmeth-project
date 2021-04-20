@@ -62,6 +62,13 @@ public class Corruptor extends AttackableTower{
 				"11 (long-ranged), 3 (short-ranged)"
 		});	
 		
+		this.setTowerRangeInt(new int[] {
+				2,
+				3,
+				3,
+				11
+		});	
+		
 		this.setTowerUpgradeDescription(new String[] {
 				"Casts a strong but short ranged burst of energy.",
 				"Extends the range of the burst by 1 tile.\nThe burst will hit all enemies within its range.",

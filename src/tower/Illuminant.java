@@ -62,6 +62,13 @@ public class Illuminant extends AttackableTower{
 				"8"
 		});	
 		
+		this.setTowerRangeInt(new int[] {
+				4,
+				6,
+				6,
+				8
+		});	
+		
 		this.setTowerUpgradeDescription(new String[] {
 				"Casts a beam of light which goes through an enemy,\ndamaging it and another unit behind.",
 				"Beam penetrates an extra enemy and reaches further.",

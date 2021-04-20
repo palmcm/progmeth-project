@@ -1,6 +1,9 @@
 package logic.towers;
 
+import java.util.ArrayList;
+
 import exception.InvalidPlayerException;
+import logic.misc.Coordinate;
 import utils.CommonStrings;
 
 public abstract class AttackableTower extends BaseTower{
@@ -23,13 +26,12 @@ public abstract class AttackableTower extends BaseTower{
 	private String[] towerRange;
 	private String[] towerDamage;
 	private String currentRange;
-	private String currentDamage;
+	private int[] towerRangeInt;
 	
 	protected void initialize()
 	{
 		this.setUpgradeLevel(0);
 		this.setCurrentName(this.getTowerName(0));
-		this.setCurrentDamage(this.getTowerDamage(0));
 		this.setCurrentRange(this.getTowerRange(0));
 		this.setCurrentCooldown(1);
 		this.unfroze();
@@ -41,7 +43,6 @@ public abstract class AttackableTower extends BaseTower{
 	{
 		int level = this.getUpgradeLevel();
 		this.setCurrentName(this.getTowerName(level));
-		this.setCurrentDamage(this.getTowerDamage(level));
 		this.setCurrentRange(this.getTowerRange(level));
 	}
 	
@@ -54,6 +55,29 @@ public abstract class AttackableTower extends BaseTower{
 				CommonStrings.stats_damage+this.getCurrentDamage()+"\n"+
 				CommonStrings.stats_range+this.getCurrentRange();
 	}
+	
+	public ArrayList<Coordinate> getReachableTiles()
+	{
+		ArrayList<Coordinate> r = new ArrayList<Coordinate>();
+		int x = this.getLoc().getX();
+		int y = this.getLoc().getY();
+		int dir;
+		if(this.getOwner() == 1)
+		{
+			dir = 1;
+		}
+		else
+		{
+			dir = -1;
+		}
+		for(int i = 1;i<=this.getCurrentRangeInt();i++)
+		{
+			r.add(new Coordinate(x,y+(i*dir)));
+		}
+		return r;
+	}
+	
+	
 	
 	public String getBuyToolTip()
 	{
@@ -129,9 +153,14 @@ public abstract class AttackableTower extends BaseTower{
 	public String getCurrentDamage() {
 		return this.getTowerDamage(this.getUpgradeLevel());
 	}
-	
-	public void setCurrentDamage(String currentDamage) {
-		this.currentDamage = currentDamage;
-	
+	private int getCurrentRangeInt()
+	{
+		return this.towerRangeInt[this.getUpgradeLevel()];
 	}
+
+	public void setTowerRangeInt(int[] towerRangeInt) {
+		this.towerRangeInt = towerRangeInt;
+	}
+	
+	
 }

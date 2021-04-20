@@ -62,6 +62,13 @@ public class ShockWeaver extends AttackableTower{
 				"11"
 		});	
 		
+		this.setTowerRangeInt(new int[] {
+				7,
+				7,
+				11,
+				11
+		});	
+		
 		this.setTowerUpgradeDescription(new String[] {
 				"Unleashes a powerful electric shock.\nTakes 4 turns to recharge.",
 				"Increases damage by 20.",
