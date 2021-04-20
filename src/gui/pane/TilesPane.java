@@ -81,25 +81,38 @@ public class TilesPane extends GridPane{
 	
 	private void onMouseEnter(TileCell tile, MouseEvent e)
 	{
+		this.unhighlightAll();
+		
 		if(GameManager.getButtonMode() == ButtonMode.AIM)
 		{
-			this.unhighlightAll();
 			AimableTower aiming = (AimableTower) GameManager.getSelectedTileTower();
+			this.highlightCells(aiming.getReachableTiles());
 			this.highlightTargetCells(aiming.getAimingTarget(tile.getTile().getLoc()));
 			
 		}
 		
-		if(tile.getTile().getTower() == null)
+		if(tile.getTile().getTower() == null && GameManager.getButtonMode() == ButtonMode.SELECT)
 		{
-			if(GameManager.getButtonMode() == ButtonMode.SELECT)
-			{
-				
-				this.unhighlightAll();
-				
-			}
 			return;
 		}
 
+		if(GameManager.getButtonMode() == ButtonMode.BUILD)
+		{
+			//System.out.println("HI");
+			if(GameManager.getSelectedTower() != null)
+			{
+				if(GameManager.getSelectedTower() instanceof AttackableTower && tile.getTile().canPlace(GameManager.getCurrentPlayer()))
+				{
+					AttackableTower cTower = (AttackableTower) GameManager.getSelectedTower();
+					cTower = (AttackableTower) cTower.getNewInstance(tile.getTile().getLoc());
+					cTower.setOwner(GameManager.getCurrentPlayer());
+					this.highlightCells(cTower.getReachableTiles());
+				}
+			}
+		}
+		
+		if(tile.getTile().getTower() == null) return;
+		
 		if(GameManager.getButtonMode() == ButtonMode.UPGRADE)
 		{
 			tooltip.setText(tile.getTileUpgradeTooltip());;
@@ -118,7 +131,6 @@ public class TilesPane extends GridPane{
 				tooltip.show(this, e.getScreenX()+10, e.getScreenY()+10);				
 			}
 			
-			this.unhighlightAll();
 			if((tile.getTile().getTower() instanceof AttackableTower))
 			{
 				this.highlightCells(  ((AttackableTower) tile.getTile().getTower()).getReachableTiles()  );
