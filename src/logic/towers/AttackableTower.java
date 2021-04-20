@@ -127,7 +127,7 @@ public abstract class AttackableTower extends BaseTower{
 	}
 	
 	public String getCurrentDamage() {
-		return currentDamage;
+		return this.getTowerDamage(this.getUpgradeLevel());
 	}
 	
 	public void setCurrentDamage(String currentDamage) {

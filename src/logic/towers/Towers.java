@@ -5,6 +5,7 @@ import tower.Scholar;
 import tower.ShockWeaver;
 import tower.TerraRaiser;
 import tower.Apprentice;
+import tower.Corruptor;
 import tower.Cryomaster;
 import tower.Dryad;
 import tower.Illuminant;
@@ -20,6 +21,7 @@ public class Towers {
 			new Dryad(null,false),
 			new Illuminant(null,false),
 			new Scholar(null,false),
+			new Corruptor(null,false),
 			new ShockWeaver(null,false)
 	};
 	

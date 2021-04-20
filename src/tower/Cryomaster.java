@@ -62,7 +62,7 @@ public class Cryomaster extends AimableTower{
 		});
 		
 		this.setTowerUpgradeDescription(new String[] {
-				"Can freeze a target, dealing light damage and disabling\n it in the next turn. Takes 2 turns to recharge.",
+				"Can freeze a targeted unit, dealing light damage and\ndisabling it in the next turn. Takes 2 turns to recharge.",
 				"Can reach 1 more lane above and below.",
 				"Increases damage by 9.",
 				"Recharges 1 turn faster."
