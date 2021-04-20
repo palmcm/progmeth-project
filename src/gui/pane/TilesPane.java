@@ -67,11 +67,21 @@ public class TilesPane extends GridPane{
 	
 	private void onMouseEnter(TileCell tile, MouseEvent e)
 	{
+		if(tile.getTile().getTower() == null)
+			return;
 
-		if(GameManager.getButtonMode() == ButtonMode.UPGRADE && tile.getTile().getTower() != null)
+		if(GameManager.getButtonMode() == ButtonMode.UPGRADE)
 		{
-			tile.showUpgradeToolTip();
-			tooltip.show(this, e.getScreenX()+5, e.getScreenY()+5);						
+			tooltip.setText(tile.getTileUpgradeTooltip());;
+			tooltip.show(this, e.getScreenX()+10, e.getScreenY()+10);						
+		}
+		else if(GameManager.getButtonMode() == ButtonMode.SELECT)
+		{
+			if(tile.getTile().getTower().getOwner() != GameManager.getCurrentPlayer())
+				return;
+			tooltip.setText(tile.getTileAttackStatus());
+			tooltip.show(this, e.getScreenX()+10, e.getScreenY()+10);
+			
 		}
 	}
 }

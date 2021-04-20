@@ -14,6 +14,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.gmanager.Tile;
+import logic.towers.AimableTower;
+import logic.towers.AttackableTower;
 import logic.towers.BaseTower;
 import utils.ImageUtil;
 
@@ -75,8 +77,35 @@ public class TileCell extends StackPane{
 		return this.getTile().getTower().getInstanceToolTipString();
 	}
 	
-	public void showUpgradeToolTip()
+	public String getTileUpgradeTooltip()
 	{
-		SceneController.getGameScene().getTilesPane().getTooltip().setText(this.getTile().getTower().getNextUpgradeInfo());
+		return this.getTile().getTower().getNextUpgradeInfo();
+	}
+	
+	public String getTileAttackStatus()
+	{
+		BaseTower tower = this.getTile().getTower();
+		if(!(tower instanceof AttackableTower))
+		{
+			return "This unit cannot cast a spell!";
+		}
+		if(tower.isFrozen())
+		{
+			return "This unit is currently frozen!";
+		}
+		if(this.getTile().isMarkAttacked())
+		{
+			return "This unit already has a spell queued!";
+		}
+		AttackableTower aTower = (AttackableTower) tower;
+		if(aTower.getCurrentCooldown()>0)
+		{
+			return "This unit still needs "+aTower.getCurrentCooldown()+" turns to recharge.";
+		}
+		if(aTower instanceof AimableTower)
+		{
+			return "This unit can cast a targeted spell!\nSelect the unit then select a tile to queue the spell.";
+		}
+		return "This unit can cast a spell! Click to queue the spell.";
 	}
 }

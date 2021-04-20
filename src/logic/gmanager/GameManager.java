@@ -147,24 +147,25 @@ public class GameManager {
 
 	private static boolean selectAttackingTile(Coordinate loc, int player) {
 		Tile selectedTile = GameManager.getGameInstance().getBoard().getTile(loc);
-
-		if (selectedTile.getTower() instanceof AimableTower) {
-			GameManager.selectAimable(loc, player);
-			return true;
-		}
 		if (selectedTile.getTower() == null)
 			return false;
 		if (selectedTile.getTower().getOwner() != player)
 			return false;
-		if (!((AttackableTower) selectedTile.getTower()).canAttack())
-			return false;
 		if(!(selectedTile.getTower() instanceof AttackableTower))
+			return false;
+		//System.out.println("Can attack: "+((AttackableTower) selectedTile.getTower()).canAttack()+" Cooldown: "+((AttackableTower) selectedTile.getTower()).getCurrentCooldown());
+		if (!((AttackableTower) selectedTile.getTower()).canAttack())
 			return false;
 		if (selectedTile.isMarkAttacked())
 		{
 			unqueueAttack(loc, player);
 			return false;
 			
+		}
+
+		if (selectedTile.getTower() instanceof AimableTower) {
+			GameManager.selectAimable(loc, player);
+			return true;
 		}
 		
 		else
@@ -306,6 +307,10 @@ public class GameManager {
 						}
 					} else if (b instanceof AttackableTower) {
 						((AttackableTower) b).doCooldown();
+					}
+					else if(b instanceof AimableTower)
+					{
+						((AimableTower) b).doCooldown();
 					}
 					b.defrost();
 					b.applyFreeze();
