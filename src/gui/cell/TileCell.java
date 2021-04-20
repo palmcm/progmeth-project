@@ -42,6 +42,10 @@ public class TileCell extends StackPane{
 		BaseTower tower = tile.getTower();
 		if (tower != null) {
 			towerImg.setImage(ImageUtil.ImageLoader(tower.getUrl(),SIZE));
+			if(tower.getOwner() == 2)
+			{
+				towerImg.setScaleX(-1);
+			}
 		} else {
 			towerImg.setImage(null);
 		}
