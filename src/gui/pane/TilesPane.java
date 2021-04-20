@@ -73,7 +73,7 @@ public class TilesPane extends GridPane{
 	}
 	
 	public TileCell getTileCell(Coordinate loc) {
-		System.out.println(loc.getX() + " " + loc.getY());
+		//System.out.println(loc.getX() + " " + loc.getY());
 		return tilesCell[loc.getX()][loc.getY()];
 	}
 	
@@ -125,7 +125,7 @@ public class TilesPane extends GridPane{
 		{
 			if(GameManager.getGameInstance().getBoard().checkTile(i.getX(), i.getY()))
 			{
-				System.out.println(">> "+i.getX() + " " + i.getY());
+				//System.out.println(">> "+i.getX() + " " + i.getY());
 				this.getTileCell(i).doHighlight();
 			}
 		}
