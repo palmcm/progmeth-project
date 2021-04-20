@@ -1,5 +1,6 @@
 package gui.pane;
 
+import exception.SelectInvalidTileException;
 import gui.SceneController;
 import gui.cell.TileCell;
 import javafx.scene.control.Tooltip;
@@ -38,11 +39,16 @@ public class TilesPane extends GridPane{
 				tilesCell[i][j] = tile;
 				this.add(tile, j, i);
 				tile.setOnMouseClicked(e -> {
-					if (GameButtons.selectTile(tile.getTile().getLoc())) {
-						tile.update();
-						tile.showDes();
-						onMouseEnter(tile,e);
-					}
+					
+						try {
+							GameButtons.selectTile(tile.getTile().getLoc());
+							tile.update();
+							tile.showDes();
+							onMouseEnter(tile,e);
+						} catch (SelectInvalidTileException error) {
+//							System.out.println(error.getMessage());
+						}
+
 				});
 
 				tile.setOnMouseEntered(e -> {

@@ -1,5 +1,6 @@
 package logic.gmanager;
 
+import exception.SelectInvalidTileException;
 import logic.misc.Coordinate;
 import logic.towers.BaseTower;
 
@@ -7,18 +8,18 @@ public class GameButtons {
 
 	// --------------------- BOARD INTERACTION ------------------------
 
-	public static boolean selectTile(Coordinate loc) {
+	public static void selectTile(Coordinate loc) throws SelectInvalidTileException {
 
 		//System.out.println(loc.getX()+","+loc.getY());
 		
 		int player = GameManager.getCurrentPlayer();
 		if (GameManager.getTurnPhase() == TurnPhase.ATTACK) {
-			return GameManager.selectAttackPhaseTile(loc, player);
+			GameManager.selectAttackPhaseTile(loc, player);
 		} else if (GameManager.getTurnPhase() == TurnPhase.BUILD) {
-			return GameManager.selectBuildPhaseTile(loc, player);
+			GameManager.selectBuildPhaseTile(loc, player);
+		} else {
+			throw new SelectInvalidTileException("Can't select tile in this phase");
 		}
-
-		return false;
 	}
 
 	// --------------------- NEXT PHASE BUTTON -----------------------

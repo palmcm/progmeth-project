@@ -3,6 +3,7 @@ package logic.gmanager;
 import java.util.ArrayList;
 
 import exception.InvalidPlayerException;
+import exception.SelectInvalidTileException;
 import gui.SceneController;
 import logic.actions.AttackAction;
 import logic.actions.AttackPhaseAction;
@@ -124,7 +125,7 @@ public class GameManager {
 		SceneController.getGameScene().updateHp();
 	}
 
-	public static boolean selectAttackPhaseTile(Coordinate loc, int player) {
+	public static void selectAttackPhaseTile(Coordinate loc, int player) throws SelectInvalidTileException {
 		//System.out.println(loc.getX()+","+loc.getY());
 		if (GameManager.getButtonMode() == ButtonMode.AIM) {
 			System.out.println(loc.getX()+" "+loc.getY());
@@ -132,40 +133,38 @@ public class GameManager {
 				GameManager.buttonMode = ButtonMode.SELECT;
 				GameManager.queueAttack(GameManager.selectedTile, player);
 				updateAttackSeqTile();
-				return true;
+				return;
 			} else {
 				GameManager.buttonMode = ButtonMode.SELECT;
-				return false;
+				throw new SelectInvalidTileException("Aim out of range");
 
 			}
 		} else if (GameManager.getButtonMode() == ButtonMode.SELECT) {
-			return GameManager.selectAttackingTile(loc, player);
+			GameManager.selectAttackingTile(loc, player);
 		} else
-			return false;
+			throw new SelectInvalidTileException("Wrong button mode");
 
 	}
 
-	private static boolean selectAttackingTile(Coordinate loc, int player) {
+	private static void selectAttackingTile(Coordinate loc, int player) throws SelectInvalidTileException {
 		Tile selectedTile = GameManager.getGameInstance().getBoard().getTile(loc);
 		if (selectedTile.getTower() == null)
-			return false;
+			throw new SelectInvalidTileException("No tower in this tile");
 		if (selectedTile.getTower().getOwner() != player)
-			return false;
+			throw new SelectInvalidTileException("Wrong owner");
 		if(!(selectedTile.getTower() instanceof AttackableTower))
-			return false;
+			throw new SelectInvalidTileException("This unit can't attack");
 		//System.out.println("Can attack: "+((AttackableTower) selectedTile.getTower()).canAttack()+" Cooldown: "+((AttackableTower) selectedTile.getTower()).getCurrentCooldown());
 		if (!((AttackableTower) selectedTile.getTower()).canAttack())
-			return false;
+			throw new SelectInvalidTileException("This unit can't attack");
 		if (selectedTile.isMarkAttacked())
 		{
 			unqueueAttack(loc, player);
-			return false;
 			
 		}
 
 		if (selectedTile.getTower() instanceof AimableTower) {
 			GameManager.selectAimable(loc, player);
-			return true;
 		}
 		
 		else
@@ -173,7 +172,6 @@ public class GameManager {
 			queueAttack(loc, player);
 		}
 		updateAttackSeqTile();
-		return true;
 	}
 	
 	private static void updateAttackSeqTile() {
@@ -212,69 +210,70 @@ public class GameManager {
 	// ---------------------- TURN PROCESSOR : BUILDING AND UPGRADING
 	// -----------------------------------
 
-	public static boolean selectBuildPhaseTile(Coordinate loc, int player) {
+	public static void selectBuildPhaseTile(Coordinate loc, int player) throws SelectInvalidTileException {
 		if (GameManager.buttonMode == ButtonMode.BUILD) {
-			return GameManager.buildTower(GameManager.selectedTower, loc, player);
+			GameManager.buildTower(GameManager.selectedTower, loc, player);
+			return;
 		} else if (GameManager.buttonMode == ButtonMode.UPGRADE) {
-			return GameManager.upgradeTower(loc, player);
+			GameManager.upgradeTower(loc, player);
 		} else if (GameManager.buttonMode == ButtonMode.DESTROY) {
-			return GameManager.removeTower(loc, player);
+			GameManager.removeTower(loc, player);
 		} else
-			return false;
+			throw new SelectInvalidTileException("Invalid buttonmode");
 	}
 
-	private static boolean buildTower(BaseTower tower, Coordinate loc, int player) {
+	private static void buildTower(BaseTower tower, Coordinate loc, int player) throws SelectInvalidTileException {
 		int cost = tower.getCost();
 		Player currentPlayer = GameManager.getGameInstance().getPlayer(player);
 		if (currentPlayer.getMoney() < tower.getCost()) {
-			return false;
+			throw new SelectInvalidTileException("Not enough money");
 		}
 		if(GameManager.getGameInstance().getBoard().getTile(loc).getTileOwner() != currentPlayer.getPlayerId())
 		{
-			return false;
+			throw new SelectInvalidTileException("Wrong owner");
 		}
 		if (GameManager.getGameInstance().getBoard().getTile(loc).getTower() != null) {
-			return false;
+			throw new SelectInvalidTileException("Already have tower on this tile");
 		} else {
 			currentPlayer.spendMoney(cost);
 			BaseTower newTower = tower.getNewInstance(loc);
 			newTower.setOwner(player);
 			GameManager.getGameInstance().getBoard().getTile(loc).setTower(newTower);
-			return true;
-
 		}
 	}
 
-	public static boolean upgradeTower(Coordinate loc, int player) {
+	public static void upgradeTower(Coordinate loc, int player) throws SelectInvalidTileException {
 		BaseTower selectedTower = GameManager.getGameInstance().getBoard().getTile(loc).getTower();
 		Player currentPlayer = GameManager.getGameInstance().getPlayer(player);
 		if (selectedTower == null) {
-			return false;
+			throw new SelectInvalidTileException("No tower to upgrade");
 		}
 		if (selectedTower.getOwner() != player) {
-			return false;
+			throw new SelectInvalidTileException("Wrong owner");
 		}
 		if (selectedTower.getUpgradeLevel() >= selectedTower.getMaxUpgradeLevel()) {
-			return false;
+			throw new SelectInvalidTileException("Max upgrade");
 
 		}
 		int cost = selectedTower.getCurrentUpgradeCost();
 		if (cost <= currentPlayer.getMoney()) {
 			currentPlayer.spendMoney(cost);
 			selectedTower.upgrade();
-			return true;
+			return;
 		}
-		return false;
+		throw new SelectInvalidTileException("Not enough money to upgrade");
 
 	}
 
-	public static boolean removeTower(Coordinate loc, int player) {
+	public static void removeTower(Coordinate loc, int player) throws SelectInvalidTileException {
 		BaseTower selectedTower = GameManager.getGameInstance().getBoard().getTile(loc).getTower();
+		if (selectedTower == null) {
+			throw new SelectInvalidTileException("No tower to delete");
+		}
 		if (selectedTower.getOwner() != player) {
-			return false;
+			throw new SelectInvalidTileException("Wrong owner to remove");
 		} else {
 			GameManager.getGameInstance().getBoard().getTile(loc).setTower(null);
-			return true;
 		}
 	}
 
