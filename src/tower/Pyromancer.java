@@ -24,7 +24,7 @@ public class Pyromancer extends AimableTower{
 		this.setCurrentHealth(this.getMaxHealth());
 		
 		this.setMaxUpgradeLevel(3);
-		this.setUpgradeCost(new int[]{15,30,50});
+		this.setUpgradeCost(new int[]{15,25,50});
 		
 		this.setCooldown(2);
 		//this.setCurrentCooldown(1);
