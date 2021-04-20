@@ -33,6 +33,9 @@ public class Pyromancer extends AimableTower{
 		
 		this.sethRange(new int[] {7,7,9,9});
 		this.setvRange(new int[] {1,1,2,2});
+
+		this.sethRadius(new int[]{0,0,0,1});
+		this.setvRadius(new int[]{0,0,0,1});
 		
 		this.setLoc(loc);
 		

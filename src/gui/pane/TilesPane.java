@@ -15,7 +15,9 @@ import logic.gmanager.GameButtons;
 import logic.gmanager.GameManager;
 import logic.gmanager.Tile;
 import logic.misc.Coordinate;
+import logic.towers.AimableTower;
 import logic.towers.AttackableTower;
+import logic.towers.BaseTower;
 
 public class TilesPane extends GridPane{
 	private int lanes;
@@ -65,7 +67,7 @@ public class TilesPane extends GridPane{
 					SceneController.getGameScene().getDescriptionPane().setDesDefault();
 					tooltip.hide();
 					
-					this.unhighlightAll();
+					//this.unhighlightAll();
 					
 				});
 			}
@@ -79,8 +81,24 @@ public class TilesPane extends GridPane{
 	
 	private void onMouseEnter(TileCell tile, MouseEvent e)
 	{
+		if(GameManager.getButtonMode() == ButtonMode.AIM)
+		{
+			this.unhighlightAll();
+			AimableTower aiming = (AimableTower) GameManager.getSelectedTileTower();
+			this.highlightTargetCells(aiming.getAimingTarget(tile.getTile().getLoc()));
+			
+		}
+		
 		if(tile.getTile().getTower() == null)
+		{
+			if(GameManager.getButtonMode() == ButtonMode.SELECT)
+			{
+				
+				this.unhighlightAll();
+				
+			}
 			return;
+		}
 
 		if(GameManager.getButtonMode() == ButtonMode.UPGRADE)
 		{
@@ -89,6 +107,7 @@ public class TilesPane extends GridPane{
 		}
 		else if(GameManager.getButtonMode() == ButtonMode.SELECT)
 		{
+			
 			if(tile.getTile().getTower().getOwner() != GameManager.getCurrentPlayer())
 			{
 				
@@ -100,7 +119,11 @@ public class TilesPane extends GridPane{
 			}
 			
 			this.unhighlightAll();
-			this.highlightCells(  ((AttackableTower) tile.getTile().getTower()).getReachableTiles()  );
+			if((tile.getTile().getTower() instanceof AttackableTower))
+			{
+				this.highlightCells(  ((AttackableTower) tile.getTile().getTower()).getReachableTiles()  );
+			}
+			
 			
 		}
 	}
@@ -127,6 +150,18 @@ public class TilesPane extends GridPane{
 			{
 				//System.out.println(">> "+i.getX() + " " + i.getY());
 				this.getTileCell(i).doHighlight();
+			}
+		}
+	}
+	
+	private void highlightTargetCells(ArrayList<Coordinate> cells)
+	{
+		for(Coordinate i:cells)
+		{
+			if(GameManager.getGameInstance().getBoard().checkTile(i.getX(), i.getY()))
+			{
+				//System.out.println(">> "+i.getX() + " " + i.getY());
+				this.getTileCell(i).doTargetHighlight();
 			}
 		}
 	}

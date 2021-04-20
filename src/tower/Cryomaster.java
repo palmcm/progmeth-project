@@ -15,6 +15,7 @@ public class Cryomaster extends AimableTower{
 	
 	public Cryomaster(Coordinate loc,boolean isInstance)
 	{
+		super();
 		this.setIsInstance(isInstance);
 		
 		this.setCost(15);

@@ -163,7 +163,7 @@ public class GameManager {
 			
 		}
 
-		if (selectedTile.getTower() instanceof AimableTower) {
+		else if (selectedTile.getTower() instanceof AimableTower) {
 			GameManager.selectAimable(loc, player);
 		}
 		
@@ -197,12 +197,12 @@ public class GameManager {
 	private static void selectAimable(Coordinate loc, int player) {
 		GameManager.buttonMode = ButtonMode.AIM;
 		GameManager.selectedTile = loc;
-		System.out.println("Aiming a tower");
+		//System.out.println("Aiming a tower");
 	}
 
 	private static boolean targetAimable(Coordinate loc, int player) {
 
-		System.out.println("Targeting a tower");
+		//System.out.println("Targeting a tower");
 		return ((AimableTower) GameManager.getGameInstance().getBoard().getTile(GameManager.selectedTile).getTower())
 				.setTarget(loc);
 	}
@@ -372,6 +372,10 @@ public class GameManager {
 
 	public static String getCurrentTurnString() {
 		return currentTurnString;
+	}
+
+	public static BaseTower getSelectedTileTower() {
+		return GameManager.getGameInstance().getBoard().getTile(GameManager.selectedTile).getTower();
 	}
 	
 	

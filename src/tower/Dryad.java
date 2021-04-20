@@ -15,6 +15,7 @@ public class Dryad extends AimableTower{
 	
 	public Dryad(Coordinate loc,boolean isInstance)
 	{
+		super();
 		this.setIsInstance(isInstance);
 		
 		this.setCost(20);

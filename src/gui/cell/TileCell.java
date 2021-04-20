@@ -126,4 +126,10 @@ public class TileCell extends StackPane{
 	{
 		this.highlightBackground.setFill(Color.WHITE);
 	}
+	
+	public void doTargetHighlight()
+	{
+		this.highlightBackground.setFill(Color.YELLOW);
+		
+	}
 }

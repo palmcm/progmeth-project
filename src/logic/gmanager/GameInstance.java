@@ -52,7 +52,7 @@ public class GameInstance {
 	
 	public void clearAttackOrder()
 	{
-		System.out.println("Clearing previous attack orders...");
+		//System.out.println("Clearing previous attack orders...");
 		this.attackOrder.clear();
 		int i,j;
 		for(i=0;i<this.getBoard().getLanes();i++)

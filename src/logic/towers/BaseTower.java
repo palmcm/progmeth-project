@@ -292,9 +292,9 @@ public abstract class BaseTower {
 	
 	public void defrost()
 	{
-		if(this.frozen > 0)
+		if(this.frozenDuration > 0)
 		{
-			this.frozen -= 1;
+			this.frozenDuration -= 1;
 		}
 	}
 	

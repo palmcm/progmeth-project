@@ -9,9 +9,16 @@ public abstract class AimableTower extends AttackableTower {
 	
 	private Coordinate target;
 	private int hRange[],vRange[];
+	private int hRadius[],vRadius[];
 
 	public Coordinate getTarget() {
 		return target;
+	}
+	
+	public AimableTower()
+	{
+		this.sethRadius(new int[]{0,0,0,0});
+		this.setvRadius(new int[]{0,0,0,0});
 	}
 
 	
@@ -53,8 +60,41 @@ public abstract class AimableTower extends AttackableTower {
 		}
 		return r;
 	}
+	
+	public ArrayList<Coordinate> getAimingTarget(Coordinate target)
+	{
+		ArrayList<Coordinate> r = new ArrayList<Coordinate>();
+		if(!this.canTarget(target))
+		{
+			return r;
+		}
+		
+		int x = target.getX();
+		int y = target.getY();
+		
+		for(int i = -this.getCurrentvRadius();i<=this.getCurrentvRadius();i++)
+		{
+			for(int j = -this.getCurrenthRadius(); j<= this.getCurrenthRadius();j++)
+			{
+				r.add(new Coordinate(x+i,y+j));
+				
+			}
+		}
+		return r;
+	}
 
 	public boolean setTarget(Coordinate target) {
+		
+		if(this.canTarget(target))
+		{
+			this.target = target;
+			return true;
+		}
+		return false;
+	}
+	
+	private boolean canTarget(Coordinate target)
+	{
 		if(target == null)
 			return false;
 		
@@ -64,12 +104,12 @@ public abstract class AimableTower extends AttackableTower {
 		int hdiff = Math.abs(target.getY()-currentLoc.getY());
 		
 		if(vdiff <= this.getvRange(this.getUpgradeLevel()) && hdiff <= this.gethRange(this.getUpgradeLevel()))
-		{			
-			this.target = target;
+		{
 			return true;
 			
 		}
 		return false;
+		
 	}
 	
 	public String getInstanceToolTipString()
@@ -122,6 +162,28 @@ public abstract class AimableTower extends AttackableTower {
 	{
 		return this.getvRange(this.getUpgradeLevel());
 	}
+	
+	public int getCurrenthRadius()
+	{
+		return this.hRadius[this.getUpgradeLevel()];
+	}
+	
+	public int getCurrentvRadius()
+	{
+		return this.vRadius[this.getUpgradeLevel()];
+	}
+
+
+	public void sethRadius(int[] hRadius) {
+		this.hRadius = hRadius;
+	}
+
+
+	public void setvRadius(int[] vRadius) {
+		this.vRadius = vRadius;
+	}
+	
+	
 	
 
 }
