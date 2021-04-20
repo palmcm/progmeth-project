@@ -4,6 +4,7 @@ import tower.Pyromancer;
 import tower.Scholar;
 import tower.ShockWeaver;
 import tower.TerraRaiser;
+import tower.Windcaller;
 import tower.Apprentice;
 import tower.Corruptor;
 import tower.Cryomaster;
@@ -16,6 +17,7 @@ public class Towers {
 	private static BaseTower TowerList[] = {
 			new Apprentice(null,false),
 			new TerraRaiser(null,false),
+			new Windcaller(null,false),
 			new Cryomaster(null,false),
 			new Pyromancer(null,false),
 			new Dryad(null,false),
