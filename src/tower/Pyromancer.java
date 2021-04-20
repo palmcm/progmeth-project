@@ -62,7 +62,7 @@ public class Pyromancer extends AimableTower{
 		});
 		
 		this.setTowerUpgradeDescription(new String[] {
-				"Can attack any targeted tower within his range.\nTakes a turn to recharge.",
+				"Can attack any targeted unit within his range.\nTakes a turn to recharge.",
 				"Increases attack damage by 3.",
 				"Significantly increases tower's reach.",
 				"Attacks damages adjacent tiles."
