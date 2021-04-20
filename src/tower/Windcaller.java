@@ -19,8 +19,8 @@ public class Windcaller extends AttackableTower{
 		
 		this.setCost(15);
 		
-		this.setMaxHealth(15);
-		this.setUpgradeHealth(new int[]{3,5,7});
+		this.setMaxHealth(7);
+		this.setUpgradeHealth(new int[]{3,5,10});
 		this.setCurrentHealth(this.getMaxHealth());
 		
 		this.setMaxUpgradeLevel(3);
