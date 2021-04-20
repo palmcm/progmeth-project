@@ -112,7 +112,11 @@ public class TilesPane extends GridPane{
 					cTower = (AttackableTower) cTower.getNewInstance(tile.getTile().getLoc());
 					cTower.setOwner(GameManager.getCurrentPlayer());
 					this.highlightCells(cTower.getReachableTiles());
-					this.highlightUnitCell(cTower.getLoc());
+				}
+				if(tile.getTile().canPlace(GameManager.getCurrentPlayer()))
+				{
+
+					this.highlightUnitCell(tile.getTile().getLoc());
 				}
 			}
 		}
