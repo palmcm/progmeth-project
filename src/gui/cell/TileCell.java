@@ -19,6 +19,7 @@ import logic.gmanager.Tile;
 import logic.towers.AimableTower;
 import logic.towers.AttackableTower;
 import logic.towers.BaseTower;
+import utils.CommonImages;
 import utils.ImageUtil;
 
 public class TileCell extends StackPane{
@@ -26,15 +27,16 @@ public class TileCell extends StackPane{
 	private ImageView towerImg;
 	private int SIZE = GameConfig.SCREEN_WIDTH / 18;;
 	private Text attackSeq;
-	private Rectangle highlightBackground;
+	private ImageView highlightBackground;
 	
 	public TileCell(Tile tile) {
 		this.tile = tile;
 		towerImg = new ImageView();
 		towerImg.setFitWidth(SIZE);
 		towerImg.setFitHeight(SIZE);
-		highlightBackground = new Rectangle(SIZE,SIZE);
-		highlightBackground.setFill(Color.WHITE);
+		highlightBackground = new ImageView();
+		highlightBackground.setFitWidth(SIZE);
+		highlightBackground.setFitHeight(SIZE);
 		
 		attackSeq = new Text(tile.getTileOwner()+"");
 		this.getChildren().addAll(highlightBackground,towerImg,attackSeq);
@@ -118,18 +120,24 @@ public class TileCell extends StackPane{
 	
 	public void doHighlight()
 	{
-		this.highlightBackground.setFill(Color.GREEN);
+		this.highlightBackground.setImage(CommonImages.getHighlighter("range"));
 		
 	}
 	
 	public void unHighlight()
 	{
-		this.highlightBackground.setFill(Color.WHITE);
+		this.highlightBackground.setImage(null);
 	}
 	
 	public void doTargetHighlight()
 	{
-		this.highlightBackground.setFill(Color.YELLOW);
+		this.highlightBackground.setImage(CommonImages.getHighlighter("target"));
+		
+	}
+	
+	public void doUnitHighlight()
+	{
+		this.highlightBackground.setImage(CommonImages.getHighlighter("unit"));
 		
 	}
 }

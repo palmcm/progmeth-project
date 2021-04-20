@@ -38,6 +38,11 @@ public class TilesPane extends GridPane{
 		Tile tiles[][] = board.getTiles();
 		tooltip = new Tooltip();
 		tooltip.setFont(new Font(15));
+		
+		this.setOnMouseExited(e -> {
+			this.unhighlightAll();
+		});		
+		
 		for (int i=0;i<lanes;i++) {
 			for (int j=0;j<cols;j++) {
 				TileCell tile = new TileCell(tiles[i][j]);
@@ -107,6 +112,7 @@ public class TilesPane extends GridPane{
 					cTower = (AttackableTower) cTower.getNewInstance(tile.getTile().getLoc());
 					cTower.setOwner(GameManager.getCurrentPlayer());
 					this.highlightCells(cTower.getReachableTiles());
+					this.highlightUnitCell(cTower.getLoc());
 				}
 			}
 		}
@@ -176,5 +182,10 @@ public class TilesPane extends GridPane{
 				this.getTileCell(i).doTargetHighlight();
 			}
 		}
+	}
+	
+	private void highlightUnitCell(Coordinate cell)
+	{
+		this.getTileCell(cell).doUnitHighlight();
 	}
 }
