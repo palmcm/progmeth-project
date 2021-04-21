@@ -20,30 +20,26 @@ import utils.ImageUtil;
 public class TowerGameCell extends VBox {
 	final private int PIC_SIZE = 64;
 	private BaseTower tower;
+	private ImageView towerIcon;
+	
 	public TowerGameCell() {
-//		this.tower = tower;
+		towerIcon = new ImageView();
+		towerIcon.setFitHeight(PIC_SIZE);
+		towerIcon.setFitWidth(PIC_SIZE);
+		
+		this.getChildren().add(towerIcon);
 		this.setPrefSize(PIC_SIZE, PIC_SIZE);
 		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-	}
-	
-	public TowerGameCell(BaseTower tower) {
-		this.tower = tower;
-		ImageView towerIcon = new ImageView();
-		Image img = ImageUtil.ImageLoader(tower.getUrl(),PIC_SIZE);
-		towerIcon.setImage(img);
-		towerIcon.setFitHeight(PIC_SIZE);
-		towerIcon.setFitWidth(PIC_SIZE);
-		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
-				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-		this.getChildren().add(towerIcon);
-
+		
 		this.setOnMouseEntered(e -> {
-			SceneController.getPickTowerScene().getDesBox().setTowerData(tower);
-			SceneController.getGamePane().getDescriptionPane().setDes(
-					this.tower.getCurrentName(),
-					this.tower.getBuyToolTip()
-					);
+			if (this.tower != null) {
+				SceneController.getPickTowerScene().getDesBox().setTowerData(tower);
+				SceneController.getGamePane().getDescriptionPane().setDes(
+						this.tower.getCurrentName(),
+						this.tower.getBuyToolTip()
+						);
+			}
 		});
 		
 		this.setOnMouseExited(e -> {
@@ -61,5 +57,16 @@ public class TowerGameCell extends VBox {
 	
 	public BaseTower getTower() {
 		return tower;
+	}
+	
+	public void setTower(BaseTower tower) {
+		this.tower = tower;
+		if (tower != null) {
+			Image img = ImageUtil.ImageLoader(tower.getUrl(),PIC_SIZE);
+			towerIcon.setImage(img);
+		}else {
+			towerIcon.setImage(null);
+		}
+		
 	}
 }

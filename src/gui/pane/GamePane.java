@@ -38,6 +38,8 @@ public class GamePane extends VBox{
 		
 		for(TowerGameCell tower:towergamePane.getTowerList()) {
 			tower.setOnMouseClicked(e -> {
+				if(GameManager.getTurnPhase() != TurnPhase.BUILD)
+					return;
 				selectedTower(tower);
 			});
 		}
@@ -112,5 +114,15 @@ public class GamePane extends VBox{
 		if(player==1)
 			return this.player1Status;
 		return this.player2Status;
+	}
+	
+	public void updateDeck() {
+		if (GameManager.getTurnPhase() == TurnPhase.BUILD) {
+			towergamePane.setDeck(GameManager.getCurrentPlayer());
+		}else {
+			towergamePane.setDeck(0);
+		}
+		GameButtons.selectTower(null);
+		unhighlightOption();
 	}
 }

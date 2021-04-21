@@ -33,6 +33,8 @@ public class DeckSelector {
 	// ---------------- WHEN CLICKING START GAME ------------------
 
 	public static void clickBeginGame() {
+		GameManager.setCurrentPlayer(1);
+		SceneController.getGamePane().updateDeck();
 		SceneController.setScene("game");
 	}
 

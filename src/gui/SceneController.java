@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class SceneController {
 	
-	private static String scene = "game";
+	private static String scene = "pickTower";
 	
 	private static MenuScene menuScene = new MenuScene(new VBox());
 	private static PickMapScene pickMapScene = new PickMapScene(new VBox());
@@ -62,9 +62,9 @@ public class SceneController {
 		return pickTowerScene;
 	}
 	
-//	public static GameScene getGameScene() {
-//		return gameScene;
-//	}
+	public static GameScene getGameScene() {
+		return gameScene;
+	}
 
 	public static GamePane getGamePane() {
 		return gameScene.getGamePane();

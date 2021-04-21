@@ -1,6 +1,7 @@
 package logic.gmanager;
 
 import exception.SelectInvalidTileException;
+import gui.SceneController;
 import logic.misc.Coordinate;
 import logic.towers.BaseTower;
 
@@ -31,6 +32,7 @@ public class GameButtons {
 			if (GameManager.getTurnPhase() == TurnPhase.BUILD) {
 				GameManager.flipStartingPlayer();
 				GameManager.setTurnPhase(TurnPhase.ATTACK);
+				SceneController.getGamePane().updateDeck();
 			} else if (GameManager.getTurnPhase() == TurnPhase.ATTACK) {
 				GameManager.setTurnPhase(TurnPhase.AFTERMATH);
 				GameManager.processAttackPhase();
@@ -44,6 +46,7 @@ public class GameButtons {
 		}	
 		
 		if (GameManager.getTurnPhase() == TurnPhase.BUILD) {
+			SceneController.getGamePane().updateDeck();
 			GameManager.setButtonMode(ButtonMode.BUILD);
 		} else if (GameManager.getTurnPhase() == TurnPhase.ATTACK) {
 			GameManager.setButtonMode(ButtonMode.SELECT);
