@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class SceneController {
 	
-	private static String scene = "game";
+	private static String scene = "pickTower";
 	
 	private static MenuScene menuScene = new MenuScene(new VBox());
 	private static PickMapScene pickMapScene = new PickMapScene(new VBox());

@@ -3,6 +3,8 @@ package gui.cell;
 
 import config.GameConfig;
 import gui.SceneController;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
@@ -11,6 +13,7 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -34,15 +37,23 @@ public class TileCell extends StackPane{
 		towerImg = new ImageView();
 		towerImg.setFitWidth(SIZE);
 		towerImg.setFitHeight(SIZE);
+		
 		highlightBackground = new ImageView();
 		highlightBackground.setFitWidth(SIZE);
 		highlightBackground.setFitHeight(SIZE);
 		
-		attackSeq = new Text(tile.getTileOwner()+"");
-		this.getChildren().addAll(highlightBackground,towerImg,attackSeq);
+		StackPane attackSeqBox = new StackPane();
+		attackSeq = new Text();
+		attackSeqBox.setAlignment(Pos.TOP_LEFT);
+		attackSeqBox.setPadding(new Insets(5));
+		attackSeqBox.getChildren().add(attackSeq);
+		
+		this.getChildren().addAll(highlightBackground,towerImg,attackSeqBox);
 		this.setPrefSize(SIZE, SIZE);
-		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
-				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		if (tile.getTileOwner() != 0) {
+			this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
+					CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+		}
 	}
 	
 	public Tile getTile() {
