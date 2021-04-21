@@ -22,7 +22,7 @@ public class GameManager {
 	private static BaseTower selectedTower;
 	private static int startingPlayer;
 	private static int currentPlayer;
-	private static int maxDeckSize;
+	private static int maxDeckSize = 5;
 	private static Coordinate selectedTile;
 	
 	private static String turnPhaseString;

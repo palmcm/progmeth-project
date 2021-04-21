@@ -10,20 +10,27 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import logic.gmanager.GameInstance;
+import logic.gmanager.GameManager;
 
 public class PlayerDeckPane extends VBox{
 	
-	public PlayerDeckPane() {
+	private DeckPane showDeck;
+	private int player;
+	
+	public PlayerDeckPane(int player) {
 		super(20);
-		Text gameName = new Text("Player 1's Deck");
+		this.player = player;
+		Text gameName = new Text("Player "+player+"'s Deck");
 		gameName.setFont(new Font(50));
 		
-		DeckPane showDeck = new DeckPane();
+		showDeck = new DeckPane();
 		
 		this.getChildren().addAll(gameName,showDeck);
 		this.setAlignment(Pos.CENTER);
-		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
-				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 	}
 	
+	public void showNewDeck() {
+		showDeck.update(player);
+	}
 }

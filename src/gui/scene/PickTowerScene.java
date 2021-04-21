@@ -23,6 +23,8 @@ import javafx.scene.text.Text;
 public class PickTowerScene extends Scene{
 	
 	private PickTowerPane pickTowerPane;
+	private PlayerDeckPane p1;
+	private PlayerDeckPane p2;
 	
 	public PickTowerScene(VBox root) {
 		super(root,GameConfig.SCREEN_WIDTH,GameConfig.SCREEN_HEIGHT);
@@ -31,8 +33,8 @@ public class PickTowerScene extends Scene{
 		
 		pickTowerPane = new PickTowerPane();
 		
-		PlayerDeckPane p1 = new PlayerDeckPane();
-		PlayerDeckPane p2 = new PlayerDeckPane();
+		p1 = new PlayerDeckPane(1);
+		p2 = new PlayerDeckPane(2);
 		
 		menuBox.getChildren().addAll(p1,pickTowerPane,p2);
 		menuBox.setAlignment(Pos.CENTER);
@@ -42,5 +44,14 @@ public class PickTowerScene extends Scene{
 	
 	public TowerDesBox getDesBox() {
 		return pickTowerPane.getDesBox();
+	}
+	
+	public void updateDeck() {
+		p1.showNewDeck();
+		p2.showNewDeck();
+	}
+	
+	public void setCanNext(boolean canUse) {
+		pickTowerPane.getNext().setDisable(!canUse);
 	}
 }

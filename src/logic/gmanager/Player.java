@@ -27,7 +27,8 @@ public class Player {
 		this.money = GameSettings.getStartingMoney();
 		this.maxHealth = GameSettings.getMaxHealth();
 		this.health = this.maxHealth;
-		
+		this.deck = new ArrayList<BaseTower>();
+				
 		this.playerId = id;
 	}
 	
@@ -146,14 +147,14 @@ public class Player {
 		return deck;
 	}
 	
-	public boolean hasTowerInDeck(BaseTower tower)
+	public int getTowerIndexDeck(BaseTower tower)
 	{
-		boolean found = false;
-		for(BaseTower i:this.getDeck())
+		int found = -1;
+		for(int i=0;i<deck.size();i++)
 		{
-			if(i.getClass().equals(tower.getClass()))
+			if(deck.get(i).getClass().equals(tower.getClass()))
 			{
-				found = true;
+				found = i;
 				break;
 			}
 		}

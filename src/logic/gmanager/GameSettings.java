@@ -2,7 +2,7 @@ package logic.gmanager;
 
 public class GameSettings {
 
-	private static int deckSize;
+	private static int deckSize = 5;
 	private static int MaxHealth = 100;
 	private static int startingMoney = 50;
 	private static int income = 5;
