@@ -121,7 +121,7 @@ public class TileCell extends StackPane{
 		}
 		else
 		{
-			System.out.println(tower.getCurrentHealth()+" "+tower.getMaxHealth());
+//			System.out.println(tower.getCurrentHealth()+" "+tower.getMaxHealth());
 			double fullWidth,cWidth,hpp;
 			fullWidth = pxSize*17;
 			boolean overheal = false;
@@ -162,7 +162,11 @@ public class TileCell extends StackPane{
 	}
 	
 	public void setAttackSeq(int seq) {
-		attackSeq.setText(seq+"");
+		if (seq == 0) {
+			attackSeq.setText("");
+			return;
+		}
+		attackSeq.setText(seq + "");
 	}
 	
 	public void showDes() {

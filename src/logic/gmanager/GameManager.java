@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import exception.InvalidPlayerException;
 import exception.SelectInvalidTileException;
 import gui.SceneController;
+import gui.cell.TileCell;
 import logic.actions.AttackAction;
 import logic.actions.AttackPhaseAction;
 import logic.misc.Coordinate;
@@ -174,9 +175,28 @@ public class GameManager {
 	
 	private static void updateAttackSeqTile() {
 		ArrayList<AttackPhaseAction> attackOrders = GameManager.getGameInstance().getAttackOrder();
+		if (attackOrders.size() <= 0) {
+			return;
+		}
+		int start = SceneController.getGamePane().getTilesPane().getTileCell(((AttackAction)attackOrders.get(0)).getTrigger()).getTile().getTileOwner();
+		int i=1;
+		for (AttackPhaseAction attackOrder : attackOrders) {
+			AttackAction attack = (AttackAction)attackOrder;
+			TileCell tileCell = SceneController.getGamePane().getTilesPane().getTileCell(attack.getTrigger());
+			if (tileCell.getTile().getTileOwner() != start) {
+				start = tileCell.getTile().getTileOwner();
+				i = 1;
+			}
+			tileCell.setAttackSeq(i);
+			i++;
+		}
+	}
+	
+	private static void clearAttackSeqTile() {
+		ArrayList<AttackPhaseAction> attackOrders = GameManager.getGameInstance().getAttackOrder();
 		for (int i=0;i<attackOrders.size();i++) {
 			AttackAction attackOrder = (AttackAction)attackOrders.get(i);
-			SceneController.getGamePane().getTilesPane().getTileCell(attackOrder.getTrigger()).setAttackSeq(i+1);
+			SceneController.getGamePane().getTilesPane().getTileCell(attackOrder.getTrigger()).setAttackSeq(0);
 		}
 	}
 
@@ -188,6 +208,7 @@ public class GameManager {
 	}
 
 	private static void unqueueAttack(Coordinate loc, int player) {
+		clearAttackSeqTile();
 		GameManager.getGameInstance().removeAttackOrder(new AttackAction(loc));
 		updateAttackSeqTile();
 	}
@@ -324,6 +345,7 @@ public class GameManager {
 			}
 		}
 		
+		clearAttackSeqTile();
 		GameManager.getGameInstance().clearAttackOrder();
 
 		GameManager.getGameInstance().getPlayer(1).applyIncome();
