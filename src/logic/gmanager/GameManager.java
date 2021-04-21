@@ -126,9 +126,7 @@ public class GameManager {
 	}
 
 	public static void selectAttackPhaseTile(Coordinate loc, int player) throws SelectInvalidTileException {
-		//System.out.println(loc.getX()+","+loc.getY());
 		if (GameManager.getButtonMode() == ButtonMode.AIM) {
-			System.out.println(loc.getX()+" "+loc.getY());
 			if (GameManager.targetAimable(loc, player)) {
 				GameManager.buttonMode = ButtonMode.SELECT;
 				GameManager.queueAttack(GameManager.selectedTile, player);
@@ -223,6 +221,9 @@ public class GameManager {
 	}
 
 	private static void buildTower(BaseTower tower, Coordinate loc, int player) throws SelectInvalidTileException {
+		if (tower == null) {
+			throw new SelectInvalidTileException("No tower select to build");
+		}
 		int cost = tower.getCost();
 		Player currentPlayer = GameManager.getGameInstance().getPlayer(player);
 		if (currentPlayer.getMoney() < tower.getCost()) {
