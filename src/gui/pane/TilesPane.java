@@ -55,6 +55,7 @@ public class TilesPane extends GridPane{
 							tile.update();
 							tile.showDes();
 							onMouseEnter(tile,e);
+							tile.update();
 						} catch (SelectInvalidTileException error) {
 //							System.out.println(error.getMessage());
 						}

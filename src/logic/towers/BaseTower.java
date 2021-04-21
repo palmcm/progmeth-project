@@ -1,6 +1,7 @@
 package logic.towers;
 
 import exception.InvalidPlayerException;
+import gui.SceneController;
 import logic.gmanager.GameManager;
 import logic.misc.Coordinate;
 import utils.CommonStrings;
@@ -124,6 +125,11 @@ public abstract class BaseTower {
 				"Upgrading will heal "+this.getCurrentUpgradeHealth()+CommonStrings.stats_health;
 	}
 	
+	private void updateHealthBar()
+	{
+		SceneController.getGameScene().getTilesPane().getTileCell(this.loc).updateHealth();
+	}
+	
 	protected void setIsInstance(boolean isInstance)
 	{
 		this.isInstance = isInstance;
@@ -137,11 +143,13 @@ public abstract class BaseTower {
 	public void damage(int dmg)
 	{
 		this.setCurrentHealth(this.getCurrentHealth()-dmg);
+		this.updateHealthBar();
 	}
 	
 	public void heal(int heal)
 	{
 		this.setCurrentHealth(this.getCurrentHealth()+heal);
+		this.updateHealthBar();
 	}
 	
 	public boolean attackable(int player) throws InvalidPlayerException

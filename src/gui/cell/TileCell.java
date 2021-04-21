@@ -28,9 +28,13 @@ import utils.ImageUtil;
 public class TileCell extends StackPane{
 	private Tile tile;
 	private ImageView towerImg;
+	private ImageView towerUpgradeEmblem;
 	private int SIZE = GameConfig.SCREEN_WIDTH / 18;;
+	private double pxSize = SIZE/32.0;
 	private Text attackSeq;
 	private ImageView highlightBackground;
+	private Rectangle healthbar;
+	private ImageView hpBackground;
 	
 	public TileCell(Tile tile) {
 		this.tile = tile;
@@ -42,13 +46,31 @@ public class TileCell extends StackPane{
 		highlightBackground.setFitWidth(SIZE);
 		highlightBackground.setFitHeight(SIZE);
 		
+		towerUpgradeEmblem = new ImageView();
+		towerUpgradeEmblem.setFitWidth(SIZE);
+		towerUpgradeEmblem.setFitHeight(SIZE);
+		
+		healthbar = new Rectangle();
+		healthbar.setWidth(0);
+		healthbar.setHeight(pxSize*3);
+		healthbar.setTranslateY(-pxSize*12);
+		
+		hpBackground = new ImageView();
+		hpBackground.setFitWidth(SIZE);
+		hpBackground.setFitHeight(SIZE);
+		
+		hpBackground.setImage(CommonImages.hpBackground);
+		hpBackground.setScaleX(0);
+		hpBackground.setScaleY(1);
+		hpBackground.setTranslateY(-pxSize);
+		
 		StackPane attackSeqBox = new StackPane();
 		attackSeq = new Text();
 		attackSeqBox.setAlignment(Pos.TOP_LEFT);
 		attackSeqBox.setPadding(new Insets(5));
 		attackSeqBox.getChildren().add(attackSeq);
 		
-		this.getChildren().addAll(highlightBackground,towerImg,attackSeqBox);
+		this.getChildren().addAll(highlightBackground,towerImg,attackSeqBox,towerUpgradeEmblem,hpBackground,healthbar);
 		this.setPrefSize(SIZE, SIZE);
 		if (tile.getTileOwner() != 0) {
 			this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
@@ -68,8 +90,62 @@ public class TileCell extends StackPane{
 			{
 				towerImg.setScaleX(-1);
 			}
+			if(tower.getUpgradeLevel() == 0)
+			{
+				towerUpgradeEmblem.setImage(null);
+			}
+			else
+			{
+				towerUpgradeEmblem.setImage(CommonImages.getUpgradeEmblem(tower.getUpgradeLevel()));				
+			}
 		} else {
 			towerImg.setImage(null);
+			towerUpgradeEmblem.setImage(null);
+		}
+		
+	}
+	
+	public void updateHealth()
+	{
+		BaseTower tower = tile.getTower();
+		
+		if(tower == null)
+		{
+			healthbar.setWidth(0);
+			hpBackground.setScaleX(0);
+		}
+		else if(tower.getCurrentHealth() == tower.getMaxHealth())
+		{
+			healthbar.setWidth(0);
+			hpBackground.setScaleX(0);
+		}
+		else
+		{
+			System.out.println(tower.getCurrentHealth()+" "+tower.getMaxHealth());
+			double fullWidth,cWidth,hpp;
+			fullWidth = pxSize*17;
+			hpp = (double)tower.getCurrentHealth() / (double)tower.getMaxHealth();
+			hpBackground.setScaleX(1);
+			if(hpp<0.0)
+				hpp = 0.0;
+			cWidth = fullWidth * hpp;
+			this.healthbar.setWidth(cWidth);
+			this.healthbar.setHeight(SIZE/10);
+			this.healthbar.setTranslateX(-(fullWidth - cWidth)/2);
+			
+			if(hpp >= 0.5)
+			{
+				this.healthbar.setFill(Color.LIMEGREEN);
+			}
+			else if(hpp > 0.2)
+			{
+				this.healthbar.setFill(Color.YELLOW);
+				
+			}
+			else
+			{
+				this.healthbar.setFill(Color.RED);
+			}
 		}
 		
 	}
