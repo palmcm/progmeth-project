@@ -29,9 +29,9 @@ public class ToolsPane extends VBox {
 			if (GameButtons.upgradeIncome()) {
 				upgradeIncomeIcon.setDes("Upgrade Income", GameManager.getCurrentPlayerIncomeToolTip());
 				upgradeIncomeIcon.showDes();
-				SceneController.getGameScene().updateMoney();
+				SceneController.getGamePane().updateMoney();
 
-				SceneController.getGameScene().getPlayerPane(GameManager.getCurrentPlayer()).updateIncome();
+				SceneController.getGamePane().getPlayerPane(GameManager.getCurrentPlayer()).updateIncome();
 			}
 			
 		});

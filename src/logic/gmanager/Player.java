@@ -57,13 +57,13 @@ public class Player {
 	public void gainMoney(int money)
 	{
 		this.setMoney(this.getMoney()+money);
-		SceneController.getGameScene().updateMoney();
+		SceneController.getGamePane().updateMoney();
 	}
 	
 	public void spendMoney(int money)
 	{
 		this.setMoney(this.getMoney()-money);
-		SceneController.getGameScene().updateMoney();
+		SceneController.getGamePane().updateMoney();
 	}
 	
 	public int getPlayerId()
@@ -120,7 +120,7 @@ public class Player {
 		if(this.money < 0)
 			this.money = 0;
 
-		SceneController.getGameScene().updateMoney();
+		SceneController.getGamePane().updateMoney();
 	}
 
 	public int getMaxHealth() {

@@ -49,7 +49,7 @@ public class Tile {
 	public void removeTower()
 	{
 		this.tower = null;
-		SceneController.getGameScene().getTilesPane().getTileCell(this.loc).update();
+		SceneController.getGamePane().getTilesPane().getTileCell(this.loc).update();
 	}
 
 	public int getTileOwner() {

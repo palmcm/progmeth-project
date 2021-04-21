@@ -103,11 +103,11 @@ public class GameManager {
 		GameManager.setGameInstance(new GameInstance());
 		GameManager.setGamePhaseInfo();
 		
-		SceneController.getGameScene().getPlayerPane(1).updateIncome();
-		SceneController.getGameScene().getPlayerPane(2).updateIncome();
+		SceneController.getGamePane().getPlayerPane(1).updateIncome();
+		SceneController.getGamePane().getPlayerPane(2).updateIncome();
 
-		SceneController.getGameScene().getPlayerPane(1).updateMoney();
-		SceneController.getGameScene().getPlayerPane(2).updateMoney();
+		SceneController.getGamePane().getPlayerPane(1).updateMoney();
+		SceneController.getGamePane().getPlayerPane(2).updateMoney();
 	}
 
 	public static void victory(int player) {
@@ -122,7 +122,7 @@ public class GameManager {
 		for (AttackPhaseAction i : GameManager.getGameInstance().getAttackOrder()) {
 			i.processAction();
 		}
-		SceneController.getGameScene().updateHp();
+		SceneController.getGamePane().updateHp();
 	}
 
 	public static void selectAttackPhaseTile(Coordinate loc, int player) throws SelectInvalidTileException {
@@ -178,7 +178,7 @@ public class GameManager {
 		ArrayList<AttackPhaseAction> attackOrders = GameManager.getGameInstance().getAttackOrder();
 		for (int i=0;i<attackOrders.size();i++) {
 			AttackAction attackOrder = (AttackAction)attackOrders.get(i);
-			SceneController.getGameScene().getTilesPane().getTileCell(attackOrder.getTrigger()).setAttackSeq(i+1);
+			SceneController.getGamePane().getTilesPane().getTileCell(attackOrder.getTrigger()).setAttackSeq(i+1);
 		}
 	}
 
@@ -357,7 +357,7 @@ public class GameManager {
 			break;
 		}
 		
-		SceneController.getGameScene().getTurnStatus().updateTurnPane();
+		SceneController.getGamePane().getTurnStatus().updateTurnPane();
 		
 		
 	}

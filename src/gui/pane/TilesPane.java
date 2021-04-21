@@ -70,7 +70,7 @@ public class TilesPane extends GridPane{
 				});
 				
 				tile.setOnMouseExited(e -> {
-					SceneController.getGameScene().getDescriptionPane().setDesDefault();
+					SceneController.getGamePane().getDescriptionPane().setDesDefault();
 					tooltip.hide();
 					
 					//this.unhighlightAll();

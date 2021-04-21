@@ -127,7 +127,7 @@ public abstract class BaseTower {
 	
 	private void updateHealthBar()
 	{
-		SceneController.getGameScene().getTilesPane().getTileCell(this.loc).updateHealth();
+		SceneController.getGamePane().getTilesPane().getTileCell(this.loc).updateHealth();
 	}
 	
 	protected void setIsInstance(boolean isInstance)

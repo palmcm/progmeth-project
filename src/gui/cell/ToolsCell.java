@@ -31,7 +31,7 @@ public class ToolsCell extends StackPane{
 		});
 		
 		this.setOnMouseExited(e -> {
-			SceneController.getGameScene().getDescriptionPane().setDesDefault();
+			SceneController.getGamePane().getDescriptionPane().setDesDefault();
 		});
 	}
 	
@@ -49,7 +49,7 @@ public class ToolsCell extends StackPane{
 	}
 	
 	public void showDes() {
-		SceneController.getGameScene().getDescriptionPane().setDes(toolName, toolDescription);
+		SceneController.getGamePane().getDescriptionPane().setDes(toolName, toolDescription);
 	}
 	
 	public void setIcon(Image img) {

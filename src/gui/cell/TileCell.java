@@ -157,10 +157,10 @@ public class TileCell extends StackPane{
 	public void showDes() {
 		if(this.getTile().getTower() == null)
 		{
-			SceneController.getGameScene().getDescriptionPane().setDesDefault();
+			SceneController.getGamePane().getDescriptionPane().setDesDefault();
 			return;
 		}
-		SceneController.getGameScene().getDescriptionPane().setDes(this.getTileTowerName(), this.getTileTowerDesc());
+		SceneController.getGamePane().getDescriptionPane().setDes(this.getTileTowerName(), this.getTileTowerDesc());
 	}
 	
 	private String getTileTowerName()

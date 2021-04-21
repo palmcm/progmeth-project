@@ -40,7 +40,7 @@ public class TowerGameCell extends VBox {
 
 		this.setOnMouseEntered(e -> {
 			SceneController.getPickTowerScene().getDesBox().setTowerData(tower);
-			SceneController.getGameScene().getDescriptionPane().setDes(
+			SceneController.getGamePane().getDescriptionPane().setDes(
 					this.tower.getCurrentName(),
 					this.tower.getBuyToolTip()
 					);
