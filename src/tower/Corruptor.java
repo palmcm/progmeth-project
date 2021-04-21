@@ -24,7 +24,7 @@ public class Corruptor extends AttackableTower{
 		this.setCurrentHealth(this.getMaxHealth());
 		
 		this.setMaxUpgradeLevel(3);
-		this.setUpgradeCost(new int[]{20,20,30});
+		this.setUpgradeCost(new int[]{20,20,40});
 		
 		this.setCooldown(1);
 		
@@ -43,9 +43,9 @@ public class Corruptor extends AttackableTower{
 		
 		this.setTowerDescription(new String[] {
 				"Cast a short-ranged burst of dark energy.",
-				"Cast a short-ranged burst of dark energy which all enemies in its range.",
-				"Cast a short-ranged burst of dark energy which all enemies in its range.",
-				"Cast a long-ranged wave of dark energy, followed by\nshort-ranged burst of dark energy which all enemies in its range.",
+				"Cast a short-ranged burst of dark energy which hits all enemies in its range.",
+				"Cast a short-ranged burst of dark energy which hits all enemies in its range.",
+				"Cast a long-ranged wave of dark energy, followed by\nshort-ranged burst of dark energy which hits all enemies in its range.",
 		});
 		
 		this.setTowerDamage(new String[] {
