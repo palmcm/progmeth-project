@@ -124,16 +124,27 @@ public class TileCell extends StackPane{
 			System.out.println(tower.getCurrentHealth()+" "+tower.getMaxHealth());
 			double fullWidth,cWidth,hpp;
 			fullWidth = pxSize*17;
+			boolean overheal = false;
+			
 			hpp = (double)tower.getCurrentHealth() / (double)tower.getMaxHealth();
 			hpBackground.setScaleX(1);
 			if(hpp<0.0)
 				hpp = 0.0;
+
+			if(hpp > 1.0)
+			{
+				hpp = 1.0;
+				overheal = true;
+			}
 			cWidth = fullWidth * hpp;
 			this.healthbar.setWidth(cWidth);
 			this.healthbar.setHeight(SIZE/10);
 			this.healthbar.setTranslateX(-(fullWidth - cWidth)/2);
-			
-			if(hpp >= 0.5)
+			if(overheal)
+			{
+				this.healthbar.setFill(Color.LIGHTCYAN);
+			}
+			else if(hpp >= 0.5)
 			{
 				this.healthbar.setFill(Color.LIMEGREEN);
 			}

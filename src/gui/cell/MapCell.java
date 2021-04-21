@@ -17,10 +17,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class MapCell extends VBox{
-	public MapCell() {
-		Text mapName = new Text("Map Name");
+	public MapCell(String mapTitle, String mapUrl) {
+		Text mapName = new Text(mapTitle);
 		mapName.setFont(new Font(20));
-		Image img = new Image(ClassLoader.getSystemResource("img1.png").toString());
+		Image img = new Image(ClassLoader.getSystemResource(mapUrl).toString());
 		ImageView mapIcon = new ImageView(img);
 		double scale = img.getHeight()/150;
 //		System.out.println(scale);

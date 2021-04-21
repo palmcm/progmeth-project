@@ -297,9 +297,14 @@ public class GameManager {
 			for (j = 0; j < board.getBorder(); j++) {
 				b = board.getTile(new Coordinate(i, j)).getTower();
 				if (b != null) {
+					if (b.getCurrentHealth() > b.getMaxHealth())
+					{
+						b.removeOverheal();
+					}
 					if (b.getCurrentHealth() <= 0) {
 						board.getTile(b.getLoc()).removeTower();
-					} else if (b instanceof Passive) {
+					}
+					else if (b instanceof Passive) {
 						try {
 							((Passive) b).doPassive();
 

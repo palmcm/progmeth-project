@@ -7,7 +7,7 @@ import javafx.scene.layout.GridPane;
 
 public class MapPane extends GridPane{
 	public MapPane() {
-		MapCell mapCell = new MapCell();
+		MapCell mapCell = new MapCell("Classic","maps/classic_icon.png");
 		this.add(mapCell, 0, 0);
 		this.setWidth(GameConfig.SCREEN_WIDTH/2);
 		this.setAlignment(Pos.CENTER);

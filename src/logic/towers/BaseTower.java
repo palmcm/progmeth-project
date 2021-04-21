@@ -146,9 +146,17 @@ public abstract class BaseTower {
 		this.updateHealthBar();
 	}
 	
+	public void removeOverheal()
+	{
+
+		this.setCurrentHealth(this.getMaxHealth());
+		this.updateHealthBar();
+	}
+	
 	public void heal(int heal)
 	{
-		this.setCurrentHealth(this.getCurrentHealth()+heal);
+		//this.setCurrentHealth(this.getCurrentHealth()+heal);
+		this.currentHealth = this.getCurrentHealth() + heal;
 		this.updateHealthBar();
 	}
 	
