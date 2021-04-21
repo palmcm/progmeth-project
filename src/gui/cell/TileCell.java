@@ -72,10 +72,10 @@ public class TileCell extends StackPane{
 		
 		this.getChildren().addAll(highlightBackground,towerImg,attackSeqBox,towerUpgradeEmblem,hpBackground,healthbar);
 		this.setPrefSize(SIZE, SIZE);
-		if (tile.getTileOwner() != 0) {
+		/*if (tile.getTileOwner() != 0) {
 			this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
 					CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-		}
+		}*/
 	}
 	
 	public Tile getTile() {
@@ -226,5 +226,10 @@ public class TileCell extends StackPane{
 	{
 		this.highlightBackground.setImage(CommonImages.getHighlighter("unit"));
 		
+	}
+	
+	public void doEmptyHighlight()
+	{
+		this.highlightBackground.setImage(CommonImages.getHighlighter("empty"));
 	}
 }

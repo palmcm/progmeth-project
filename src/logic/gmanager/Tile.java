@@ -50,6 +50,7 @@ public class Tile {
 	{
 		this.tower = null;
 		SceneController.getGamePane().getTilesPane().getTileCell(this.loc).update();
+		SceneController.getGamePane().getTilesPane().getTileCell(this.loc).updateHealth();
 	}
 
 	public int getTileOwner() {

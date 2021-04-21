@@ -4,6 +4,7 @@ import exception.InvalidPlayerException;
 import logic.gmanager.GameManager;
 import logic.misc.Coordinate;
 import logic.towers.Passive;
+import utils.CommonStrings;
 import logic.towers.BaseTower;
 
 public class Scholar extends BaseTower implements Passive{
@@ -42,14 +43,14 @@ public class Scholar extends BaseTower implements Passive{
 		});
 		
 		this.setTowerDescription(new String[] {
-				"Researches 6 intellect at the end of turn.",
-				"Researches 10 intellect at the end of turn.",
-				"Researches 15 intellect at the end of turn.",
-				"Researches 25 intellect at the end of turn.",
+				"Researches 6"+CommonStrings.currency_symbol+" at the end of turn.",
+				"Researches 10"+CommonStrings.currency_symbol+" at the end of turn.",
+				"Researches 15"+CommonStrings.currency_symbol+" intellect at the end of turn.",
+				"Researches 25"+CommonStrings.currency_symbol+" intellect at the end of turn.",
 		});
 		
 		this.setTowerUpgradeDescription(new String[] {
-				"Researches extra 6 intellect at the end of each turn.",
+				"Researches extra 6"+CommonStrings.currency_symbol+" at the end of each turn.",
 				"Increases research by 4 per turn.",
 				"Increases research by 5 per turn.",
 				"Increases research by 10 per turn."

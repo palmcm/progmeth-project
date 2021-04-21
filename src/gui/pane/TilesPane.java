@@ -107,6 +107,7 @@ public class TilesPane extends GridPane{
 			//System.out.println("HI");
 			if(GameManager.getSelectedTower() != null)
 			{
+				this.highlightValidTiles();
 				if(GameManager.getSelectedTower() instanceof AttackableTower && tile.getTile().canPlace(GameManager.getCurrentPlayer()))
 				{
 					AttackableTower cTower = (AttackableTower) GameManager.getSelectedTower();
@@ -161,6 +162,24 @@ public class TilesPane extends GridPane{
 			for(j=0;j<this.cols;j++)
 			{
 				this.getTileCell(new Coordinate(i,j)).unHighlight();
+			}
+		}
+	}
+	
+	private void highlightValidTiles()
+	{
+		int i = this.lanes;
+		int j = this.cols;
+		
+		for(i=0;i<this.lanes;i++)
+		{
+			for(j=0;j<this.cols;j++)
+			{
+				if(this.getTileCell(new Coordinate(i,j)).getTile().getTileOwner() != 0)
+				{
+					this.getTileCell(new Coordinate(i,j)).doEmptyHighlight();;					
+				}
+				
 			}
 		}
 	}

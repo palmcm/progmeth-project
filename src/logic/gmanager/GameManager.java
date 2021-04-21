@@ -210,7 +210,8 @@ public class GameManager {
 
 	public static void selectBuildPhaseTile(Coordinate loc, int player) throws SelectInvalidTileException {
 		if (GameManager.buttonMode == ButtonMode.BUILD) {
-			GameManager.buildTower(GameManager.selectedTower, loc, player);
+			if(GameManager.getSelectedTower() != null)
+				GameManager.buildTower(GameManager.selectedTower, loc, player);
 			return;
 		} else if (GameManager.buttonMode == ButtonMode.UPGRADE) {
 			GameManager.upgradeTower(loc, player);

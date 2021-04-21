@@ -10,6 +10,7 @@ public class CommonImages {
 	private static Image rangeHighlighter = ImageUtil.ImageLoader("highlighters/range.png",GameConfig.SCREEN_WIDTH / 18);
 	private static Image targetHighlighter = ImageUtil.ImageLoader("highlighters/target.png",GameConfig.SCREEN_WIDTH / 18);
 	private static Image unitHighlighter = ImageUtil.ImageLoader("highlighters/unit.png",GameConfig.SCREEN_WIDTH / 18);
+	private static Image emptyHighlighter = ImageUtil.ImageLoader("highlighters/empty.png",GameConfig.SCREEN_WIDTH / 18);
 	
 	public static Image getHighlighter(String type)
 	{
@@ -19,6 +20,8 @@ public class CommonImages {
 			return CommonImages.targetHighlighter;
 		if(type == "unit")
 			return CommonImages.unitHighlighter;
+		if(type == "empty")
+			return CommonImages.emptyHighlighter;
 		return null;
 	}
 	

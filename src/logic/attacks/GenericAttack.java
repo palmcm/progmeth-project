@@ -11,7 +11,7 @@ public class GenericAttack {
 	public static void simpleProjectile(Coordinate start, int damage, int range, int player) throws InvalidPlayerException
 	{
 		//System.out.println("simpleProjectile!");
-		start = new Coordinate(start.getX(),start.getY()+1);
+		start = new Coordinate(start.getX(),start.getY());
 		
 		if(start.getX() < 0 || start.getX() >= GameManager.getGameInstance().getBoard().getLanes())
 			return;
@@ -25,6 +25,8 @@ public class GenericAttack {
 		if(player==1)
 			direction = 1;
 		else direction = -1;
+		
+		start.setY(start.getY()+direction);
 		
 		boolean attackCompleted = false;
 		if(range<1)
@@ -60,7 +62,7 @@ public class GenericAttack {
 			
 	public static void piercingProjectile(Coordinate start, int damage, int range, int pierce, int player) throws InvalidPlayerException
 	{
-		start = new Coordinate(start.getX(),start.getY()+1);
+		start = new Coordinate(start.getX(),start.getY());
 		
 		if(start.getX() < 0 || start.getX() >= GameManager.getGameInstance().getBoard().getLanes())
 			return;
@@ -74,6 +76,7 @@ public class GenericAttack {
 		if(player==1)
 			direction = 1;
 		else direction = -1;
+		start.setY(start.getY()+direction);
 		
 		boolean attackCompleted = false;
 		if(range<1)
@@ -200,6 +203,10 @@ public class GenericAttack {
 		if(target.getY() == endBorder)
 		{
 			gameInstance.getPlayer(player).heal(amount);
+			return;
+		}
+		if(gameInstance.getBoard().getTile(target).getTower() == null)
+		{
 			return;
 		}
 		
