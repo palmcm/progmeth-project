@@ -28,6 +28,7 @@ public class SceneController {
 		}else if(scene.equals("pickMap")){
 			return pickMapScene;
 		}else if(scene.equals("pickTower")) {
+			SceneController.getPickTowerScene().updateDeck();
 			return pickTowerScene;
 		}else if(scene.equals("game")) {
 			return gameScene;
