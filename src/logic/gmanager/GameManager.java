@@ -31,7 +31,7 @@ public class GameManager {
 	private static String currentTurnString;
 
 	public static void initialize() {
-		StartNewGame();
+		createNewGame();
 	}
 
 	private static int flipPlayer(int player) {
@@ -100,15 +100,19 @@ public class GameManager {
 		GameManager.gameInstance = gameInstance;
 	}
 
-	public static void StartNewGame() {
+	public static void createNewGame() {
 		GameManager.setGameInstance(new GameInstance());
-		GameManager.setGamePhaseInfo();
+	}
+	
+	public static void startGame() {
+		SceneController.newGameScene();
+//		GameManager.setGamePhaseInfo();
 		
-		SceneController.getGamePane().getPlayerPane(1).updateIncome();
-		SceneController.getGamePane().getPlayerPane(2).updateIncome();
-
-		SceneController.getGamePane().getPlayerPane(1).updateMoney();
-		SceneController.getGamePane().getPlayerPane(2).updateMoney();
+//		SceneController.getGamePane().getPlayerPane(1).updateIncome();
+//		SceneController.getGamePane().getPlayerPane(2).updateIncome();
+//
+//		SceneController.getGamePane().getPlayerPane(1).updateMoney();
+//		SceneController.getGamePane().getPlayerPane(2).updateMoney();
 	}
 
 	public static void victory(int player) {

@@ -46,4 +46,5 @@ public class GameScene extends Scene {
 	public GamePane getGamePane() {
 		return gamePane;
 	}
+	
 }

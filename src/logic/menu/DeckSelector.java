@@ -34,6 +34,7 @@ public class DeckSelector {
 
 	public static void clickBeginGame() {
 		GameManager.setCurrentPlayer(1);
+		SceneController.newGameScene();
 		SceneController.getGamePane().updateDeck();
 		SceneController.setScene("game");
 	}

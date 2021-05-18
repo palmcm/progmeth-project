@@ -17,7 +17,7 @@ public class Main extends Application {
 			Scene scene = SceneController.getScene();
 //			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("CubicCopper");
+			primaryStage.setTitle("Wizard War");
 			SceneController.setStage(primaryStage);
 			SceneController.show();
 			

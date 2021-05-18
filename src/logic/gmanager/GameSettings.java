@@ -10,6 +10,14 @@ public class GameSettings {
 	private static int startingIncome = 20;
 	private static Board board = new Board();
 	
+	// ------------- SET DEFAULT -----------------
+	public static void setDefault() {
+		deckSize = 5;
+		MaxHealth = 100;
+		startingMoney = 50;
+		income = 5;
+	}
+	
 	// ------------- GETTER AND SETTERS -----------------
 	
 	public static int getDeckSize() {

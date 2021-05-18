@@ -18,7 +18,7 @@ public class SceneController {
 	private static MenuScene menuScene = new MenuScene(new VBox());
 	private static PickMapScene pickMapScene = new PickMapScene(new VBox());
 	private static PickTowerScene pickTowerScene = new PickTowerScene(new VBox());
-	private static GameScene gameScene = new GameScene(new StackPane());
+	private static GameScene gameScene;
 	
 	private static Stage stage;
 
@@ -61,6 +61,11 @@ public class SceneController {
 
 	public static PickTowerScene getPickTowerScene() {
 		return pickTowerScene;
+	}
+	
+	public static void newGameScene() {
+		gameScene = new GameScene(new StackPane());
+		return;
 	}
 	
 	public static GameScene getGameScene() {
