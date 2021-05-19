@@ -3,6 +3,11 @@ package gui.pane;
 import config.GameConfig;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -13,10 +18,11 @@ import logic.gmanager.GameInstance;
 import logic.gmanager.GameManager;
 import logic.gmanager.Player;
 import utils.CommonStrings;
+import utils.FontUtil;
 
 public class PlayerPane extends VBox {
 	
-	final private double BASE_WIDTH = GameConfig.SCREEN_WIDTH/2.5;
+	final private double BASE_WIDTH = 558;
 	private Rectangle hpTab;
 	private Text hpText;
 	private Text moneyText;
@@ -30,19 +36,22 @@ public class PlayerPane extends VBox {
 		
 		StackPane hpPane = new StackPane();
 		
-		Insets inset = new Insets(GameConfig.SCREEN_WIDTH/100);
+		Insets inset = new Insets(0,25,0,25);
 		
 		HBox hpBar = new HBox();
-		hpTab = new Rectangle(BASE_WIDTH, 50.0, Color.LIMEGREEN);
+		hpTab = new Rectangle(BASE_WIDTH, 26, Color.LIMEGREEN);
 		hpBar.getChildren().add(hpTab);
+		hpBar.setPadding(new Insets(15));
 		
 		HBox playerBox = new HBox();
 		Text playerText = new Text("Player " + player);
+		playerText.setFont(FontUtil.loadFont(16));
 		playerBox.getChildren().add(playerText);
 		playerBox.setPadding(inset);
 
 		HBox hpBox = new HBox();
 		hpText = new Text();
+		hpText.setFont(FontUtil.loadFont(16));
 		updateHp();
 		hpBox.getChildren().add(hpText);
 		hpBox.setPadding(inset);
@@ -58,24 +67,19 @@ public class PlayerPane extends VBox {
 		}
 		
 		hpPane.getChildren().addAll(hpBar, playerBox, hpBox);
-		
 		StackPane infoPane = new StackPane();
 		HBox moneyBox = new HBox();
 		moneyText = new Text();
+		moneyText.setFont(FontUtil.loadFont(16));
 		updateMoney();
 		moneyBox.getChildren().add(moneyText);
 		moneyBox.setPadding(inset);
 		
 		HBox incomeBox = new HBox();
 		incomeText = new Text("+10$/Turn");
+		incomeText.setFont(FontUtil.loadFont(16));
 		incomeBox.getChildren().add(incomeText);
 		incomeBox.setPadding(inset);
-		
-		HBox upgradeBox = new HBox();
-		upgradeText = new Text("");
-		upgradeBox.getChildren().add(upgradeText);
-		upgradeBox.setPadding(inset);
-		upgradeBox.setAlignment(Pos.CENTER);
 		
 		if (player == 1) {
 			moneyBox.setAlignment(Pos.CENTER_LEFT);
@@ -85,10 +89,13 @@ public class PlayerPane extends VBox {
 			incomeBox.setAlignment(Pos.CENTER_LEFT);
 		}
 		
-		infoPane.getChildren().addAll(moneyBox, incomeBox, upgradeBox);
+		infoPane.getChildren().addAll(moneyBox, incomeBox);
+		infoPane.setMinHeight(44);
 		
 		this.getChildren().addAll(hpPane, infoPane);
-		this.setMinWidth(BASE_WIDTH);
+		this.setMinWidth(592);
+//		this.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, 
+//				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 	}
 	
 	public void setHpBar(double hpPercent) {

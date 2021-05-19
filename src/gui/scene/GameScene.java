@@ -40,7 +40,10 @@ public class GameScene extends Scene {
 			mapLayer = new ImageView();
 			mapLayer.setImage(ImageUtil.ImageLoader("maps/classic.png"));
 			
-			root.getChildren().addAll(mapLayer,gamePane);
+			ImageView uiLayer = new ImageView();
+			uiLayer.setImage(ImageUtil.ImageLoader("ui/ingame_overlay.png"));
+			
+			root.getChildren().addAll(mapLayer,uiLayer,gamePane);
 		}
 	
 	public GamePane getGamePane() {

@@ -41,11 +41,11 @@ public class TowerGamePane extends VBox{
 		towerDeckBox.setHgap(1);
 		towerDeckBox.setAlignment(Pos.CENTER);
 		this.setAlignment(Pos.CENTER);
-		this.setMinSize(GameConfig.SCREEN_WIDTH/2.5, GameConfig.SCREEN_HEIGHT*0.25);
+		this.setMinSize(650, GameConfig.SCREEN_HEIGHT*0.25);
 		this.setPadding(new Insets(5));
 		this.getChildren().addAll(towerDeckBox);
-		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
-				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+//		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
+//				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 	}
 	
 	public ArrayList<TowerGameCell> getTowerList() {

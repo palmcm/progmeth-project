@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.gmanager.GameManager;
+import utils.FontUtil;
 
 public class PickMapScene extends Scene{
 	
@@ -20,7 +21,7 @@ public class PickMapScene extends Scene{
 		root.setSpacing(50);
 		
 		Text gameName = new Text("Pick your map");
-		gameName.setFont(new Font(100));
+		gameName.setFont(FontUtil.loadFont(100));
 		
 		MapPane mapPane = new MapPane();
 		

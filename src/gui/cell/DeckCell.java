@@ -24,7 +24,7 @@ public class DeckCell extends StackPane{
 		towerIcon.setFitHeight(SIZE);
 		towerIcon.setFitWidth(SIZE);
 		
-		this.setMinSize(SIZE, SIZE);
+		this.setMinSize(SIZE+2, SIZE+2);
 		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 	}
@@ -32,7 +32,7 @@ public class DeckCell extends StackPane{
 	public DeckCell(BaseTower tower) {
 		this.tower = tower;
 		towerIcon = new ImageView();
-		Image img = ImageUtil.ImageLoader(tower.getUrl(), 100);
+		Image img = ImageUtil.ImageLoader(tower.getUrl(), 80);
 		towerIcon.setImage(img);
 		towerIcon.setFitHeight(SIZE);
 		towerIcon.setFitWidth(SIZE);
@@ -55,7 +55,7 @@ public class DeckCell extends StackPane{
 			towerIcon.setImage(null);
 		}
 		this.tower = tower;
-		Image img = ImageUtil.ImageLoader(tower.getUrl(), 100);
+		Image img = ImageUtil.ImageLoader(tower.getUrl(), 80);
 		towerIcon.setImage(img);
 	}
 }

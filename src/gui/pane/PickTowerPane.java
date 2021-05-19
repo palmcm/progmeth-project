@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.menu.DeckSelector;
+import utils.FontUtil;
 
 public class PickTowerPane extends VBox{
 	
@@ -21,7 +22,7 @@ public class PickTowerPane extends VBox{
 		this.setSpacing(50);
 		
 		Text gameName = new Text("Pick Tower");
-		gameName.setFont(new Font(80));
+		gameName.setFont(FontUtil.loadFont(80));
 		
 		TowerPane towerPane = new TowerPane();
 		
