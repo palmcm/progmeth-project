@@ -12,6 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.gmanager.GameInstance;
 import logic.gmanager.GameManager;
+import utils.FontUtil;
 
 public class PlayerDeckPane extends VBox{
 	
@@ -22,7 +23,7 @@ public class PlayerDeckPane extends VBox{
 		super(20);
 		this.player = player;
 		Text gameName = new Text("Player "+player+"'s Deck");
-		gameName.setFont(new Font(50));
+		gameName.setFont(FontUtil.loadFont(50));
 		
 		showDeck = new DeckPane();
 		

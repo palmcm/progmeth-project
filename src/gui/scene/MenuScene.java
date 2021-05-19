@@ -5,9 +5,12 @@ import gui.SceneController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import utils.FontUtil;
+import utils.ImageUtil;
 
 public class MenuScene extends Scene {
 	
@@ -17,14 +20,15 @@ public class MenuScene extends Scene {
 		root.setAlignment(Pos.CENTER);
 		root.setSpacing(50);
 		
-		Text gameName = new Text("Game Name");
-		gameName.setFont(new Font(100));
+		ImageView gameName = new ImageView(ImageUtil.ImageLoader("ui/game_icon.png",100));
 		
 		Button single = new Button("Single player");
 		single.setPrefSize(250, 100);
+		single.setFont(FontUtil.loadFont(25));
 		
 		Button duel = new Button("Two players");
 		duel.setPrefSize(250, 100);
+		duel.setFont(FontUtil.loadFont(25));
 		
 		duel.setOnMouseClicked(e -> {
 			SceneController.setScene("pickMap");
@@ -32,6 +36,7 @@ public class MenuScene extends Scene {
 		
 		Button setting = new Button("Setting");
 		setting.setPrefSize(250, 100);
+		setting.setFont(FontUtil.loadFont(25));
 		
 		root.getChildren().addAll(gameName,single,duel,setting);
 		

@@ -25,7 +25,7 @@ public class GamePane extends VBox{
 		turnStatus = new TurnPane();
 		player2Status = new PlayerPane(2);
 		playerTab.getChildren().addAll(player1Status,turnStatus, player2Status);
-		playerTab.setPadding(new Insets(5));
+		playerTab.setPadding(new Insets(0,0,0,10));
 		
 		HBox boardArea = new HBox();
 		tilesPane = new TilesPane();

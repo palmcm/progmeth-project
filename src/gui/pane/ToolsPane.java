@@ -44,7 +44,7 @@ public class ToolsPane extends VBox {
 		toolsList.add(sellIcon);
 		
 		this.getChildren().addAll(upgradeIncomeIcon,upgradeIcon,sellIcon);
-		this.setMinWidth(GameConfig.SCREEN_WIDTH/5-10);
+		this.setMinWidth(150);
 		this.setAlignment(Pos.CENTER);
 		this.setSpacing(5);
 	}

@@ -11,13 +11,14 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import logic.towers.BaseTower;
 import logic.towers.Towers;
 import utils.ImageUtil;
 
-public class TowerGameCell extends VBox {
+public class TowerGameCell extends StackPane {
 	final private int PIC_SIZE = 64;
 	private BaseTower tower;
 	private ImageView towerIcon;
@@ -29,8 +30,8 @@ public class TowerGameCell extends VBox {
 		
 		this.getChildren().add(towerIcon);
 		this.setPrefSize(PIC_SIZE, PIC_SIZE);
-		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
-				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+//		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
+//				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		
 		this.setOnMouseEntered(e -> {
 			if (this.tower != null) {

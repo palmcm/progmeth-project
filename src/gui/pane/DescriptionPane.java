@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import utils.FontUtil;
 
 public class DescriptionPane extends VBox{
 	private Text nameText;
@@ -20,19 +21,21 @@ public class DescriptionPane extends VBox{
 	public DescriptionPane() {
 		
 		nameText = new Text();
-		nameText.setFont(new Font(22));
+		nameText.setFont(FontUtil.loadFont(22));
+		nameText.setFill(Color.WHITE);
 		
 		desText = new Text();
 		this.setDesDefault();
-		desText.setFont(new Font(13));
+		desText.setFont(FontUtil.loadFont(13));
+		desText.setFill(Color.WHITE);
 		
 		this.getChildren().addAll(nameText, desText);
 		this.setAlignment(Pos.TOP_LEFT);
-		this.setMinSize(GameConfig.SCREEN_WIDTH/2.5, GameConfig.SCREEN_HEIGHT*0.25);
-		this.setPadding(new Insets(5));
+		this.setMinSize(650, GameConfig.SCREEN_HEIGHT*0.25);
+		this.setPadding(new Insets(35,0,0,45));
 		this.getChildren().addAll();
-		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
-				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+//		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
+//				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 	}
 	
 	public void setDesDefault() {

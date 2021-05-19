@@ -1,6 +1,7 @@
 package logic.gmanager;
 
 import java.util.ArrayList;
+import java.util.Currency;
 
 import exception.InvalidPlayerException;
 import exception.SelectInvalidTileException;
@@ -24,6 +25,7 @@ public class GameManager {
 	private static int startingPlayer;
 	private static int currentPlayer;
 	private static int maxDeckSize = 5;
+	private static int currentTurn;
 	private static Coordinate selectedTile;
 	
 	private static String turnPhaseString;
@@ -102,6 +104,7 @@ public class GameManager {
 
 	public static void createNewGame() {
 		GameManager.setGameInstance(new GameInstance());
+		currentTurn = 1;
 	}
 	
 	public static void startGame() {
@@ -354,7 +357,7 @@ public class GameManager {
 
 		GameManager.getGameInstance().getPlayer(1).applyIncome();
 		GameManager.getGameInstance().getPlayer(2).applyIncome();
-
+		currentTurn++;
 	}
 	
 
@@ -363,23 +366,7 @@ public class GameManager {
 	
 	public static void setGamePhaseInfo()
 	{
-		// turn phase
-		switch(GameManager.getTurnPhase())
-		{
-		case AFTERMATH:
-			GameManager.turnPhaseString = "Attacking Phase";
-			break;
-		case ATTACK:
-			GameManager.turnPhaseString = "Strategy Phase";
-			break;
-		case BUILD:
-			GameManager.turnPhaseString = "Management Phase";
-			break;
-		default:
-			break;
-		}
 		
-
 		switch(GameManager.getCurrentPlayer())
 		{
 		case 1:
@@ -389,6 +376,25 @@ public class GameManager {
 			GameManager.currentPlayerString = "Player 2's turn";
 			break;
 		}
+		
+		// turn phase
+				switch(GameManager.getTurnPhase())
+				{
+				case AFTERMATH:
+					GameManager.turnPhaseString = "Attacking Phase";
+					GameManager.currentPlayerString = "";
+					break;
+				case ATTACK:
+					GameManager.turnPhaseString = "Strategy Phase";
+					break;
+				case BUILD:
+					GameManager.turnPhaseString = "Management Phase";
+					break;
+				default:
+					break;
+				}
+		
+		currentTurnString = "Turn " + currentTurn;
 		
 		SceneController.getGamePane().getTurnStatus().updateTurnPane();
 		

@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.towers.BaseTower;
+import utils.FontUtil;
 
 public class TowerDesBox extends VBox{
 	private Text towerName;
@@ -19,10 +20,10 @@ public class TowerDesBox extends VBox{
 	
 	public TowerDesBox() {
 		towerName = new Text();
-		towerName.setFont(new Font(20));
+		towerName.setFont(FontUtil.loadFont(20));
 		towerDes = new Text();
 		this.setTowerDefault();
-		towerDes.setFont(new Font(16));
+		towerDes.setFont(FontUtil.loadFont(16));
 		this.setPadding(new Insets(5));
 		this.getChildren().addAll(towerName,towerDes);
 		this.setMaxWidth(GameConfig.SCREEN_WIDTH/4);
