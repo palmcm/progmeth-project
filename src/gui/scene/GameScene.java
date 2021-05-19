@@ -58,10 +58,11 @@ public class GameScene extends Scene {
 	
 	public void gameEnd(int player) {
 		gameOver = new GameOverPane();
+		gameOver.setWinner(player);
 		root.getChildren().add(gameOver);
 	}
 	
 	public void closeGameEnd() {
-		root.getChildren().remove(gameOver);
+		root.getChildren().remove(3);
 	}
 }
