@@ -5,6 +5,7 @@ import config.GameConfig;
 import gui.cell.ToolsCell;
 import gui.cell.TowerGameCell;
 import gui.pane.DescriptionPane;
+import gui.pane.GameOverPane;
 import gui.pane.GamePane;
 import gui.pane.PlayerPane;
 import gui.pane.TilesPane;
@@ -14,6 +15,7 @@ import gui.pane.TurnPane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -32,8 +34,10 @@ import utils.ImageUtil;
 public class GameScene extends Scene {
 	private GamePane gamePane;
 	private ImageView mapLayer;
+	private GameOverPane gameOver;
+	private StackPane root;
 	
-	public GameScene(StackPane root) {
+	public GameScene(StackPane root){
 		super(root,GameConfig.SCREEN_WIDTH,GameConfig.SCREEN_HEIGHT);
 			gamePane = new GamePane();
 			
@@ -44,10 +48,20 @@ public class GameScene extends Scene {
 			uiLayer.setImage(ImageUtil.ImageLoader("ui/ingame_overlay.png"));
 			
 			root.getChildren().addAll(mapLayer,uiLayer,gamePane);
+			root.setAlignment(Pos.CENTER);
+			this.root = root;
 		}
 	
 	public GamePane getGamePane() {
 		return gamePane;
 	}
 	
+	public void gameEnd(int player) {
+		gameOver = new GameOverPane();
+		root.getChildren().add(gameOver);
+	}
+	
+	public void closeGameEnd() {
+		root.getChildren().remove(gameOver);
+	}
 }

@@ -120,7 +120,7 @@ public class GameManager {
 
 	public static void victory(int player) {
 		// TBD: Game victory handler
-
+		SceneController.getGameScene().gameEnd(player);
 	}
 
 	// ---------------------- TURN PROCESSOR : ATTACK
