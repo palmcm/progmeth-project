@@ -32,16 +32,16 @@ public class Player {
 		this.playerId = id;
 	}
 	
-	
+	public void reset() {
+		this.income = GameSettings.getStartingIncome();
+		this.money = GameSettings.getStartingMoney();
+		this.health = this.maxHealth;
+	}
 	// METHODS
 	
 	public void damage(int dmg) throws InvalidPlayerException
 	{
 		this.setHealth(this.getHealth() - dmg);
-		if(this.getHealth() <= 0)
-		{
-			GameManager.victory(this.getOppositePlayerId());
-		}
 	}
 	
 	public int getOppositePlayerId() throws InvalidPlayerException

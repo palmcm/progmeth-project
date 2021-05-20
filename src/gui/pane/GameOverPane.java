@@ -8,6 +8,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import logic.gmanager.GameManager;
 import utils.FontUtil;
 
 public class GameOverPane extends VBox{
@@ -21,12 +22,14 @@ public class GameOverPane extends VBox{
 		
 		Button playAgain = new Button("Play Again");
 		playAgain.setOnMouseClicked(e -> {
-			close();
+			GameManager.playAgain();
+//			close();
 		});
 		
 		Button mainmenu = new Button("Back to Main menu");
 		mainmenu.setOnMouseClicked(e -> {
 			close();
+			SceneController.setScene("menu");
 		});
 		
 		this.getChildren().addAll(winner,playAgain,mainmenu);
@@ -40,7 +43,7 @@ public class GameOverPane extends VBox{
 	}
 	
 	public void setWinner(int player) {
-		winner.setText("Winner is " + player);
+		winner.setText("Winner is Player " + player);
 	}
 
 }

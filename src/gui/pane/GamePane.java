@@ -125,4 +125,11 @@ public class GamePane extends VBox{
 		GameButtons.selectTower(null);
 		unhighlightOption();
 	}
+	
+	public void updateScreen() {
+		updateHp();
+		updateMoney();
+		turnStatus.updateTurnPane();
+		tilesPane.updateAllTiles();
+	}
 }
