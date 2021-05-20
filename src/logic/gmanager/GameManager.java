@@ -124,7 +124,14 @@ public class GameManager {
 	}
 	
 	public static void playAgain(){
-		createNewGame();
+		GameButtons.proceedGamePhase();
+		GameManager.getGameInstance().reset();
+		currentTurn = 1;
+		GameManager.setButtonMode(ButtonMode.BUILD);
+		GameManager.setTurnPhase(TurnPhase.BUILD);
+		SceneController.getGameScene().closeGameEnd();
+		setGamePhaseInfo();
+		SceneController.getGamePane().updateScreen();
 	}
 
 	// ---------------------- TURN PROCESSOR : ATTACK
@@ -358,15 +365,15 @@ public class GameManager {
 		
 		clearAttackSeqTile();
 		GameManager.getGameInstance().clearAttackOrder();
-
-		int winner = checkWinner();
-		if (winner == -1) {
+		
+		if (checkWinner() == -1) {
 			GameManager.getGameInstance().getPlayer(1).applyIncome();
 			GameManager.getGameInstance().getPlayer(2).applyIncome();
 			currentTurn++;
 		}else {
-			victory(winner);
+			victory(checkWinner());
 		}
+		
 		
 	}
 	

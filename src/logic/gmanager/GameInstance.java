@@ -48,6 +48,24 @@ public class GameInstance {
 		
 	}
 	
+	public void reset() {
+		GameManager.setStartingPlayer(1);
+		GameManager.setCurrentPlayer(1);
+		
+		GameManager.setTurnPhase(TurnPhase.BUILD);
+		DeckSelector.setFlipSelector(true);
+		
+		for (int i=0;i<board.getLanes();i++) {
+			for (int j=0;j<board.getBorder();j++) {
+				board.getTiles()[i][j].setTower(null);
+			}
+		}
+		
+		attackOrder.clear();
+		persistentEffects.clear();
+		player1.reset();
+		player2.reset();
+	}
 	// ---------------- ATTACK ORDER ---------------------
 	
 	public void clearAttackOrder()

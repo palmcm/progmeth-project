@@ -63,6 +63,6 @@ public class GameScene extends Scene {
 	}
 	
 	public void closeGameEnd() {
-		root.getChildren().remove(3);
+		root.getChildren().remove(root.getChildren().size()-1);
 	}
 }

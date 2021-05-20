@@ -212,4 +212,12 @@ public class TilesPane extends GridPane{
 	{
 		this.getTileCell(cell).doUnitHighlight();
 	}
+	
+	public void updateAllTiles() {
+		for (int i=0;i<lanes;i++) {
+			for (int j=0;j<cols;j++) {
+				tilesCell[i][j].update();
+			}
+		}
+	}
 }
