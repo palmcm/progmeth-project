@@ -31,6 +31,7 @@ public class Corruptor extends AttackableTower{
 		this.setLoc(loc);
 		
 		this.setUrl("towers/corruptor.png");
+		this.setAttackUrl("towers/corruptor_attack.png");
 		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		

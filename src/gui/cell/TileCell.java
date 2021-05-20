@@ -3,6 +3,7 @@ package gui.cell;
 
 import config.GameConfig;
 import gui.SceneController;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Tooltip;
@@ -35,6 +36,7 @@ public class TileCell extends StackPane{
 	private ImageView highlightBackground;
 	private Rectangle healthbar;
 	private ImageView hpBackground;
+	private ImageView damageFrame;
 	
 	public TileCell(Tile tile) {
 		this.tile = tile;
@@ -64,13 +66,17 @@ public class TileCell extends StackPane{
 		hpBackground.setScaleY(1);
 		hpBackground.setTranslateY(-pxSize);
 		
+		damageFrame  = new ImageView();
+		damageFrame.setFitWidth(SIZE);
+		damageFrame.setFitHeight(SIZE);
+		
 		StackPane attackSeqBox = new StackPane();
 		attackSeq = new Text();
 		attackSeqBox.setAlignment(Pos.TOP_LEFT);
 		attackSeqBox.setPadding(new Insets(5));
 		attackSeqBox.getChildren().add(attackSeq);
 		
-		this.getChildren().addAll(highlightBackground,towerImg,attackSeqBox,towerUpgradeEmblem,hpBackground,healthbar);
+		this.getChildren().addAll(highlightBackground,towerImg,damageFrame,attackSeqBox,towerUpgradeEmblem,hpBackground,healthbar);
 		this.setPrefSize(SIZE, SIZE);
 		/*if (tile.getTileOwner() != 0) {
 			this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
@@ -159,6 +165,32 @@ public class TileCell extends StackPane{
 			}
 		}
 		
+	}
+	
+	public void takeDamageAnimation(){
+		new Thread(() -> {
+			Platform.runLater(() -> damageFrame.setImage(CommonImages.getHighlighter("empty")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			Platform.runLater(() -> damageFrame.setImage(null));
+		}).start();
+	}
+	
+	public void attackAnimation() {
+		new Thread(() -> {
+			Platform.runLater(() -> towerImg.setImage(ImageUtil.ImageLoader(tile.getTower().getAttackUrl(),80)));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			Platform.runLater(() -> update());
+		}).start();
 	}
 	
 	public void setAttackSeq(int seq) {

@@ -31,6 +31,7 @@ public class ShockWeaver extends AttackableTower{
 		this.setLoc(loc);
 		
 		this.setUrl("towers/shockweaver.png");
+		this.setAttackUrl("towers/shockweaver_attack.png");
 		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		

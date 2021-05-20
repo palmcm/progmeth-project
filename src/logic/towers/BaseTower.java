@@ -45,6 +45,7 @@ public abstract class BaseTower {
 	// Image Url
 	
 	private String url;
+	private String attackUrl;
 	
 	// ** Abstract Methods **
 	
@@ -144,6 +145,7 @@ public abstract class BaseTower {
 	{
 		this.setCurrentHealth(this.getCurrentHealth()-dmg);
 		this.updateHealthBar();
+		GameManager.doDamageAnimation(loc);
 	}
 	
 	public void removeOverheal()
@@ -299,6 +301,14 @@ public abstract class BaseTower {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+	public String getAttackUrl() {
+		return attackUrl;
+	}
+	
+	public void setAttackUrl(String attackUrl) {
+		this.attackUrl = attackUrl;
 	}
 	
 	public void freeze(int duration)

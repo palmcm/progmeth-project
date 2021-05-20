@@ -4,6 +4,7 @@ import config.GameConfig;
 import gui.SceneController;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
@@ -22,6 +23,8 @@ public class TurnPane extends VBox {
 	private Text phaseText;
 	private Text playerTurn;
 	private Text turnNumber;
+	private ImageView endTurn;
+	private final Image endTurnPic = ImageUtil.ImageLoader("buttons/end_turn.png");
 	
 	public TurnPane() {
 		phaseText = new Text("Attacking Phase");
@@ -31,7 +34,8 @@ public class TurnPane extends VBox {
 		phaseText.setFont(FontUtil.loadFont(16));
 		playerTurn.setFont(FontUtil.loadFont(16));
 		turnNumber.setFont(FontUtil.loadFont(16));
-		ImageView endTurn = new ImageView(ImageUtil.ImageLoader("buttons/end_turn.png"));
+		endTurn = new ImageView(endTurnPic);
+		
 		this.getChildren().addAll(phaseText,playerTurn,turnNumber,endTurn);
 		this.setMinWidth(256);
 		this.setAlignment(Pos.CENTER);
@@ -48,8 +52,14 @@ public class TurnPane extends VBox {
 		this.playerTurn.setText(GameManager.getCurrentPlayerString());
 		this.turnNumber.setText(GameManager.getCurrentTurnString());
 		
-		
-		
-		
+	}
+	
+	public void setDisableEnd(boolean disable) {
+		endTurn.setDisable(disable);
+		if (disable) {
+			endTurn.setImage(null);
+		}else {
+			endTurn.setImage(endTurnPic);
+		}
 	}
 }

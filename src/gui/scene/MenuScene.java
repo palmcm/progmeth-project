@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import logic.gmanager.GameManager;
 import utils.FontUtil;
 import utils.ImageUtil;
 
@@ -31,7 +32,8 @@ public class MenuScene extends Scene {
 		duel.setFont(FontUtil.loadFont(25));
 		
 		duel.setOnMouseClicked(e -> {
-			SceneController.setScene("pickMap");
+			GameManager.initialize();
+			SceneController.setScene("pickTower");
 		});
 		
 		Button setting = new Button("Setting");

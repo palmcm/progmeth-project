@@ -132,4 +132,8 @@ public class GamePane extends VBox{
 		turnStatus.updateTurnPane();
 		tilesPane.updateAllTiles();
 	}
+	
+	public void inAnimation(boolean isin) {
+		turnStatus.setDisableEnd(isin);
+	}
 }

@@ -31,6 +31,7 @@ public class Apprentice extends AttackableTower{
 		this.setLoc(loc);
 		
 		this.setUrl("towers/apprentice.png");
+		this.setAttackUrl("towers/apprentice_attack.png");
 		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		

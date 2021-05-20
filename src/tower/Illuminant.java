@@ -31,6 +31,7 @@ public class Illuminant extends AttackableTower{
 		this.setLoc(loc);
 		
 		this.setUrl("towers/illuminant.png");
+		this.setAttackUrl("towers/illuminant_attack.png");
 		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		

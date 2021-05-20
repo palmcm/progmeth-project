@@ -7,6 +7,7 @@ import exception.InvalidPlayerException;
 import exception.SelectInvalidTileException;
 import gui.SceneController;
 import gui.cell.TileCell;
+import javafx.application.Platform;
 import logic.actions.AttackAction;
 import logic.actions.AttackPhaseAction;
 import logic.misc.Coordinate;
@@ -138,12 +139,29 @@ public class GameManager {
 	// -----------------------------------
 
 	public static void processAttackPhase() {
-		for (AttackPhaseAction i : GameManager.getGameInstance().getAttackOrder()) {
-			i.processAction();
-		}
-		SceneController.getGamePane().updateHp();
+		new Thread( () -> {
+			Platform.runLater(() -> SceneController.getGamePane().inAnimation(true));
+			for (AttackPhaseAction i : GameManager.getGameInstance().getAttackOrder()) {
+				if (i instanceof AttackAction) {
+					SceneController.getGamePane().getTilesPane().getTileCell(((AttackAction)i).getTrigger()).attackAnimation();
+				}
+				i.processAction();
+				Platform.runLater(() -> SceneController.getGamePane().updateHp());
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			Platform.runLater(() -> SceneController.getGamePane().inAnimation(false));
+		}).start();
 	}
 
+	public static void doDamageAnimation(Coordinate loc) {
+		SceneController.getGamePane().getTilesPane().getTileCell(loc).takeDamageAnimation();
+	}
+	
 	public static void selectAttackPhaseTile(Coordinate loc, int player) throws SelectInvalidTileException {
 		if (GameManager.getButtonMode() == ButtonMode.AIM) {
 			if (GameManager.targetAimable(loc, player)) {

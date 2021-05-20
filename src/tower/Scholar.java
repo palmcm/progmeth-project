@@ -32,6 +32,7 @@ public class Scholar extends BaseTower implements Passive{
 		this.setLoc(loc);
 		
 		this.setUrl("towers/scholar.png");
+		this.setAttackUrl("towers/scholar_attack.png");
 		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		

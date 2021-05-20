@@ -21,18 +21,18 @@ public class DescriptionPane extends VBox{
 	public DescriptionPane() {
 		
 		nameText = new Text();
-		nameText.setFont(FontUtil.loadFont(22));
+		nameText.setFont(FontUtil.loadFont(32));
 		nameText.setFill(Color.WHITE);
 		
 		desText = new Text();
 		this.setDesDefault();
-		desText.setFont(FontUtil.loadFont(13));
+		desText.setFont(FontUtil.loadFont(20));
 		desText.setFill(Color.WHITE);
 		
 		this.getChildren().addAll(nameText, desText);
 		this.setAlignment(Pos.TOP_LEFT);
 		this.setMinSize(650, GameConfig.SCREEN_HEIGHT*0.25);
-		this.setPadding(new Insets(35,0,0,45));
+		this.setPadding(new Insets(50,0,0,55));
 		this.getChildren().addAll();
 //		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
 //				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
