@@ -120,7 +120,11 @@ public class GameManager {
 
 	public static void victory(int player) {
 		// TBD: Game victory handler
-
+		SceneController.getGameScene().gameEnd(player);
+	}
+	
+	public static void playAgain(){
+		createNewGame();
 	}
 
 	// ---------------------- TURN PROCESSOR : ATTACK
@@ -355,12 +359,32 @@ public class GameManager {
 		clearAttackSeqTile();
 		GameManager.getGameInstance().clearAttackOrder();
 
-		GameManager.getGameInstance().getPlayer(1).applyIncome();
-		GameManager.getGameInstance().getPlayer(2).applyIncome();
-		currentTurn++;
+		int winner = checkWinner();
+		if (winner == -1) {
+			GameManager.getGameInstance().getPlayer(1).applyIncome();
+			GameManager.getGameInstance().getPlayer(2).applyIncome();
+			currentTurn++;
+		}else {
+			victory(winner);
+		}
+		
 	}
 	
 
+	private static int checkWinner() {
+		int hp1 = GameManager.getGameInstance().getPlayer(1).getHealth();
+		int hp2 = GameManager.getGameInstance().getPlayer(2).getHealth();
+		if (hp1<=0 || hp2<=0) {
+			if (hp1<hp2) {
+				return 2;
+			}
+			if (hp2<hp1) {
+				return 1;
+			}
+			return 3;
+		}
+		return -1;
+	}
 	
 	// ---------------- GAME PHASE UPDATER ---------------------------
 	
