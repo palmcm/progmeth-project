@@ -12,7 +12,7 @@ import logic.towers.BaseTower;
 public class DeckSelector {
 
 	private static boolean flipSelector = true;
-	private static boolean freestyleMode = false;
+	private static boolean freestyleMode = true;
 
 	// ---------------- WHEN CLICKING A TOWER ---------------------
 
@@ -79,6 +79,7 @@ public class DeckSelector {
 		}
 		if (GameManager.getGameInstance().getPlayer(GameManager.getCurrentPlayer()).getDeck().size() == GameSettings.getDeckSize()) {
 			GameManager.flipCurrentPlayer();
+			SceneController.getPickTowerScene().highlightdeck();
 			return;
 		}
 	}

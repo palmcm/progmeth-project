@@ -18,7 +18,7 @@ public class GameOverPane extends VBox{
 	public GameOverPane() {
 		super(5);
 		winner = new Text("Winner is");
-		winner.setFont(FontUtil.loadFont(16));
+		winner.setFont(FontUtil.loadFont(20));
 		
 		Button playAgain = new Button("Play Again");
 		playAgain.setOnMouseClicked(e -> {
@@ -26,11 +26,14 @@ public class GameOverPane extends VBox{
 //			close();
 		});
 		
+		playAgain.setFont(FontUtil.loadFont(16));
+		
 		Button mainmenu = new Button("Back to Main menu");
 		mainmenu.setOnMouseClicked(e -> {
 			close();
 			SceneController.setScene("menu");
 		});
+		mainmenu.setFont(FontUtil.loadFont(16));
 		
 		this.getChildren().addAll(winner,playAgain,mainmenu);
 		this.setMaxSize(500, 200);
@@ -43,6 +46,10 @@ public class GameOverPane extends VBox{
 	}
 	
 	public void setWinner(int player) {
+		if (player == 3) {
+			winner.setText("Tie");
+			return;
+		}
 		winner.setText("Winner is Player " + player);
 	}
 

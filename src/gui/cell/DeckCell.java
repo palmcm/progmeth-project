@@ -17,9 +17,10 @@ public class DeckCell extends StackPane{
 	private BaseTower tower;
 	private ImageView towerIcon;
 	private final int SIZE = 80;
+	private int player;
 	
-	public DeckCell() {
-		
+	public DeckCell(int player) {
+		this.player = player;
 		towerIcon = new ImageView();
 		towerIcon.setFitHeight(SIZE);
 		towerIcon.setFitWidth(SIZE);
@@ -29,11 +30,10 @@ public class DeckCell extends StackPane{
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 	}
 	
-	public DeckCell(BaseTower tower) {
-		this.tower = tower;
+	public DeckCell(BaseTower tower, int player) {
+		this.player = player;
 		towerIcon = new ImageView();
-		Image img = ImageUtil.ImageLoader(tower.getUrl(), 80);
-		towerIcon.setImage(img);
+		setTower(tower, player);
 		towerIcon.setFitHeight(SIZE);
 		towerIcon.setFitWidth(SIZE);
 		
@@ -49,13 +49,16 @@ public class DeckCell extends StackPane{
 		});
 	}
 	
-	public void setTower(BaseTower tower) {
+	public void setTower(BaseTower tower, int player) {
 		if (tower == null) {
 			this.tower = null;
 			towerIcon.setImage(null);
 		}
 		this.tower = tower;
 		Image img = ImageUtil.ImageLoader(tower.getUrl(), 80);
+		if (player == 2) {
+			towerIcon.setScaleX(-1);
+		}
 		towerIcon.setImage(img);
 	}
 }
