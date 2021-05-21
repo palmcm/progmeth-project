@@ -15,6 +15,7 @@ import utils.ImageUtil;
 
 public class DeckCell extends StackPane{
 	private BaseTower tower;
+	private ImageView background;
 	private ImageView towerIcon;
 	private final int SIZE = 80;
 	private int player;
@@ -25,6 +26,11 @@ public class DeckCell extends StackPane{
 		towerIcon.setFitHeight(SIZE);
 		towerIcon.setFitWidth(SIZE);
 		
+		background = new ImageView();
+		background.setFitHeight(SIZE);
+		background.setFitWidth(SIZE);
+		
+		this.getChildren().addAll(background,towerIcon);
 		this.setMinSize(SIZE+2, SIZE+2);
 		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
@@ -37,9 +43,13 @@ public class DeckCell extends StackPane{
 		towerIcon.setFitHeight(SIZE);
 		towerIcon.setFitWidth(SIZE);
 		
+		background = new ImageView();
+		background.setFitHeight(SIZE);
+		background.setFitWidth(SIZE);
+		
 		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-		this.getChildren().add(towerIcon);
+		this.getChildren().addAll(background,towerIcon);
 		this.setOnMouseEntered(e -> {
 			SceneController.getPickTowerScene().getDesBox().setTowerData(tower);
 		});
@@ -53,6 +63,7 @@ public class DeckCell extends StackPane{
 		if (tower == null) {
 			this.tower = null;
 			towerIcon.setImage(null);
+			return;
 		}
 		this.tower = tower;
 		Image img = ImageUtil.ImageLoader(tower.getUrl(), 80);
@@ -60,5 +71,9 @@ public class DeckCell extends StackPane{
 			towerIcon.setScaleX(-1);
 		}
 		towerIcon.setImage(img);
+	}
+	
+	public ImageView getCellBackground() {
+		return background;
 	}
 }

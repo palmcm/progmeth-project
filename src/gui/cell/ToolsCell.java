@@ -6,12 +6,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import logic.gmanager.GameButtons;
 import logic.gmanager.GameManager;
 import logic.gmanager.TurnPhase;
+import utils.CommonImages;
 
 public class ToolsCell extends StackPane{
 	
@@ -36,11 +41,14 @@ public class ToolsCell extends StackPane{
 	}
 	
 	public void highlight() {
-		this.setBackground(new Background(new BackgroundFill(Color.LIMEGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+		this.setBackground(new Background(new BackgroundImage(CommonImages.getHighlighter("select"), BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT,
+		        BackgroundPosition.DEFAULT,
+		        new BackgroundSize(1.0, 1.0, true, true, false, false))));
 	}
 	
 	public void unhighlight() {
-		this.setBackground(new Background(new BackgroundFill(null, CornerRadii.EMPTY, Insets.EMPTY)));
+		this.setBackground(null);
 	}
 	
 	public void setDes(String toolName, String toolDescription) {

@@ -2,7 +2,6 @@ package gui.pane;
 
 import gui.SceneController;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
@@ -16,24 +15,24 @@ public class GameOverPane extends VBox{
 	private Text winner;
 	
 	public GameOverPane() {
-		super(5);
+		super(10);
 		winner = new Text("Winner is");
-		winner.setFont(FontUtil.loadFont(20));
+		winner.setFont(FontUtil.loadFont(36));
 		
-		Button playAgain = new Button("Play Again");
+		Text playAgain = new Text("Play Again");
 		playAgain.setOnMouseClicked(e -> {
 			GameManager.playAgain();
 //			close();
 		});
 		
-		playAgain.setFont(FontUtil.loadFont(16));
+		playAgain.setFont(FontUtil.loadFont(24));
 		
-		Button mainmenu = new Button("Back to Main menu");
+		Text mainmenu = new Text("Back to Main menu");
 		mainmenu.setOnMouseClicked(e -> {
 			close();
 			SceneController.setScene("menu");
 		});
-		mainmenu.setFont(FontUtil.loadFont(16));
+		mainmenu.setFont(FontUtil.loadFont(24));
 		
 		this.getChildren().addAll(winner,playAgain,mainmenu);
 		this.setMaxSize(500, 200);

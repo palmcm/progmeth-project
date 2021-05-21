@@ -40,14 +40,11 @@ public class PlayerDeckPane extends StackPane{
 	}
 	
 	public void showNewDeck() {
-		showDeck.update(player);
+		showDeck.update();
 	}
 	
-	public void highlight() {
-		this.setBackground(new Background(new BackgroundFill(Color.LIMEGREEN, null, null)));
+	public void highlight(boolean highlight) {
+		showDeck.highlight(highlight);
 	}
 	
-	public void unhighlight() {
-		this.setBackground(new Background(new BackgroundFill(null, null, null)));
-	}
 }

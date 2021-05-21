@@ -27,7 +27,6 @@ public class PlayerPane extends VBox {
 	private Text hpText;
 	private Text moneyText;
 	private Text incomeText;
-	private Text upgradeText;
 	private Player player;
 	
 	

@@ -68,11 +68,11 @@ public class PickTowerScene extends Scene{
 	public void highlightdeck() {
 		int player = GameManager.getCurrentPlayer();
 		if (player == 1) {
-			p1.highlight();
-			p2.unhighlight();
+			p1.highlight(true);
+			p2.highlight(false);
 		}else {
-			p1.unhighlight();
-			p2.highlight();
+			p1.highlight(false);
+			p2.highlight(true);
 		}
 	}
 	

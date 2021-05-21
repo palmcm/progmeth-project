@@ -6,11 +6,33 @@ import javafx.scene.image.Image;
 public class CommonImages {
 	
 	// TILE HIGHLIGHTER GANG
+	private static Image deckwaitp1 = ImageUtil.ImageLoader("ui/deck_wait_blue.png",85);
+	private static Image deckwaitp2 = ImageUtil.ImageLoader("ui/deck_wait_red.png",GameConfig.SCREEN_WIDTH / 18);
+	private static Image deckpickp1 = ImageUtil.ImageLoader("ui/deck_pick_blue.png",GameConfig.SCREEN_WIDTH / 18);
+	private static Image deckpickp2 = ImageUtil.ImageLoader("ui/deck_pick_red.png",GameConfig.SCREEN_WIDTH / 18);
+	
+	public static Image getDeckBackground(int player,boolean pick)
+	{
+		if(pick) {
+			if (player == 1) {
+				return deckpickp1;
+			}else {
+				return deckpickp2;
+			}
+		}else {
+			if (player == 1) {
+				return deckwaitp1;
+			}else {
+				return deckwaitp2;
+			}
+		}
+	}
 	
 	private static Image rangeHighlighter = ImageUtil.ImageLoader("highlighters/range.png",GameConfig.SCREEN_WIDTH / 18);
 	private static Image targetHighlighter = ImageUtil.ImageLoader("highlighters/target.png",GameConfig.SCREEN_WIDTH / 18);
 	private static Image unitHighlighter = ImageUtil.ImageLoader("highlighters/unit.png",GameConfig.SCREEN_WIDTH / 18);
 	private static Image emptyHighlighter = ImageUtil.ImageLoader("highlighters/empty.png",GameConfig.SCREEN_WIDTH / 18);
+	private static Image selectHighlighter = ImageUtil.ImageLoader("ui/selector.png",GameConfig.SCREEN_WIDTH / 18);
 	
 	public static Image getHighlighter(String type)
 	{
@@ -22,6 +44,8 @@ public class CommonImages {
 			return CommonImages.unitHighlighter;
 		if(type == "empty")
 			return CommonImages.emptyHighlighter;
+		if (type == "select")
+			return selectHighlighter;
 		return null;
 	}
 	
