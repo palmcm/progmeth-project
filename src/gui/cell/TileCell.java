@@ -6,18 +6,10 @@ import gui.SceneController;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.gmanager.Tile;
 import logic.towers.AimableTower;
@@ -27,18 +19,37 @@ import utils.CommonImages;
 import utils.FontUtil;
 import utils.ImageUtil;
 
+
+/**
+ * Component cell for display tower in game map
+ */
 public class TileCell extends StackPane{
+	/** Tile data in the cell*/
 	private Tile tile;
+	/** For display tower image*/
 	private ImageView towerImg;
+	/** For display tower level*/
 	private ImageView towerUpgradeEmblem;
-	private int SIZE = GameConfig.SCREEN_WIDTH / 18;;
+	/** Size of the cell*/
+	private int SIZE = GameConfig.SCREEN_WIDTH / 18;
+	/** Size for scaling health bar*/
 	private double pxSize = SIZE/32.0;
+	/** For display attacking sequence*/
 	private Text attackSeq;
+	/** For display highlight of the cell*/
 	private ImageView highlightBackground;
+	/** For display heath*/
 	private Rectangle healthbar;
+	/** For display heath bar background*/
 	private ImageView hpBackground;
+	/** @deprecated For display damage frame*/
 	private ImageView damageFrame;
 	
+	/**
+	 * Constructor for TileCell
+	 * 
+	 * @param tile {@link #tile tile} for display
+	 */
 	public TileCell(Tile tile) {
 		this.tile = tile;
 		towerImg = new ImageView();
@@ -86,10 +97,18 @@ public class TileCell extends StackPane{
 		}*/
 	}
 	
+	/**
+	 * Getter for {@link TileCell#tile tile}
+	 * 
+	 * @return {@link TileCell#tile tile}
+	 */
 	public Tile getTile() {
 		return tile;
 	}
 	
+	/**
+	 * Update display for {@link #towerImg towerImg} and {@link #towerUpgradeEmblem towerUpgradeEmblem}
+	 */
 	public void update() {
 		BaseTower tower = tile.getTower();
 		if (tower != null) {
@@ -109,10 +128,14 @@ public class TileCell extends StackPane{
 		} else {
 			towerImg.setImage(null);
 			towerUpgradeEmblem.setImage(null);
+			updateHealth();
 		}
 		
 	}
 	
+	/**
+	 * Update display for health bar
+	 */
 	public void updateHealth()
 	{
 		BaseTower tower = tile.getTower();
@@ -169,6 +192,9 @@ public class TileCell extends StackPane{
 		
 	}
 	
+	/**
+	 * Animation for tower on this tile taking damage
+	 */
 	public void takeDamageAnimation(){
 		new Thread(() -> {
 		try {
@@ -189,6 +215,9 @@ public class TileCell extends StackPane{
 		}).start();
 	}
 	
+	/**
+	 * Animation for tower on this tile attacking
+	 */
 	public void attackAnimation() {
 		new Thread(() -> {
 			Platform.runLater(() -> {
@@ -205,6 +234,11 @@ public class TileCell extends StackPane{
 		}).start();
 	}
 	
+	/**
+	 * Set display for {@link #attackSeq attackSeq} 
+	 * 
+	 * @param seq  sequence in attacking; if 0, attackSeq will be blank
+	 */
 	public void setAttackSeq(int seq) {
 		if (seq == 0) {
 			attackSeq.setText("");
@@ -213,10 +247,15 @@ public class TileCell extends StackPane{
 		attackSeq.setText(seq + "");
 	}
 	
+	/**
+	 * Set font color of {@link #attackSeq attackSeq} to default
+	 */
 	public void setDefaultFill() {
 		attackSeq.setFill(Color.BLACK);
 	}
-	
+	/**
+	 * Show tower information in {@link gui.pane.DescriptionPane DescriptionPane}
+	 */
 	public void showDes() {
 		if(this.getTile().getTower() == null)
 		{
@@ -225,22 +264,34 @@ public class TileCell extends StackPane{
 		}
 		SceneController.getGamePane().getDescriptionPane().setDes(this.getTileTowerName(), this.getTileTowerDesc());
 	}
-	
+	/**
+	 * Getter for tower's name
+	 * @return Name of tower in the cell
+	 */
 	private String getTileTowerName()
 	{
 		return this.getTile().getTower().getCurrentName();
 	}
-	
+	/**
+	 * Getter for tower's description
+	 * @return Description of tower in the cell
+	 */
 	private String getTileTowerDesc()
 	{
 		return this.getTile().getTower().getInstanceToolTipString();
 	}
-	
+	/**
+	 * Getter for tower's next upgrade info
+	 * @return Next upgrade info of tower in the cell
+	 */
 	public String getTileUpgradeTooltip()
 	{
 		return this.getTile().getTower().getNextUpgradeInfo();
 	}
-	
+	/**
+	 * Getter for tower's attack status
+	 * @return Attack status of tower in the cell
+	 */
 	public String getTileAttackStatus()
 	{
 		BaseTower tower = this.getTile().getTower();
@@ -268,29 +319,40 @@ public class TileCell extends StackPane{
 		return "This unit can cast a spell! Click to queue the spell.";
 	}
 	
+	/**
+	 * Highlight the cell for range of selected tower
+	 */
 	public void doHighlight()
 	{
 		this.highlightBackground.setImage(CommonImages.getHighlighter("range"));
 		
 	}
-	
+	/**
+	 * Remove highlight from the cell
+	 */
 	public void unHighlight()
 	{
 		this.highlightBackground.setImage(null);
 	}
-	
+	/**
+	 * Highlight the cell for target of the action
+	 */
 	public void doTargetHighlight()
 	{
 		this.highlightBackground.setImage(CommonImages.getHighlighter("target"));
 		
 	}
-	
+	/**
+	 * Highlight the cell for place the unit
+	 */
 	public void doUnitHighlight()
 	{
 		this.highlightBackground.setImage(CommonImages.getHighlighter("unit"));
 		
 	}
-	
+	/**
+	 * Highlight the cell for showing placeable cell
+	 */
 	public void doEmptyHighlight()
 	{
 		this.highlightBackground.setImage(CommonImages.getHighlighter("empty"));

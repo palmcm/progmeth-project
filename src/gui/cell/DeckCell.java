@@ -13,13 +13,24 @@ import javafx.scene.paint.Color;
 import logic.towers.BaseTower;
 import utils.ImageUtil;
 
+/**
+ * Component cell for showing tower in player's deck
+ */
 public class DeckCell extends StackPane{
-	private BaseTower tower;
+	/** Background for display */
 	private ImageView background;
+	/** For display tower */
 	private ImageView towerIcon;
+	/** Size for ImageView */
 	private final int SIZE = 80;
+	/** Owner of this cell */
 	private int player;
 	
+	/**
+	 * Constructor for DeckCell
+	 * 
+	 * @param player Side of tower cell
+	 */
 	public DeckCell(int player) {
 		this.player = player;
 		towerIcon = new ImageView();
@@ -36,10 +47,16 @@ public class DeckCell extends StackPane{
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 	}
 	
+	/**
+	 * Constructor for DeckCell with tower
+	 * 
+	 * @param tower Tower on this cell
+	 * @param player Side of tower cell
+	 */
 	public DeckCell(BaseTower tower, int player) {
 		this.player = player;
 		towerIcon = new ImageView();
-		setTower(tower, player);
+		setTower(tower);
 		towerIcon.setFitHeight(SIZE);
 		towerIcon.setFitWidth(SIZE);
 		
@@ -59,13 +76,16 @@ public class DeckCell extends StackPane{
 		});
 	}
 	
-	public void setTower(BaseTower tower, int player) {
+	/**
+	 * Show and display tower on this cell
+	 * 
+	 * @param tower Tower on this cell
+	 */
+	public void setTower(BaseTower tower) {
 		if (tower == null) {
-			this.tower = null;
 			towerIcon.setImage(null);
 			return;
 		}
-		this.tower = tower;
 		Image img = ImageUtil.ImageLoader(tower.getUrl(), 80);
 		if (player == 2) {
 			towerIcon.setScaleX(-1);
@@ -73,6 +93,11 @@ public class DeckCell extends StackPane{
 		towerIcon.setImage(img);
 	}
 	
+	/**
+	 * Getter for {@link #background background}
+	 * 
+	 * @return {@link #background background}
+	 */
 	public ImageView getCellBackground() {
 		return background;
 	}
