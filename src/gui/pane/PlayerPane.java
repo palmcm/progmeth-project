@@ -71,15 +71,15 @@ public class PlayerPane extends VBox {
 		StackPane infoPane = new StackPane();
 		HBox moneyBox = new HBox();
 		moneyText = new Text();
-		moneyText.setFont(FontUtil.loadFont(16));
+		moneyText.setFont(FontUtil.loadFont(18));
 		updateMoney();
 		moneyBox.getChildren().add(moneyText);
 		moneyBox.setPadding(inset);
 		
 		HBox incomeBox = new HBox();
-		incomeText = new Text("+10$/Turn");
+		incomeText = new Text("+"+this.player.getIncome()+CommonStrings.currency_symbol);
 		incomeText.setFill(Color.WHITE);
-		incomeText.setFont(FontUtil.loadFont(16));
+		incomeText.setFont(FontUtil.loadFont(18));
 		incomeBox.getChildren().add(incomeText);
 		incomeBox.setPadding(inset);
 		
