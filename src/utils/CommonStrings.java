@@ -6,10 +6,11 @@ public class CommonStrings {
 //	public static String SeparatorLine = "\n";
 //	public static String SeparatorLine = "------------------------------------------------------------------\n";
 	
-	public static String stats_damage = "💥 ";
-	public static String stats_health = "❤ ";
-	public static String stats_range = "➟ ";
-	public static String stats_vrange = "⭥ ";
+	public static String stats_damage = "ATK:        ";
+	public static String stats_health = "HP:          ";
+	public static String stats_range  = "RANGE:   ";
+	public static String stats_vrange = "REACH:   ";
+	public static String stats_cost   = "COST:     ";
 	
-	public static String currency_symbol = "♦";
+	public static String currency_symbol = " INT";
 }

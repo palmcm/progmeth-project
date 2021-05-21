@@ -112,7 +112,7 @@ public abstract class BaseTower {
 				CommonStrings.SeparatorLine+
 				CommonStrings.stats_health+this.getMaxHealth()+"\n"+
 				CommonStrings.SeparatorLine+
-				"Cost: "+this.getCost()+CommonStrings.currency_symbol+"\n";
+				CommonStrings.stats_cost+this.getCost()+CommonStrings.currency_symbol+"\n";
 	}
 	
 	public String getNextUpgradeInfo()
@@ -123,7 +123,7 @@ public abstract class BaseTower {
 		}
 		return 	"Upgrade:\n"+
 				this.getCurrentUpgradeDescription()+"\n"+
-				"Cost: "+this.getCurrentUpgradeCost()+CommonStrings.currency_symbol+"\n"+
+				CommonStrings.stats_cost+this.getCurrentUpgradeCost()+CommonStrings.currency_symbol+"\n"+
 				"Upgrading will heal "+this.getCurrentUpgradeHealth()+CommonStrings.stats_health;
 	}
 	

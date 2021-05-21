@@ -88,7 +88,7 @@ public abstract class AttackableTower extends BaseTower{
 				CommonStrings.stats_damage+this.getCurrentDamage()+"\n"+
 				CommonStrings.stats_range+this.getCurrentRange()+"\n"+
 				CommonStrings.SeparatorLine+
-				"Cost: "+this.getCost()+CommonStrings.currency_symbol+"\n";
+				CommonStrings.stats_cost+this.getCost()+CommonStrings.currency_symbol+"\n";
 	}
 	
 	// -------------- COOLDOWN --------------------

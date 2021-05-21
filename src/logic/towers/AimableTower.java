@@ -134,7 +134,7 @@ public abstract class AimableTower extends AttackableTower {
 				CommonStrings.stats_vrange+this.getCurrentvRange()+"    \t"+
 				CommonStrings.stats_range+this.getCurrenthRange()+"\n"+
 				CommonStrings.SeparatorLine+
-				"Cost: "+this.getCost()+CommonStrings.currency_symbol+"\n";
+				CommonStrings.stats_cost+this.getCost()+CommonStrings.currency_symbol+"\n";
 	}
 
 	public int gethRange(int level) {
