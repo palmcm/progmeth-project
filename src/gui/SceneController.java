@@ -2,6 +2,7 @@ package gui;
 
 import gui.pane.GamePane;
 import gui.scene.GameScene;
+import gui.scene.GameSettingScene;
 import gui.scene.MenuScene;
 import gui.scene.PickMapScene;
 import gui.scene.PickTowerScene;
@@ -18,6 +19,7 @@ public class SceneController {
 	private static MenuScene menuScene = new MenuScene(new VBox());
 	private static PickMapScene pickMapScene = new PickMapScene(new VBox());
 	private static PickTowerScene pickTowerScene = new PickTowerScene(new VBox());
+	private static GameSettingScene gameSettingScene = new GameSettingScene(new VBox());
 	private static GameScene gameScene;
 	
 	private static Stage stage;
@@ -27,6 +29,8 @@ public class SceneController {
 			return menuScene;
 		}else if(scene.equals("pickMap")){
 			return pickMapScene;
+		}else if(scene.equals("setting")){
+			return gameSettingScene;
 		}else if(scene.equals("pickTower")) {
 			SceneController.getPickTowerScene().updateDeck();
 			return pickTowerScene;

@@ -39,16 +39,23 @@ public class MenuScene extends Scene {
 			SceneController.setScene("pickTower");
 		});
 		
-		Text setting = new Text();
+		Text setting = new Text("Game Setting");
 		setting.setFont(FontUtil.loadFont(25));
-		setting.setText(SoundUtil.toggleBgm());
-		
-		root.getChildren().addAll(gameName,duel,setting);
-//		scene = new Scene(root,1440,790);
 		
 		setting.setOnMouseClicked(e -> {
-			setting.setText(SoundUtil.toggleBgm());
+			SceneController.setScene("setting");
 		});
+		
+		Text stop = new Text(SoundUtil.toggleBgm());
+		stop.setFont(FontUtil.loadFont(25));
+		
+		stop.setOnMouseClicked(e -> {
+			stop.setText(SoundUtil.toggleBgm());
+		});
+		
+		root.getChildren().addAll(gameName,duel,setting,stop);
+		
+		
 		
 		root.setBackground(new Background(new BackgroundImage(new Image(ClassLoader.getSystemResource("ui/main_menu.png").toString()), BackgroundRepeat.NO_REPEAT,
 				BackgroundRepeat.NO_REPEAT,

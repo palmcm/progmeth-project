@@ -91,4 +91,15 @@ public class DeckSelector {
 			SceneController.getPickTowerScene().setCanNext(false);
 		}
 	}
+	
+	public static String getFreestyle() {
+		if (freestyleMode) {
+			return "Freestyle";
+		}
+		return "Pattern Lock";
+	}
+	
+	public static void toggleFreestyle() {
+		freestyleMode = !freestyleMode;
+	}
 }
