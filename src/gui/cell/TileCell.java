@@ -169,14 +169,21 @@ public class TileCell extends StackPane{
 	
 	public void takeDamageAnimation(){
 		new Thread(() -> {
-			Platform.runLater(() -> damageFrame.setImage(CommonImages.getHighlighter("empty")));
 		try {
-			Thread.sleep(500);
+			Thread.sleep(100);
+			Platform.runLater(() -> {
+//				damageFrame.setImage(CommonImages.getHighlighter("empty"));
+				towerImg.setImage(ImageUtil.ImageLoader(tile.getTower().getDamageUrl(),80));
+			});
+			Thread.sleep(250);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			Platform.runLater(() -> damageFrame.setImage(null));
+			Platform.runLater(() -> {
+//				damageFrame.setImage(null);
+				update();
+			});
 		}).start();
 	}
 	

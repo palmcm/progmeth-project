@@ -2,6 +2,7 @@ package logic.gmanager;
 
 import exception.InvalidPlayerException;
 import gui.SceneController;
+import javafx.application.Platform;
 import logic.misc.Coordinate;
 import logic.towers.BaseTower;
 
@@ -52,7 +53,7 @@ public class Tile {
 		SceneController.getGamePane().getTilesPane().getTileCell(this.loc).update();
 		SceneController.getGamePane().getTilesPane().getTileCell(this.loc).updateHealth();
 	}
-
+	
 	public int getTileOwner() {
 		return tileOwner;
 	}

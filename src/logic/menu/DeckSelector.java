@@ -12,7 +12,7 @@ import logic.towers.BaseTower;
 public class DeckSelector {
 
 	private static boolean flipSelector = true;
-	private static boolean freestyleMode = true;
+	private static boolean freestyleMode = false;
 
 	// ---------------- WHEN CLICKING A TOWER ---------------------
 

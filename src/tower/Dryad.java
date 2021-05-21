@@ -39,6 +39,7 @@ public class Dryad extends AimableTower{
 		
 		this.setUrl("towers/dryad.png");
 		this.setAttackUrl("towers/dryad_attack.png");
+		this.setDamageUrl("towers/dryad_damaged.png");
 		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		

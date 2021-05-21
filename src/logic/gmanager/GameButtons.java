@@ -37,7 +37,7 @@ public class GameButtons {
 				GameManager.setTurnPhase(TurnPhase.AFTERMATH);
 				GameManager.processAttackPhase();
 			} else if (GameManager.getTurnPhase() == TurnPhase.AFTERMATH) {
-				GameManager.processAftermath();
+//				GameManager.processAftermath();
 				GameManager.flipCurrentPlayer();
 				GameManager.setStartingPlayer(GameManager.getCurrentPlayer());
 				GameManager.setTurnPhase(TurnPhase.BUILD);

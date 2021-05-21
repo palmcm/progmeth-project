@@ -46,6 +46,7 @@ public abstract class BaseTower {
 	
 	private String url;
 	private String attackUrl;
+	private String damageUrl;
 	
 	// ** Abstract Methods **
 	
@@ -301,6 +302,8 @@ public abstract class BaseTower {
 
 	public void setUrl(String url) {
 		this.url = url;
+		this.attackUrl = url;
+		this.damageUrl = url;
 	}
 	
 	public String getAttackUrl() {
@@ -309,6 +312,14 @@ public abstract class BaseTower {
 	
 	public void setAttackUrl(String attackUrl) {
 		this.attackUrl = attackUrl;
+	}
+	
+	public String getDamageUrl() {
+		return damageUrl;
+	}
+	
+	public void setDamageUrl(String damageUrl) {
+		this.damageUrl = damageUrl;
 	}
 	
 	public void freeze(int duration)

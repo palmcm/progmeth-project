@@ -28,7 +28,7 @@ public class TerraRaiser extends BaseTower{
 		this.setLoc(loc);
 		
 		this.setUrl("towers/terraraiser.png");
-		this.setAttackUrl("towers/terraraiser.png");
+		this.setDamageUrl("towers/terraraiser_damaged.png");
 		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		

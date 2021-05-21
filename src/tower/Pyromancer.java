@@ -41,6 +41,7 @@ public class Pyromancer extends AimableTower{
 		
 		this.setUrl("towers/pyromancer.png");
 		this.setAttackUrl("towers/pyromancer_attack.png");
+		this.setDamageUrl("towers/pyromancer_damaged.png");
 		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		
