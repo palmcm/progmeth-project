@@ -6,8 +6,14 @@ import javafx.stage.Stage;
 import logic.gmanager.GameManager;
 import javafx.scene.Scene;
 
-
+/**
+ * Main class launches the JavaFX application.
+ *
+ */
 public class Main extends Application {
+	/**
+	 * Start method
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -18,8 +24,9 @@ public class Main extends Application {
 //			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Wizardland Saga");
+			primaryStage.setResizable(false);
 			SceneController.setStage(primaryStage);
-			SceneController.show();
+			primaryStage.show();
 			
 			
 		} catch(Exception e) {
@@ -27,6 +34,10 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * Main method
+	 * @param args 
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

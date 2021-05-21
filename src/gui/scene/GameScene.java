@@ -1,42 +1,30 @@
-
 package gui.scene;
 
 import config.GameConfig;
-import gui.cell.ToolsCell;
-import gui.cell.TowerGameCell;
-import gui.pane.DescriptionPane;
 import gui.pane.GameOverPane;
 import gui.pane.GamePane;
-import gui.pane.PlayerPane;
-import gui.pane.TilesPane;
-import gui.pane.ToolsPane;
-import gui.pane.TowerGamePane;
-import gui.pane.TurnPane;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import logic.gmanager.GameButtons;
-import logic.gmanager.GameManager;
-import logic.gmanager.TurnPhase;
 import utils.ImageUtil;
-
+/**
+ * Scene for game
+ */
 public class GameScene extends Scene {
+	/** Game interactable */
 	private GamePane gamePane;
+	/** Map background */
 	private ImageView mapLayer;
+	/** Game over popup */
 	private GameOverPane gameOver;
+	/** Root for scene*/
 	private StackPane root;
 	
+	/**
+	 * Constructor for GameScene
+	 * @param root StackPane object
+	 */
 	public GameScene(StackPane root){
 		super(root,GameConfig.SCREEN_WIDTH,GameConfig.SCREEN_HEIGHT);
 			gamePane = new GamePane();
@@ -52,16 +40,27 @@ public class GameScene extends Scene {
 			this.root = root;
 		}
 	
+	/**
+	 * Getter for {@link #gamePane gamePane}
+	 * @return {@link #gamePane gamePane}
+	 */
 	public GamePane getGamePane() {
 		return gamePane;
 	}
 	
+	/**
+	 * Open end game pop-up
+	 * @param player Winner player
+	 */
 	public void gameEnd(int player) {
 		gameOver = new GameOverPane();
 		gameOver.setWinner(player);
 		root.getChildren().add(gameOver);
 	}
 	
+	/**
+	 * Close end game pop-up
+	 */
 	public void closeGameEnd() {
 		root.getChildren().remove(root.getChildren().size()-1);
 	}

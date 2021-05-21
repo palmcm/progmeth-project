@@ -1,39 +1,36 @@
 package gui.scene;
 
 import config.GameConfig;
-import gui.SceneController;
 import gui.component.TowerDesBox;
 import gui.pane.PickTowerPane;
 import gui.pane.PlayerDeckPane;
-import gui.pane.TowerPane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import logic.gmanager.GameManager;
-
+/**
+ * Scene for pick tower
+ */
 public class PickTowerScene extends Scene{
-	
+	/** Select tower pane*/
 	private PickTowerPane pickTowerPane;
+	/** Player 1 deck*/
 	private PlayerDeckPane p1;
+	/** Player 2 deck*/
 	private PlayerDeckPane p2;
-	
+	/**
+	 * Constructor for PickTowerScene
+	 * @param root VBox object
+	 */
 	public PickTowerScene(VBox root) {
 		super(root,GameConfig.SCREEN_WIDTH,GameConfig.SCREEN_HEIGHT);
 		
@@ -55,16 +52,25 @@ public class PickTowerScene extends Scene{
 		        new BackgroundSize(1.0, 1.0, true, true, false, false))));
 	}
 	
+	/**
+	 * Getter for info box
+	 * @return DesBox
+	 */
 	public TowerDesBox getDesBox() {
 		return pickTowerPane.getDesBox();
 	}
-	
+	/**
+	 * Update display for all decks
+	 */
 	public void updateDeck() {
 		p1.showNewDeck();
 		p2.showNewDeck();
 		highlightdeck();
 	}
 	
+	/**
+	 * Highlight deck according to current player
+	 */
 	public void highlightdeck() {
 		int player = GameManager.getCurrentPlayer();
 		if (player == 1) {

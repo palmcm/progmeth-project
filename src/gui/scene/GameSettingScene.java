@@ -6,24 +6,26 @@ import gui.pane.SettingPane;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import jdk.jfr.SettingControl;
-import logic.gmanager.GameManager;
 import logic.menu.DeckSelector;
 import utils.FontUtil;
-import utils.ImageUtil;
 import utils.SoundUtil;
 
+/**
+ * Scene for setting
+ */
 public class GameSettingScene extends Scene{
 	
+	/**
+	 * Constructor for GameSettingScene
+	 * @param root VBox object
+	 */
 	public GameSettingScene(VBox root) {
 		super(root,GameConfig.SCREEN_WIDTH,GameConfig.SCREEN_HEIGHT);
 		root.setAlignment(Pos.CENTER);
