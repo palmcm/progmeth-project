@@ -154,7 +154,11 @@ public class GameManager {
 					e.printStackTrace();
 				}
 			}
-			Platform.runLater(() -> SceneController.getGamePane().inAnimation(false));
+			Platform.runLater(() -> {
+				processAftermath();
+				GameButtons.proceedGamePhase();
+				SceneController.getGamePane().inAnimation(false);
+			});
 		}).start();
 	}
 
@@ -364,7 +368,7 @@ public class GameManager {
 					else if (b instanceof Passive) {
 						try {
 							((Passive) b).doPassive();
-
+							SceneController.getGamePane().getTilesPane().getTileCell(b.getLoc()).attackAnimation();
 						} catch (InvalidPlayerException e) {
 							e.printStackTrace();
 						}

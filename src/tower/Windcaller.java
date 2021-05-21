@@ -30,8 +30,9 @@ public class Windcaller extends AttackableTower{
 		
 		this.setLoc(loc);
 		
-		this.setUrl("towers/Windcaller.png");
-		this.setAttackUrl("towers/Windcaller_attack.png");
+		this.setUrl("towers/windcaller.png");
+		this.setAttackUrl("towers/windcaller_attack.png");
+		this.setDamageUrl("towers/windcaller_damaged.png");
 		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		

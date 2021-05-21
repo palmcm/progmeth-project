@@ -25,12 +25,10 @@ public class MenuScene extends Scene {
 		
 		ImageView gameName = new ImageView(ImageUtil.ImageLoader("ui/game_icon.png",100));
 		
-		Button single = new Button("Single player");
-		single.setPrefSize(250, 100);
+		Text single = new Text("Single player");
 		single.setFont(FontUtil.loadFont(25));
 		
-		Button duel = new Button("Two players");
-		duel.setPrefSize(250, 100);
+		Text duel = new Text("Two players");
 		duel.setFont(FontUtil.loadFont(25));
 		
 		duel.setOnMouseClicked(e -> {
@@ -38,8 +36,7 @@ public class MenuScene extends Scene {
 			SceneController.setScene("pickTower");
 		});
 		
-		Button setting = new Button();
-		setting.setPrefSize(250, 100);
+		Text setting = new Text();
 		setting.setFont(FontUtil.loadFont(25));
 		setting.setText(SoundUtil.toggleBgm());
 		

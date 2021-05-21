@@ -39,6 +39,7 @@ public class Cryomaster extends AimableTower{
 		
 		this.setUrl("towers/cryomaster.png");
 		this.setAttackUrl("towers/cryomaster_attack.png");
+		this.setDamageUrl("towers/cryomaster_damaged.png");
 		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		
