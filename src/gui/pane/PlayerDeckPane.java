@@ -1,30 +1,23 @@
 package gui.pane;
 
 import javafx.geometry.Pos;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import logic.gmanager.GameInstance;
-import logic.gmanager.GameManager;
 import utils.FontUtil;
 
+/**
+ * Pane for displaying Player and DeckPane
+ */
 public class PlayerDeckPane extends StackPane{
-	
+	/** Player deck*/
 	private DeckPane showDeck;
-	private int player;
-	
+	/**
+	 * Constructor for PlayerDeckPane
+	 * @param player Owner of deck
+	 */
 	public PlayerDeckPane(int player) {
 		VBox deckBox = new VBox(20);
-		this.player = player;
 		Text gameName = new Text("Player "+player+"'s Deck");
 		gameName.setFont(FontUtil.loadFont(50));
 		
@@ -38,11 +31,16 @@ public class PlayerDeckPane extends StackPane{
 		
 		
 	}
-	
+	/**
+	 * Update display for deck
+	 */
 	public void showNewDeck() {
 		showDeck.update();
 	}
-	
+	/**
+	 * Set background of DeckCell
+	 * @param highlight True when their turn to pick
+	 */
 	public void highlight(boolean highlight) {
 		showDeck.highlight(highlight);
 	}

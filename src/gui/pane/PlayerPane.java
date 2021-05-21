@@ -1,35 +1,39 @@
 package gui.pane;
 
-import config.GameConfig;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import logic.gmanager.GameInstance;
 import logic.gmanager.GameManager;
 import logic.gmanager.Player;
 import utils.CommonStrings;
 import utils.FontUtil;
 
+/**
+ * Pane for displaying player status
+ */
 public class PlayerPane extends VBox {
-	
+	/** Width size for pane*/
 	final private double BASE_WIDTH = 558;
+	/** Player heath bar*/
 	private Rectangle hpTab;
+	/** Player heath text*/
 	private Text hpText;
+	/** Player money text*/
 	private Text moneyText;
+	/** Player income text*/
 	private Text incomeText;
+	/** Owner of status */
 	private Player player;
 	
-	
+	/**
+	 * Constructor for PlayerPane
+	 * @param player Owner
+	 */
 	public PlayerPane(int player) {
 		this.player = GameManager.getGameInstance().getPlayer(player);
 		
@@ -99,11 +103,17 @@ public class PlayerPane extends VBox {
 //		this.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, 
 //				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 	}
-	
+	/**
+	 * Set display for heath bar 
+	 * @param hpPercent ratio of health by full health (0 to 1)
+	 */
 	public void setHpBar(double hpPercent) {
 		hpTab.setWidth(BASE_WIDTH*hpPercent);
 	}
 	
+	/**
+	 * Update display for health bar
+	 */
 	public void updateHp() {
 		int fullHp = player.getMaxHealth();
 		int nowHp = player.getHealth();
@@ -111,11 +121,17 @@ public class PlayerPane extends VBox {
 		hpText.setText(nowHp+"/"+fullHp);
 	}
 	
+	/**
+	 * Update display for income
+	 */
 	public void updateIncome() {
 		int income = player.getIncome();
 		incomeText.setText("+"+income+CommonStrings.currency_symbol);
 	}
 	
+	/**
+	 * Update display for money
+	 */
 	public void updateMoney() {
 		int money = player.getMoney();
 		moneyText.setText(money+CommonStrings.currency_symbol);

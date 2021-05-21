@@ -2,30 +2,27 @@ package gui.pane;
 
 import java.util.ArrayList;
 
-
 import config.GameConfig;
-import gui.cell.ToolsCell;
 import gui.cell.TowerGameCell;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import logic.gmanager.GameManager;
-import logic.gmanager.GameSettings;
 import logic.gmanager.Player;
 import logic.towers.BaseTower;
-import logic.towers.Towers;
 
+/**
+ * Pane for displaying playable 
+ */
 public class TowerGamePane extends VBox{
 	
+	/** All playable tower*/
 	private ArrayList<TowerGameCell> towerList = new ArrayList<TowerGameCell>();
 	
+	/**
+	 * Constructor for TowerGamePane
+	 */
 	public TowerGamePane() {
 		TilePane towerDeckBox = new TilePane();
 		for (int i=0;i<GameManager.getMaxDeckSize();i++) {
@@ -48,10 +45,18 @@ public class TowerGamePane extends VBox{
 //				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 	}
 	
+	/**
+	 * Getter for {@link #towerList towerList}
+	 * @return {@link #towerList towerList}
+	 */
 	public ArrayList<TowerGameCell> getTowerList() {
 		return towerList;
 	}
 	
+	/**
+	 * Set display for {@link #towerList towerList}
+	 * @param player Current player
+	 */
 	public void setDeck(int player) {
 		Player play = GameManager.getGameInstance().getPlayer(player);
 		if (play != null) {

@@ -1,31 +1,33 @@
 package gui.pane;
 
-import config.GameConfig;
-import gui.SceneController;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import logic.gmanager.GameButtons;
 import logic.gmanager.GameManager;
 import utils.FontUtil;
 import utils.ImageUtil;
 
+/**
+ * Pane for displaying turn status
+ */
 public class TurnPane extends VBox {
+	/** Current Phase text*/
 	private Text phaseText;
+	/** Current Player*/
 	private Text playerTurn;
+	/** Current Turn*/
 	private Text turnNumber;
+	/** End turn Button*/
 	private ImageView endTurn;
+	/** End turn Button Image*/
 	private final Image endTurnPic = ImageUtil.ImageLoader("buttons/end_turn.png");
 	
+	/**
+	 * Constructor for TurnPane
+	 */
 	public TurnPane() {
 		phaseText = new Text("Attacking Phase");
 		playerTurn = new Text("Player1's Turn");
@@ -42,10 +44,11 @@ public class TurnPane extends VBox {
 		endTurn.setOnMouseClicked(e -> {
 			GameButtons.proceedGamePhase();
 		});
-//		this.setBorder(new Border(new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, 
-//				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 	}
 	
+	/**
+	 * Update display for phase, player, turn
+	 */
 	public void updateTurnPane()
 	{
 		this.phaseText.setText(GameManager.getTurnPhaseString());
@@ -54,6 +57,10 @@ public class TurnPane extends VBox {
 		
 	}
 	
+	/**
+	 * Make {@link #endTurn end turn button} disable
+	 * @param disable Can't use status
+	 */
 	public void setDisableEnd(boolean disable) {
 		endTurn.setDisable(disable);
 		if (disable) {

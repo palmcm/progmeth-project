@@ -1,23 +1,26 @@
 package gui.pane;
 
-import config.GameConfig;
 import gui.SceneController;
 import gui.component.TowerDesBox;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.menu.DeckSelector;
 import utils.FontUtil;
 
+/**
+ * Pane for displaying selecting tower page
+ */
 public class PickTowerPane extends VBox{
-	
+	/** Box for displaying info*/
 	private TowerDesBox desBox;
+	/** Next text*/
 	private Text next;
-	
+	/**
+	 * Constructor for PickTowerPane
+	 */
 	public PickTowerPane() {
 		this.setAlignment(Pos.CENTER);
 		this.setSpacing(45);
@@ -53,11 +56,17 @@ public class PickTowerPane extends VBox{
 		
 		this.getChildren().addAll(gameName,towerPane,desBox,buttonBox);
 	}
-	
+	/**
+	 * Getter for {@link #desBox desBox}
+	 * @return {@link #desBox desBox}
+	 */
 	public TowerDesBox getDesBox() {
 		return desBox;
 	}
-	
+	/**
+	 * Getter for {@link #next next}
+	 * @return {@link #next next}
+	 */
 	public Text getNext() {
 		return next;
 	}

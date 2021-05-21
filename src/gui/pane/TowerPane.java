@@ -5,12 +5,17 @@ import gui.SceneController;
 import gui.cell.TowerCell;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
-import logic.gmanager.GameManager;
 import logic.menu.DeckSelector;
 import logic.towers.BaseTower;
 import logic.towers.Towers;
 
+/**
+ * Pane for selecting tower
+ */
 public class TowerPane extends GridPane {
+	/**
+	 * Constructor for TowerPane
+	 */
 	public TowerPane() {
 		int i=0;
 		for (BaseTower tower:Towers.getTowers()) {

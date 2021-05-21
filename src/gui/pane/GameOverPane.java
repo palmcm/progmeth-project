@@ -2,9 +2,7 @@ package gui.pane;
 
 import gui.SceneController;
 import javafx.geometry.Pos;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
@@ -15,14 +13,18 @@ import javafx.scene.text.Text;
 import logic.gmanager.GameManager;
 import utils.FontUtil;
 import utils.ImageUtil;
-
+/**
+ * Pane for displaying game over pop-up
+ */
 public class GameOverPane extends VBox{
-	
+	/** Text for showing winner message*/
 	private Text winner;
-	
+	/**
+	 * Constructor for GameOverPane
+	 */
 	public GameOverPane() {
 		super(10);
-		winner = new Text("Winner is");
+		winner = new Text("");
 		winner.setFont(FontUtil.loadFont(36));
 		winner.setFill(Color.WHITE);
 		
@@ -50,11 +52,16 @@ public class GameOverPane extends VBox{
 		        new BackgroundSize(1.0, 1.0, true, true, false, false))));
 		this.setAlignment(Pos.CENTER);
 	}
-	
+	/**
+	 * Close the pop-up
+	 */
 	private void close() {
 		SceneController.getGameScene().closeGameEnd();
 	}
-	
+	/**
+	 * Set the winning message
+	 * @param player Winner player
+	 */
 	public void setWinner(int player) {
 		if (player == 3) {
 			winner.setText("The match ended in a tie.");
