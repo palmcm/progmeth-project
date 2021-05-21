@@ -72,7 +72,7 @@ public class Windcaller extends AttackableTower{
 		});	
 		
 		this.setTowerUpgradeDescription(new String[] {
-				"Summons many wind currents which deals damage multiple times.",
+				"Summons many wind currents which\n deals damage multiple times.",
 				"Summons an extra wind current and slightly increases reach.",
 				"Summons two more wind currents and further increases reach.",
 				"Summons the same amount of current on adjacent lanes."
