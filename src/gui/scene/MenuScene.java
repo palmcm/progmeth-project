@@ -5,7 +5,13 @@ import gui.SceneController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
@@ -25,9 +31,6 @@ public class MenuScene extends Scene {
 		
 		ImageView gameName = new ImageView(ImageUtil.ImageLoader("ui/game_icon.png",100));
 		
-		Text single = new Text("Single player");
-		single.setFont(FontUtil.loadFont(25));
-		
 		Text duel = new Text("Two players");
 		duel.setFont(FontUtil.loadFont(25));
 		
@@ -40,12 +43,17 @@ public class MenuScene extends Scene {
 		setting.setFont(FontUtil.loadFont(25));
 		setting.setText(SoundUtil.toggleBgm());
 		
-		root.getChildren().addAll(gameName,single,duel,setting);
+		root.getChildren().addAll(gameName,duel,setting);
 //		scene = new Scene(root,1440,790);
 		
 		setting.setOnMouseClicked(e -> {
 			setting.setText(SoundUtil.toggleBgm());
 		});
+		
+		root.setBackground(new Background(new BackgroundImage(new Image(ClassLoader.getSystemResource("ui/main_menu.png").toString()), BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT,
+		        BackgroundPosition.DEFAULT,
+		        new BackgroundSize(1.0, 1.0, true, true, false, false))));
 		
 	}
 }

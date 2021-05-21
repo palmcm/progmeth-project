@@ -18,6 +18,7 @@ import logic.misc.Coordinate;
 import logic.towers.AimableTower;
 import logic.towers.AttackableTower;
 import logic.towers.BaseTower;
+import utils.FontUtil;
 
 public class TilesPane extends GridPane{
 	private int lanes;
@@ -37,7 +38,7 @@ public class TilesPane extends GridPane{
 		cols = board.getBorder();
 		Tile tiles[][] = board.getTiles();
 		tooltip = new Tooltip();
-		tooltip.setFont(new Font(15));
+		tooltip.setFont(FontUtil.loadFont(15));
 		
 		this.setOnMouseExited(e -> {
 			this.unhighlightAll();
@@ -55,7 +56,7 @@ public class TilesPane extends GridPane{
 							tile.update();
 							tile.showDes();
 							onMouseEnter(tile,e);
-							tile.update();
+//							tile.update();
 						} catch (SelectInvalidTileException error) {
 //							System.out.println(error.getMessage());
 						}

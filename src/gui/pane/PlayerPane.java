@@ -39,18 +39,20 @@ public class PlayerPane extends VBox {
 		Insets inset = new Insets(0,25,0,25);
 		
 		HBox hpBar = new HBox();
-		hpTab = new Rectangle(BASE_WIDTH, 26, Color.LIMEGREEN);
+		hpTab = new Rectangle(BASE_WIDTH, 26, Color.GREEN);
 		hpBar.getChildren().add(hpTab);
 		hpBar.setPadding(new Insets(15));
 		
 		HBox playerBox = new HBox();
 		Text playerText = new Text("Player " + player);
+		playerText.setFill(Color.WHITE);
 		playerText.setFont(FontUtil.loadFont(16));
 		playerBox.getChildren().add(playerText);
 		playerBox.setPadding(inset);
 
 		HBox hpBox = new HBox();
 		hpText = new Text();
+		hpText.setFill(Color.WHITE);
 		hpText.setFont(FontUtil.loadFont(16));
 		updateHp();
 		hpBox.getChildren().add(hpText);
@@ -77,6 +79,7 @@ public class PlayerPane extends VBox {
 		
 		HBox incomeBox = new HBox();
 		incomeText = new Text("+10$/Turn");
+		incomeText.setFill(Color.WHITE);
 		incomeText.setFont(FontUtil.loadFont(16));
 		incomeBox.getChildren().add(incomeText);
 		incomeBox.setPadding(inset);

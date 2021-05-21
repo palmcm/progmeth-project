@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.menu.DeckSelector;
@@ -15,11 +16,11 @@ import utils.FontUtil;
 public class PickTowerPane extends VBox{
 	
 	private TowerDesBox desBox;
-	private Button next;
+	private Text next;
 	
 	public PickTowerPane() {
 		this.setAlignment(Pos.CENTER);
-		this.setSpacing(50);
+		this.setSpacing(45);
 		
 		Text gameName = new Text("Pick Tower");
 		gameName.setFont(FontUtil.loadFont(80));
@@ -28,17 +29,21 @@ public class PickTowerPane extends VBox{
 		
 		desBox = new TowerDesBox();
 		
-		HBox buttonBox = new HBox(5);
-		next = new Button("Next");
-		Button back = new Button("Back");
-		next.setPrefSize(250, 50);
+		HBox buttonBox = new HBox(150);
+		next = new Text("Next");
+		next.setFont(FontUtil.loadFont(25));
+		
+		Text back = new Text("Back");
+		back.setFont(FontUtil.loadFont(25));
+		
 		next.setDisable(true);
+		next.setFill(Color.LIGHTGRAY);
 		next.setOnMouseClicked(e -> {
 			next.setDisable(true);
+			next.setFill(Color.LIGHTGRAY);
 			DeckSelector.nextHandler();
 		});
 		
-		back.setPrefSize(250, 50);
 		back.setOnMouseClicked(e -> {
 			SceneController.setScene("menu");
 		});
@@ -53,7 +58,7 @@ public class PickTowerPane extends VBox{
 		return desBox;
 	}
 	
-	public Button getNext() {
+	public Text getNext() {
 		return next;
 	}
 }

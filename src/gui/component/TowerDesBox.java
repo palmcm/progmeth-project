@@ -21,10 +21,12 @@ public class TowerDesBox extends VBox{
 	public TowerDesBox() {
 		towerName = new Text();
 		towerName.setFont(FontUtil.loadFont(20));
+		towerName.setFill(Color.WHITE);
 		towerDes = new Text();
 		this.setTowerDefault();
 		towerDes.setFont(FontUtil.loadFont(16));
-		this.setPadding(new Insets(5));
+		towerDes.setFill(Color.WHITE);
+		this.setPadding(new Insets(20,0,0,10));
 		this.getChildren().addAll(towerName,towerDes);
 		this.setMaxWidth(GameConfig.SCREEN_WIDTH/4);
 		this.setBorder(new Border(new BorderStroke(Color.GRAY, BorderStrokeStyle.SOLID, 

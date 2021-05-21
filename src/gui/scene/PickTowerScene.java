@@ -6,9 +6,16 @@ import gui.component.TowerDesBox;
 import gui.pane.PickTowerPane;
 import gui.pane.PlayerDeckPane;
 import gui.pane.TowerPane;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -39,8 +46,13 @@ public class PickTowerScene extends Scene{
 		
 		menuBox.getChildren().addAll(p1,pickTowerPane,p2);
 		menuBox.setAlignment(Pos.CENTER);
+		root.setPadding(new Insets(5));
 		
 		root.getChildren().add(menuBox);
+		root.setBackground(new Background(new BackgroundImage(new Image(ClassLoader.getSystemResource("ui/deck_selector.png").toString()), BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT,
+		        BackgroundPosition.DEFAULT,
+		        new BackgroundSize(1.0, 1.0, true, true, false, false))));
 	}
 	
 	public TowerDesBox getDesBox() {
@@ -66,5 +78,8 @@ public class PickTowerScene extends Scene{
 	
 	public void setCanNext(boolean canUse) {
 		pickTowerPane.getNext().setDisable(!canUse);
+		if (canUse) {
+			pickTowerPane.getNext().setFill(Color.BLACK);
+		}
 	}
 }

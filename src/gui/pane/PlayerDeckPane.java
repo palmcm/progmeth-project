@@ -31,6 +31,7 @@ public class PlayerDeckPane extends StackPane{
 		showDeck = new DeckPane(player);
 		
 		deckBox.getChildren().addAll(gameName,showDeck);
+		deckBox.setAlignment(Pos.CENTER);
 		
 		this.getChildren().addAll(deckBox);
 		this.setAlignment(Pos.CENTER);

@@ -18,7 +18,7 @@ public class SoundUtil {
 	
 	public static void loadResource() {
 		bgm1 = new AudioClip(ClassLoader.getSystemResource("sound/bgm.mp3").toString());
-		bgm1.setVolume(0.1);
+		bgm1.setVolume(0.05);
 		bgm1.setCycleCount(AudioClip.INDEFINITE);
 		
 		bgmList.add(bgm1);

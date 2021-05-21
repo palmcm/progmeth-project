@@ -24,6 +24,7 @@ import logic.towers.AimableTower;
 import logic.towers.AttackableTower;
 import logic.towers.BaseTower;
 import utils.CommonImages;
+import utils.FontUtil;
 import utils.ImageUtil;
 
 public class TileCell extends StackPane{
@@ -72,6 +73,7 @@ public class TileCell extends StackPane{
 		
 		StackPane attackSeqBox = new StackPane();
 		attackSeq = new Text();
+		attackSeq.setFont(FontUtil.loadFont(16));
 		attackSeqBox.setAlignment(Pos.TOP_LEFT);
 		attackSeqBox.setPadding(new Insets(5));
 		attackSeqBox.getChildren().add(attackSeq);
@@ -189,7 +191,10 @@ public class TileCell extends StackPane{
 	
 	public void attackAnimation() {
 		new Thread(() -> {
-			Platform.runLater(() -> towerImg.setImage(ImageUtil.ImageLoader(tile.getTower().getAttackUrl(),80)));
+			Platform.runLater(() -> {
+				attackSeq.setFill(Color.WHITE);
+				towerImg.setImage(ImageUtil.ImageLoader(tile.getTower().getAttackUrl(),80));
+			});
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
@@ -206,6 +211,10 @@ public class TileCell extends StackPane{
 			return;
 		}
 		attackSeq.setText(seq + "");
+	}
+	
+	public void setDefaultFill() {
+		attackSeq.setFill(Color.BLACK);
 	}
 	
 	public void showDes() {

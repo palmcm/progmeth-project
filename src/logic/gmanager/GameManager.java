@@ -236,7 +236,9 @@ public class GameManager {
 		ArrayList<AttackPhaseAction> attackOrders = GameManager.getGameInstance().getAttackOrder();
 		for (int i=0;i<attackOrders.size();i++) {
 			AttackAction attackOrder = (AttackAction)attackOrders.get(i);
-			SceneController.getGamePane().getTilesPane().getTileCell(attackOrder.getTrigger()).setAttackSeq(0);
+			TileCell cell = SceneController.getGamePane().getTilesPane().getTileCell(attackOrder.getTrigger());
+			cell.setAttackSeq(0);
+			cell.setDefaultFill();
 		}
 	}
 
