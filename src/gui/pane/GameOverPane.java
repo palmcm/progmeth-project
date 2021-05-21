@@ -46,7 +46,7 @@ public class GameOverPane extends VBox{
 	
 	public void setWinner(int player) {
 		if (player == 3) {
-			winner.setText("Tie");
+			winner.setText("The match ended in a tie.");
 			return;
 		}
 		winner.setText("Player " + player+" emerges victorious!");
