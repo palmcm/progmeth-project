@@ -7,11 +7,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import logic.gmanager.GameManager;
 import utils.FontUtil;
 import utils.ImageUtil;
+import utils.SoundUtil;
 
 public class MenuScene extends Scene {
 	
@@ -36,13 +38,17 @@ public class MenuScene extends Scene {
 			SceneController.setScene("pickTower");
 		});
 		
-		Button setting = new Button("Setting");
+		Button setting = new Button();
 		setting.setPrefSize(250, 100);
 		setting.setFont(FontUtil.loadFont(25));
+		setting.setText(SoundUtil.toggleBgm());
 		
 		root.getChildren().addAll(gameName,single,duel,setting);
-		
 //		scene = new Scene(root,1440,790);
+		
+		setting.setOnMouseClicked(e -> {
+			setting.setText(SoundUtil.toggleBgm());
+		});
 		
 	}
 }

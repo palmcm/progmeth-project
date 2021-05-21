@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import logic.gmanager.GameManager;
 
 public class PickTowerScene extends Scene{
 	
@@ -49,6 +50,18 @@ public class PickTowerScene extends Scene{
 	public void updateDeck() {
 		p1.showNewDeck();
 		p2.showNewDeck();
+		highlightdeck();
+	}
+	
+	public void highlightdeck() {
+		int player = GameManager.getCurrentPlayer();
+		if (player == 1) {
+			p1.highlight();
+			p2.unhighlight();
+		}else {
+			p1.unhighlight();
+			p2.highlight();
+		}
 	}
 	
 	public void setCanNext(boolean canUse) {

@@ -13,23 +13,23 @@ public class DeckPane extends GridPane{
 	
 	public ArrayList<DeckCell> deckCells = new ArrayList<DeckCell>();
 	
-	public DeckPane() {
+	public DeckPane(int player) {
 		for(int i=0;i<5;i++) {
-			DeckCell cell = new DeckCell();
+			DeckCell cell = new DeckCell(player);
 			deckCells.add(cell);
 			this.add(cell, 0, i);
 		}
 		this.setAlignment(Pos.CENTER);
 	}
 	
-	public DeckPane(ArrayList<BaseTower> deck) {
+	public DeckPane(ArrayList<BaseTower> deck,int player) {
 		int i = 0;
 		for(BaseTower tower:deck) {
-			this.add(new DeckCell(tower), i/5, i);
+			this.add(new DeckCell(tower,player), i/5, i);
 			i++;
 		}
 		for(;i<5;i++) {
-			this.add(new DeckCell(), 0, i);
+			this.add(new DeckCell(player), 0, i);
 		}
 		this.setAlignment(Pos.CENTER);
 	}
@@ -40,11 +40,11 @@ public class DeckPane extends GridPane{
 		
 		int i = 0;
 		for(BaseTower tower:deck) {
-			this.add(new DeckCell(tower), i/5, i);
+			this.add(new DeckCell(tower,player), i/5, i);
 			i++;
 		}
 		for(;i<5;i++) {
-			this.add(new DeckCell(), 0, i);
+			this.add(new DeckCell(player), 0, i);
 		}
 		this.setAlignment(Pos.CENTER);
 	}
