@@ -49,7 +49,7 @@ public class GameOverPane extends VBox{
 			winner.setText("Tie");
 			return;
 		}
-		winner.setText("Winner is Player " + player);
+		winner.setText("Player " + player+" emerges victorious!");
 	}
 
 }
