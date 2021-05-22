@@ -230,7 +230,7 @@ public abstract class AttackableTower extends BaseTower{
 
 	/**
 	 * Setter for {@link #towerRange} as an integer.
-	 * @param towerDamage {@link #towerRange} as an integer.
+	 * @param towerRangeInt {@link #towerRange} as an integer.
 	 */
 	public void setTowerRangeInt(int[] towerRangeInt) {
 		this.towerRangeInt = towerRangeInt;

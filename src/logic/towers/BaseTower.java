@@ -313,8 +313,8 @@ public abstract class BaseTower {
 	}
 	
 	/**
-	 * Getter for {@link #Owner Owner}
-	 * @return {@link #Owner Owner}
+	 * Getter for {@link #owner Owner}
+	 * @return {@link #owner Owner}
 	 */
 	public int getOwner() {
 		return owner;
@@ -322,8 +322,8 @@ public abstract class BaseTower {
 	
 
 	/**
-	 * Getter for {@link #Owner Owner}
-	 * @param owner {@link #Owner Owner}
+	 * Getter for {@link #owner Owner}
+	 * @param owner {@link #owner Owner}
 	 */
 	public void setOwner(int owner) {
 		this.owner = owner;

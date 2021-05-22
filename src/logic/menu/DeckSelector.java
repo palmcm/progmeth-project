@@ -2,20 +2,28 @@ package logic.menu;
 
 import java.util.ArrayList;
 
-import exception.InvalidPlayerException;
 import gui.SceneController;
 import logic.gmanager.GameManager;
 import logic.gmanager.GameSettings;
 import logic.gmanager.Player;
 import logic.towers.BaseTower;
 
+/**
+ * Logic for deck selecting
+ */
 public class DeckSelector {
 
+	/** When to flip toggle everytime */
 	private static boolean flipSelector = true;
+	/** Whether free style pick is on*/
 	private static boolean freestyleMode = false;
 
 	// ---------------- WHEN CLICKING A TOWER ---------------------
 
+	/**
+	 * Handle when select tower
+	 * @param tower selected tower
+	 */
 	public static void clickSelectCard(BaseTower tower) {
 		if (GameManager.getGameInstance().getPlayer(1).getDeck().size() == GameSettings.getDeckSize()
 				&& GameManager.getGameInstance().getPlayer(2).getDeck().size() == GameSettings.getDeckSize() && !freestyleMode) {
@@ -32,6 +40,9 @@ public class DeckSelector {
 
 	// ---------------- WHEN CLICKING START GAME ------------------
 
+	/**
+	 * Set scene to game scene and start game
+	 */
 	public static void clickBeginGame() {
 		GameManager.setCurrentPlayer(1);
 		SceneController.newGameScene();
@@ -41,6 +52,12 @@ public class DeckSelector {
 
 	// ------------------------------------------------------------
 
+	/**
+	 * Add tower to player deck
+	 * @param tower selected tower
+	 * @param player player deck owner
+	 * @return successfully added
+	 */
 	public static boolean addCardToPlayer(BaseTower tower, int player) {
 
 		Player currentPlayer = GameManager.getGameInstance().getPlayer(player);
@@ -58,19 +75,37 @@ public class DeckSelector {
 
 	}
 
+	/**
+	 * Getter for player deck
+	 * @param player owner of deck
+	 * @return player deck
+	 */
 	public static ArrayList<BaseTower> getPlayerCards(int player) {
 		return GameManager.getGameInstance().getPlayer(player).getDeck();
 	}
 
+	/**
+	 * Get tower from player deck
+	 * @param player owner of deck
+	 * @param idx index from player deck
+	 * @return selected tower
+	 */
 	public static BaseTower getPlayerCard(int player, int idx) {
 		return GameManager.getGameInstance().getPlayer(player).getDeck().get(idx);
 
 	}
 
+	/**
+	 * Setter for {@link #flipSelector flipSelector}
+	 * @param flipSelector {@link #flipSelector flipSelector}
+	 */
 	public static void setFlipSelector(boolean flipSelector) {
 		DeckSelector.flipSelector = flipSelector;
 	}
 	
+	/**
+	 * Handle for press next button
+	 */
 	public static void nextHandler() {
 		if (GameManager.getGameInstance().getPlayer(1).getDeck().size() == GameSettings.getDeckSize()
 				&& GameManager.getGameInstance().getPlayer(2).getDeck().size() == GameSettings.getDeckSize()) {
@@ -84,6 +119,9 @@ public class DeckSelector {
 		}
 	}
 	
+	/**
+	 * Check if can press next
+	 */
 	public static void canNext() {
 		if (GameManager.getGameInstance().getPlayer(GameManager.getCurrentPlayer()).getDeck().size() == GameSettings.getDeckSize()) {
 			SceneController.getPickTowerScene().setCanNext(true);
@@ -92,6 +130,10 @@ public class DeckSelector {
 		}
 	}
 	
+	/**
+	 * Get string for option in setting for pick deck style
+	 * @return Option string
+	 */
 	public static String getFreestyle() {
 		if (freestyleMode) {
 			return "Freestyle";
@@ -99,6 +141,9 @@ public class DeckSelector {
 		return "Pattern Lock";
 	}
 	
+	/**
+	 * Toggle {@link #freestyleMode}
+	 */
 	public static void toggleFreestyle() {
 		freestyleMode = !freestyleMode;
 	}

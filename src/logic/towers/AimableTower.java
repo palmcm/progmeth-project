@@ -187,7 +187,7 @@ public abstract class AimableTower extends AttackableTower {
 
 	/**
 	 * Setter for {@link #vRange}
-	 * @param hRange {@link #vRange}
+	 * @param vRange {@link #vRange}
 	 */
 	public void setvRange(int[] vRange) {
 		this.vRange = vRange;
@@ -239,7 +239,7 @@ public abstract class AimableTower extends AttackableTower {
 
 	/**
 	 * Setter for {@link #vRadius}
-	 * @param hRadius {@link #vRadius}
+	 * @param vRadius {@link #vRadius}
 	 */
 	public void setvRadius(int[] vRadius) {
 		this.vRadius = vRadius;
