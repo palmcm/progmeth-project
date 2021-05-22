@@ -12,6 +12,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import logic.gmanager.GameManager;
 import utils.FontUtil;
@@ -36,11 +37,12 @@ public class MenuScene extends Scene {
 		
 		Text duel = new Text("Two players");
 		duel.setFont(FontUtil.loadFont(25));
-		
+		FontUtil.addHoverHighlight(duel,Color.BLACK);
 		duel.setOnMouseClicked(e -> {
 			GameManager.initialize();
 			SceneController.setScene("pickTower");
 		});
+		
 		
 		Text setting = new Text("Game Setting");
 		setting.setFont(FontUtil.loadFont(25));
@@ -48,6 +50,7 @@ public class MenuScene extends Scene {
 		setting.setOnMouseClicked(e -> {
 			SceneController.setScene("setting");
 		});
+		FontUtil.addHoverHighlight(setting,Color.BLACK);
 		
 		Text stop = new Text(SoundUtil.toggleBgm());
 		stop.setFont(FontUtil.loadFont(25));
@@ -55,6 +58,7 @@ public class MenuScene extends Scene {
 		stop.setOnMouseClicked(e -> {
 			stop.setText(SoundUtil.toggleBgm());
 		});
+		FontUtil.addHoverHighlight(stop,Color.BLACK);
 		
 		root.getChildren().addAll(gameName,duel,setting,stop);
 		
@@ -64,4 +68,5 @@ public class MenuScene extends Scene {
 		        new BackgroundSize(1.0, 1.0, true, true, false, false))));
 		
 	}
+	
 }

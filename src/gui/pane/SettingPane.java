@@ -2,6 +2,7 @@ package gui.pane;
 
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import utils.FontUtil;
 
@@ -25,6 +26,7 @@ public class SettingPane extends HBox{
 		this.label.setFont(FontUtil.loadFont(25));
 		this.setting = new Text(setting);
 		this.setting.setFont(FontUtil.loadFont(25));
+		FontUtil.addHoverHighlight(getSetting(),Color.BLACK);
 		
 		this.getChildren().addAll(this.label, this.setting);
 		this.setAlignment(Pos.CENTER);

@@ -51,7 +51,7 @@ public class SoundUtil {
 		}
 		bgmList.get(index).play();
 		
-		return "Song " + (index+1);
+		return "Music " + (index+1);
 	}
 	
 	/**
@@ -59,7 +59,7 @@ public class SoundUtil {
 	 * @return currently song
 	 */
 	public static String getBgm() {
-		return "Song " + (index+1);
+		return "Music " + (index+1);
 	}
 	
 	/**
@@ -70,10 +70,10 @@ public class SoundUtil {
 		play = !play;
 		if(play) {
 			bgmList.get(index).play();
-			return "Stop Song";
+			return "Stop Music";
 		}else {
 			bgmList.get(index).stop();
-			return "Play Song";
+			return "Play Music";
 		}
 	}
 }
