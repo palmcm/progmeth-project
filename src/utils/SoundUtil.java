@@ -61,6 +61,11 @@ public class SoundUtil {
 		bgm3.setCycleCount(AudioClip.INDEFINITE);
 		bgmList.add(bgm3);
 		
+		AudioClip bgm4 = new AudioClip(ClassLoader.getSystemResource("sound/bgm4.mp3").toString());
+		bgm4.setVolume(0.05);
+		bgm4.setCycleCount(AudioClip.INDEFINITE);
+		bgmList.add(bgm4);
+		
 		
 	}
 	
