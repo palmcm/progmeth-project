@@ -39,7 +39,7 @@ public class Coordinate {
 	
 	/**
 	 * Setter for {@link #y}
-	 * @param x {@link #y}
+	 * @param y {@link #y}
 	 */
 	public void setY(int y)
 	{
