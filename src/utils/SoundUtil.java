@@ -37,6 +37,7 @@ public class SoundUtil {
 		effectIndex = 1;
 		addEffectPack("Off","off");
 		addEffectPack("Basic Pack","normal");
+		addEffectPack("Anime Pack", "anime");
 	}
 	
 	/**
