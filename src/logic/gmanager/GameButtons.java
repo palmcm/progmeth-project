@@ -5,10 +5,19 @@ import gui.SceneController;
 import logic.misc.Coordinate;
 import logic.towers.BaseTower;
 
+/**
+ * A class which provides static method for game actions caused by pressing a button or tile.
+ *
+ */
 public class GameButtons {
 
 	// --------------------- BOARD INTERACTION ------------------------
 
+	/**
+	 * Called when selecting a tile at a location
+	 * @param loc
+	 * @throws SelectInvalidTileException
+	 */
 	public static void selectTile(Coordinate loc) throws SelectInvalidTileException {
 
 		//System.out.println(loc.getX()+","+loc.getY());
@@ -25,6 +34,9 @@ public class GameButtons {
 
 	// --------------------- NEXT PHASE BUTTON -----------------------
 
+	/**
+	 * Called when end turn button is pressed
+	 */
 	public static void proceedGamePhase() {
 		if (GameManager.getCurrentPlayer() == GameManager.getStartingPlayer()) {
 			GameManager.flipCurrentPlayer();
@@ -60,6 +72,10 @@ public class GameButtons {
 
 	// --------------------- UPGRADE INCOME -----------------------------
 
+	/**
+	 * Called when the upgrade income button is pressed
+	 * @return whether or not the upgrade succeeds
+	 */
 	public static boolean upgradeIncome() {
 		if (GameManager.getTurnPhase() != TurnPhase.BUILD) {
 			return false;
@@ -78,6 +94,10 @@ public class GameButtons {
 
 	// ---------------------- DESTROY MODE -------------------------------
 
+	/**
+	 * Called when the retire unit button is pressed.
+	 * @return
+	 */
 	public static boolean destroyMode() {
 		if (GameManager.getTurnPhase() != TurnPhase.BUILD) {
 			return false;
@@ -88,6 +108,10 @@ public class GameButtons {
 
 	// --------------------- SELECT TOWER -------------------------------
 
+	/**
+	 * Called when player selects a tower from the tower panel.
+	 * @param tower
+	 */
 	public static void selectTower(BaseTower tower) {
 		if (GameManager.getTurnPhase() != TurnPhase.BUILD) {
 			return;

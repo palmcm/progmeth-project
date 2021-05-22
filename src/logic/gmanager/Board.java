@@ -3,12 +3,19 @@ package logic.gmanager;
 import exception.InvalidPlayerException;
 import logic.misc.Coordinate;
 
+/**
+ * A class which represents the whole board of a game.
+ *
+ */
 public class Board {
 	
 	private Tile tiles[][];
 	private int lanes;
 	private int border;
 	
+	/**
+	 * Creates a new board of 5x11
+	 */
 	public Board()
 	{
 		this.border = 13;
@@ -30,6 +37,11 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * Creates a new board with specific size of x*y
+	 * @param x
+	 * @param y
+	 */
 	public Board(int x, int y)
 	{
 		this.border = y+1;
@@ -50,6 +62,11 @@ public class Board {
 		
 	}
 	
+	/**
+	 * Sets the initial value of each tiles for a board size.
+	 * @param lane
+	 * @param col
+	 */
 	private void initTiles(int lane, int col) {
 		this.tiles = new Tile[lane][col+2];
 		for(int i=0;i<lane;i++) {
@@ -60,6 +77,9 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * Set the left and right border column to unplaceable tiles.
+	 */
 	public void setBorderColumns()
 	{
 		int i;
@@ -71,6 +91,11 @@ public class Board {
 		
 	}
 	
+	/**
+	 * Sets tile owner for a whole column.
+	 * @param owner
+	 * @param column
+	 */
 	public void setOwnerColumn(int owner,int column)
 	{
 		int i;
@@ -81,10 +106,20 @@ public class Board {
 		
 	}
 	
+	/**
+	 * Get the {@link #border} of the board.
+	 * @return
+	 */
 	public int getBorder() {
 		return border;
 	}
 
+	/**
+	 * Get the border column index of a player.
+	 * @param player
+	 * @return index
+	 * @throws InvalidPlayerException
+	 */
 	public int getPlayerBorder(int player) throws InvalidPlayerException
 	{
 		if(player == 1)
@@ -100,11 +135,22 @@ public class Board {
 		else throw new InvalidPlayerException(player);
 	}
 	
+	/**
+	 * Getter for a tile in a specific location
+	 * @param loc the location to query
+	 * @return Tile at that location.
+	 */
 	public Tile getTile(Coordinate loc)
 	{
 		return this.tiles[loc.getX()][loc.getY()];
 	}
 	
+	/**
+	 * Checks if a tile at x,y exists
+	 * @param x
+	 * @param y
+	 * @return True if it does, false otherwise
+	 */
 	public boolean checkTile(int x,int y)
 	{
 		if(x < 0 || y < 0 || x >= this.lanes || y >= this.getBorder() )
@@ -117,10 +163,18 @@ public class Board {
 		}
 	}
 
+	/**
+	 * Getter for {@link #lanes}
+	 * @return {@link #lanes}
+	 */
 	public int getLanes() {
 		return lanes;
 	}
-
+	
+	/**
+	 * Getter for all tiles on boards
+	 * @return {@link #tiles}
+	 */
 	public Tile[][] getTiles() {
 		return tiles;
 	}

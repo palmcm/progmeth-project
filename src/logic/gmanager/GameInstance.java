@@ -9,6 +9,10 @@ import logic.menu.DeckSelector;
 import logic.misc.Coordinate;
 import logic.towers.BaseTower;
 
+/**
+ * A class which contains information and method regarding the current game.
+ *
+ */
 public class GameInstance {
 	
 	private Board board;
@@ -24,6 +28,9 @@ public class GameInstance {
 	
 	private int turnNumber;
 	
+	/**
+	 * Creates a new game/match
+	 */
 	public GameInstance()
 	{
 		this.board = new Board();
@@ -48,6 +55,9 @@ public class GameInstance {
 		
 	}
 	
+	/**
+	 * Resets a game
+	 */
 	public void reset() {
 		GameManager.setStartingPlayer(1);
 		GameManager.setCurrentPlayer(1);
@@ -68,6 +78,9 @@ public class GameInstance {
 	}
 	// ---------------- ATTACK ORDER ---------------------
 	
+	/**
+	 * Clears the attack order from the last turn
+	 */
 	public void clearAttackOrder()
 	{
 		//System.out.println("Clearing previous attack orders...");
@@ -89,6 +102,10 @@ public class GameInstance {
 		
 	}
 	
+	/**
+	 * Adds an attack order to the turn
+	 * @param attack action to add
+	 */
 	public void addAttackOrder(AttackPhaseAction attack)
 	{
 		attackOrder.add(attack);
@@ -98,6 +115,10 @@ public class GameInstance {
 		}
 	}
 	
+	/**
+	 * Removes an attack order from the turn
+	 * @param attack action to remove
+	 */
 	public void removeAttackOrder(AttackPhaseAction attack)
 	{
 		if(attack instanceof AttackPhaseAction)
@@ -128,6 +149,10 @@ public class GameInstance {
 		}
 	}
 	
+	/**
+	 * Getter for {@link #attackOrder}
+	 * @return {@link #attackOrder}
+	 */
 	public ArrayList<AttackPhaseAction> getAttackOrder() {
 		return this.attackOrder;
 	}
@@ -136,11 +161,20 @@ public class GameInstance {
 	
 	// ---------------- ATTACK ORDER ---------------------
 	
+	/**
+	 * Getter for {@link #board}
+	 * @return {@link #board}
+	 */
 	public Board getBoard()
 	{
 		return this.board;
 	}
 	
+	/**
+	 * Getter for a player with a specific id
+	 * @param player id to get
+	 * @return {@link #player1} or {@link #player2}
+	 */
 	public Player getPlayer(int player)
 	{
 		if(player < 1  || player > 2)
@@ -154,11 +188,18 @@ public class GameInstance {
 	
 	//  ---------------- turn number --------------------
 	
+	/**
+	 * Increments the turn number
+	 */
 	public void incrementTurnNumber()
 	{
 		this.turnNumber++;
 	}
 
+	/**
+	 * Getter for {@link #turnNumber}
+	 * @return {@link #turnNumber}
+	 */
 	public int getTurnNumber() {
 		return turnNumber;
 	}

@@ -6,8 +6,19 @@ import logic.gmanager.GameManager;
 import logic.gmanager.Tile;
 import logic.misc.Coordinate;
 
+/**
+ * A class which contains static method for common types of attack
+ *
+ */
 public class GenericAttack {
-	
+	/**
+	 * Fires a simple, single-hit projectile.
+	 * @param start origin tile
+	 * @param damage amount of damage to be dealt
+	 * @param range range of the projectile
+	 * @param player owner of the attack
+	 * @throws InvalidPlayerException
+	 */
 	public static void simpleProjectile(Coordinate start, int damage, int range, int player) throws InvalidPlayerException
 	{
 		//System.out.println("simpleProjectile!");
@@ -59,7 +70,16 @@ public class GenericAttack {
 			}
 		}
 	}
-			
+	
+	/**
+	 * Fires a projectile which can pierce and hit multiple enemies
+	 * @param start origin of the projectile
+	 * @param damage amount of damage dealt
+	 * @param range range of the projectile
+	 * @param pierce amount of enemy the projectile can hit
+	 * @param player owner of the attack
+	 * @throws InvalidPlayerException
+	 */
 	public static void piercingProjectile(Coordinate start, int damage, int range, int pierce, int player) throws InvalidPlayerException
 	{
 		start = new Coordinate(start.getX(),start.getY());
@@ -113,6 +133,13 @@ public class GenericAttack {
 		
 	}
 	
+	/**
+	 * Damages a specific tile
+	 * @param target targeted tile
+	 * @param damage damage dealt
+	 * @param player owner of the attack
+	 * @throws InvalidPlayerException
+	 */
 	public static void tileDamage(Coordinate target, int damage, int player) throws InvalidPlayerException
 	{
 		target = new Coordinate(target.getX(),target.getY());
@@ -133,7 +160,16 @@ public class GenericAttack {
 		}
 	}
 	
-	public static boolean splashTileDamage(Coordinate target, int damage, int player, boolean canHitPlayer) throws InvalidPlayerException
+	/**
+	 * Deals a splash damage to a tile.
+	 * @param target targeted tile
+	 * @param damage damage dealt
+	 * @param player owner of the attack
+	 * @param canHitPlayer whether or not this splash can hit the opposing player
+	 * @return true if it has hit a player, false otherwise
+	 * @throws InvalidPlayerException
+	 */
+	private static boolean splashTileDamage(Coordinate target, int damage, int player, boolean canHitPlayer) throws InvalidPlayerException
 	{
 		target = new Coordinate(target.getX(),target.getY());
 		GameInstance gameInstance = GameManager.getGameInstance();
@@ -158,7 +194,14 @@ public class GenericAttack {
 		
 	}
 
-	
+	/**
+	 * Creates an AoE splash damage at a location
+	 * @param target targeted tile, center of explosion
+	 * @param damage damage dealt
+	 * @param player owner of the attack
+	 * @param radius radius of the explosion
+	 * @throws InvalidPlayerException
+	 */
 	public static void targetSquareExplosion(Coordinate target, int damage, int player,int radius) throws InvalidPlayerException
 	{
 		target = new Coordinate(target.getX(),target.getY());		
@@ -183,6 +226,12 @@ public class GenericAttack {
 		
 	}
 	
+	/**
+	 * Freezes the target for a specific duration
+	 * @param target targeted tile
+	 * @param duration duration to freeze in turns
+	 * @param player owner of the attack
+	 */
 	public static void freeze(Coordinate target,int duration, int player)
 	{
 		Tile targetTile = GameManager.getGameInstance().getBoard().getTile(target);
@@ -193,7 +242,13 @@ public class GenericAttack {
 		else targetTile.getTower().freeze(duration);
 	}
 
-	
+	/**
+	 * Heals the targeted tile for a certain amount
+	 * @param target targeted tile
+	 * @param amount amount to heal
+	 * @param player owner of the spell
+	 * @throws InvalidPlayerException
+	 */
 	public static void heal(Coordinate target, int amount, int player) throws InvalidPlayerException
 	{
 		target = new Coordinate(target.getX(),target.getY());
