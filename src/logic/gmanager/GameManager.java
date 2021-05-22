@@ -1,7 +1,6 @@
 package logic.gmanager;
 
 import java.util.ArrayList;
-import java.util.Currency;
 
 import exception.InvalidPlayerException;
 import exception.SelectInvalidTileException;
@@ -110,8 +109,8 @@ public class GameManager {
 	}
 
 	/**
-	 * Setter for {@value #buttonMode}
-	 * @param buttonMode {@value #buttonMode}
+	 * Setter for {@link #buttonMode}
+	 * @param buttonMode {@link #buttonMode}
 	 */
 	public static void setButtonMode(ButtonMode buttonMode) {
 		GameManager.buttonMode = buttonMode;
@@ -135,7 +134,7 @@ public class GameManager {
 
 	/**
 	 * Getter for {@link #currentPlayer}
-	 * @return
+	 * @return {@link #currentPlayer}
 	 */
 	public static int getCurrentPlayer() {
 		return GameManager.currentPlayer;
@@ -260,7 +259,7 @@ public class GameManager {
 	 * Called when player clicks a tile during the attacking phase
 	 * @param loc clicked tile
 	 * @param player clicking player
-	 * @throws SelectInvalidTileException
+	 * @throws SelectInvalidTileException Can't select tile in that moment
 	 */
 	public static void selectAttackPhaseTile(Coordinate loc, int player) throws SelectInvalidTileException {
 		if (GameManager.getButtonMode() == ButtonMode.AIM) {
@@ -285,7 +284,7 @@ public class GameManager {
 	 * Called when the clicked tile will attempt to queue an attack action
 	 * @param loc clicked tile
 	 * @param player clicking player
-	 * @throws SelectInvalidTileException
+	 * @throws SelectInvalidTileException Can't select tile in that moment
 	 */
 	private static void selectAttackingTile(Coordinate loc, int player) throws SelectInvalidTileException {
 		Tile selectedTile = GameManager.getGameInstance().getBoard().getTile(loc);
@@ -404,7 +403,7 @@ public class GameManager {
 	 * Called when a tile is clicked during the building phase
 	 * @param loc clicked tile
 	 * @param player clicking player
-	 * @throws SelectInvalidTileException
+	 * @throws SelectInvalidTileException Can't select tile in that moment
 	 */
 	public static void selectBuildPhaseTile(Coordinate loc, int player) throws SelectInvalidTileException {
 		if (GameManager.buttonMode == ButtonMode.BUILD) {
@@ -424,7 +423,7 @@ public class GameManager {
 	 * @param tower unit to place
 	 * @param loc location to place
 	 * @param player placing player
-	 * @throws SelectInvalidTileException
+	 * @throws SelectInvalidTileException Can't select tile in that moment
 	 */
 	private static void buildTower(BaseTower tower, Coordinate loc, int player) throws SelectInvalidTileException {
 		if (tower == null) {
@@ -453,7 +452,7 @@ public class GameManager {
 	 * Upgrades the tower in the tile.
 	 * @param loc location to be upgraded
 	 * @param player player who is upgrading
-	 * @throws SelectInvalidTileException
+	 * @throws SelectInvalidTileException Can't select tile in that moment
 	 */
 	public static void upgradeTower(Coordinate loc, int player) throws SelectInvalidTileException {
 		BaseTower selectedTower = GameManager.getGameInstance().getBoard().getTile(loc).getTower();
@@ -482,7 +481,7 @@ public class GameManager {
 	 * Attempts to retire a unit from a location
 	 * @param loc location to retire
 	 * @param player player attempting to reture
-	 * @throws SelectInvalidTileException
+	 * @throws SelectInvalidTileException Can't select tile in that moment
 	 */
 	public static void removeTower(Coordinate loc, int player) throws SelectInvalidTileException {
 		BaseTower selectedTower = GameManager.getGameInstance().getBoard().getTile(loc).getTower();
@@ -515,7 +514,7 @@ public class GameManager {
 	// ----------------------- Aftermath phase ------------------------------
 
 	/**
-	 * Processes what comes after the attacking phase such as applying freeze, activating passives and removed <=0 hp towers.
+	 * Processes what comes after the attacking phase such as applying freeze, activating passives and removed heath less than equal 0 towers.
 	 */
 	public static void processAftermath() {
 		Board board = GameManager.getGameInstance().getBoard();

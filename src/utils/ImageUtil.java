@@ -7,16 +7,35 @@ import javafx.scene.image.PixelFormat;
 import javafx.scene.image.WritableImage;
 import javafx.scene.image.WritablePixelFormat;
 
+/**
+ * Utility for font
+ */
 public class ImageUtil {
+	/**
+	 * Load image from link
+	 * @param url path to picture
+	 * @return Image object at path
+	 */
 	public static Image ImageLoader(String url) {
 		return new Image(ClassLoader.getSystemResource(url).toString());
 	}
-	
+	/**
+	 * Load image from link with size
+	 * @param url path to picture
+	 * @param size At most size of picture
+	 * @return Image object at path
+	 */
 	public static Image ImageLoader(String url, int size) {
 		Image img = new Image(ClassLoader.getSystemResource(url).toString());
 		return scale(img, size);
 	}
 	
+	/**
+	 * To scale pixel art without blur
+	 * @param image Image to scale
+	 * @param size At most size of picture
+	 * @return Scaled pixel art or image
+	 */
 	public static Image scale(Image image, int size) {
 		int width = (int)image.getWidth();
 		int height = (int)image.getHeight();

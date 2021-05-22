@@ -2,7 +2,6 @@ package logic.gmanager;
 
 import exception.InvalidPlayerException;
 import gui.SceneController;
-import javafx.application.Platform;
 import logic.misc.Coordinate;
 import logic.towers.BaseTower;
 
@@ -49,7 +48,7 @@ public class Tile {
 	 * Returns whether or not an attack from a specific player can hit this tile
 	 * @param player player to query
 	 * @return True if can hit, false otherwise.
-	 * @throws InvalidPlayerException
+	 * @throws InvalidPlayerException Invalid player
 	 */
 	public boolean attackable(int player) throws InvalidPlayerException
 	{

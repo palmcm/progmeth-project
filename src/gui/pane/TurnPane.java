@@ -29,7 +29,7 @@ public class TurnPane extends VBox {
 	 * Constructor for TurnPane
 	 */
 	public TurnPane() {
-		phaseText = new Text("Attacking Phase");
+		phaseText = new Text("Management");
 		playerTurn = new Text("Player1's Turn");
 		turnNumber = new Text("Turn 1");
 		

@@ -42,15 +42,4 @@ public class Towers {
 	{
 		return Towers.TowerList;
 	}
-	
-	public static void test()
-	{
-		int i;
-		for(i=0;i<Towers.getTowers().length;i++) {
-
-			System.out.println(Towers.getTowers()[i].getCurrentName());  // <------- NAME
-			
-			System.out.println(Towers.getTowers()[i].getToolTipString()); // <--------- TOOLTIP DESC
-		}
-	}
 }

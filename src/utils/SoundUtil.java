@@ -4,10 +4,15 @@ import java.util.ArrayList;
 
 import javafx.scene.media.AudioClip;
 
+/**
+ * Utility for sound
+ */
 public class SoundUtil {
-	
+	/** All song list*/
 	private static ArrayList<AudioClip> bgmList = new ArrayList<AudioClip>();
+	/** Current song index*/
 	private static int index;
+	/** Is currently play*/
 	private static boolean play;
 	
 	static {
@@ -16,6 +21,9 @@ public class SoundUtil {
 		play = false;
 	}
 	
+	/**
+	 * Load song 
+	 */
 	public static void loadResource() {
 		AudioClip bgm1 = new AudioClip(ClassLoader.getSystemResource("sound/bgm1.mp3").toString());
 		bgm1.setVolume(0.05);
@@ -30,6 +38,10 @@ public class SoundUtil {
 		
 	}
 	
+	/**
+	 * Change background music
+	 * @return currently song
+	 */
 	public static String changeBgm() {
 		index = (index+1) % (bgmList.size());
 		if(index != 0) {
@@ -42,10 +54,18 @@ public class SoundUtil {
 		return "Song " + (index+1);
 	}
 	
+	/**
+	 * Get currently song
+	 * @return currently song
+	 */
 	public static String getBgm() {
 		return "Song " + (index+1);
 	}
 	
+	/**
+	 * Toggle music
+	 * @return display string for option
+	 */
 	public static String toggleBgm() {
 		play = !play;
 		if(play) {

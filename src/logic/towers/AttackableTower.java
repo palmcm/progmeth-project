@@ -12,6 +12,10 @@ import utils.CommonStrings;
  */
 public abstract class AttackableTower extends BaseTower{
 	
+	/**
+	 * Attack ability
+	 * @throws InvalidPlayerException Invalid player
+	 */
 	public abstract void attack() throws InvalidPlayerException;
 	
 	/**

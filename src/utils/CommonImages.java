@@ -3,13 +3,20 @@ package utils;
 import config.GameConfig;
 import javafx.scene.image.Image;
 
+/**
+ * Utility for get common image
+ */
 public class CommonImages {
 	
 	// TILE HIGHLIGHTER GANG
 	
+	/** Waiting deck background player 1*/
 	private static Image deckwaitp1 = ImageUtil.ImageLoader("ui/deck_wait_blue.png",85);
+	/** Waiting deck background player 2*/
 	private static Image deckwaitp2 = ImageUtil.ImageLoader("ui/deck_wait_red.png",GameConfig.SCREEN_WIDTH / 18);
+	/** Selecting deck background player 1*/
 	private static Image deckpickp1 = ImageUtil.ImageLoader("ui/deck_pick_blue.png",GameConfig.SCREEN_WIDTH / 18);
+	/** Selecting deck background player 2*/
 	private static Image deckpickp2 = ImageUtil.ImageLoader("ui/deck_pick_red.png",GameConfig.SCREEN_WIDTH / 18);
 	
 	/**
@@ -35,10 +42,15 @@ public class CommonImages {
 		}
 	}
 	
+	/** Highlight for range*/
 	private static Image rangeHighlighter = ImageUtil.ImageLoader("highlighters/range.png",GameConfig.SCREEN_WIDTH / 18);
+	/** Highlight for targeting*/
 	private static Image targetHighlighter = ImageUtil.ImageLoader("highlighters/target.png",GameConfig.SCREEN_WIDTH / 18);
+	/** Highlight for unit place*/
 	private static Image unitHighlighter = ImageUtil.ImageLoader("highlighters/unit.png",GameConfig.SCREEN_WIDTH / 18);
+	/** Highlight for tower space*/
 	private static Image emptyHighlighter = ImageUtil.ImageLoader("highlighters/empty.png",GameConfig.SCREEN_WIDTH / 18);
+	/** Highlight for selector*/
 	private static Image selectHighlighter = ImageUtil.ImageLoader("ui/selector.png",GameConfig.SCREEN_WIDTH / 18);
 	
 	/**
@@ -62,9 +74,11 @@ public class CommonImages {
 	}
 	
 	// UPGRADE EMBLEMS
-	
+	/** Upgrade emblem level 1*/
 	private static Image upgradeEmblem1 = ImageUtil.ImageLoader("unit_overlay/upgrade_1.png",GameConfig.SCREEN_WIDTH / 18);
+	/** Upgrade emblem level 2*/
 	private static Image upgradeEmblem2 = ImageUtil.ImageLoader("unit_overlay/upgrade_2.png",GameConfig.SCREEN_WIDTH / 18);
+	/** Upgrade emblem level 3*/
 	private static Image upgradeEmblem3 = ImageUtil.ImageLoader("unit_overlay/upgrade_3.png",GameConfig.SCREEN_WIDTH / 18);
 	
 	/**
@@ -84,7 +98,7 @@ public class CommonImages {
 	}
 	
 	/**
-	 * Image of hp bar background.
+	 * Image of health bar background.
 	 */
 	public static Image hpBackground = ImageUtil.ImageLoader("unit_overlay/healthbar_background.png",GameConfig.SCREEN_WIDTH / 18);
 	

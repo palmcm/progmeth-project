@@ -16,6 +16,11 @@ public class Pyromancer extends AimableTower{
 		return new Pyromancer(loc,true);
 	}
 	
+	/**
+	 * Constructor for Pyromancer
+	 * @param loc location of tower
+	 * @param isInstance whether that its an instance
+	 */
 	public Pyromancer(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);

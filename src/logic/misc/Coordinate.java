@@ -5,8 +5,10 @@ package logic.misc;
  *
  */
 public class Coordinate {
-	
-	private int x,y;
+	/** Lane number*/
+	private int x;
+	/** Column number*/
+	private int y;
 	
 	// Getters
 	
@@ -20,8 +22,8 @@ public class Coordinate {
 	
 	/**
 	 * Creates a new coordinate of X,Y
-	 * @param x
-	 * @param y
+	 * @param x Lane
+	 * @param y Column
 	 */
 	public Coordinate(int x, int y) {
 		this.x = x;

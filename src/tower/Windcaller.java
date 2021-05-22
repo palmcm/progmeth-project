@@ -16,6 +16,11 @@ public class Windcaller extends AttackableTower{
 		return new Windcaller(loc,true);
 	}
 	
+	/**
+	 * Constructor for Windcaller
+	 * @param loc location of tower
+	 * @param isInstance whether that its an instance
+	 */
 	public Windcaller(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);

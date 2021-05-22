@@ -82,6 +82,10 @@ public class PickTowerScene extends Scene{
 		}
 	}
 	
+	/**
+	 * Enable to press next
+	 * @param canUse Can use next button
+	 */
 	public void setCanNext(boolean canUse) {
 		pickTowerPane.getNext().setDisable(!canUse);
 		if (canUse) {

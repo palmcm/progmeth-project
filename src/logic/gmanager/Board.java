@@ -25,7 +25,7 @@ public class Board {
 		
 		this.setBorderColumns();
 		
-		int i,j;
+		int i;
 		
 		for(i=1;i<=5;i++)
 		{
@@ -39,8 +39,8 @@ public class Board {
 	
 	/**
 	 * Creates a new board with specific size of x*y
-	 * @param x
-	 * @param y
+	 * @param x Number of lanes
+	 * @param y Number of column
 	 */
 	public Board(int x, int y)
 	{
@@ -64,8 +64,8 @@ public class Board {
 	
 	/**
 	 * Sets the initial value of each tiles for a board size.
-	 * @param lane
-	 * @param col
+	 * @param lane Number of lanes
+	 * @param col Number of column
 	 */
 	private void initTiles(int lane, int col) {
 		this.tiles = new Tile[lane][col+2];
@@ -93,8 +93,8 @@ public class Board {
 	
 	/**
 	 * Sets tile owner for a whole column.
-	 * @param owner
-	 * @param column
+	 * @param owner player that can use
+	 * @param column column to set
 	 */
 	public void setOwnerColumn(int owner,int column)
 	{
@@ -108,7 +108,7 @@ public class Board {
 	
 	/**
 	 * Get the {@link #border} of the board.
-	 * @return
+	 * @return {@link #border}
 	 */
 	public int getBorder() {
 		return border;
@@ -116,9 +116,9 @@ public class Board {
 
 	/**
 	 * Get the border column index of a player.
-	 * @param player
-	 * @return index
-	 * @throws InvalidPlayerException
+	 * @param player owner
+	 * @return border index 
+	 * @throws InvalidPlayerException Invalid player
 	 */
 	public int getPlayerBorder(int player) throws InvalidPlayerException
 	{
@@ -147,8 +147,8 @@ public class Board {
 	
 	/**
 	 * Checks if a tile at x,y exists
-	 * @param x
-	 * @param y
+	 * @param x lane
+	 * @param y column
 	 * @return True if it does, false otherwise
 	 */
 	public boolean checkTile(int x,int y)

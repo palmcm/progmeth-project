@@ -5,10 +5,16 @@ package logic.gmanager;
  *
  */
 public enum ButtonMode {
+	/** Aim mode */
 	AIM,
+	/** Select mode */
 	SELECT,
+	/** Build mode */
 	BUILD,
+	/** Upgrade mode */
 	UPGRADE,
+	/** Destroy mode */
 	DESTROY,
+	/** None mode */
 	NONE
 }

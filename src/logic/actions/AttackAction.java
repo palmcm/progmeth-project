@@ -15,6 +15,7 @@ public class AttackAction extends AttackPhaseAction {
 	
 	/**
 	 * Creates a new attack action from a coordinate
+	 * @param loc Location from attacking tower
 	 */
 	public AttackAction(Coordinate loc)
 	{

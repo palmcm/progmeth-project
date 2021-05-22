@@ -15,7 +15,11 @@ public class Apprentice extends AttackableTower{
 	{
 		return new Apprentice(loc,true);
 	}
-	
+	/**
+	 * Constructor for Apprentice
+	 * @param loc location of tower
+	 * @param isInstance whether that its an instance
+	 */
 	public Apprentice(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);

@@ -14,7 +14,11 @@ public class Corruptor extends AttackableTower{
 	{
 		return new Corruptor(loc,true);
 	}
-	
+	/**
+	 * Constructor for Corruptor
+	 * @param loc location of tower
+	 * @param isInstance whether that its an instance
+	 */
 	public Corruptor(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);

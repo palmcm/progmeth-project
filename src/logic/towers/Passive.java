@@ -10,7 +10,7 @@ public interface Passive {
 	
 	/**
 	 * Action to perform at the end of the turn
-	 * @throws InvalidPlayerException
+	 * @throws InvalidPlayerException Invalid player
 	 */
 	public void doPassive() throws InvalidPlayerException;
 

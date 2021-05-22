@@ -2,12 +2,10 @@ package logic.gmanager;
 
 import java.util.ArrayList;
 
-import exception.InvalidPlayerException;
 import logic.actions.AttackAction;
 import logic.actions.AttackPhaseAction;
 import logic.menu.DeckSelector;
 import logic.misc.Coordinate;
-import logic.towers.BaseTower;
 
 /**
  * A class which contains information and method regarding the current game.

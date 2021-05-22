@@ -27,7 +27,7 @@ public class Player {
 	
 	/**
 	 * Creates a new player with an id
-	 * @param id
+	 * @param id player id
 	 */
 	public Player(int id)
 	{
@@ -53,7 +53,7 @@ public class Player {
 	/**
 	 * Damages the player
 	 * @param dmg amount of damage
-	 * @throws InvalidPlayerException
+	 * @throws InvalidPlayerException Invalid player
 	 */
 	public void damage(int dmg) throws InvalidPlayerException
 	{
@@ -63,7 +63,7 @@ public class Player {
 	/**
 	 * Gets the id of opposing player
 	 * @return 1 or 2
-	 * @throws InvalidPlayerException
+	 * @throws InvalidPlayerException Invalid player
 	 */
 	public int getOppositePlayerId() throws InvalidPlayerException
 	{
@@ -124,7 +124,7 @@ public class Player {
 	
 	/**
 	 * Add a tower to this player's deck
-	 * @param tower
+	 * @param tower selected tower
 	 */
 	public void addTowerToDeck(BaseTower tower)
 	{
@@ -133,7 +133,7 @@ public class Player {
 	
 	/**
 	 * removes a tower from an index from this player's deck
-	 * @param idx
+	 * @param idx removed index
 	 */
 	public void removeTowerFromDeck(int idx)
 	{

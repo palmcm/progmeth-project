@@ -54,7 +54,11 @@ public abstract class BaseTower {
 	private String damageUrl;
 	
 	// ** Abstract Methods **
-	
+	/**
+	 * Create new instance of tower at the location
+	 * @param loc location
+	 * @return Tower instance with location
+	 */
 	public abstract BaseTower getNewInstance(Coordinate loc);
 	
 	// ** Methods **
@@ -221,7 +225,7 @@ public abstract class BaseTower {
 	 * Returns whether the unit can be hit by an attack of a player.
 	 * @param player attacking source's player
 	 * @return True if can be hit, false otherwise.
-	 * @throws InvalidPlayerException
+	 * @throws InvalidPlayerException Invalid player
 	 */
 	public boolean attackable(int player) throws InvalidPlayerException
 	{

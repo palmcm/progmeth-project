@@ -16,6 +16,11 @@ public class Cryomaster extends AimableTower{
 		return new Cryomaster(loc,true);
 	}
 	
+	/**
+	 * Constructor for Cryomaster
+	 * @param loc location of tower
+	 * @param isInstance whether that its an instance
+	 */
 	public Cryomaster(Coordinate loc,boolean isInstance)
 	{
 		super();

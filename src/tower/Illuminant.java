@@ -16,6 +16,11 @@ public class Illuminant extends AttackableTower{
 		return new Illuminant(loc,true);
 	}
 	
+	/**
+	 * Constructor for Illuminant
+	 * @param loc location of tower
+	 * @param isInstance whether that its an instance
+	 */
 	public Illuminant(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);

@@ -14,7 +14,11 @@ public class TerraRaiser extends BaseTower{
 	}
 	
 
-	
+	/**
+	 * Constructor for TerraRaiser
+	 * @param loc location of tower
+	 * @param isInstance whether that its an instance
+	 */
 	public TerraRaiser(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);

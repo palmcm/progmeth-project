@@ -16,6 +16,11 @@ public class Dryad extends AimableTower{
 		return new Dryad(loc,true);
 	}
 	
+	/**
+	 * Constructor for Dryad
+	 * @param loc location of tower
+	 * @param isInstance whether that its an instance
+	 */
 	public Dryad(Coordinate loc,boolean isInstance)
 	{
 		super();

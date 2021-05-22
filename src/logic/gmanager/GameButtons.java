@@ -15,8 +15,8 @@ public class GameButtons {
 
 	/**
 	 * Called when selecting a tile at a location
-	 * @param loc
-	 * @throws SelectInvalidTileException
+	 * @param loc Location
+	 * @throws SelectInvalidTileException Can't select tile in that moment
 	 */
 	public static void selectTile(Coordinate loc) throws SelectInvalidTileException {
 
@@ -84,6 +84,10 @@ public class GameButtons {
 	}
 
 	// --------------------- UPGRADE MODE --------------------------------
+	/**
+	 * Called when the upgrade unit button is pressed.
+	 * @return whether or not the upgrade succeeds
+	 */
 	public static boolean upgradeMode() {
 		if (GameManager.getTurnPhase() != TurnPhase.BUILD) {
 			return false;
@@ -96,7 +100,7 @@ public class GameButtons {
 
 	/**
 	 * Called when the retire unit button is pressed.
-	 * @return
+	 * @return whether or not the retire succeeds
 	 */
 	public static boolean destroyMode() {
 		if (GameManager.getTurnPhase() != TurnPhase.BUILD) {
@@ -110,7 +114,7 @@ public class GameButtons {
 
 	/**
 	 * Called when player selects a tower from the tower panel.
-	 * @param tower
+	 * @param tower selected tower
 	 */
 	public static void selectTower(BaseTower tower) {
 		if (GameManager.getTurnPhase() != TurnPhase.BUILD) {

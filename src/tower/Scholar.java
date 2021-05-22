@@ -18,7 +18,11 @@ public class Scholar extends BaseTower implements Passive{
 	}
 	
 
-	
+	/**
+	 * Constructor for Scholar
+	 * @param loc location of tower
+	 * @param isInstance whether that its an instance
+	 */
 	public Scholar(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);

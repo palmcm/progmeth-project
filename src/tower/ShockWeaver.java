@@ -16,6 +16,11 @@ public class ShockWeaver extends AttackableTower{
 		return new ShockWeaver(loc,true);
 	}
 	
+	/**
+	 * Constructor for ShockWeaver
+	 * @param loc location of tower
+	 * @param isInstance whether that its an instance
+	 */
 	public ShockWeaver(Coordinate loc,boolean isInstance)
 	{
 		this.setIsInstance(isInstance);

@@ -5,7 +5,10 @@ package logic.gmanager;
  *
  */
 public enum TurnPhase {
+	/** Management phase */
 	BUILD,
+	/** Strategy phase */
 	ATTACK,
+	/** Attacking phase */
 	AFTERMATH
 }

@@ -17,7 +17,7 @@ public class GenericAttack {
 	 * @param damage amount of damage to be dealt
 	 * @param range range of the projectile
 	 * @param player owner of the attack
-	 * @throws InvalidPlayerException
+	 * @throws InvalidPlayerException Invalid player
 	 */
 	public static void simpleProjectile(Coordinate start, int damage, int range, int player) throws InvalidPlayerException
 	{
@@ -78,7 +78,7 @@ public class GenericAttack {
 	 * @param range range of the projectile
 	 * @param pierce amount of enemy the projectile can hit
 	 * @param player owner of the attack
-	 * @throws InvalidPlayerException
+	 * @throws InvalidPlayerException Invalid player
 	 */
 	public static void piercingProjectile(Coordinate start, int damage, int range, int pierce, int player) throws InvalidPlayerException
 	{
@@ -142,7 +142,7 @@ public class GenericAttack {
 	 * @param target targeted tile
 	 * @param damage damage dealt
 	 * @param player owner of the attack
-	 * @throws InvalidPlayerException
+	 * @throws InvalidPlayerException Invalid player
 	 */
 	public static void tileDamage(Coordinate target, int damage, int player) throws InvalidPlayerException
 	{
@@ -171,7 +171,7 @@ public class GenericAttack {
 	 * @param player owner of the attack
 	 * @param canHitPlayer whether or not this splash can hit the opposing player
 	 * @return true if it has hit a player, false otherwise
-	 * @throws InvalidPlayerException
+	 * @throws InvalidPlayerException Invalid player
 	 */
 	private static boolean splashTileDamage(Coordinate target, int damage, int player, boolean canHitPlayer) throws InvalidPlayerException
 	{
@@ -204,7 +204,7 @@ public class GenericAttack {
 	 * @param damage damage dealt
 	 * @param player owner of the attack
 	 * @param radius radius of the explosion
-	 * @throws InvalidPlayerException
+	 * @throws InvalidPlayerException Invalid player
 	 */
 	public static void targetSquareExplosion(Coordinate target, int damage, int player,int radius) throws InvalidPlayerException
 	{
@@ -251,7 +251,7 @@ public class GenericAttack {
 	 * @param target targeted tile
 	 * @param amount amount to heal
 	 * @param player owner of the spell
-	 * @throws InvalidPlayerException
+	 * @throws InvalidPlayerException Invalid player
 	 */
 	public static void heal(Coordinate target, int amount, int player) throws InvalidPlayerException
 	{
