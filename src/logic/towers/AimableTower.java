@@ -11,10 +11,17 @@ public abstract class AimableTower extends AttackableTower {
 	private int hRange[],vRange[];
 	private int hRadius[],vRadius[];
 
+	/**
+	 * Getter for this unit's targeted tile.
+	 * @return {@link #target}
+	 */
 	public Coordinate getTarget() {
 		return target;
 	}
 	
+	/**
+	 * Creates a base AimableTower with no range.
+	 */
 	public AimableTower()
 	{
 		this.sethRadius(new int[]{0,0,0,0});
@@ -61,6 +68,11 @@ public abstract class AimableTower extends AttackableTower {
 		return r;
 	}
 	
+	/**
+	 * Returns an ArrayList of Coordinates that will be affected by aiming a location.
+	 * @param target targeted location
+	 * @return ArrayList of Coordinates.
+	 */
 	public ArrayList<Coordinate> getAimingTarget(Coordinate target)
 	{
 		ArrayList<Coordinate> r = new ArrayList<Coordinate>();
@@ -83,6 +95,11 @@ public abstract class AimableTower extends AttackableTower {
 		return r;
 	}
 
+	/**
+	 * Setter for {@link #target}
+	 * @param target {@link #target}
+	 * @return True if the target is within reach, false otherwise.
+	 */
 	public boolean setTarget(Coordinate target) {
 		
 		if(this.canTarget(target))
@@ -93,6 +110,11 @@ public abstract class AimableTower extends AttackableTower {
 		return false;
 	}
 	
+	/**
+	 * Returns whether or not this unit can target a specific tile.
+	 * @param target The target tile to check
+	 * @return True if within reach, false otherwise.
+	 */
 	private boolean canTarget(Coordinate target)
 	{
 		if(target == null)
@@ -136,49 +158,89 @@ public abstract class AimableTower extends AttackableTower {
 				CommonStrings.SeparatorLine+
 				CommonStrings.stats_cost+this.getCost()+CommonStrings.currency_symbol+"\n";
 	}
-
+	
+	/**
+	 * Getter for {@link #hRange} of a specific level.
+	 * @param level level to query
+	 * @return {@link #hRange} of that level.
+	 */
 	public int gethRange(int level) {
 		return hRange[level];
 	}
 
+	/**
+	 * Setter for {@link #hRange}
+	 * @param hRange {@link #hRange}
+	 */
 	public void sethRange(int[] hRange) {
 		this.hRange = hRange;
 	}
-
+	
+	/**
+	 * Getter for {@link #vRange} of a specific level.
+	 * @param level level to query
+	 * @return {@link #vRange} of that level.
+	 */
 	public int getvRange(int level) {
 		return vRange[level];
 	}
 
+	/**
+	 * Setter for {@link #vRange}
+	 * @param hRange {@link #vRange}
+	 */
 	public void setvRange(int[] vRange) {
 		this.vRange = vRange;
 	}
-	
+
+	/**
+	 * Getter for {@link #hRange} of this unit.
+	 * @return {@link #hRange}
+	 */
 	public int getCurrenthRange()
 	{
 		return this.gethRange(this.getUpgradeLevel());
 	}
-	
+
+	/**
+	 * Getter for {@link #vRange} of this unit.
+	 * @return {@link #vRange}
+	 */
 	public int getCurrentvRange()
 	{
 		return this.getvRange(this.getUpgradeLevel());
 	}
-	
+
+	/**
+	 * Getter for {@link #hRadius} of this unit.
+	 * @return {@link #hRadius}
+	 */
 	public int getCurrenthRadius()
 	{
 		return this.hRadius[this.getUpgradeLevel()];
 	}
-	
+
+	/**
+	 * Getter for {@link #vRadius} of this unit.
+	 * @return {@link #vRadius}
+	 */
 	public int getCurrentvRadius()
 	{
 		return this.vRadius[this.getUpgradeLevel()];
 	}
 
-
+	/**
+	 * Setter for {@link #hRadius}
+	 * @param hRadius {@link #hRadius}
+	 */
 	public void sethRadius(int[] hRadius) {
 		this.hRadius = hRadius;
 	}
 
-
+	/**
+	 * Setter for {@link #vRadius}
+	 * @param hRadius {@link #vRadius}
+	 */
 	public void setvRadius(int[] vRadius) {
 		this.vRadius = vRadius;
 	}
