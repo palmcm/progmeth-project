@@ -13,14 +13,29 @@ import utils.CommonStrings;
  */
 public class Player {
 	
+	/**
+	 * Current research of this player
+	 */
 	private int income;
+	/**
+	 * Current intellect of this player
+	 */
 	private int money;
-	
+	/**
+	 * Maximum health of this player
+	 */
 	private int maxHealth;
-
+	/**
+	 * Current health of this player
+	 */
 	private int health;
+	/**
+	 * ArrayList which contains all the wizards in this player's team
+	 */
 	private ArrayList<BaseTower> deck;
-	
+	/**
+	 * Player's ID, can be 1 or 2.
+	 */
 	private int playerId;
 	
 	// INITIALIZER

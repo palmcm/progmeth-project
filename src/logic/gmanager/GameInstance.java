@@ -13,17 +13,28 @@ import logic.misc.Coordinate;
  */
 public class GameInstance {
 	
+	/**
+	 * Contains the current game's board
+	 */
 	private Board board;
-	
-	//private int maxIncomeLevel;
-	//private int income;
-	//private int incomeUpgradeCost;
-	//private int startingIncome;
+	/**
+	 * Contains both players of the current game.
+	 */
 	private Player player1,player2;
 	
+	/**
+	 * Contains the current attack order for the current turn.
+	 */
 	private ArrayList<AttackPhaseAction> attackOrder;
+	
+	/**
+	 * Contains all the action which will be carried to next turn.
+	 */
 	private ArrayList<AttackPhaseAction> persistentEffects;
 	
+	/**
+	 * Turns elapsed in the current match.
+	 */
 	private int turnNumber;
 	
 	/**

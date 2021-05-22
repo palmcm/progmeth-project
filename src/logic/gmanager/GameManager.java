@@ -20,20 +20,54 @@ import logic.towers.Passive;
  *
  */
 public class GameManager {
-
-	private static GameInstance gameInstance;
-
-	private static ButtonMode buttonMode;
-	private static TurnPhase turnPhase;
-	private static BaseTower selectedTower;
-	private static int startingPlayer;
-	private static int currentPlayer;
-	private static int maxDeckSize = 5;
-	private static int currentTurn;
-	private static Coordinate selectedTile;
 	
+	/**
+	 * Current GameInstance
+	 */
+	private static GameInstance gameInstance;
+	/**
+	 * Current button mode
+	 */
+	private static ButtonMode buttonMode;
+	/**
+	 * Current turn phase
+	 */
+	private static TurnPhase turnPhase;
+	/**
+	 * Currently selected tower
+	 */
+	private static BaseTower selectedTower;
+	/**
+	 * Contains the id of player who will take the management phase first
+	 */
+	private static int startingPlayer;
+	/**
+	 * Currently active player
+	 */
+	private static int currentPlayer;
+	/**
+	 * Maximum amount of wizards player can have in their team.
+	 */
+	private static int maxDeckSize = 5;
+	/**
+	 * Turns elapsed
+	 */
+	private static int currentTurn;
+	/**
+	 * Currently selected tile in the strategy phase for selecting targets.
+	 */
+	private static Coordinate selectedTile;
+	/**
+	 * String of turn phase for display.
+	 */
 	private static String turnPhaseString;
+	/**
+	 * String of current player for display.
+	 */
 	private static String currentPlayerString;
+	/**
+	 * String of current turn for display.
+	 */
 	private static String currentTurnString;
 
 	/**

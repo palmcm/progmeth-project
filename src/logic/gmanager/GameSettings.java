@@ -5,12 +5,33 @@ package logic.gmanager;
  */
 public class GameSettings {
 
+	/**
+	 * Maximum amount of wizard in a team.
+	 */
 	private static int deckSize = 5;
+	/**
+	 * Player's starting health
+	 */
 	private static int MaxHealth = 100;
+	/**
+	 * Player's starting intellect
+	 */
 	private static int startingMoney = 30;
+	/**
+	 * Amount of increased research per upgrade
+	 */
 	private static int income = 5;
+	/**
+	 * Cost to upgrade research once
+	 */
 	private static int incomeUpgradeCost = 30;
+	/**
+	 * Player's initial income
+	 */
 	private static int startingIncome = 10;
+	/**
+	 * Board used when creating a new game
+	 */
 	private static Board board = new Board();
 	
 	// ------------- SET DEFAULT -----------------

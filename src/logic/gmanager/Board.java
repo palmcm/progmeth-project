@@ -9,8 +9,17 @@ import logic.misc.Coordinate;
  */
 public class Board {
 	
+	/**
+	 * A table which contains all the tiles.
+	 */
 	private Tile tiles[][];
+	/**
+	 * Represents the amount of lanes on the board.
+	 */
 	private int lanes;
+	/**
+	 * Represents the amount of columns on the board.
+	 */
 	private int border;
 	
 	/**

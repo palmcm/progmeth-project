@@ -12,8 +12,17 @@ import logic.towers.BaseTower;
  */
 public class Tile {
 	
+	/**
+	 * Contains the unit in this tile.
+	 */
 	private BaseTower tower;
+	/**
+	 * Represents the location of this tile on the board.
+	 */
 	private Coordinate loc;
+	/**
+	 * Represents whether if this tile has been queued in this turn.
+	 */
 	private boolean markAttacked;
 
 	/**
