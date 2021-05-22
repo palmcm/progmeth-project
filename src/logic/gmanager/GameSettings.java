@@ -48,7 +48,7 @@ public class GameSettings {
 	}
 	/**
 	 * Setter for {@link #MaxHealth}
-	 * @param deckSize {@link #MaxHealth}
+	 * @param maxHealth {@link #MaxHealth}
 	 */
 	public static void setMaxHealth(int maxHealth) {
 		MaxHealth = maxHealth;
@@ -62,7 +62,7 @@ public class GameSettings {
 	}
 	/**
 	 * Setter for {@link #startingMoney}
-	 * @param deckSize {@link #startingMoney}
+	 * @param startingMoney {@link #startingMoney}
 	 */
 	public static void setStartingMoney(int startingMoney) {
 		GameSettings.startingMoney = startingMoney;
@@ -76,7 +76,7 @@ public class GameSettings {
 	}
 	/**
 	 * Setter for {@link #board}
-	 * @param deckSize {@link #board}
+	 * @param board {@link #board}
 	 */
 	public static void setBoard(Board board) {
 		GameSettings.board = board;
@@ -90,7 +90,7 @@ public class GameSettings {
 	}
 	/**
 	 * Setter for {@link #income}
-	 * @param deckSize {@link #income}
+	 * @param income {@link #income}
 	 */
 	public static void setIncome(int income) {
 		GameSettings.income = income;
@@ -104,7 +104,7 @@ public class GameSettings {
 	}
 	/**
 	 * Setter for {@link #incomeUpgradeCost}
-	 * @param deckSize {@link #incomeUpgradeCost}
+	 * @param incomeUpgradeCost {@link #incomeUpgradeCost}
 	 */
 	public static void setIncomeUpgradeCost(int incomeUpgradeCost) {
 		GameSettings.incomeUpgradeCost = incomeUpgradeCost;
@@ -118,7 +118,7 @@ public class GameSettings {
 	}
 	/**
 	 * Setter for {@link #startingIncome}
-	 * @param deckSize {@link #startingIncome}
+	 * @param startingIncome {@link #startingIncome}
 	 */
 	public static void setStartingIncome(int startingIncome) {
 		GameSettings.startingIncome = startingIncome;
