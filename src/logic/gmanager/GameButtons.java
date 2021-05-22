@@ -4,6 +4,7 @@ import exception.SelectInvalidTileException;
 import gui.SceneController;
 import logic.misc.Coordinate;
 import logic.towers.BaseTower;
+import utils.SoundUtil;
 
 /**
  * A class which provides static method for game actions caused by pressing a button or tile.
@@ -65,7 +66,8 @@ public class GameButtons {
 		} else if (GameManager.getTurnPhase() == TurnPhase.AFTERMATH) {
 			GameManager.setButtonMode(ButtonMode.NONE);
 		}
-
+		
+		SoundUtil.playEndturn();
 		GameManager.setGamePhaseInfo();
 
 	}

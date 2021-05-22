@@ -34,6 +34,11 @@ public class GameSettings {
 	 */
 	private static Board board = new Board();
 	
+	/**
+	 * Whether having animation in game or not
+	 */
+	private static boolean enableAnimation = true;
+	
 	// ------------- SET DEFAULT -----------------
 	/**
 	 * Set all option to default
@@ -144,9 +149,33 @@ public class GameSettings {
 	public static void setStartingIncome(int startingIncome) {
 		GameSettings.startingIncome = startingIncome;
 	}
+
+	/**
+	 * Getter for {@link #enableAnimation}
+	 * @return {@link #enableAnimation}
+	 */
+	public static boolean isEnableAnimation() {
+		return enableAnimation;
+	}
 	
+	/**
+	 * toggle {@link #enableAnimation}
+	 */
+	public static void toggleEnableAnimation() {
+		enableAnimation = !enableAnimation;
+	}
 	
-	
+	/**
+	 * Getter for {@link #enableAnimation} as String to put in setting
+	 * @return {@link #enableAnimation}
+	 */
+	public static String getEnableAnimation() {
+		if (enableAnimation) {
+			return "Enable";
+		}else {
+			return "Disable";
+		}
+	}
 	
 	
 	

@@ -18,6 +18,7 @@ import logic.towers.BaseTower;
 import utils.CommonImages;
 import utils.FontUtil;
 import utils.ImageUtil;
+import utils.SoundUtil;
 
 
 /**
@@ -221,6 +222,7 @@ public class TileCell extends StackPane{
 	public void attackAnimation() {
 		new Thread(() -> {
 			Platform.runLater(() -> {
+				SoundUtil.playAttackEffect(tile.getTower());
 				attackSeq.setFill(Color.WHITE);
 				towerImg.setImage(ImageUtil.ImageLoader(tile.getTower().getAttackUrl(),80));
 			});

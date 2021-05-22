@@ -40,6 +40,7 @@ public class Apprentice extends AttackableTower{
 		this.setUrl("towers/apprentice.png");
 		this.setAttackUrl("towers/apprentice_attack.png");
 		this.setDamageUrl("towers/apprentice_damaged.png");
+		this.setAttackSoundUrl("apprentice.wav");
 		
 		// ------------------ TOWER INFO/DESCRIPTION ------------------------
 		

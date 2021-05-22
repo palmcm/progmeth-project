@@ -3,6 +3,7 @@ package logic.towers;
 import exception.InvalidPlayerException;
 import gui.SceneController;
 import logic.gmanager.GameManager;
+import logic.gmanager.GameSettings;
 import logic.misc.Coordinate;
 import utils.CommonStrings;
 
@@ -106,6 +107,11 @@ public abstract class BaseTower {
 	 * URL of the damaged sprite for this unit
 	 */
 	private String damageUrl;
+	
+	/**
+	 * URL of the attacking sound for this unit
+	 */
+	private String attackSoundUrl;
 	
 	// ** Abstract Methods **
 	/**
@@ -252,7 +258,9 @@ public abstract class BaseTower {
 	{
 		this.setCurrentHealth(this.getCurrentHealth()-dmg);
 		this.updateHealthBar();
-		GameManager.doDamageAnimation(loc);
+		if (GameSettings.isEnableAnimation()) {
+			GameManager.doDamageAnimation(loc);
+		}
 	}
 	
 	/**
@@ -602,6 +610,21 @@ public abstract class BaseTower {
 		this.damageUrl = damageUrl;
 	}
 	
+	/**
+	 * Getter for {@link #attackSoundUrl}
+	 * @return {@link #attackSoundUrl}
+	 */
+	public String getAttackSoundUrl() {
+		return attackSoundUrl;
+	}
+	
+	/**
+	 * Setter for {@link #attackSoundUrl}
+	 * @param attackSoundUrl {@link #attackSoundUrl}
+	 */
+	public void setAttackSoundUrl(String attackSoundUrl) {
+		this.attackSoundUrl = attackSoundUrl;
+	}
 	/**
 	 * Attempts to freeze this unit for a duration
 	 * @param duration freezing duration in turns

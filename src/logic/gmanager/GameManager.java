@@ -261,16 +261,23 @@ public class GameManager {
 		new Thread( () -> {
 			Platform.runLater(() -> SceneController.getGamePane().inAnimation(true));
 			for (AttackPhaseAction i : GameManager.getGameInstance().getAttackOrder()) {
-				if (i instanceof AttackAction) {
-					SceneController.getGamePane().getTilesPane().getTileCell(((AttackAction)i).getTrigger()).attackAnimation();
-				}
 				i.processAction();
-				Platform.runLater(() -> SceneController.getGamePane().updateHp());
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				if (GameSettings.isEnableAnimation()) {
+					if (i instanceof AttackAction) {
+						SceneController.getGamePane().getTilesPane().getTileCell(((AttackAction)i).getTrigger()).attackAnimation();
+					}
+					Platform.runLater(() -> SceneController.getGamePane().updateHp());
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						System.out.println("Interupt Attack Animation");
+						Platform.runLater(() -> {
+							processAftermath();
+							GameButtons.proceedGamePhase();
+							SceneController.getGamePane().inAnimation(false);
+						});
+					}
 				}
 			}
 			Platform.runLater(() -> {
@@ -568,9 +575,11 @@ public class GameManager {
 					else if (b instanceof Passive) {
 						try {
 							((Passive) b).doPassive();
-							SceneController.getGamePane().getTilesPane().getTileCell(b.getLoc()).attackAnimation();
+							if (GameSettings.isEnableAnimation()) {
+								SceneController.getGamePane().getTilesPane().getTileCell(b.getLoc()).attackAnimation();
+							}
 						} catch (InvalidPlayerException e) {
-							e.printStackTrace();
+							System.out.println("Invalid player");
 						}
 					} else if (b instanceof AttackableTower) {
 						((AttackableTower) b).doCooldown();
