@@ -13,7 +13,9 @@ import tower.Illuminant;
 
 public class Towers {
 
-	
+	/**
+	 * List of towers in the game in display form.
+	 */
 	private static BaseTower TowerList[] = {
 			new Apprentice(null,false),
 			new TerraRaiser(null,false),
@@ -27,6 +29,10 @@ public class Towers {
 			new ShockWeaver(null,false)
 	};
 	
+	/**
+	 * Returns a list of all towers available
+	 * @return {@link #TowerList}
+	 */
 	public static BaseTower[] getTowers()
 	{
 		return Towers.TowerList;
