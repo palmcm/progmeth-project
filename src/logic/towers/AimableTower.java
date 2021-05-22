@@ -11,9 +11,26 @@ import utils.CommonStrings;
  */
 public abstract class AimableTower extends AttackableTower {
 	
+	/**
+	 * Contains this unit's target coordinate when it casts a spell.
+	 */
 	private Coordinate target;
-	private int hRange[],vRange[];
-	private int hRadius[],vRadius[];
+	/**
+	 * Contains this unit's horizontal reach for each level.
+	 */
+	private int hRange[];
+	/**
+	 * Contains this unit's vertical reach for each level.
+	 */
+	private int vRange[];
+	/**
+	 * Contains this unit's horizontal splash radius for each level.
+	 */
+	private int hRadius[];
+	/**
+	 * Contains this unit's vertical splash radius for each level.
+	 */
+	private int vRadius[];
 
 	/**
 	 * Getter for this unit's targeted tile.

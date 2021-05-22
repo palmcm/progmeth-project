@@ -17,40 +17,94 @@ public abstract class BaseTower {
 	
 	// Health Related
 	
+	/**
+	 * Contains true if the unit is an actual unit on the field, false otherwise.
+	 */
 	private boolean isInstance;
-	
+	/**
+	 * Current unit health
+	 */
 	private int currentHealth;
+	/**
+	 * Unit's max health
+	 */
 	private int maxHealth;
+	/**
+	 * Unit's maximum upgrade level
+	 */
 	private int maxUpgradeLevel;
 	
+	/**
+	 * Health gained when upgrading this unit for each level.
+	 */
 	private int[] upgradeHealth; // Defines increased health for each upgrade
 	
 	// Upgrade Related
 	
+	/**
+	 * This unit's current upgrade level
+	 */
 	private int upgradeLevel;
+	/**
+	 * This unit's placing cost
+	 */
 	private int cost;
+	/**
+	 * This unit's upgrade cost for each level.
+	 */
 	private int[] upgradeCost;
 	
 	// Board Related
 	
+	/**
+	 * Player ID of this unit's owner
+	 */
 	private int owner;
+	/**
+	 * Location of this unit.
+	 */
 	private Coordinate loc;
 	
 	// Other Infos
 	
+	/**
+	 * Name of this unit for each level
+	 */
 	private String[] towerName;
+	/**
+	 * Description of this unit for each level
+	 */
 	private String[] towerDescription;
+	/**
+	 * Upgrade tooltip/description of this unit for each level
+	 */
 	private String[] towerUpgradeDescription;
-	
+	/**
+	 * This unit's current name
+	 */
 	private String currentName;
-
+	/**
+	 * The duration in turns this unit will be frozen for after the current turn
+	 */
 	private int frozen;
+	/**
+	 * The current frozen duration of this unit
+	 */
 	private int frozenDuration;
 	
 	// Image Url
 	
+	/**
+	 * URL of the base sprite for this unit
+	 */
 	private String url;
+	/**
+	 * URL of the attacking sprite for this unit
+	 */
 	private String attackUrl;
+	/**
+	 * URL of the damaged sprite for this unit
+	 */
 	private String damageUrl;
 	
 	// ** Abstract Methods **

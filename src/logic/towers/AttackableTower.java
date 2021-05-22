@@ -34,9 +34,21 @@ public abstract class AttackableTower extends BaseTower{
 	
 	// -------------- UPGRADE ---------------------
 	
+	/**
+	 * Contains the attack range of this unit for each level.
+	 */
 	private String[] towerRange;
+	/**
+	 * Contains damage dealt by this unit for each level.
+	 */
 	private String[] towerDamage;
+	/**
+	 * Stores the current range of this tower.
+	 */
 	private String currentRange;
+	/**
+	 * Contains the attack range of this unit in form of integer for each level.
+	 */
 	private int[] towerRangeInt;
 	
 	protected void initialize()
@@ -109,7 +121,13 @@ public abstract class AttackableTower extends BaseTower{
 	
 	// -------------- COOLDOWN --------------------
 	
+	/**
+	 * Contains the amount of turns before each attack of this unit.
+	 */
 	private int cooldown;
+	/**
+	 * Contains the turns remaining before this unit can cast a spell again.
+	 */
 	private int currentCooldown;
 
 	/**
