@@ -171,9 +171,9 @@ public class GameSettings {
 	 */
 	public static String getEnableAnimation() {
 		if (enableAnimation) {
-			return "Enable";
+			return "Enabled";
 		}else {
-			return "Disable";
+			return "Disabled";
 		}
 	}
 	
