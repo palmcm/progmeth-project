@@ -52,9 +52,9 @@ public class Windcaller extends AttackableTower{
 		});
 		
 		this.setTowerDescription(new String[] {
-				"Rapidly summons wind currents, each dealing damage to the first enemy it hits.",
-				"Rapidly summons wind currents, each dealing damage to the first enemy it hits.",
-				"Rapidly summons wind currents, each dealing damage to the first enemy it hits.",
+				"Rapidly summons wind currents, each dealing damage\n to the first enemy it hits.",
+				"Rapidly summons wind currents, each dealing damage\n to the first enemy it hits.",
+				"Rapidly summons wind currents, each dealing damage\n to the first enemy it hits.",
 				"Rapidly summons three bursts of wind currents, one on his lane\nand the others on the lane above and below him.",
 		});
 		
