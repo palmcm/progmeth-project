@@ -12,6 +12,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import logic.menu.DeckSelector;
 import utils.FontUtil;
@@ -51,6 +52,7 @@ public class GameSettingScene extends Scene{
 		back.setOnMouseClicked(e -> {
 			SceneController.setScene("menu");
 		});
+		FontUtil.addHoverHighlight(back,Color.BLACK);
 		
 		root.getChildren().addAll(title,setting1,setting2,back);
 		

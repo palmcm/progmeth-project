@@ -35,9 +35,11 @@ public class PickTowerPane extends VBox{
 		HBox buttonBox = new HBox(150);
 		next = new Text("Next");
 		next.setFont(FontUtil.loadFont(25));
+		FontUtil.addHoverHighlight(next,Color.BLACK);
 		
 		Text back = new Text("Back");
 		back.setFont(FontUtil.loadFont(25));
+		FontUtil.addHoverHighlight(back,Color.BLACK);
 		
 		next.setDisable(true);
 		next.setFill(Color.LIGHTGRAY);

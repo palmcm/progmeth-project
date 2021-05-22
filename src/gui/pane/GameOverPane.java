@@ -35,6 +35,7 @@ public class GameOverPane extends VBox{
 		});
 		playAgain.setFill(Color.WHITE);
 		playAgain.setFont(FontUtil.loadFont(24));
+		FontUtil.addHoverHighlight(playAgain,Color.WHITE);
 		
 		Text mainmenu = new Text("Back to Main menu");
 		mainmenu.setOnMouseClicked(e -> {
@@ -43,6 +44,7 @@ public class GameOverPane extends VBox{
 		});
 		mainmenu.setFont(FontUtil.loadFont(24));
 		mainmenu.setFill(Color.WHITE);
+		FontUtil.addHoverHighlight(mainmenu,Color.WHITE);
 		
 		this.getChildren().addAll(winner,playAgain,mainmenu);
 		this.setMaxSize(500, 200);
