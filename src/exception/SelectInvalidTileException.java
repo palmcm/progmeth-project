@@ -1,5 +1,9 @@
 package exception;
 
+/**
+ * Exception raised when an action from clicking a tile is invalid/impossible.
+ *
+ */
 public class SelectInvalidTileException extends Exception {
 
 	 /**
