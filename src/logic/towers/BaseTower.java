@@ -108,11 +108,6 @@ public abstract class BaseTower {
 	 */
 	private String damageUrl;
 	
-	/**
-	 * URL of the attacking sound for this unit
-	 */
-	private String attackSoundUrl;
-	
 	// ** Abstract Methods **
 	/**
 	 * Create new instance of tower at the location
@@ -610,21 +605,6 @@ public abstract class BaseTower {
 		this.damageUrl = damageUrl;
 	}
 	
-	/**
-	 * Getter for {@link #attackSoundUrl}
-	 * @return {@link #attackSoundUrl}
-	 */
-	public String getAttackSoundUrl() {
-		return attackSoundUrl;
-	}
-	
-	/**
-	 * Setter for {@link #attackSoundUrl}
-	 * @param attackSoundUrl {@link #attackSoundUrl}
-	 */
-	public void setAttackSoundUrl(String attackSoundUrl) {
-		this.attackSoundUrl = attackSoundUrl;
-	}
 	/**
 	 * Attempts to freeze this unit for a duration
 	 * @param duration freezing duration in turns

@@ -43,7 +43,7 @@ public class SoundUtil {
 	 * Load song 
 	 */
 	public static void loadResource() {
-		endTurn = new AudioClip(ClassLoader.getSystemResource("sound/end_turn.wav").toString());
+		endTurn = new AudioClip(ClassLoader.getSystemResource("sound/end_turn.mp3").toString());
 		
 		AudioClip bgm1 = new AudioClip(ClassLoader.getSystemResource("sound/bgm1.mp3").toString());
 		bgm1.setVolume(0.05);
@@ -126,10 +126,10 @@ public class SoundUtil {
 	 * @param tower Attacking tower
 	 */
 	public static void playAttackEffect(BaseTower tower) {
-		if (tower == null || tower.getAttackSoundUrl() == null) {
+		if (tower == null) {
 			return;
 		}
-		URL url = ClassLoader.getSystemResource("sound/pack/"+attackEffectPacksUrl.get(effectIndex)+"/"+tower.getAttackSoundUrl());
+		URL url = ClassLoader.getSystemResource("sound/pack/"+attackEffectPacksUrl.get(effectIndex)+"/"+tower.getTowerName(0)+".mp3");
 		if (url == null) {
 			return;
 		}
