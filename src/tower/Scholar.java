@@ -30,7 +30,7 @@ public class Scholar extends BaseTower implements Passive{
 		this.setCurrentHealth(this.getMaxHealth());
 		
 		this.setMaxUpgradeLevel(3);
-		this.setUpgradeCost(new int[]{15,20,35});
+		this.setUpgradeCost(new int[]{15,20,40});
 		
 		this.setLoc(loc);
 		
@@ -48,17 +48,17 @@ public class Scholar extends BaseTower implements Passive{
 		});
 		
 		this.setTowerDescription(new String[] {
-				"Researches 6"+CommonStrings.currency_symbol+" at the end of turn.",
-				"Researches 10"+CommonStrings.currency_symbol+" at the end of turn.",
-				"Researches 15"+CommonStrings.currency_symbol+" intellect at the end of turn.",
-				"Researches 25"+CommonStrings.currency_symbol+" intellect at the end of turn.",
+				"Researches 5"+CommonStrings.currency_symbol+" at the end of turn.",
+				"Researches 8"+CommonStrings.currency_symbol+" at the end of turn.",
+				"Researches 12"+CommonStrings.currency_symbol+" intellect at the end of turn.",
+				"Researches 20"+CommonStrings.currency_symbol+" intellect at the end of turn.",
 		});
 		
 		this.setTowerUpgradeDescription(new String[] {
-				"Researches extra 6"+CommonStrings.currency_symbol+" at the end of each turn.",
+				"Researches extra 5"+CommonStrings.currency_symbol+" at the end of each turn.",
+				"Increases research by 3 per turn.",
 				"Increases research by 4 per turn.",
-				"Increases research by 5 per turn.",
-				"Increases research by 10 per turn."
+				"Increases research by 8 per turn."
 		});
 		
 		this.initialize();

@@ -106,6 +106,10 @@ public class GenericAttack {
 		
 		while(!attackCompleted)
 		{
+			if(!gameInstance.getBoard().checkTile(start.getX(), start.getY()))
+			{
+				break;
+			}
 			if(gameInstance.getBoard().getTile(start).attackable(player))
 			{
 				gameInstance.getBoard().getTile(start).getTower().damage(damage);

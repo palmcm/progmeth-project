@@ -7,10 +7,10 @@ public class GameSettings {
 
 	private static int deckSize = 5;
 	private static int MaxHealth = 100;
-	private static int startingMoney = 50;
+	private static int startingMoney = 30;
 	private static int income = 5;
-	private static int incomeUpgradeCost = 25;
-	private static int startingIncome = 20;
+	private static int incomeUpgradeCost = 30;
+	private static int startingIncome = 10;
 	private static Board board = new Board();
 	
 	// ------------- SET DEFAULT -----------------

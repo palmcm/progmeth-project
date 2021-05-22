@@ -49,7 +49,7 @@ public class Corruptor extends AttackableTower{
 				"Cast a short-ranged burst of dark energy.",
 				"Cast a short-ranged burst of dark energy which hits all enemies in its range.",
 				"Cast a short-ranged burst of dark energy which hits all enemies in its range.",
-				"Cast a long-ranged wave of dark energy, followed by\nshort-ranged burst of dark energy which hits all enemies in its range.",
+				"Cast a long-ranged wave of dark energy, followed by short\nranged burst of dark energy which hits all enemies in its range.",
 		});
 		
 		this.setTowerDamage(new String[] {
