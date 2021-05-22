@@ -6,6 +6,9 @@ import logic.misc.Coordinate;
 import logic.towers.AttackableTower;
 import logic.towers.BaseTower;
 
+/**
+ * Illuminant Unit
+ */
 public class Illuminant extends AttackableTower{
 	
 	public BaseTower getNewInstance(Coordinate loc)

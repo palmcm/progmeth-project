@@ -6,6 +6,9 @@ import logic.misc.Coordinate;
 import logic.towers.AimableTower;
 import logic.towers.BaseTower;
 
+/**
+ * Dryad Unit
+ */
 public class Dryad extends AimableTower{
 	
 	public BaseTower getNewInstance(Coordinate loc)

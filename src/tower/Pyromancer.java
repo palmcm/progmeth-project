@@ -6,6 +6,9 @@ import logic.misc.Coordinate;
 import logic.towers.AimableTower;
 import logic.towers.BaseTower;
 
+/**
+ * Pyromancer Unit
+ */
 public class Pyromancer extends AimableTower{
 	
 	public BaseTower getNewInstance(Coordinate loc)

@@ -6,6 +6,9 @@ import logic.misc.Coordinate;
 import logic.towers.AttackableTower;
 import logic.towers.BaseTower;
 
+/**
+ * Apprentice Unit
+ */
 public class Apprentice extends AttackableTower{
 	
 	public BaseTower getNewInstance(Coordinate loc)

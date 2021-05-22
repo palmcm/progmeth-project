@@ -6,6 +6,10 @@ import exception.InvalidPlayerException;
 import logic.misc.Coordinate;
 import utils.CommonStrings;
 
+/**
+ * An abstract class for towers which are capable of performing untargeted attacks.
+ * For towers which can select target, see AimableTower
+ */
 public abstract class AttackableTower extends BaseTower{
 	
 	public abstract void attack() throws InvalidPlayerException;

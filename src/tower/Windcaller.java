@@ -6,6 +6,9 @@ import logic.misc.Coordinate;
 import logic.towers.AttackableTower;
 import logic.towers.BaseTower;
 
+/**
+ * Windcaller Unit
+ */
 public class Windcaller extends AttackableTower{
 	
 	public BaseTower getNewInstance(Coordinate loc)

@@ -3,6 +3,9 @@ package tower;
 import logic.misc.Coordinate;
 import logic.towers.BaseTower;
 
+/**
+ * TerraRaiser Unit
+ */
 public class TerraRaiser extends BaseTower{
 	
 	public BaseTower getNewInstance(Coordinate loc)

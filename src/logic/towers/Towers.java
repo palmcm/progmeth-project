@@ -11,6 +11,11 @@ import tower.Cryomaster;
 import tower.Dryad;
 import tower.Illuminant;
 
+/**
+ * 
+ * A class for storing static value containing all tower types.
+ *
+ */
 public class Towers {
 
 	/**

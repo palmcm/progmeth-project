@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import logic.misc.Coordinate;
 import utils.CommonStrings;
 
+/**
+ * An abstract class for tower which can select a target.
+ *
+ */
 public abstract class AimableTower extends AttackableTower {
 	
 	private Coordinate target;

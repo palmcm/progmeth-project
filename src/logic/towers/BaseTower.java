@@ -6,6 +6,11 @@ import logic.gmanager.GameManager;
 import logic.misc.Coordinate;
 import utils.CommonStrings;
 
+/**
+ * An abstract class which represents a basic tower.
+ * Towers which implements this directly will not be able to attack.
+ * See AttackableTower and AimableTower for towers capable of attacking.
+ */
 public abstract class BaseTower {
 	
 	// ** Fields **

@@ -7,6 +7,9 @@ import logic.towers.Passive;
 import utils.CommonStrings;
 import logic.towers.BaseTower;
 
+/**
+ * Scholar Unit
+ */
 public class Scholar extends BaseTower implements Passive{
 	
 	public BaseTower getNewInstance(Coordinate loc)

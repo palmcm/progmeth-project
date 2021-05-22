@@ -5,7 +5,9 @@ import logic.attacks.GenericAttack;
 import logic.misc.Coordinate;
 import logic.towers.AttackableTower;
 import logic.towers.BaseTower;
-
+/**
+ * Corruptor Unit
+ */
 public class Corruptor extends AttackableTower{
 	
 	public BaseTower getNewInstance(Coordinate loc)

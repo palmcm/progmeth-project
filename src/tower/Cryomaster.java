@@ -6,6 +6,9 @@ import logic.misc.Coordinate;
 import logic.towers.AimableTower;
 import logic.towers.BaseTower;
 
+/**
+ * Cryomaster Unit
+ */
 public class Cryomaster extends AimableTower{
 	
 	public BaseTower getNewInstance(Coordinate loc)
