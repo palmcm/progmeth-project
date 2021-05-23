@@ -80,7 +80,9 @@ public class SoundUtil {
 		}else {
 			bgmList.get(bgmList.size()-1).stop();
 		}
-		bgmList.get(bgmIndex).play();
+		if(play) {
+			bgmList.get(bgmIndex).play();
+		}
 		
 		return "Music " + (bgmIndex+1);
 	}
