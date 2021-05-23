@@ -110,8 +110,8 @@ public class SoundUtil {
 	
 	/**
 	 * Add pack to {@link #attackEffectPacks}
-	 * @param packUrl Path to sound effect
-	 * @param Display Display in Option
+	 * @param displayString Path to sound effect
+	 * @param packUrl Display in Option
 	 */
 	public static void addEffectPack(String displayString, String packUrl) {
 		attackEffectPacks.add(displayString);
@@ -140,7 +140,7 @@ public class SoundUtil {
 		if (tower == null) {
 			return;
 		}
-		URL url = ClassLoader.getSystemResource("sound/pack/"+attackEffectPacksUrl.get(effectIndex)+"/"+tower.getTowerName(0)+".mp3");
+		URL url = ClassLoader.getSystemResource("sound/pack/"+attackEffectPacksUrl.get(effectIndex)+"/"+tower.getTowerName(0).toLowerCase()+".mp3");
 		if (url == null) {
 			return;
 		}
