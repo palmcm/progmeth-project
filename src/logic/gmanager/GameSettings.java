@@ -16,7 +16,7 @@ public class GameSettings {
 	/**
 	 * Player's starting intellect
 	 */
-	private static int startingMoney = 30;
+	private static int startingMoney = 40;
 	/**
 	 * Amount of increased research per upgrade
 	 */
@@ -28,7 +28,7 @@ public class GameSettings {
 	/**
 	 * Player's initial income
 	 */
-	private static int startingIncome = 10;
+	private static int startingIncome = 20;
 	/**
 	 * Board used when creating a new game
 	 */

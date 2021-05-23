@@ -74,16 +74,16 @@ public class Scholar extends BaseTower implements Passive{
 			return;
 		switch(this.getUpgradeLevel()) {
 		case 0:
-			GameManager.getGameInstance().getPlayer(this.getOwner()).gainMoney(6);
+			GameManager.getGameInstance().getPlayer(this.getOwner()).gainMoney(5);
 			break;
 		case 1:
-			GameManager.getGameInstance().getPlayer(this.getOwner()).gainMoney(10);
+			GameManager.getGameInstance().getPlayer(this.getOwner()).gainMoney(8);
 			break;
 		case 2:
-			GameManager.getGameInstance().getPlayer(this.getOwner()).gainMoney(15);
+			GameManager.getGameInstance().getPlayer(this.getOwner()).gainMoney(12);
 			break;
 		case 3:
-			GameManager.getGameInstance().getPlayer(this.getOwner()).gainMoney(25);
+			GameManager.getGameInstance().getPlayer(this.getOwner()).gainMoney(20);
 			break;		
 			
 		}
