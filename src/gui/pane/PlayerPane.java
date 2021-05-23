@@ -117,8 +117,11 @@ public class PlayerPane extends VBox {
 	public void updateHp() {
 		int fullHp = player.getMaxHealth();
 		int nowHp = player.getHealth();
-		setHpBar((double)nowHp/fullHp);
 		hpText.setText(nowHp+"/"+fullHp);
+		if (nowHp < 0) {
+			nowHp = 0;
+		}
+		setHpBar((double)nowHp/fullHp);
 	}
 	
 	/**
