@@ -233,8 +233,8 @@ public class Player {
 	 */
 	public void setHealth(int health) {
 		this.health = health;
-		if(this.getHealth() < 0)
-			this.health = 0;
+		/*if(this.getHealth() < 0)
+			this.health = 0;*/
 		if(this.getHealth() > this.getMaxHealth())
 			this.health = this.getMaxHealth();
 	}
