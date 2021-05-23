@@ -30,7 +30,7 @@ public class TurnPane extends VBox {
 	 */
 	public TurnPane() {
 		phaseText = new Text("Management");
-		playerTurn = new Text("Player1's Turn");
+		playerTurn = new Text("Player 1's Turn");
 		turnNumber = new Text("Turn 1");
 		
 		phaseText.setFont(FontUtil.loadFont(16));

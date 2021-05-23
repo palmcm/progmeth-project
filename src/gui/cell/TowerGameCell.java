@@ -39,7 +39,6 @@ public class TowerGameCell extends StackPane {
 		
 		this.setOnMouseEntered(e -> {
 			if (this.tower != null) {
-				SceneController.getPickTowerScene().getDesBox().setTowerData(tower);
 				SceneController.getGamePane().getDescriptionPane().setDes(
 						this.tower.getCurrentName(),
 						this.tower.getBuyToolTip()
@@ -48,7 +47,7 @@ public class TowerGameCell extends StackPane {
 		});
 		
 		this.setOnMouseExited(e -> {
-			SceneController.getPickTowerScene().getDesBox().setTowerDefault();
+			SceneController.getGamePane().getDescriptionPane().setDesDefault();
 		});
 	}
 	/**
