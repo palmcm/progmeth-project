@@ -207,7 +207,7 @@ public class TileCell extends StackPane{
 			Thread.sleep(250);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Take Damage Animation Interrupt");
 		}
 			Platform.runLater(() -> {
 //				damageFrame.setImage(null);
@@ -230,7 +230,7 @@ public class TileCell extends StackPane{
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Attack Animation Interrupt");
 		}
 			Platform.runLater(() -> update());
 		}).start();
